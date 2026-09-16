@@ -1,0 +1,2822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SF Middle School Navigator (5th Grade Family Guide)</title>
+  
+  <!-- Google Analytics 4 (GA4) Tracker Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WP63136FN0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WP63136FN0');
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0d9488',
+              marine: '#0f766e',
+              bridge: '#e11d48',
+              fog: '#f8fafc',
+              slate: '#334155',
+              dark: '#0f172a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Leaflet CSS & JS for Interactive Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    /* Custom Leaflet Map Pins */
+    .leaflet-popup-content-wrapper {
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      padding: 0.25rem;
+    }
+    .leaflet-popup-content {
+      margin: 0.75rem 0.85rem;
+      line-height: 1.4;
+    }
+    .custom-marker-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      color: white;
+      font-weight: bold;
+      font-size: 11px;
+      border: 2px solid white;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.15s ease-in-out;
+    }
+    .custom-marker-icon:hover {
+      transform: scale(1.15);
+      z-index: 1000 !important;
+    }
+
+    /* Scrollbar aesthetics */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
+
+  <!-- Top Global Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-marine via-brand-teal to-emerald-400 flex items-center justify-center text-white shadow-md shadow-teal-500/20">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="font-display font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight">SF Middle School Navigator</h1>
+              <span class="badge-pill bg-teal-50 text-brand-marine border border-teal-200 hidden sm:inline-flex">5th Grade Edition</span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium hidden xs:block">Public & Independent Middle School Directory, Match Quiz & Lottery Strategy</p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex items-center space-x-1 sm:space-x-2 overflow-x-auto py-1" id="nav-container">
+          <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-white bg-brand-teal shadow-sm flex items-center space-x-1.5 whitespace-nowrap">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            <span>Match Quiz</span>
+          </button>
+
+          <button onclick="switchTab('directory')" id="tab-btn-directory" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span>Directory (31)</span>
+          </button>
+
+          <button onclick="switchTab('map')" id="tab-btn-map" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+            <span>SF Map</span>
+          </button>
+
+          <button onclick="switchTab('compare')" id="tab-btn-compare" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap relative">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <span>Compare</span>
+            <span id="compare-badge-count" class="hidden ml-1 px-1.5 py-0.2 text-[10px] font-bold rounded-full bg-rose-500 text-white">0</span>
+          </button>
+
+          <button onclick="switchTab('guide')" id="tab-btn-guide" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>Lottery Guide</span>
+          </button>
+
+          <button onclick="openSourcesModal()" class="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-500 hover:text-brand-teal hover:bg-slate-100 border border-slate-200 flex items-center space-x-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span class="hidden md:inline">Data Sources</span>
+          </button>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-2 border border-slate-700">
+    <span id="toast-icon">✨</span>
+    <span id="toast-message">Notification message</span>
+  </div>
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+
+    <!-- TAB 1: INTERACTIVE MATCH QUIZ -->
+    <section id="tab-quiz" class="tab-content block space-y-6">
+      
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-r from-teal-900 via-brand-marine to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-3xl relative z-10 space-y-3">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30">
+            <span>Adaptive Match Engine</span>
+            <span>•</span>
+            <span>Personalized for 5th Graders</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl sm:text-4xl tracking-tight leading-tight">
+            Find the San Francisco middle school where your child will thrive.
+          </h2>
+          <p class="text-slate-200 text-xs sm:text-sm leading-relaxed max-w-2xl">
+            Select up to 3 personality traits, favorite subjects, community scale, and target high school trajectory to compute customized match scores across public SFUSD and independent private options.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quiz Form & Live Results Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Quiz Form (7 cols) -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+          
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+            <div>
+              <h3 class="font-display font-bold text-lg text-slate-900">Student Profile & Preferences</h3>
+              <p class="text-xs text-slate-500">Fine-tune the weights to reflect your child's personality and goals.</p>
+            </div>
+            <button onclick="resetQuiz()" class="text-xs font-semibold text-brand-teal hover:text-brand-marine hover:underline">Reset</button>
+          </div>
+
+          <!-- Q1: Student Personality Archetypes (Up to 3) -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                1. Student Personality Archetype <span class="text-brand-teal">(Pick up to 3)</span>
+              </label>
+              <span id="personality-counter" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">1/3 Selected</span>
+            </div>
+            <p class="text-xs text-slate-500">Middle school is an emotional milestone. What kind of environment brings out their best?</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" id="personality-options">
+              <label class="quiz-personality-card cursor-pointer border-2 border-teal-500 bg-teal-50/40 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="outgoing" checked class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+                <div>
+                  <strong class="block text-slate-900 font-semibold">Outgoing & Spirited</strong>
+                  <span class="text-slate-500 text-[11px] leading-snug block">Loves high-energy environments, rallies, team spirit, and big social circles.</span>
+                </div>
+              </label>
+
+              <label class="quiz-personality-card cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="sensitive" class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+                <div>
+                  <strong class="block text-slate-900 font-semibold">Sensitive / Low-Sensory Needs</strong>
+                  <span class="text-slate-500 text-[11px] leading-snug block">Thrives in smaller groups, calmer hallways, and tight-knit teacher mentorship.</span>
+                </div>
+              </label>
+
+              <label class="quiz-personality-card cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="analytical" class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+                <div>
+                  <strong class="block text-slate-900 font-semibold">Analytical & Independent</strong>
+                  <span class="text-slate-500 text-[11px] leading-snug block">Deep-diver in math, coding, puzzles, or science with strong self-direction.</span>
+                </div>
+              </label>
+
+              <label class="quiz-personality-card cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="creative" class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+                <div>
+                  <strong class="block text-slate-900 font-semibold">Creative & Expressive</strong>
+                  <span class="text-slate-500 text-[11px] leading-snug block">Passionate about musical instruments, drama, sketching, and artistic expression.</span>
+                </div>
+              </label>
+
+              <label class="quiz-personality-card cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="literary" class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+                <div>
+                  <strong class="block text-slate-900 font-semibold">Literary, Reader & Storyteller</strong>
+                  <span class="text-slate-500 text-[11px] leading-snug block">Loves fiction, creative writing, journalism, speech & debate, and humanities discussion.</span>
+                </div>
+              </label>
+
+              <label class="quiz-personality-card cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="kinetic" class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+                <div>
+                  <strong class="block text-slate-900 font-semibold">Hands-on, Kinetic & Team-Oriented</strong>
+                  <span class="text-slate-500 text-[11px] leading-snug block">Learns by building, maker labs, social activism, and active athletics.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q2: Student's Favorite Subjects (Up to 3) -->
+          <div class="space-y-2 pt-2 border-t border-slate-100">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                2. Student's Favorite Subjects & Passions <span class="text-brand-teal">(Pick up to 3)</span>
+              </label>
+              <span id="subject-counter" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">2/3 Selected</span>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="subject-options">
+              <label class="subject-chip cursor-pointer border-2 border-teal-500 bg-teal-50/50 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="music_band" checked class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+                <span class="font-medium text-slate-800">🎺 Band & Music</span>
+              </label>
+
+              <label class="subject-chip cursor-pointer border-2 border-teal-500 bg-teal-50/50 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="stem_maker" checked class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+                <span class="font-medium text-slate-800">🔬 STEM & Robotics</span>
+              </label>
+
+              <label class="subject-chip cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="math_accelerated" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+                <span class="font-medium text-slate-800">📐 Accelerated Math</span>
+              </label>
+
+              <label class="subject-chip cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="languages" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+                <span class="font-medium text-slate-800">🗣️ Dual Immersion</span>
+              </label>
+
+              <label class="subject-chip cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="arts_drama" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+                <span class="font-medium text-slate-800">🎭 Theater & Art</span>
+              </label>
+
+              <label class="subject-chip cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="sports_athletics" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+                <span class="font-medium text-slate-800">⚽ League Athletics</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q3: School Scale & Community Structure -->
+          <div class="space-y-2 pt-2 border-t border-slate-100">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                3. School Scale & Community Structure
+              </label>
+              <button onclick="openScaleExplainerModal()" class="text-[11px] text-brand-teal hover:underline font-bold flex items-center">
+                <svg class="w-3.5 h-3.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                What is "Teaming & Scale"?
+              </button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <label class="scale-radio border-2 border-teal-500 bg-teal-50/50 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
+                <input type="radio" name="scale" value="all" checked class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
+                <div>
+                  <strong class="block text-slate-800 font-semibold">Open to Any Scale</strong>
+                  <span class="text-slate-500 text-[11px]">Rank purely on student interests and strengths.</span>
+                </div>
+              </label>
+
+              <label class="scale-radio border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
+                <input type="radio" name="scale" value="mega" class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
+                <div>
+                  <strong class="block text-slate-800 font-semibold">Mega Comprehensive (1,000+)</strong>
+                  <span class="text-slate-500 text-[11px]">Huge elective catalogs, 6th grade "House" cohorts (APG, Presidio).</span>
+                </div>
+              </label>
+
+              <label class="scale-radio border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
+                <input type="radio" name="scale" value="mid" class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
+                <div>
+                  <strong class="block text-slate-800 font-semibold">Mid-Sized (450–850 students)</strong>
+                  <span class="text-slate-500 text-[11px]">Balanced neighborhood hubs (Roosevelt, Hoover, Marina, Everett).</span>
+                </div>
+              </label>
+
+              <label class="scale-radio border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
+                <input type="radio" name="scale" value="k8" class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
+                <div>
+                  <strong class="block text-slate-800 font-semibold">K-8 Continuity or Independent</strong>
+                  <span class="text-slate-500 text-[11px]">Intimate cohorts (&lt;450) where every teacher knows every child.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Q4 & Q5: Sector & Commute Quadrant -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                4. School Sector Preference
+              </label>
+              <select id="quiz-sector" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:ring-2 focus:ring-brand-teal focus:outline-none" onchange="runQuizMatching()">
+                <option value="all">Include Both Public & Independent</option>
+                <option value="public_only">SFUSD Public Only (Free Tuition)</option>
+                <option value="independent_only">Independent / Private Schools Only</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                5. Preferred SF Geographic Area
+              </label>
+              <select id="quiz-quadrant" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:ring-2 focus:ring-brand-teal focus:outline-none" onchange="runQuizMatching()">
+                <option value="all">Any San Francisco Neighborhood</option>
+                <option value="Richmond">Richmond / Sunset / West Side</option>
+                <option value="Mission">Mission / Noe / Castro / Central</option>
+                <option value="Marina">Marina / Pacific Heights / Nob Hill</option>
+                <option value="Excelsior">Excelsior / Portola / Bayview</option>
+                <option value="SOMA">SOMA / Potrero Hill</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Q6: Target High School Trajectory -->
+          <div class="pt-2 border-t border-slate-100">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+              6. Desired High School Trajectory (Optional)
+            </label>
+            <select id="quiz-hs" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:ring-2 focus:ring-brand-teal focus:outline-none" onchange="runQuizMatching()">
+              <option value="any">Open to All High School Pathways</option>
+              <option value="lowell_academic">Lowell High School (Academic Rigor & Honors Tracks)</option>
+              <option value="sota_arts">Ruth Asawa SOTA (Performing & Visual Arts Audition Pipeline)</option>
+              <option value="independent_prep">Top Independent High Schools (Lick-Wilmerding, UHS, Urban)</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Right: Real-Time Matches (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div>
+                <h3 class="font-display font-bold base text-slate-900">Your Top 10 Recommended Fits</h3>
+                <p class="text-xs text-slate-500">Live rankings computed from 6 custom fit dimensions.</p>
+              </div>
+              <button onclick="openScoringModal()" class="text-[11px] font-bold text-brand-teal hover:underline flex items-center">
+                <span>Score Breakdown</span>
+                <svg class="w-3.5 h-3.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </button>
+            </div>
+
+            <!-- Match Results Cards Container -->
+            <div id="quiz-results-container" class="divide-y divide-slate-100 mt-2 space-y-2 max-h-[600px] overflow-y-auto pr-1">
+              <!-- Dynamically populated by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 2: COMPREHENSIVE SCHOOL DIRECTORY -->
+    <section id="tab-directory" class="tab-content hidden space-y-6">
+      
+      <!-- Filter Bar -->
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
+            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, electives, and feeder pathways across 31 schools.</p>
+          </div>
+
+          <!-- Sector filter buttons -->
+          <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (31)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (12)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (5)</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (14)</button>
+          </div>
+        </div>
+
+        <!-- Multi-filter dropdowns -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-2 border-t border-slate-100">
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Search School Name</label>
+            <input type="text" id="dir-search" placeholder="e.g. Presidio, Gateway, La Scuola..." oninput="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Neighborhood Area</label>
+            <select id="dir-filter-hood" onchange="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+              <option value="all">All Neighborhoods</option>
+              <option value="Richmond">Richmond / Sea Cliff</option>
+              <option value="Sunset">Sunset / Parkside</option>
+              <option value="Mission">Mission / Noe Valley</option>
+              <option value="Marina">Marina / Pac Heights / Nob Hill</option>
+              <option value="Excelsior">Excelsior / Visitacion Valley</option>
+              <option value="SOMA">SOMA / Potrero Hill</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Language Immersion Track</label>
+            <select id="dir-filter-lang" onchange="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+              <option value="all">All Languages</option>
+              <option value="cantonese">Cantonese Biliteracy</option>
+              <option value="mandarin">Mandarin Immersion</option>
+              <option value="spanish">Spanish Dual Language</option>
+              <option value="french">French Immersion</option>
+              <option value="italian">Italian Immersion / IB</option>
+              <option value="filipino">Filipino Biliteracy</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Signature Specialty</label>
+            <select id="dir-filter-spec" onchange="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+              <option value="all">All Programs</option>
+              <option value="Music">Instrumental Winds & Band</option>
+              <option value="STEM">Maker Tech & Robotics</option>
+              <option value="Sports">SFMSAL League Athletics</option>
+              <option value="Arts">Theater Arts & Murals</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Directory School Cards Grid -->
+      <div id="directory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered by JS -->
+      </div>
+
+    </section>
+
+    <!-- TAB 3: INTERACTIVE SF MAP -->
+    <section id="tab-map" class="tab-content hidden space-y-4">
+      <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Campus Map</h2>
+            <p class="text-xs text-slate-500">Examine school locations relative to Muni transit corridors, parks, and residential neighborhoods.</p>
+          </div>
+
+          <div class="flex items-center space-x-2 text-xs font-semibold">
+            <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-teal-600 mr-1"></span> Public Comprehensive</span>
+            <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-indigo-600 mr-1"></span> Public K-8</span>
+            <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-purple-600 mr-1"></span> Independent Private</span>
+          </div>
+        </div>
+
+        <!-- Leaflet Map Canvas Container -->
+        <div class="relative w-full h-[550px] rounded-2xl overflow-hidden border border-slate-200 shadow-inner">
+          <div id="sf-map-canvas" class="w-full h-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: SIDE-BY-SIDE COMPARISON -->
+    <section id="tab-compare" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Side-by-Side School Comparison</h2>
+            <p class="text-xs sm:text-sm text-slate-500">Compare up to 3 middle schools across demographics, high school pipelines, teaming models, and electives.</p>
+          </div>
+
+          <button onclick="clearComparison()" class="text-xs font-bold text-rose-600 hover:underline">Clear Comparison Selection</button>
+        </div>
+
+        <!-- School Selectors -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+            <label class="block text-xs font-bold text-slate-600 mb-1">School #1</label>
+            <select id="compare-select-0" onchange="handleComparisonDropdown(0, this.value)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium text-slate-800">
+              <option value="">Select a School...</option>
+            </select>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+            <label class="block text-xs font-bold text-slate-600 mb-1">School #2</label>
+            <select id="compare-select-1" onchange="handleComparisonDropdown(1, this.value)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium text-slate-800">
+              <option value="">Select a School...</option>
+            </select>
+          </div>
+
+          <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200">
+            <label class="block text-xs font-bold text-slate-600 mb-1">School #3</label>
+            <select id="compare-select-2" onchange="handleComparisonDropdown(2, this.value)" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-medium text-slate-800">
+              <option value="">Select a School...</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Comparison Table Output -->
+        <div id="comparison-table-wrapper" class="overflow-x-auto">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: LOTTERY & HIGH SCHOOL GUIDE -->
+    <section id="tab-guide" class="tab-content hidden space-y-6">
+      
+      <!-- Lottery Strategy Guide -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+        <div class="max-w-3xl space-y-2">
+          <span class="badge-pill bg-teal-100 text-brand-marine">SFUSD EPC Rules Decoded</span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">How the SFUSD 5th-to-6th Grade Lottery Works</h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Understanding the district's sequential choice assignment algorithm protects families from common myths (like "bullet voting") and ensures you maximize your 1st-round assignment odds.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
+            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 1</div>
+            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">Sibling Attendance</h4>
+            <p class="text-xs text-slate-600">Students with an older brother/sister currently enrolled in 6th or 7th grade who will continue at the middle school next fall.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
+            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 2</div>
+            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">Designated Feeder Elementary</h4>
+            <p class="text-xs text-slate-600">Students graduating from official SFUSD designated feeder elementary schools hold prioritized 6th grade rights.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
+            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 3</div>
+            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">CTIP1 Census Tract</h4>
+            <p class="text-xs text-slate-600">Students residing in designated Census Tracts with historically lowest average test scores receive priority tiebreaker weight.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
+            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 4</div>
+            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">Random Lottery Number</h4>
+            <p class="text-xs text-slate-600">Computer-assigned random number tiebreaker when all other preference weights are identical.</p>
+          </div>
+        </div>
+
+        <!-- Myth buster card -->
+        <div class="p-5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-950 space-y-1.5">
+          <strong class="font-bold text-rose-900 text-sm block">⚠️ The #1 SFUSD Lottery Mistake: "Bullet Voting"</strong>
+          <p>
+            Some parents mistakenly believe listing only 1 school forces SFUSD to assign it. In reality, listing fewer schools gives you zero advantage. If you don't receive your #1 school, SFUSD simply moves down to your #2, #3, etc. Always list every school your family would willingly attend.
+          </p>
+        </div>
+      </div>
+
+      <!-- Data Sources, Citations & Methodology Section -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6" id="section-sources">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-2xl bg-teal-100 text-brand-teal flex items-center justify-center font-bold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+          </div>
+          <div>
+            <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Official Data Sources, Citations & Methodology</h2>
+            <p class="text-xs sm:text-sm text-slate-500">Certified public filings and reporting databases utilized across this application</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-600 leading-relaxed">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center">
+              <span class="w-2 h-2 rounded-full bg-brand-teal mr-2"></span>
+              California Department of Education (CDE)
+            </h4>
+            <p><strong>DataQuest & School Accountability Report Cards (SARC):</strong> Certified student enrollments, racial/ethnic demographics, socioeconomically disadvantaged percentages (SED), and English Learners (EL).</p>
+            <div class="text-[11px] text-brand-teal font-semibold">cde.ca.gov/dataquest & sarconline.org</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center">
+              <span class="w-2 h-2 rounded-full bg-brand-bridge mr-2"></span>
+              SFUSD Educational Placement Center (EPC)
+            </h4>
+            <p><strong>District Enrollment Guides & Feeder Matrices:</strong> Official 5th-to-6th grade lottery tiebreaker hierarchy, feeder elementary mappings, and language continuation prerequisites.</p>
+            <div class="text-[11px] text-brand-bridge font-semibold">sfusd.edu/enroll</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center">
+              <span class="w-2 h-2 rounded-full bg-purple-600 mr-2"></span>
+              NCES & CAIS / NAIS Independent Databases
+            </h4>
+            <p><strong>Private School Universe Survey (PSS):</strong> Certified independent school student enrollments, Students of Color (SOC) ratios, and published need-based financial aid rates.</p>
+            <div class="text-[11px] text-purple-700 font-semibold">nces.ed.gov/surveys/pss & caisca.org</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center">
+              <span class="w-2 h-2 rounded-full bg-amber-600 mr-2"></span>
+              SFMTA Transit Network
+            </h4>
+            <p><strong>Muni Transit Arterials:</strong> Direct Muni light rail and bus line proximity mapping (e.g., 38-Geary, N-Judah, 28-19th Ave, 14-Mission, 44-O'Shaughnessy).</p>
+            <div class="text-[11px] text-amber-700 font-semibold">sfmta.com</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- School Profile Modal -->
+  <div id="school-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh] space-y-4">
+      <div class="flex items-start justify-between border-b border-slate-100 pb-3">
+        <div>
+          <span id="modal-sector" class="badge-pill bg-teal-100 text-brand-teal mb-1">Public Comprehensive</span>
+          <h3 id="modal-name" class="font-display font-extrabold text-xl sm:text-2xl text-slate-900">Presidio Middle School</h3>
+          <p id="modal-address" class="text-xs text-slate-500">420 20th Ave, San Francisco, CA 94121</p>
+        </div>
+        <button onclick="closeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Enrollment</span>
+          <span id="modal-enrollment" class="font-bold text-slate-800 text-sm">1,050</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Bell Hours</span>
+          <span id="modal-bell" class="font-bold text-slate-800 text-xs">8:40 AM - 3:10 PM</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Transit (Muni)</span>
+          <span id="modal-muni" class="font-bold text-brand-teal text-xs">38, 1, 29</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Cost</span>
+          <span id="modal-afterschool" class="font-bold text-slate-800 text-xs">Free (Public)</span>
+        </div>
+      </div>
+
+      <!-- Personalized Fit Score Calculation Breakdown -->
+      <div id="modal-fit-section" class="bg-gradient-to-br from-teal-50 to-emerald-50/50 p-4 rounded-2xl border border-teal-200/80 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="text-lg">🎯</span>
+            <div>
+              <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Your Child's Fit Score Calculation</h4>
+              <p class="text-[11px] text-slate-500">Transparent point breakdown calculated dynamically from your active quiz answers</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span id="modal-fit-score-badge" class="font-display font-extrabold text-xl text-brand-marine">--%</span>
+            <span class="block text-[10px] uppercase font-bold text-teal-700 tracking-wider">Match Score</span>
+          </div>
+        </div>
+
+        <div id="modal-fit-breakdown" class="space-y-2 text-xs divide-y divide-teal-100/60 pt-1">
+          <!-- Populated by JS with itemized points -->
+        </div>
+      </div>
+
+      <!-- High School Pipelines -->
+      <div class="bg-purple-50/70 p-3.5 rounded-2xl border border-purple-200">
+        <div class="font-display font-bold text-purple-900 text-xs uppercase tracking-wider mb-1 flex items-center">
+          <svg class="w-4 h-4 mr-1 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          High School Feeder & Matriculation Trajectory
+        </div>
+        <p id="modal-hs-pipeline" class="text-xs text-purple-950 font-medium leading-relaxed">
+          High matriculation to Lowell High School, George Washington HS, and SOTA.
+        </p>
+      </div>
+
+      <!-- Demographics Container -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+        <div class="flex items-center justify-between mb-1.5">
+          <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Student Demographics & Socioeconomics</h4>
+          <span class="text-[10px] font-bold text-slate-400 uppercase">CDE / SARC / NCES Certified</span>
+        </div>
+        <div id="modal-demographics-container" class="space-y-2 text-xs">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Description & Scale Detail -->
+      <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
+        <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Campus Overview</h4>
+        <p id="modal-description">School description here.</p>
+        <p id="modal-scale-detail" class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900 font-medium">Teaming details.</p>
+      </div>
+
+      <!-- Programs Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+          <strong class="font-bold text-slate-900 block">🗣️ Languages & Biliteracy:</strong>
+          <span id="modal-languages" class="text-slate-600">Programs</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+          <strong class="font-bold text-slate-900 block">🎺 Arts & Music:</strong>
+          <span id="modal-arts" class="text-slate-600">Band, Orchestra, Theater</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+          <strong class="font-bold text-slate-900 block">⚽ Athletics:</strong>
+          <span id="modal-sports" class="text-slate-600">Sports</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+          <strong class="font-bold text-slate-900 block">🎒 Feeder Elementary Schools:</strong>
+          <span id="modal-feeders" class="text-slate-600">Elementary feeders</span>
+        </div>
+      </div>
+
+      <div class="pt-2 flex justify-end">
+        <button onclick="closeModal()" class="px-5 py-2 bg-brand-teal text-white font-bold rounded-xl text-xs hover:bg-brand-marine transition">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sources Modal -->
+  <div id="sources-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-display font-bold text-lg text-slate-900">Website Data Sources & Methodology</h3>
+        <button onclick="closeSourcesModal()" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
+      </div>
+      <p class="text-xs text-slate-600 leading-relaxed">
+        All demographic, enrollment, and feeder data are compiled from certified public filings across:
+      </p>
+      <ul class="text-xs text-slate-600 space-y-2 list-disc pl-5">
+        <li><strong>California Department of Education (CDE DataQuest / SARC):</strong> Certified enrollment counts, racial/ethnic sub-groups, socioeconomically disadvantaged percentages, and English Learners.</li>
+        <li><strong>SFUSD Educational Placement Center:</strong> Official 5th-to-6th feeder matrices and lottery preference rules.</li>
+        <li><strong>NCES & CAIS Member Directory:</strong> Independent school tuition, financial aid rates, and student of color percentages.</li>
+        <li><strong>SFMTA Muni Transit:</strong> Active bus and light rail route mapping.</li>
+      </ul>
+      <div class="pt-2 flex justify-end">
+        <button onclick="closeSourcesModal()" class="px-4 py-2 bg-brand-teal text-white font-bold rounded-xl text-xs">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scale Explainer Modal -->
+  <div id="scale-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-display font-bold text-lg text-slate-900">What is School Scale & Teaming?</h3>
+        <button onclick="closeScaleExplainerModal()" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
+      </div>
+      <div class="text-xs text-slate-600 space-y-3 leading-relaxed">
+        <div class="p-3 bg-teal-50 rounded-xl border border-teal-200">
+          <strong class="text-brand-marine block mb-0.5">Mega Comprehensive (1,000+ students) & The "House" Teaming Model:</strong>
+          <span>Large schools like AP Giannini and Presidio divide 6th graders into dedicated "Houses" or "Cohorts" of ~90 students with shared core teachers. This creates an intimate family feel while offering giant marching bands and deep athletics.</span>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <strong class="text-slate-900 block mb-0.5">Mid-Sized Middle Schools (450–850 students):</strong>
+          <span>Schools like Roosevelt, Hoover, Marina, and Everett offer manageable campuses with strong community identity.</span>
+        </div>
+        <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
+          <strong class="text-purple-900 block mb-0.5">K-8 Alternative & Independent Campuses (&lt;450 students):</strong>
+          <span>Intimate cohorts of 40–80 students per grade with low noise and close teacher mentorship.</span>
+        </div>
+      </div>
+      <div class="pt-2 flex justify-end">
+        <button onclick="closeScaleExplainerModal()" class="px-4 py-2 bg-brand-teal text-white font-bold rounded-xl text-xs">Close Explainer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scoring Algorithm Modal -->
+  <div id="scoring-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-display font-bold text-lg text-slate-900">How the FIT Score is Calculated</h3>
+        <button onclick="closeScoringModal()" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
+      </div>
+      <div class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+        <p>The Fit Score is computed out of a <strong>strict 100-point budget</strong> where your child's personality and passions carry the greatest weight (60% of the total score):</p>
+        <ul class="space-y-1.5 list-disc pl-5">
+          <li><strong>Student Personality Archetypes (up to 30 pts):</strong> Heavily weighted (+10 pts per selected archetype, divided across up to 3 choices) based on class environment, scale, and sensory support.</li>
+          <li><strong>Favorite Subjects & Passions (up to 30 pts):</strong> Heavily weighted (+10 pts per matched subject up to 3) for verified electives like Band, STEM Maker labs, Dual Immersion, or League Athletics.</li>
+          <li><strong>School Scale & Teaming Structure (up to 15 pts):</strong> +15 pts for matching preferred Mega House cohorts, Mid-Sized hubs, or K-8/Private continuity (or +7 pts baseline if open to any).</li>
+          <li><strong>Neighborhood / Commute Proximity (up to 15 pts):</strong> +15 pts for schools in your preferred transit quadrant (+7 pts if citywide).</li>
+          <li><strong>Target High School Trajectory (up to 5 pts):</strong> +5 pts for direct alignment with Lowell, SOTA, or independent prep high school pathways.</li>
+          <li><strong>Base Foundation (5 pts):</strong> California middle grades core curriculum baseline.</li>
+          <li class="font-semibold text-brand-marine">Total maximum possible = 100 points.</li>
+        </ul>
+      </div>
+      <div class="pt-2 flex justify-end">
+        <button onclick="closeScoringModal()" class="px-4 py-2 bg-brand-teal text-white font-bold rounded-xl text-xs">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <div class="flex items-center justify-center space-x-2 text-brand-marine font-display font-bold text-sm">
+        <span>SF Middle School Navigator</span>
+        <span>•</span>
+        <span>5th Grade Family Transition Guide</span>
+      </div>
+      <p class="max-w-md mx-auto">Non-commercial educational guide designed to help San Francisco families evaluate 6th grade options.</p>
+      <div class="pt-2 flex items-center justify-center space-x-4 text-[11px] text-slate-400">
+        <button onclick="openSourcesModal()" class="hover:text-brand-teal underline">Data Sources & Citations</button>
+        <span>•</span>
+        <button onclick="openScoringModal()" class="hover:text-brand-teal underline">Scoring Algorithm Breakdown</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Complete Database of 29 San Francisco Middle Schools */
+    const SF_SCHOOLS = [
+      // 1. PRESIDIO
+      {
+        id: "presidio",
+        name: "Presidio Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mega Comprehensive (1,000+)",
+        scaleType: "Mega",
+        scaleDetail: "4 distinct 6th-grade houses with core teachers each; dedicated 6th grade wing and lunch period.",
+        personalityTags: ["Outgoing, Social & Spirit-Driven", "Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["music_band", "languages", "math_accelerated", "sports_athletics", "arts_drama"],
+        hasHumanitiesWriting: true,
+        grades: "6-8",
+        neighborhood: "Richmond",
+        address: "420 20th Ave, San Francisco, CA 94121",
+        lat: 37.7801,
+        lng: -122.4795,
+        enrollment: 1050,
+        tuition: "Public (Free)",
+        bellHours: "8:40 AM - 3:10 PM",
+        muni: "38 Geary, 1 California, 29 Sunset",
+        afterSchool: "Presidio Beacon Center (Richmond Neighborhood Center)",
+        languages: ["Cantonese Biliteracy", "Spanish Elective", "Mandarin Elective"],
+        languageKey: "cantonese",
+        arts: "Premier Instrumental Band, String Orchestra, Jazz Ensemble, Drama, Ceramics",
+        sports: "Cross Country, Girls/Boys Basketball, Volleyball, Track, Soccer",
+        feeders: "Alamo, Argonne, Lafayette, Frank McCoppin, Sutro",
+        hsFeeders: "High matriculation to Lowell High School, George Washington HS, Galileo STEM Academy, and Ruth Asawa SOTA.",
+        hsKey: "lowell_academic",
+        specialties: ["Music", "STEM", "Sports"],
+        demographics: {
+          summary: "53% Asian, 19% White, 11% Hispanic/Latino, 9% Multi-ethnic, 3% Black/African American",
+          sed: "36% Socioeconomically Disadvantaged",
+          el: "13% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "53%" },
+            { label: "White", pct: "19%" },
+            { label: "Hispanic/Latino", pct: "11%" },
+            { label: "Two or More", pct: "9%" },
+            { label: "African American", pct: "3%" }
+          ]
+        },
+        description: "One of SF's most celebrated public middle schools, renowned for its historic campus, award-winning symphonic band and jazz programs, Cantonese biliteracy continuation, and spirited athletics."
+      },
+      // 2. AP GIANNINI
+      {
+        id: "giannini",
+        name: "A.P. Giannini Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mega Comprehensive (1,000+)",
+        scaleType: "Mega",
+        scaleDetail: "Teaming house structure where 6th graders share core academic cohorts and lockers in self-contained clusters.",
+        personalityTags: ["Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["music_band", "sports_athletics", "math_accelerated", "languages", "stem_maker"],
+        grades: "6-8",
+        neighborhood: "Sunset",
+        address: "3151 Ortega St, San Francisco, CA 94122",
+        lat: 37.7516,
+        lng: -122.4975,
+        enrollment: 1200,
+        tuition: "Public (Free)",
+        bellHours: "8:40 AM - 3:10 PM",
+        muni: "N-Judah, 28 19th Ave, 29 Sunset, 7 Noriega",
+        afterSchool: "Sunset Beacon (BACR)",
+        languages: ["Mandarin Immersion Pathway", "Japanese Pathway", "Spanish Elective"],
+        languageKey: "mandarin",
+        arts: "Nationally recognized Marching & Concert Band, Orchestra, Digital Media Arts",
+        sports: "Volleyball, Soccer, Basketball, Track & Field, Cross Country",
+        feeders: "Ulloa, Sunset, Stevenson, West Portal",
+        hsFeeders: "Top city feeder to Lowell High School, Abraham Lincoln High School (West Side pipeline), and St. Ignatius.",
+        hsKey: "lowell_academic",
+        specialties: ["Music", "Sports", "STEM"],
+        demographics: {
+          summary: "62% Asian, 14% White, 10% Hispanic/Latino, 7% Multi-ethnic, 2% Black/African American",
+          sed: "34% Socioeconomically Disadvantaged",
+          el: "11% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "62%" },
+            { label: "White", pct: "14%" },
+            { label: "Hispanic/Latino", pct: "10%" },
+            { label: "Two or More", pct: "7%" },
+            { label: "African American", pct: "2%" }
+          ]
+        },
+        description: "Situated in the Sunset, APG serves 1,200 students with huge school spirit, a legendary marching band, Mandarin immersion pathway, and top-ranked SFMSAL sports programs."
+      },
+      // 3. HOOVER
+      {
+        id: "hoover",
+        name: "Herbert Hoover Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Balanced mid-sized community with 3 core grade-level teams and modern science lab wings.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["stem_maker", "languages", "sports_athletics", "math_accelerated"],
+        grades: "6-8",
+        neighborhood: "Sunset",
+        address: "2290 14th Ave, San Francisco, CA 94116",
+        lat: 37.7445,
+        lng: -122.4705,
+        enrollment: 860,
+        tuition: "Public (Free)",
+        bellHours: "8:45 AM - 3:15 PM",
+        muni: "L-Taraval, 48 Quintara, 28 19th Ave",
+        afterSchool: "Hoover ExCEL Program / YMCA",
+        languages: ["Spanish Dual Language Immersion", "Cantonese Elective"],
+        languageKey: "spanish",
+        arts: "Concert Band, Digital Audio Production, Studio Fine Arts",
+        sports: "Basketball, Volleyball, Track, Soccer, Cheer",
+        feeders: "Dianne Feinstein, Lawton, Commodore Sloat",
+        hsFeeders: "Strong pipelines to Lowell High School, Abraham Lincoln High School, and George Washington HS.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Sports", "Music"],
+        demographics: {
+          summary: "51% Asian, 19% Hispanic/Latino, 13% White, 8% Multi-ethnic, 3% Black/African American",
+          sed: "46% Socioeconomically Disadvantaged",
+          el: "18% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "51%" },
+            { label: "Hispanic/Latino", pct: "19%" },
+            { label: "White", pct: "13%" },
+            { label: "Two or More", pct: "8%" },
+            { label: "African American", pct: "3%" }
+          ]
+        },
+        description: "Hoover strikes a sweet spot: modern STEM and science labs, an active Spanish dual immersion pathway, courtyard gardens, and a manageable campus footprint."
+      },
+      // 4. ROOSEVELT
+      {
+        id: "roosevelt",
+        name: "Roosevelt Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Intimate grade houses where team teachers hold common planning periods for personalized student attention.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["arts_drama", "music_band", "languages"],
+        hasHumanitiesWriting: true,
+        grades: "6-8",
+        neighborhood: "Richmond",
+        address: "460 Arguello Blvd, San Francisco, CA 94118",
+        lat: 37.7818,
+        lng: -122.4589,
+        enrollment: 720,
+        tuition: "Public (Free)",
+        bellHours: "8:35 AM - 3:05 PM",
+        muni: "38 Geary, 1 California, 33 Ashbury/18th",
+        afterSchool: "Roosevelt Beacon Center",
+        languages: ["Spanish Dual Language", "French Elective"],
+        languageKey: "spanish",
+        arts: "Drama Club, Choral Music, Visual Arts, Muralism",
+        sports: "Volleyball, Basketball, Soccer, Ultimate Frisbee",
+        feeders: "Peabody, Lafayette, Sherman, New Traditions",
+        hsFeeders: "Primary feeder to George Washington High School, Wallenberg HS, Ruth Asawa SOTA, and Lowell.",
+        hsKey: "sota_arts",
+        specialties: ["Music", "Arts"],
+        demographics: {
+          summary: "37% Asian, 29% White, 17% Hispanic/Latino, 9% Multi-ethnic, 4% Black/African American",
+          sed: "33% Socioeconomically Disadvantaged",
+          el: "14% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "37%" },
+            { label: "White", pct: "29%" },
+            { label: "Hispanic/Latino", pct: "17%" },
+            { label: "Two or More", pct: "9%" }
+          ]
+        },
+        description: "At the edge of the Presidio and Laurel Heights, Roosevelt combines an intimate community feel, strong performing arts, and a dedicated Spanish immersion program."
+      },
+      // 5. MARINA
+      {
+        id: "marina",
+        name: "Marina Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Structured teaming with strong grade-level counselors and waterfront outdoor experiential programs.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["stem_maker", "music_band", "languages", "sports_athletics"],
+        grades: "6-8",
+        neighborhood: "Marina",
+        address: "3500 Fillmore St, San Francisco, CA 94123",
+        lat: 37.8016,
+        lng: -122.4372,
+        enrollment: 790,
+        tuition: "Public (Free)",
+        bellHours: "8:30 AM - 3:00 PM",
+        muni: "30 Stockton, 22 Fillmore, 28 19th Ave",
+        afterSchool: "Presidio Community YMCA at Marina",
+        languages: ["Cantonese Dual Language Immersion", "Spanish Elective"],
+        languageKey: "cantonese",
+        arts: "Jazz Band, String Ensemble, Digital Media, Culinary Arts",
+        sports: "Flag Football, Volleyball, Track & Field, Basketball",
+        feeders: "Sherman, Yick Wo, Gordon J. Lau, Jean Parker",
+        hsFeeders: "Direct articulation pipeline to Galileo Academy of Science & Technology, Lowell, and Washington HS.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Music", "Sports"],
+        demographics: {
+          summary: "56% Asian, 18% Hispanic/Latino, 11% White, 6% Multi-ethnic, 4% Black/African American",
+          sed: "58% Socioeconomically Disadvantaged",
+          el: "26% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "56%" },
+            { label: "Hispanic/Latino", pct: "18%" },
+            { label: "White", pct: "11%" }
+          ]
+        },
+        description: "Steps from the Marina Green, Marina Middle pairs waterfront access with a thriving Cantonese biliteracy strand, modern maker labs, and YMCA athletics."
+      },
+      // 6. FRANCISCO
+      {
+        id: "francisco",
+        name: "Francisco Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Close-knit grade cohorts supported by on-site Chinatown YMCA Beacon youth workers in classrooms.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["languages", "arts_drama", "music_band"],
+        grades: "6-8",
+        neighborhood: "Marina",
+        address: "2190 Powell St, San Francisco, CA 94133",
+        lat: 37.8041,
+        lng: -122.4132,
+        enrollment: 630,
+        tuition: "Public (Free)",
+        bellHours: "8:35 AM - 3:05 PM",
+        muni: "30 Stockton, 8 Bayshore, 39 Coit Tower, Powell Cable Car",
+        afterSchool: "Francisco Beacon (Chinatown YMCA)",
+        languages: ["Cantonese Biliteracy", "Mandarin World Language", "Spanish"],
+        languageKey: "cantonese",
+        arts: "Ceramics, Lion Dance Troupe, Concert Band, Graphic Design",
+        sports: "Basketball, Volleyball, Soccer, Track",
+        feeders: "Jean Parker, Gordon J. Lau, Spring Valley, Garfield",
+        hsFeeders: "High matriculation to Galileo Science Academy, Lowell High School, and George Washington HS.",
+        hsKey: "lowell_academic",
+        specialties: ["Music", "Arts"],
+        demographics: {
+          summary: "71% Asian, 14% Hispanic/Latino, 6% White, 4% Multi-ethnic, 3% Black/African American",
+          sed: "73% Socioeconomically Disadvantaged",
+          el: "35% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "71%" },
+            { label: "Hispanic/Latino", pct: "14%" },
+            { label: "White", pct: "6%" }
+          ]
+        },
+        description: "Situated near Chinatown and North Beach, Francisco has a storied heritage of student leadership, renowned Lion Dance performances, and deep YMCA community care."
+      },
+      // 7. APTOS
+      {
+        id: "aptos",
+        name: "Aptos Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Comprehensive teaming model with strong grade houses and award-winning arts wings.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented"],
+        subjectStrengths: ["music_band", "arts_drama", "sports_athletics", "languages"],
+        grades: "6-8",
+        neighborhood: "Excelsior",
+        address: "105 Aptos Ave, San Francisco, CA 94127",
+        lat: 37.7289,
+        lng: -122.4632,
+        enrollment: 920,
+        tuition: "Public (Free)",
+        bellHours: "8:40 AM - 3:10 PM",
+        muni: "K-Ingleside, 23 Monterey, 36 Teresita",
+        afterSchool: "Aptos Beacon Center (BACR)",
+        languages: ["Spanish Dual Immersion", "Mandarin Pathway"],
+        languageKey: "spanish",
+        arts: "Award-winning Band, Orchestra, Theatre Productions, Modern Dance",
+        sports: "Cross Country, Girls/Boys Basketball, Soccer, Volleyball, Track",
+        feeders: "Commodore Sloat, Miraloma, Sunnyside, Fairmount",
+        hsFeeders: "Top feeder to Ruth Asawa SOTA (performing arts), Lowell High School, Lincoln HS, and Balboa HS.",
+        hsKey: "sota_arts",
+        specialties: ["Music", "Sports", "Arts"],
+        demographics: {
+          summary: "37% Hispanic/Latino, 32% Asian, 13% White, 8% Multi-ethnic, 6% Black/African American",
+          sed: "52% Socioeconomically Disadvantaged",
+          el: "19% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "37%" },
+            { label: "Asian", pct: "32%" },
+            { label: "White", pct: "13%" },
+            { label: "Two or More", pct: "8%" }
+          ]
+        },
+        description: "Near Mount Davidson, Aptos features an expansive campus, high participation in SFMSAL sports, and a premier middle school drama and instrumental music program."
+      },
+      // 8. JAMES LICK
+      {
+        id: "james_lick",
+        name: "James Lick Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Intimate dual-language teams where students explore bicultural identity and social justice projects.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["languages", "arts_drama"],
+        grades: "6-8",
+        neighborhood: "Mission",
+        address: "1220 Noe St, San Francisco, CA 94114",
+        lat: 37.7511,
+        lng: -122.4326,
+        enrollment: 510,
+        tuition: "Public (Free)",
+        bellHours: "8:45 AM - 3:15 PM",
+        muni: "J-Church, 24 Divisadero, 48 Quintara",
+        afterSchool: "James Lick Beacon Center (Jamestown Community Center)",
+        languages: ["Dual Language Spanish Immersion (Two-Way 50:50)"],
+        languageKey: "spanish",
+        arts: "Mariachi Band, Folklorico, Muralism & Public Art",
+        sports: "Futsal, Soccer, Basketball, Volleyball",
+        feeders: "Alvarado, Cesar Chavez, Flynn, Fairmount, Marshall",
+        hsFeeders: "Strong Spanish immersion continuation pipeline to Mission High School, John O'Connell, and Lincoln.",
+        hsKey: "any_hs",
+        specialties: ["Arts", "Music"],
+        demographics: {
+          summary: "74% Hispanic/Latino, 11% White, 6% Asian, 5% Black/African American, 3% Multi-ethnic",
+          sed: "77% Socioeconomically Disadvantaged",
+          el: "38% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "74%" },
+            { label: "White", pct: "11%" },
+            { label: "Asian", pct: "6%" }
+          ]
+        },
+        description: "In Noe Valley bordering the Mission, James Lick is the flagship Two-Way Spanish Dual Immersion middle school, celebrated for biliteracy and folklorico."
+      },
+      // 9. EVERETT
+      {
+        id: "everett",
+        name: "Everett Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Teaming structure paired with late 9:00 AM bell schedule; ideal for adolescent sleep cycles.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven"],
+        subjectStrengths: ["arts_drama", "languages", "sports_athletics"],
+        grades: "6-8",
+        neighborhood: "Mission",
+        address: "450 Church St, San Francisco, CA 94114",
+        lat: 37.7634,
+        lng: -122.4289,
+        enrollment: 640,
+        tuition: "Public (Free)",
+        bellHours: "9:00 AM - 3:30 PM",
+        muni: "J-Church, F-Market, 22 Fillmore, 16th/Mission BART",
+        afterSchool: "Mission Graduates Extended Learning",
+        languages: ["Spanish Immersion Pathway", "Spanish Elective"],
+        languageKey: "spanish",
+        arts: "Digital Media Lab, Visual Art Studio, Chorus, Drama",
+        sports: "Soccer, Basketball, Volleyball, Flag Football",
+        feeders: "Sanchez, Mission Education Center, McKinley, Alvarado",
+        hsFeeders: "Mission High School, Ruth Asawa SOTA, Lincoln, and Lowell.",
+        hsKey: "sota_arts",
+        specialties: ["Arts", "Music"],
+        demographics: {
+          summary: "63% Hispanic/Latino, 13% White, 10% Black/African American, 7% Asian, 5% Multi-ethnic",
+          sed: "69% Socioeconomically Disadvantaged",
+          el: "31% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "63%" },
+            { label: "White", pct: "13%" },
+            { label: "African American", pct: "10%" }
+          ]
+        },
+        description: "Right across from Mission Dolores Park, Everett offers a historic campus, a 9:00 AM start time, dynamic partnerships with Mission Graduates, and an inclusive arts culture."
+      },
+      // 10. WILLIE BROWN
+      {
+        id: "willie_brown",
+        name: "Willie L. Brown Jr. Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Modern architectural design with flexible STEM learning suites and dedicated wellness center.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["stem_maker", "math_accelerated", "sports_athletics"],
+        grades: "6-8",
+        neighborhood: "Excelsior",
+        address: "2055 Silver Ave, San Francisco, CA 94124",
+        lat: 37.7335,
+        lng: -122.4042,
+        enrollment: 430,
+        tuition: "Public (Free)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "44 O'Shaughnessy, 54 Felton, T-Third",
+        afterSchool: "Young Performers Theatre / YMCA Beacon",
+        languages: ["Spanish World Language", "STEM Tech Coding"],
+        languageKey: "none",
+        arts: "Digital Music Production, Podcasting Studio, 3D Fabrication",
+        sports: "Basketball, Volleyball, Track, Cheer",
+        feeders: "Carver, Bret Harte, Drew, Malcolm X, Glen Park",
+        hsFeeders: "Balboa High School, Phillip & Sala Burton Academic High School, and Lowell.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Sports"],
+        demographics: {
+          summary: "37% Black/African American, 36% Hispanic/Latino, 11% Asian, 7% Pacific Islander, 4% Multi-ethnic",
+          sed: "79% Socioeconomically Disadvantaged",
+          el: "24% English Learners",
+          breakdown: [
+            { label: "African American", pct: "37%" },
+            { label: "Hispanic/Latino", pct: "36%" },
+            { label: "Asian", pct: "11%" }
+          ]
+        },
+        description: "One of SF's newest middle school campuses, featuring laboratory learning spaces, 1-to-1 technology, dedicated wellness staff, and specialized robotics electives."
+      },
+      // 11. VISITACION VALLEY MS
+      {
+        id: "vis_valley",
+        name: "Visitacion Valley Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Pioneering Quiet Time mindfulness model with small collaborative teams and high counseling support.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented"],
+        subjectStrengths: ["stem_maker", "sports_athletics"],
+        grades: "6-8",
+        neighborhood: "Excelsior",
+        address: "450 Raymond Ave, San Francisco, CA 94134",
+        lat: 37.7128,
+        lng: -122.4116,
+        enrollment: 410,
+        tuition: "Public (Free)",
+        bellHours: "8:30 AM - 3:00 PM",
+        muni: "8 Bayshore, 9 San Bruno, 56 Rutland, T-Third",
+        afterSchool: "Vis Valley Beacon (BACR) / Boys & Girls Club",
+        languages: ["Spanish Dual Language Pathway", "Cantonese Elective"],
+        languageKey: "spanish",
+        arts: "Ceramics, Digital Storytelling, Urban Murals",
+        sports: "Basketball, Volleyball, Soccer, Track",
+        feeders: "Visitacion Valley ES, El Dorado, McLaren Park elementary schools",
+        hsFeeders: "Burton High School, Balboa High School, and John O'Connell High.",
+        hsKey: "any_hs",
+        specialties: ["Sports"],
+        demographics: {
+          summary: "42% Asian, 37% Hispanic/Latino, 11% Black/African American, 5% Pacific Islander, 3% White",
+          sed: "82% Socioeconomically Disadvantaged",
+          el: "41% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "42%" },
+            { label: "Hispanic/Latino", pct: "37%" },
+            { label: "African American", pct: "11%" }
+          ]
+        },
+        description: "A community-centered school recognized for its Quiet Time social-emotional wellness program, urban agriculture garden, and supportive Beacon youth center."
+      },
+      // 12. ALICE FONG YU (K-8)
+      {
+        id: "alice_fong_yu",
+        name: "Alice Fong Yu Alternative (K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Just ~70 students per grade; tight family continuity with teachers who have known families for years.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["languages", "math_accelerated", "arts_drama"],
+        grades: "K-8 (6-8 Middle)",
+        neighborhood: "Sunset",
+        address: "1541 12th Ave, San Francisco, CA 94122",
+        lat: 37.7594,
+        lng: -122.4691,
+        enrollment: 210,
+        tuition: "Public (Free)",
+        bellHours: "8:00 AM - 2:30 PM",
+        muni: "N-Judah, 6 Haight-Parnassus, 43 Masonic",
+        afterSchool: "AFY Chinese Immersion Afterschool Program",
+        languages: ["Cantonese Immersion (Primary Continuation)"],
+        languageKey: "cantonese",
+        arts: "Chinese Calligraphy, Choral Ensemble, Visual Arts",
+        sports: "SFMSAL Basketball, Volleyball, Track",
+        feeders: "Guaranteed continuation for AFY 5th graders; very limited lottery seats",
+        hsFeeders: "Extremely high acceptance rate to Lowell High School and Abraham Lincoln HS.",
+        hsKey: "lowell_academic",
+        specialties: ["Music", "Arts"],
+        demographics: {
+          summary: "78% Asian, 10% Multi-ethnic, 7% White, 4% Hispanic/Latino",
+          sed: "18% Socioeconomically Disadvantaged",
+          el: "14% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "78%" },
+            { label: "Two or More", pct: "10%" },
+            { label: "White", pct: "7%" }
+          ]
+        },
+        description: "The nation's first Chinese Cantonese immersion public school. Middle school students continue an intensive biliteracy curriculum in an intimate K-8 campus."
+      },
+      // 13. CLAIRE LILIENTHAL (K-8)
+      {
+        id: "claire_lilienthal",
+        name: "Claire Lilienthal Alternative (K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Grades 3-8 housed at scenic Scott Campus; small class cohorts with rigorous academic focus.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["math_accelerated", "stem_maker", "music_band"],
+        grades: "K-8 (Scott Campus 3-8)",
+        neighborhood: "Marina",
+        address: "3630 Divisadero St, San Francisco, CA 94123",
+        lat: 37.8018,
+        lng: -122.4419,
+        enrollment: 230,
+        tuition: "Public (Free)",
+        bellHours: "8:10 AM - 2:45 PM",
+        muni: "30 Stockton, 22 Fillmore, 43 Masonic",
+        afterSchool: "Lilienthal After-School Program (CLASP)",
+        languages: ["Korean Language Pathway (FLES)", "Spanish Elective"],
+        languageKey: "none",
+        arts: "Ceramics Studio, Drama productions, Instrumental Winds",
+        sports: "Volleyball, Basketball, Track, Soccer",
+        feeders: "Guaranteed continuation for Lilienthal elementary students",
+        hsFeeders: "Very high matriculation to Lowell High School, Galileo Academy, and independent prep high schools (Lick, Urban, University).",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Music"],
+        demographics: {
+          summary: "38% White, 32% Asian, 14% Multi-ethnic, 11% Hispanic/Latino, 3% Black/African American",
+          sed: "14% Socioeconomically Disadvantaged",
+          el: "8% English Learners",
+          breakdown: [
+            { label: "White", pct: "38%" },
+            { label: "Asian", pct: "32%" },
+            { label: "Two or More", pct: "14%" }
+          ]
+        },
+        description: "Scott Campus near the Palace of Fine Arts offers high academic expectations, small grade-level cohorts, and strong parent PTSA investment."
+      },
+      // 14. LAWTON (K-8)
+      {
+        id: "lawton",
+        name: "Lawton Alternative (K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Very tight community feel; middle school students buddy with elementary students in outdoor learning.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["stem_maker", "math_accelerated", "sports_athletics"],
+        grades: "K-8 (6-8 Middle)",
+        neighborhood: "Sunset",
+        address: "1570 31st Ave, San Francisco, CA 94122",
+        lat: 37.7578,
+        lng: -122.4897,
+        enrollment: 220,
+        tuition: "Public (Free)",
+        bellHours: "8:15 AM - 2:45 PM",
+        muni: "N-Judah, 29 Sunset, 7 Noriega",
+        afterSchool: "Lawton ExCEL / YMCA",
+        languages: ["Spanish Elective", "Computer Coding Literacy"],
+        languageKey: "none",
+        arts: "Concert Strings, Visual Design, Stagecraft",
+        sports: "Volleyball, Basketball, Track",
+        feeders: "Guaranteed continuation for Lawton 5th graders",
+        hsFeeders: "High acceptance and continuation to Lowell High School and Lincoln High School.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Music"],
+        demographics: {
+          summary: "68% Asian, 14% White, 9% Multi-ethnic, 6% Hispanic/Latino, 2% Black/African American",
+          sed: "22% Socioeconomically Disadvantaged",
+          el: "11% English Learners",
+          breakdown: [
+            { label: "Asian", pct: "68%" },
+            { label: "White", pct: "14%" },
+            { label: "Two or More", pct: "9%" }
+          ]
+        },
+        description: "A beloved Sunset K-8 alternative where middle schoolers participate in accelerated science fairs and enjoy small classroom cohorts."
+      },
+      // 15. ROOFTOP (K-8)
+      {
+        id: "rooftop",
+        name: "Rooftop Alternative (K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Middle schoolers at the Mayflower Campus (Twin Peaks); deep arts integration across all subjects.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["arts_drama", "music_band"],
+        grades: "K-8 (Mayflower 5-8)",
+        neighborhood: "Mission",
+        address: "500 Corbett Ave, San Francisco, CA 94114",
+        lat: 37.7558,
+        lng: -122.4439,
+        enrollment: 240,
+        tuition: "Public (Free)",
+        bellHours: "8:00 AM - 2:30 PM",
+        muni: "37 Corbett, 33 Ashbury, Castro Muni Metro",
+        afterSchool: "Rooftop Children's Center / BACR",
+        languages: ["Spanish World Language", "Visual Arts Literacy"],
+        languageKey: "none",
+        arts: "Comprehensive Visual Arts, Theater, Dance, Photography, Chorus",
+        sports: "Basketball, Volleyball, Track",
+        feeders: "Guaranteed continuation for Rooftop Burnett elementary students",
+        hsFeeders: "Top city feeder to Ruth Asawa School of the Arts (SOTA), Lowell, and Lincoln.",
+        hsKey: "sota_arts",
+        specialties: ["Arts", "Music"],
+        demographics: {
+          summary: "42% White, 19% Asian, 18% Hispanic/Latino, 13% Multi-ethnic, 5% Black/African American",
+          sed: "21% Socioeconomically Disadvantaged",
+          el: "7% English Learners",
+          breakdown: [
+            { label: "White", pct: "42%" },
+            { label: "Asian", pct: "19%" },
+            { label: "Hispanic/Latino", pct: "18%" }
+          ]
+        },
+        description: "An arts-infused public alternative perched on Twin Peaks, where guest artists and studio work prepare students for Ruth Asawa SOTA."
+      },
+      // 16. BUENA VISTA HORACE MANN (K-8)
+      {
+        id: "bvhm",
+        name: "Buena Vista Horace Mann (K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Dual Language (Spanish)",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Continuous Spanish/English immersion through 8th grade with close neighborhood ties in the Mission.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["languages", "arts_drama"],
+        grades: "K-8 (6-8 Middle)",
+        neighborhood: "Mission",
+        address: "3351 23rd St, San Francisco, CA 94110",
+        lat: 37.7538,
+        lng: -122.4187,
+        enrollment: 250,
+        tuition: "Public (Free)",
+        bellHours: "8:40 AM - 3:10 PM",
+        muni: "14 Mission, 49 Van Ness, 24th St BART",
+        afterSchool: "BVHM ExCEL / Jamestown Community Center",
+        languages: ["Two-Way Spanish Immersion (K-8 Continuum)"],
+        languageKey: "spanish",
+        arts: "Community Murals, Folkloric Dance, Latin Percussion",
+        sports: "Soccer, Futsal, Basketball",
+        feeders: "Guaranteed continuation for BVHM elementary; limited transfer spots",
+        hsFeeders: "Direct biliteracy bridge to Mission High School, John O'Connell, and Lincoln HS.",
+        hsKey: "any_hs",
+        specialties: ["Arts"],
+        demographics: {
+          summary: "83% Hispanic/Latino, 8% White, 4% Multi-ethnic, 3% Black/African American, 2% Asian",
+          sed: "76% Socioeconomically Disadvantaged",
+          el: "52% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "83%" },
+            { label: "White", pct: "8%" },
+            { label: "Two or More", pct: "4%" }
+          ]
+        },
+        description: "San Francisco's historic community Spanish Two-Way Dual Immersion K-8 school, fostering bilingual fluency and cultural advocacy."
+      },
+
+      // --- INDEPENDENT & PRIVATE MIDDLE SCHOOLS ---
+      // 17. BURKE'S
+      {
+        id: "burkes",
+        name: "Katherine Delmar Burke School (Burke's)",
+        sector: "Independent Private",
+        type: "Independent K-8 (All-Girls)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "All-girls 3.5-acre Sea Cliff campus; 40-50 girls per grade with Makery and outdoor sciences.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
+        subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated", "sports_athletics"],
+        grades: "K-8 (All-Girls)",
+        neighborhood: "Richmond",
+        address: "7070 California St, San Francisco, CA 94121",
+        lat: 37.7845,
+        lng: -122.4962,
+        enrollment: 400,
+        tuition: "~$45,800/yr (30% on Financial Aid)",
+        bellHours: "8:15 AM - 3:00 PM",
+        muni: "1 California, 38R Geary",
+        afterSchool: "Burke's Extended Day Program / Athletics",
+        languages: ["French & Spanish Programs"],
+        languageKey: "spanish",
+        arts: "Comprehensive Theater, Vocal Ensembles, Ceramics & Painting",
+        sports: "BAIAL League Basketball, Soccer, Volleyball, Cross-Country",
+        feeders: "Independent admissions (Kindergarten & 6th grade entry points)",
+        hsFeeders: "San Francisco University High School, Urban School of SF, Lick-Wilmerding, Branson, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts", "Sports"],
+        demographics: {
+          summary: "48% Students of Color, 52% White • 30% Need-Based Financial Assistance",
+          sed: "30% on Need-Based Aid",
+          el: "Multilingual tracks",
+          breakdown: [
+            { label: "Students of Color", pct: "48%" },
+            { label: "White", pct: "52%" },
+            { label: "Aid Recipients", pct: "30%" }
+          ]
+        },
+        description: "A premier independent girls' school situated on a lush 3.5-acre Sea Cliff campus, celebrated for leadership development and stellar high school placement."
+      },
+      // 18. TOWN SCHOOL FOR BOYS
+      {
+        id: "town",
+        name: "Town School for Boys",
+        sector: "Independent Private",
+        type: "Independent K-8 (All-Boys)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "All-boys Pacific Heights campus; inquiry-based learning, high kinetic energy, and collaborative projects.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["stem_maker", "sports_athletics", "math_accelerated"],
+        grades: "K-8 (All-Boys)",
+        neighborhood: "Marina",
+        address: "2750 Jackson St, San Francisco, CA 94115",
+        lat: 37.7915,
+        lng: -122.4419,
+        enrollment: 415,
+        tuition: "~$46,500/yr (25% on Financial Aid)",
+        bellHours: "8:00 AM - 3:15 PM",
+        muni: "3 Jackson, 24 Divisadero, 1 California",
+        afterSchool: "Town After-School Enrichment & Athletics",
+        languages: ["Spanish & Mandarin Language Tracks"],
+        languageKey: "spanish",
+        arts: "Woodworking, Digital Music, Studio Arts, Drama",
+        sports: "BAIAL Interscholastic Baseball, Basketball, Soccer, Lacrosse",
+        feeders: "Independent admissions (K and 6th grade admissions)",
+        hsFeeders: "San Francisco University High School, Lick-Wilmerding, Urban School, St. Ignatius, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Sports", "Music"],
+        demographics: {
+          summary: "45% Students of Color, 55% White • 25% Need-Based Financial Assistance",
+          sed: "25% on Financial Aid",
+          el: "Dual tracks",
+          breakdown: [
+            { label: "Students of Color", pct: "45%" },
+            { label: "White", pct: "55%" },
+            { label: "Aid Recipients", pct: "25%" }
+          ]
+        },
+        description: "An independent boys' school in Pacific Heights fostering intellectual curiosity, empathy, hands-on engineering, and exceptional sports facilities."
+      },
+      // 19. SF DAY SCHOOL
+      {
+        id: "sf_day",
+        name: "San Francisco Day School (SF Day)",
+        sector: "Independent Private",
+        type: "Independent K-8 (Co-Ed)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Co-ed Western Addition campus; 48 students per middle school grade with dedicated advisory.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["arts_drama", "stem_maker", "math_accelerated"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Co-Ed)",
+        neighborhood: "Marina",
+        address: "350 Masonic Ave, San Francisco, CA 94118",
+        lat: 37.7774,
+        lng: -122.4468,
+        enrollment: 410,
+        tuition: "~$45,500/yr (24% on Financial Aid)",
+        bellHours: "8:15 AM - 3:15 PM",
+        muni: "31 Balboa, 43 Masonic, 5 Fulton",
+        afterSchool: "SF Day Extended Day & Clubs",
+        languages: ["Spanish & Mandarin Pathways"],
+        languageKey: "spanish",
+        arts: "Ceramics, Digital Filmmaking, Chamber Music, Stage Theater",
+        sports: "Volleyball, Basketball, Cross Country, Futsal",
+        feeders: "Independent admissions (K and 6th grade entry)",
+        hsFeeders: "Lick-Wilmerding High School, Urban School of SF, University High School, and Ruth Asawa SOTA.",
+        hsKey: "independent_prep",
+        specialties: ["Arts", "STEM", "Music"],
+        demographics: {
+          summary: "49% Students of Color, 51% White • 24% Need-Based Financial Assistance",
+          sed: "24% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "49%" },
+            { label: "White", pct: "51%" },
+            { label: "Aid Recipients", pct: "24%" }
+          ]
+        },
+        description: "A progressive co-educational independent K-8 emphasizing academic inquiry, creative expression, equity, and dedicated high school placement counseling."
+      },
+      // 20. SF FRIENDS SCHOOL
+      {
+        id: "sf_friends",
+        name: "San Francisco Friends School",
+        sector: "Independent Private",
+        type: "Independent K-8 (Quaker)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Historic Levi Strauss building in the Mission; Quaker values of reflection and consensus.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["arts_drama", "stem_maker"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Co-Ed)",
+        neighborhood: "Mission",
+        address: "250 Valencia St, San Francisco, CA 94103",
+        lat: 37.7698,
+        lng: -122.4222,
+        enrollment: 440,
+        tuition: "~$44,200/yr (26% on Financial Aid)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "14 Mission, 49 Van Ness, 16th St BART",
+        afterSchool: "Friends After School Program (FASP)",
+        languages: ["Spanish Language & Culture Continuum"],
+        languageKey: "spanish",
+        arts: "Choral Music, Woodworking, Visual Arts, Drama",
+        sports: "Cross Country, Basketball, Volleyball, Soccer",
+        feeders: "Independent admissions (K and 6th grade entry points)",
+        hsFeeders: "Lick-Wilmerding, Urban School of SF, University High School, Mission High, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Arts", "STEM", "Music"],
+        demographics: {
+          summary: "47% Students of Color, 53% White • 26% Need-Based Financial Assistance",
+          sed: "26% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "47%" },
+            { label: "White", pct: "53%" },
+            { label: "Aid Recipients", pct: "26%" }
+          ]
+        },
+        description: "Rooted in Quaker values in the Mission District, Friends provides rigorous academics, quiet reflective practice, and hands-on craft."
+      },
+      // 21. HAMLIN
+      {
+        id: "hamlin",
+        name: "The Hamlin School",
+        sector: "Independent Private",
+        type: "Independent K-8 (All-Girls)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Historic Pacific Heights mansion campus; female leadership, debate, and lab sciences.",
+        personalityTags: ["Outgoing, Social & Spirit-Driven", "Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["stem_maker", "math_accelerated", "arts_drama"],
+        grades: "K-8 (All-Girls)",
+        neighborhood: "Marina",
+        address: "2120 Broadway, San Francisco, CA 94115",
+        lat: 37.7941,
+        lng: -122.4335,
+        enrollment: 410,
+        tuition: "~$46,200/yr (22% on Financial Aid)",
+        bellHours: "8:10 AM - 3:15 PM",
+        muni: "22 Fillmore, 3 Jackson, 45 Union-Stockton",
+        afterSchool: "Hamlin Extended Day & Interscholastic Sports",
+        languages: ["Spanish & French Electives"],
+        languageKey: "spanish",
+        arts: "Choral Ensembles, Digital Media, Ceramics, Drama",
+        sports: "Volleyball, Basketball, Soccer, Track & Field, Cross Country",
+        feeders: "Independent admissions (K and 6th grade cohorts)",
+        hsFeeders: "San Francisco University High School, Urban School, Lick-Wilmerding, and Marin Academy.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts", "Music"],
+        demographics: {
+          summary: "44% Students of Color, 56% White • 22% Need-Based Financial Assistance",
+          sed: "22% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "44%" },
+            { label: "White", pct: "56%" }
+          ]
+        },
+        description: "An independent girls' school educating future female innovators with cutting-edge science labs, public speaking coaching, and panoramic views of the Bay."
+      },
+      // 22. CATHEDRAL SCHOOL FOR BOYS
+      {
+        id: "cathedral",
+        name: "Cathedral School for Boys",
+        sector: "Independent Private",
+        type: "Independent K-8 (All-Boys)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Adjacent to Grace Cathedral on Nob Hill; famous boys' choir, close mentorship, and academic rigor.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["music_band", "arts_drama", "math_accelerated"],
+        grades: "K-8 (All-Boys)",
+        neighborhood: "Marina",
+        address: "1275 Sacramento St, San Francisco, CA 94108",
+        lat: 37.7925,
+        lng: -122.4138,
+        enrollment: 260,
+        tuition: "~$44,500/yr (23% on Financial Aid)",
+        bellHours: "8:15 AM - 3:10 PM",
+        muni: "1 California, California Cable Car",
+        afterSchool: "Cathedral After-School Club / Choir Practice",
+        languages: ["Spanish & Latin / French Tracks"],
+        languageKey: "spanish",
+        arts: "Grace Cathedral Boys Choir, Instrumental Winds, Fine Art Studio",
+        sports: "Basketball, Volleyball, Soccer, Cross Country",
+        feeders: "Independent admissions (K and limited 6th grade)",
+        hsFeeders: "University High School, Lick-Wilmerding, Urban School, St. Ignatius, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Music", "Arts"],
+        demographics: {
+          summary: "43% Students of Color, 57% White • 23% Need-Based Financial Assistance",
+          sed: "23% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "43%" },
+            { label: "White", pct: "57%" }
+          ]
+        },
+        description: "Situated on historic Nob Hill, Cathedral fosters emotional intelligence, high scholastic rigor, and world-class vocal music in partnership with Grace Cathedral."
+      },
+      // 23. CHILDREN'S DAY SCHOOL (CDS)
+      {
+        id: "cds",
+        name: "Children's Day School (CDS)",
+        sector: "Independent Private",
+        type: "Independent PK-8 (Co-Ed)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Mission / Dolores Park campus with organic working farm, chickens, and environmental science labs.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["stem_maker", "arts_drama"],
+        grades: "PK-8 (Middle 5-8)",
+        neighborhood: "Mission",
+        address: "333 Dolores St, San Francisco, CA 94110",
+        lat: 37.7645,
+        lng: -122.4262,
+        enrollment: 460,
+        tuition: "~$43,800/yr (27% on Financial Aid)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "J-Church, 22 Fillmore, 16th/Mission BART",
+        afterSchool: "CDS Extended Program & Farm Lab",
+        languages: ["Spanish Language & Cultural Fluency"],
+        languageKey: "spanish",
+        arts: "Studio Art, Woodshop, Digital Audio, Theater",
+        sports: "Volleyball, Basketball, Soccer, Ultimate Frisbee",
+        feeders: "Independent admissions (Entry points in PK, K, and 6th grade)",
+        hsFeeders: "Urban School of SF, Lick-Wilmerding, University High School, Ruth Asawa SOTA, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts"],
+        demographics: {
+          summary: "51% Students of Color, 49% White • 27% Need-Based Financial Assistance",
+          sed: "27% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "51%" },
+            { label: "White", pct: "49%" }
+          ]
+        },
+        description: "Known for its working urban farm in Dolores Park, CDS champions hands-on ecological stewardship and collaborative learning."
+      },
+      // 24. FRENCH AMERICAN (FAIS)
+      {
+        id: "fais",
+        name: "French American International School (FAIS)",
+        sector: "Independent Private",
+        type: "Independent PK-8 (Bilingual IB)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Hayes Valley civic campus; dual French-American immersion accredited by French Ministry of Education.",
+        personalityTags: ["Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven"],
+        subjectStrengths: ["languages", "math_accelerated", "arts_drama"],
+        grades: "PK-8 (Middle 6-8)",
+        neighborhood: "Marina",
+        address: "150 Oak St, San Francisco, CA 94102",
+        lat: 37.7752,
+        lng: -122.4215,
+        enrollment: 650,
+        tuition: "~$45,200/yr (20% on Financial Aid)",
+        bellHours: "8:20 AM - 3:20 PM",
+        muni: "Muni Metro Van Ness Station, F-Market, 21 Hayes",
+        afterSchool: "FAIS Extended Care & International Clubs",
+        languages: ["French Dual Immersion (Native & Non-native tracks)"],
+        languageKey: "french",
+        arts: "Orchestra, Visual Arts, Dramatic Arts in French & English",
+        sports: "Basketball, Volleyball, Futsal, Cross Country",
+        feeders: "Independent admissions (Immersion continuum & international candidates)",
+        hsFeeders: "International High School (IB World School / French Bac), Lowell, Urban, and University HS.",
+        hsKey: "independent_prep",
+        specialties: ["Music", "Arts"],
+        demographics: {
+          summary: "42% Multilingual Students of Color, 58% White • 20% Financial Aid",
+          sed: "20% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color / Multilingual", pct: "42%" },
+            { label: "White", pct: "58%" }
+          ]
+        },
+        description: "Located in Hayes Valley, FAIS combines French Ministry curriculum with American inquiry, preparing students for bilingual IB diplomas."
+      },
+      // 25. PRESIDIO KNOLLS SCHOOL (PKS)
+      {
+        id: "pks",
+        name: "Presidio Knolls School (PKS)",
+        sector: "Independent Private",
+        type: "Independent PK-8 (Mandarin Immersion)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "SOMA urban campus; progressive project-based learning with Mandarin-English immersion model.",
+        personalityTags: ["Analytical Problem Solver & Independent Learner", "Hands-on, Kinetic & Team-Oriented"],
+        subjectStrengths: ["languages", "stem_maker", "math_accelerated"],
+        grades: "PK-8 (Middle 6-8)",
+        neighborhood: "SOMA",
+        address: "250 10th St, San Francisco, CA 94103",
+        lat: 37.7718,
+        lng: -122.4132,
+        enrollment: 410,
+        tuition: "~$44,800/yr (25% on Financial Aid)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "Civic Center BART/Muni, 14 Mission, 9 San Bruno",
+        afterSchool: "PKS Extended Day & Innovation Labs",
+        languages: ["Mandarin Chinese Immersion Pathway"],
+        languageKey: "mandarin",
+        arts: "Chinese Calligraphy, Studio Design, Maker Tech",
+        sports: "Volleyball, Basketball, Soccer",
+        feeders: "Independent admissions (Mandarin proficiency required for upper grades)",
+        hsFeeders: "Lick-Wilmerding High School, Urban School, University High School, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts"],
+        demographics: {
+          summary: "64% Asian / Students of Color, 36% White • 25% Need-Based Financial Assistance",
+          sed: "25% on Financial Aid",
+          breakdown: [
+            { label: "Asian / Students of Color", pct: "64%" },
+            { label: "White", pct: "36%" }
+          ]
+        },
+        description: "A progressive Mandarin immersion independent school in SOMA that pairs design challenges with deep biliteracy and cross-cultural cognition."
+      },
+      // 26. LIVE OAK SCHOOL
+      {
+        id: "live_oak",
+        name: "Live Oak School",
+        sector: "Independent Private",
+        type: "Independent K-8 (Co-Ed)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Potrero Hill campus; 40 students per grade with intimate seminar rooms and strong community values.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["arts_drama", "stem_maker"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Middle 5-8)",
+        neighborhood: "SOMA",
+        address: "1555 Mariposa St, San Francisco, CA 94107",
+        lat: 37.7635,
+        lng: -122.3995,
+        enrollment: 320,
+        tuition: "~$43,500/yr (28% on Financial Aid)",
+        bellHours: "8:25 AM - 3:15 PM",
+        muni: "22 Fillmore, 55 16th St, 16th BART connection",
+        afterSchool: "Live Oak Extended Day & Maker Clubs",
+        languages: ["Spanish Continuum (Conversational & Honors)"],
+        languageKey: "spanish",
+        arts: "Fine Arts, Ceramic Sculpture, Music Ensembles",
+        sports: "Basketball, Volleyball, Track, Soccer",
+        feeders: "Independent admissions (K and 6th grade entry)",
+        hsFeeders: "Lick-Wilmerding High School, Urban School of SF, University High School, SOTA, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Arts", "STEM"],
+        demographics: {
+          summary: "46% Students of Color, 54% White • 28% Need-Based Financial Assistance",
+          sed: "28% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "46%" },
+            { label: "White", pct: "54%" }
+          ]
+        },
+        description: "Tucked into sunny Potrero Hill, Live Oak offers an extraordinarily supportive, inclusive K-8 environment that emphasizes student agency and artistic curiosity."
+      },
+      // 27. THE SAN FRANCISCO SCHOOL
+      {
+        id: "sf_school",
+        name: "The San Francisco School",
+        sector: "Independent Private",
+        type: "Independent PK-8 (Co-Ed)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Portola district garden campus; Orff Schulwerk music, working eco-gardens, and experiential learning.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["music_band", "arts_drama", "stem_maker"],
+        grades: "PK-8 (Middle 6-8)",
+        neighborhood: "Excelsior",
+        address: "300 Gaven St, San Francisco, CA 94134",
+        lat: 37.7312,
+        lng: -122.4105,
+        enrollment: 285,
+        tuition: "~$43,900/yr (26% on Financial Aid)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "9 San Bruno, 44 O'Shaughnessy",
+        afterSchool: "SFS Extended Day & Music Studios",
+        languages: ["Spanish Immersion Continuum"],
+        languageKey: "spanish",
+        arts: "Orff Schulwerk Percussion, Studio Ceramics, Drama",
+        sports: "Cross-Country, Volleyball, Basketball, Track",
+        feeders: "Independent admissions (PK, K, 6th grade)",
+        hsFeeders: "Lick-Wilmerding, Urban School, University High School, Ruth Asawa SOTA, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Music", "Arts"],
+        demographics: {
+          summary: "49% Students of Color, 51% White • 26% Need-Based Financial Assistance",
+          sed: "26% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "49%" },
+            { label: "White", pct: "51%" }
+          ]
+        },
+        description: "A community on a Portola garden campus fostering adventurous minds through rich Orff music ensembles and outdoor sciences."
+      },
+      // 28. BRANDEIS SAN FRANCISCO
+      {
+        id: "brandeis",
+        name: "Brandeis Marin / SF (Brandeis School of SF)",
+        sector: "Independent Private",
+        type: "Independent K-8 (Jewish Day School)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Lake Merced Brotherhood Way campus; robust athletic fields, design maker lab, and values-based education.",
+        personalityTags: ["Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
+        subjectStrengths: ["stem_maker", "math_accelerated", "languages"],
+        grades: "K-8 (Co-Ed)",
+        neighborhood: "Sunset",
+        address: "655 Brotherhood Way, San Francisco, CA 94132",
+        lat: 37.7135,
+        lng: -122.4795,
+        enrollment: 380,
+        tuition: "~$42,800/yr (32% on Financial Aid)",
+        bellHours: "8:15 AM - 3:15 PM",
+        muni: "M-Ocean View, 57 Parkmerced",
+        afterSchool: "Brandeis Extended Care & Interscholastic Sports",
+        languages: ["Modern Hebrew & Spanish Pathways"],
+        languageKey: "none",
+        arts: "Instrumental Winds, Choral, Digital Fabrication, Fine Arts",
+        sports: "BAIAL Basketball, Soccer, Volleyball, Track",
+        feeders: "Independent admissions (K and 6th grade)",
+        hsFeeders: "Lowell High School, Lick-Wilmerding, University High School, Urban School, and Drew School.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Sports"],
+        demographics: {
+          summary: "32% Multiracial/Diverse, 68% White • 32% Need-Based Financial Assistance",
+          sed: "32% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "32%" },
+            { label: "White", pct: "68%" }
+          ]
+        },
+        description: "Located near Lake Merced, Brandeis fosters critical inquiry, ethical character, maker design, and high secondary school matriculation."
+      },
+      // 29. STERNE SCHOOL
+      {
+        id: "sterne",
+        name: "Sterne School",
+        sector: "Independent Private",
+        type: "Independent 4-12 (Neurodiversity & LD)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Dedicated campus for neurodiverse learners, ADHD, dyslexia, and customized learning profiles.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented"],
+        subjectStrengths: ["stem_maker", "arts_drama"],
+        grades: "4-12 (Middle 5-8)",
+        neighborhood: "Marina",
+        address: "838 Kearny St, San Francisco, CA 94108",
+        lat: 37.7952,
+        lng: -122.4052,
+        enrollment: 210,
+        tuition: "~$49,500/yr (35% on Financial Aid / District contracts)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "8 Bayshore, 30 Stockton, Montgomery BART",
+        afterSchool: "Sterne After-School Enrichment & Clubs",
+        languages: ["Customized Language Arts / Executive Function"],
+        languageKey: "none",
+        arts: "Digital Media Studio, Music Production, Fine Arts",
+        sports: "Cross Country, Basketball, Volleyball",
+        feeders: "Rolling independent admissions",
+        hsFeeders: "Direct continuation to Sterne High School or Bay Area prep high schools.",
+        hsKey: "any_hs",
+        specialties: ["Arts", "STEM"],
+        demographics: {
+          summary: "38% Students of Color, 62% White • 35% Need-Based Financial Assistance",
+          sed: "35% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "38%" },
+            { label: "White", pct: "62%" }
+          ]
+        },
+        description: "A premier independent school for neurodiverse students, offering low student-to-teacher ratios, integrated executive function coaching, and strength-based learning."
+      },
+      // 30. GATEWAY MIDDLE SCHOOL
+      {
+        id: "gateway",
+        name: "Gateway Middle School",
+        sector: "Public Charter",
+        type: "Public Charter (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "~100 students per grade; robust advisory cohorts and learning specialist co-teaching model.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["stem_maker", "arts_drama", "sports_athletics"],
+        hasHumanitiesWriting: true,
+        grades: "6-8",
+        neighborhood: "Marina",
+        address: "1512 Golden Gate Ave, San Francisco, CA 94115",
+        lat: 37.7785,
+        lng: -122.4385,
+        enrollment: 310,
+        tuition: "Public Charter (Free Tuition)",
+        bellHours: "8:15 AM - 3:15 PM",
+        muni: "5 Fulton, 31 Balboa, 22 Fillmore, 38 Geary",
+        afterSchool: "Gateway After-School Program (GAP) / Athletics",
+        languages: ["Spanish World Language", "Integrated Humanities"],
+        languageKey: "none",
+        arts: "Visual Arts, Digital Design, Drama, Choral Arts",
+        sports: "Cross Country, Girls/Boys Basketball, Soccer, Volleyball, Track",
+        feeders: "Citywide open public charter lottery; priority for underserved communities",
+        hsFeeders: "Direct matriculation to Gateway High School (top charter HS), Lowell High School, George Washington, and Lincoln.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Arts", "Sports"],
+        demographics: {
+          summary: "35% Hispanic/Latino, 26% Black/African American, 16% White, 14% Asian, 9% Multi-ethnic",
+          sed: "54% Socioeconomically Disadvantaged",
+          el: "17% English Learners (22% Students with IEPs)",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "35%" },
+            { label: "African American", pct: "26%" },
+            { label: "White", pct: "16%" },
+            { label: "Asian", pct: "14%" },
+            { label: "Two or More", pct: "9%" }
+          ]
+        },
+        description: "A celebrated tuition-free public charter middle school in Western Addition emphasizing student-centered learning, deep individualized support for all learning styles, restorative justice, and an advisory family model."
+      },
+      // 31. LA SCUOLA INTERNATIONAL SCHOOL
+      {
+        id: "la_scuola",
+        name: "La Scuola International School (Middle School)",
+        sector: "Independent Private",
+        type: "Independent PK-8 (IB World School / Italian)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Mission District 18th St campus; small inquiry cohorts (~35-40 students/grade) with IB Middle Years Programme (MYP).",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["languages", "arts_drama", "stem_maker", "sports_athletics"],
+        hasHumanitiesWriting: true,
+        grades: "PK-8 (Middle 6-8)",
+        neighborhood: "Mission",
+        address: "3250 18th St, San Francisco, CA 94110",
+        lat: 37.7618,
+        lng: -122.4172,
+        enrollment: 130,
+        tuition: "~$44,900/yr (25% on Financial Aid)",
+        bellHours: "8:15 AM - 3:15 PM",
+        muni: "14 Mission, 49 Van Ness, 33 Ashbury/18th, 16th St BART",
+        afterSchool: "La Scuola Extended Day, Italian Clubs & Maker Labs",
+        languages: ["Italian Immersion & Biliteracy", "Spanish Pathway", "English / IB MYP"],
+        languageKey: "italian",
+        arts: "Reggio-Inspired Atelier (Ceramics & Studio Arts), Music Production, Theater",
+        sports: "BAIAL Interscholastic Soccer, Futsal, Basketball, Volleyball, Track",
+        feeders: "Independent admissions (Entry in PK, K, and 6th grade)",
+        hsFeeders: "International High School (French American), Lick-Wilmerding, Urban School of SF, University High School, St. Ignatius, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Arts", "STEM", "Sports"],
+        demographics: {
+          summary: "44% Multilingual Students of Color, 56% White • 25% Need-Based Financial Assistance",
+          sed: "25% on Financial Aid",
+          el: "Italian & Multilingual Immersion",
+          breakdown: [
+            { label: "Students of Color / Multilingual", pct: "44%" },
+            { label: "White", pct: "56%" },
+            { label: "Aid Recipients", pct: "25%" }
+          ]
+        },
+        description: "The only Reggio Emilia-inspired and certified International Baccalaureate (IB) Italian immersion school in the world. Located on 18th St in the Mission, La Scuola fosters critical inquiry, design thinking, environmental consciousness, and global multilingual fluency."
+      }
+    ];
+
+    /* State Management */
+    let currentComparison = ["presidio", "giannini", "hoover"];
+    let directorySectorFilter = "all";
+    let sfMap = null;
+    let mapMarkers = [];
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      const activeTab = document.getElementById('tab-' + tabId);
+      if (activeTab) activeTab.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-teal', 'text-white', 'shadow-sm');
+        btn.classList.add('text-slate-600');
+      });
+
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-brand-teal', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600');
+      }
+
+      if (tabId === 'map') {
+        setTimeout(initOrRefreshMap, 150);
+      }
+      if (tabId === 'compare') {
+        renderComparisonTable();
+      }
+    }
+
+    function showToast(message, icon = "✨") {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').innerText = message;
+      document.getElementById('toast-icon').innerText = icon;
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 2600);
+    }
+
+    function handlePersonalityChange(changedInput) {
+      const checkedBoxes = Array.from(document.querySelectorAll('input[name="personality"]:checked'));
+      if (checkedBoxes.length > 3) {
+        changedInput.checked = false;
+        showToast("Maximum of 3 personality traits allowed.", "⚠️");
+        return;
+      }
+      document.getElementById('personality-counter').innerText = `${checkedBoxes.length}/3 Selected`;
+      
+      document.querySelectorAll('#personality-options label').forEach(label => {
+        const input = label.querySelector('input');
+        if (input && input.checked) {
+          label.classList.add('border-teal-500', 'bg-teal-50/40');
+          label.classList.remove('border-slate-200');
+        } else if (input) {
+          label.classList.remove('border-teal-500', 'bg-teal-50/40');
+          label.classList.add('border-slate-200');
+        }
+      });
+      runQuizMatching();
+    }
+
+    function handleSubjectChange(changedInput) {
+      const checkedBoxes = Array.from(document.querySelectorAll('input[name="subject"]:checked'));
+      if (checkedBoxes.length > 3) {
+        changedInput.checked = false;
+        showToast("Maximum of 3 favorite subjects allowed.", "⚠️");
+        return;
+      }
+      document.getElementById('subject-counter').innerText = `${checkedBoxes.length}/3 Selected`;
+
+      document.querySelectorAll('#subject-options label').forEach(label => {
+        const input = label.querySelector('input');
+        if (input && input.checked) {
+          label.classList.add('border-teal-500', 'bg-teal-50/50');
+          label.classList.remove('border-slate-200');
+        } else if (input) {
+          label.classList.remove('border-teal-500', 'bg-teal-50/50');
+          label.classList.add('border-slate-200');
+        }
+      });
+      runQuizMatching();
+    }
+
+    function resetQuiz() {
+      document.querySelectorAll('input[name="personality"]').forEach((input, i) => input.checked = (i === 0));
+      document.querySelectorAll('input[name="subject"]').forEach((input, i) => input.checked = (i < 2));
+      document.querySelector('input[name="scale"][value="all"]').checked = true;
+      document.getElementById('quiz-sector').value = 'all';
+      document.getElementById('quiz-quadrant').value = 'all';
+      document.getElementById('quiz-hs').value = 'any';
+
+      handlePersonalityChange(document.querySelector('input[name="personality"]:checked'));
+      handleSubjectChange(document.querySelector('input[name="subject"]:checked'));
+      showToast("Quiz preferences reset.");
+    }
+
+    /* Computes full itemized point breakdown for any given school based on active quiz criteria */
+    function calculateSchoolFitScore(school) {
+      const selectedPersonalities = Array.from(document.querySelectorAll('input[name="personality"]:checked')).map(el => el.value);
+      const selectedSubjects = Array.from(document.querySelectorAll('input[name="subject"]:checked')).map(el => el.value);
+      const scaleChoice = (document.querySelector('input[name="scale"]:checked')?.value) || 'all';
+      const sectorChoice = document.getElementById('quiz-sector')?.value || 'all';
+      const quadrantChoice = document.getElementById('quiz-quadrant')?.value || 'all';
+      const hsChoice = document.getElementById('quiz-hs')?.value || 'any';
+
+      let baseScore = 5;
+      let breakdown = [];
+      let matchReasons = [];
+
+      breakdown.push({
+        category: "Base Foundation",
+        points: 5,
+        description: "Standard California & SFUSD Middle School Core Curriculum Standards"
+      });
+
+      // 1. Personality Matching (Heavily weighted: up to 30 pts)
+      let personalityPts = 0;
+      let personalityItems = [];
+      if (selectedPersonalities.length > 0) {
+        const ptsPerPersonality = 30 / selectedPersonalities.length;
+        selectedPersonalities.forEach(p => {
+          if (p === 'outgoing' && (school.scaleType === 'Mega' || school.enrollment > 700)) {
+            personalityPts += ptsPerPersonality;
+            personalityItems.push("Outgoing & Spirited (High-energy community & school spirit)");
+            matchReasons.push("High-energy student body & active spirit");
+          } else if (p === 'sensitive' && (school.scaleType === 'K-8' || school.scaleType === 'Private' || school.enrollment < 500)) {
+            personalityPts += ptsPerPersonality;
+            personalityItems.push("Sensitive / Low-Sensory (Calm hallways, smaller student cohorts)");
+            matchReasons.push("Intimate cohorts & lower sensory noise");
+          } else if (p === 'analytical' && (school.specialties.includes('STEM') || (school.subjectStrengths && school.subjectStrengths.includes('math_accelerated')))) {
+            personalityPts += ptsPerPersonality;
+            personalityItems.push("Analytical & Independent (Accelerated math tracks & inquiry labs)");
+            matchReasons.push("Challenging math and inquiry labs");
+          } else if (p === 'creative' && (school.specialties.includes('Arts') || school.specialties.includes('Music'))) {
+            personalityPts += ptsPerPersonality;
+            personalityItems.push("Creative & Expressive (Performing arts, stage theater & music)");
+            matchReasons.push("Award-winning arts & music ensembles");
+          } else if (p === 'literary' && (school.hasHumanitiesWriting || (school.personalityTags && school.personalityTags.some(t => t.includes('Literary') || t.includes('Reader'))))) {
+            personalityPts += ptsPerPersonality;
+            personalityItems.push("Literary, Reader & Storyteller (Deep humanities seminars, creative writing & speech)");
+            matchReasons.push("Strong creative writing, literature seminars & journalism");
+          } else if (p === 'kinetic' && (school.specialties.includes('Sports') || (school.subjectStrengths && school.subjectStrengths.includes('stem_maker')))) {
+            personalityPts += ptsPerPersonality;
+            personalityItems.push("Hands-on & Kinetic (Active league athletics, fabrication maker spaces)");
+            matchReasons.push("Active league athletics & hands-on maker spaces");
+          }
+        });
+      }
+      breakdown.push({
+        category: "Personality Alignment (Heavy Weight)",
+        points: Math.round(personalityPts * 10) / 10,
+        description: personalityItems.length > 0 
+          ? `Matched: ${personalityItems.join(', ')}` 
+          : "No direct alignment with selected personality archetype(s)"
+      });
+
+      // 2. Subject Passions Matching (Heavily weighted: up to 30 pts, 10 pts per subject)
+      let subjectPts = 0;
+      let matchedSubjects = [];
+      selectedSubjects.forEach(s => {
+        if (school.subjectStrengths && school.subjectStrengths.includes(s)) {
+          subjectPts += 10;
+          if (s === 'music_band') { matchedSubjects.push("Band & Music (+10 pts)"); matchReasons.push("Premier winds, band & orchestra"); }
+          if (s === 'stem_maker') { matchedSubjects.push("STEM & Robotics (+10 pts)"); matchReasons.push("Advanced robotics & maker labs"); }
+          if (s === 'math_accelerated') { matchedSubjects.push("Accelerated Math (+10 pts)"); matchReasons.push("Accelerated math pathway"); }
+          if (s === 'languages') { matchedSubjects.push("Dual Immersion (+10 pts)"); matchReasons.push("Celebrated dual-language immersion"); }
+          if (s === 'arts_drama') { matchedSubjects.push("Theater & Art (+10 pts)"); matchReasons.push("Fine arts, muralism & theater"); }
+          if (s === 'sports_athletics') { matchedSubjects.push("Athletics (+10 pts)"); matchReasons.push("Active SFMSAL athletic teams"); }
+        }
+      });
+      breakdown.push({
+        category: "Favorite Subjects & Passions (Heavy Weight)",
+        points: subjectPts,
+        description: matchedSubjects.length > 0 
+          ? `Matched: ${matchedSubjects.join(', ')}` 
+          : "Standard electives; specific specialist subject not emphasized"
+      });
+
+      // 3. Scale & Teaming Structure Matching (up to 15 pts)
+      let scalePts = 0;
+      let scaleReason = "";
+      if (scaleChoice === 'mega' && school.scaleType === 'Mega') {
+        scalePts = 15;
+        scaleReason = "Matched Mega Comprehensive scale with 6th-grade house teaming (+15 pts)";
+        matchReasons.push("6th-grade house structure with mega scale");
+      } else if (scaleChoice === 'mid' && school.scaleType === 'Mid') {
+        scalePts = 15;
+        scaleReason = "Matched Mid-Sized community of 450–850 students (+15 pts)";
+        matchReasons.push("Balanced mid-sized community");
+      } else if (scaleChoice === 'k8' && (school.scaleType === 'K-8' || school.scaleType === 'Private')) {
+        scalePts = 15;
+        scaleReason = "Matched intimate K-8 / Independent continuous cohorts (<450) (+15 pts)";
+        matchReasons.push("Intimate K-8 / private continuity");
+      } else if (scaleChoice === 'all') {
+        scalePts = 7;
+        scaleReason = "Open to any school scale (neutral baseline +7 pts)";
+      } else {
+        scalePts = 0;
+        scaleReason = `Differs from preferred ${scaleChoice.toUpperCase()} scale structure (0 pts)`;
+      }
+      breakdown.push({
+        category: "Scale & Teaming Structure",
+        points: scalePts,
+        description: scaleReason
+      });
+
+      // 4. Commute / Neighborhood Area (up to 15 pts)
+      let commutePts = 0;
+      let commuteReason = "";
+      if (quadrantChoice !== 'all') {
+        if (school.neighborhood === quadrantChoice) {
+          commutePts = 15;
+          commuteReason = `Located within your target ${school.neighborhood} commute zone (+15 pts)`;
+          matchReasons.push(`Located in ${school.neighborhood} commute zone`);
+        } else {
+          commutePts = 0;
+          commuteReason = `Located in ${school.neighborhood} (outside primary ${quadrantChoice} preference) (0 pts)`;
+        }
+      } else {
+        commutePts = 7;
+        commuteReason = "Any SF neighborhood acceptable (neutral baseline +7 pts)";
+      }
+      breakdown.push({
+        category: "Location & Transit Proximity",
+        points: commutePts,
+        description: commuteReason
+      });
+
+      // 5. High School Trajectory Alignment (up to 5 pts)
+      let hsPts = 0;
+      let hsReason = "";
+      if (hsChoice !== 'any') {
+        if (hsChoice === school.hsKey) {
+          hsPts = 5;
+          hsReason = `Direct alignment with target high school pathway (+5 pts)`;
+          matchReasons.push("High alignment with your target high school trajectory");
+        } else {
+          hsPts = 1;
+          hsReason = "General matriculation across multiple high schools (+1 pt)";
+        }
+      } else {
+        hsPts = 3;
+        hsReason = "Open to all high school pathways (neutral baseline +3 pts)";
+      }
+      breakdown.push({
+        category: "High School Trajectory",
+        points: hsPts,
+        description: hsReason
+      });
+
+      // Total clean summation (strictly 0 - 100 pts)
+      const rawTotal = baseScore + personalityPts + subjectPts + scalePts + commutePts + hsPts;
+      const finalScore = Math.min(100, Math.round(rawTotal));
+      const uniqueReasons = Array.from(new Set(matchReasons)).slice(0, 3);
+
+      return {
+        finalScore,
+        rawTotal: Math.round(rawTotal * 10) / 10,
+        breakdown,
+        topReasons: uniqueReasons
+      };
+    }
+
+    function runQuizMatching() {
+      const sectorChoice = document.getElementById('quiz-sector')?.value || 'all';
+
+      const scoredSchools = SF_SCHOOLS.map(school => {
+        // Sector Filter
+        if (sectorChoice === 'public_only' && school.sector === 'Independent Private') return null;
+        if (sectorChoice === 'independent_only' && school.sector !== 'Independent Private') return null;
+
+        const { finalScore, topReasons } = calculateSchoolFitScore(school);
+
+        return {
+          ...school,
+          fitScore: finalScore,
+          topReasons
+        };
+      }).filter(Boolean);
+
+      scoredSchools.sort((a, b) => b.fitScore - a.fitScore);
+      renderQuizResults(scoredSchools.slice(0, 10));
+    }
+
+    function renderQuizResults(matches) {
+      const container = document.getElementById('quiz-results-container');
+      if (!container) return;
+
+      if (matches.length === 0) {
+        container.innerHTML = `<div class="p-4 text-center text-xs text-slate-500">No schools match your exact sector filters. Try selecting "Include Both Public & Independent".</div>`;
+        return;
+      }
+
+      container.innerHTML = matches.map((school, index) => {
+        const medal = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : `#${index + 1}`;
+        return `
+          <div class="py-3 group transition flex flex-col space-y-1.5 cursor-pointer" onclick="openModal('${school.id}')">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <span class="text-sm font-bold text-slate-400 w-6">${medal}</span>
+                <div>
+                  <h4 class="font-display font-bold text-sm text-slate-900 group-hover:text-brand-teal transition-colors flex items-center">
+                    ${school.name}
+                  </h4>
+                  <span class="text-[11px] text-slate-400">${school.neighborhood} • ${school.sector}</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="font-display font-extrabold text-sm text-brand-marine">${school.fitScore}%</span>
+                <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Fit Score</span>
+              </div>
+            </div>
+
+            <!-- Match Highlights -->
+            <div class="pl-8 flex flex-wrap gap-1">
+              ${school.topReasons.map(r => `<span class="badge-pill bg-teal-50 text-teal-800 border border-teal-200/60 text-[10px]">✓ ${r}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setDirectorySectorFilter(sec) {
+      directorySectorFilter = sec;
+      document.querySelectorAll('.sector-filter-btn').forEach(b => {
+        b.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+        b.classList.add('text-slate-600');
+      });
+      if (sec === 'all') document.getElementById('sec-btn-all').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'SFUSD Comprehensive') document.getElementById('sec-btn-comp').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'SFUSD K-8') document.getElementById('sec-btn-k8').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'Independent Private') document.getElementById('sec-btn-priv').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      renderDirectoryCards();
+    }
+
+    function renderDirectoryCards() {
+      const grid = document.getElementById('directory-grid');
+      if (!grid) return;
+
+      const searchTerm = (document.getElementById('dir-search')?.value || '').toLowerCase();
+      const hoodFilter = document.getElementById('dir-filter-hood')?.value || 'all';
+      const langFilter = document.getElementById('dir-filter-lang')?.value || 'all';
+      const specFilter = document.getElementById('dir-filter-spec')?.value || 'all';
+
+      const filtered = SF_SCHOOLS.filter(s => {
+        if (directorySectorFilter !== 'all') {
+          if (directorySectorFilter === 'SFUSD Comprehensive') {
+            if (s.sector !== 'SFUSD Comprehensive' && s.sector !== 'Public Charter') return false;
+          } else if (s.sector !== directorySectorFilter) {
+            return false;
+          }
+        }
+        if (hoodFilter !== 'all' && s.neighborhood !== hoodFilter) return false;
+        if (langFilter !== 'all' && s.languageKey !== langFilter) return false;
+        if (specFilter !== 'all' && !s.specialties.includes(specFilter)) return false;
+        if (searchTerm && !s.name.toLowerCase().includes(searchTerm) && !s.neighborhood.toLowerCase().includes(searchTerm)) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-sm">No schools match your search and filter criteria.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(school => {
+        const isCompared = currentComparison.includes(school.id);
+        const sectorBadgeColor = school.sector === 'SFUSD Comprehensive' 
+          ? 'bg-teal-50 text-teal-800 border-teal-200' 
+          : school.sector === 'Public Charter'
+          ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
+          : school.sector === 'SFUSD K-8' 
+          ? 'bg-indigo-50 text-indigo-800 border-indigo-200' 
+          : 'bg-purple-50 text-purple-800 border-purple-200';
+
+        return `
+          <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="badge-pill border text-[10px] font-bold ${sectorBadgeColor} mb-1.5">${school.sector}</span>
+                  <h3 class="font-display font-bold text-base text-slate-900 hover:text-brand-teal cursor-pointer" onclick="openModal('${school.id}')">
+                    ${school.name}
+                  </h3>
+                  <p class="text-xs text-slate-500">${school.neighborhood} • ${school.scaleCategory}</p>
+                </div>
+                <button onclick="toggleComparison('${school.id}')" title="Add to comparison" class="p-1.5 rounded-xl border ${isCompared ? 'bg-brand-teal text-white border-brand-teal' : 'text-slate-400 border-slate-200 hover:border-slate-300'} text-xs font-bold">
+                  ${isCompared ? '✓ Compare' : '+ Compare'}
+                </button>
+              </div>
+
+              <!-- Key Attributes -->
+              <div class="space-y-1.5 text-xs text-slate-600">
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">High School:</span>
+                  <span class="font-medium text-purple-900 truncate">${school.hsFeeders}</span>
+                </div>
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Languages:</span>
+                  <span class="text-slate-800 truncate">${school.languages[0] || 'Standard'}</span>
+                </div>
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Muni Lines:</span>
+                  <span class="text-slate-700 font-semibold">${school.muni}</span>
+                </div>
+              </div>
+
+              <!-- Demographics snippet -->
+              <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 text-[11px] text-slate-600">
+                <strong class="text-slate-800 block text-[10px] uppercase tracking-wider mb-0.5">Demographics Profile:</strong>
+                <span class="line-clamp-1">${school.demographics ? school.demographics.summary : 'Certified CDE Data'}</span>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-700">${school.tuition}</span>
+              <button onclick="openModal('${school.id}')" class="text-xs font-bold text-brand-teal hover:underline flex items-center">
+                <span>Inspect Profile</span>
+                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function initOrRefreshMap() {
+      const container = document.getElementById('sf-map-canvas');
+      if (!container) return;
+
+      if (!sfMap) {
+        sfMap = L.map('sf-map-canvas').setView([37.760, -122.440], 12);
+
+        // Esri World Street Map: Clean, high-resolution tiles with no watermarks or API key requirements
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+          maxZoom: 18,
+          attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, USGS, NPS'
+        }).addTo(sfMap);
+      }
+
+      // Clear existing pins
+      mapMarkers.forEach(m => sfMap.removeLayer(m));
+      mapMarkers = [];
+
+      // Render custom pins
+      SF_SCHOOLS.forEach(school => {
+        const markerBg = (school.sector === 'SFUSD Comprehensive' || school.sector === 'Public Charter') ? '#0d9488' : school.sector === 'SFUSD K-8' ? '#4f46e5' : '#9333ea';
+        const customIcon = L.divIcon({
+          className: 'custom-map-pin',
+          html: `<div class="custom-marker-icon" style="background-color: ${markerBg}; width: 26px; height: 26px;">${school.name.charAt(0)}</div>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        });
+
+        const popupContent = `
+          <div class="text-xs">
+            <strong class="font-bold text-slate-900 block text-sm mb-0.5">${school.name}</strong>
+            <span class="badge-pill bg-slate-100 text-slate-700 text-[10px] mb-1.5">${school.sector}</span>
+            <p class="text-slate-600 text-[11px] mb-1">${school.address}</p>
+            <p class="text-purple-900 font-semibold text-[11px] mb-2">Feeds to: ${school.hsFeeders.substring(0, 60)}...</p>
+            <button onclick="openModal('${school.id}')" class="px-3 py-1 bg-teal-600 text-white font-bold rounded-lg text-[10px]">Open Profile</button>
+          </div>
+        `;
+
+        const marker = L.marker([school.lat, school.lng], { icon: customIcon }).bindPopup(popupContent).addTo(sfMap);
+        mapMarkers.push(marker);
+      });
+
+      sfMap.invalidateSize();
+    }
+
+    function updateCompareBadge() {
+      const badge = document.getElementById('compare-badge-count');
+      if (!badge) return;
+      if (currentComparison.length > 0) {
+        badge.innerText = currentComparison.length;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    }
+
+    function toggleComparison(schoolId) {
+      if (currentComparison.includes(schoolId)) {
+        currentComparison = currentComparison.filter(id => id !== schoolId);
+        showToast("Removed from comparison.");
+      } else {
+        if (currentComparison.length >= 3) {
+          showToast("Comparison is limited to 3 schools.", "⚠️");
+          return;
+        }
+        currentComparison.push(schoolId);
+        showToast("Added to comparison matrix!");
+      }
+      updateCompareBadge();
+      renderDirectoryCards();
+      renderComparisonTable();
+    }
+
+    function clearComparison() {
+      currentComparison = [];
+      updateCompareBadge();
+      renderDirectoryCards();
+      renderComparisonTable();
+      showToast("Comparison cleared.");
+    }
+
+    function handleComparisonDropdown(index, schoolId) {
+      if (!schoolId) {
+        currentComparison.splice(index, 1);
+      } else {
+        currentComparison[index] = schoolId;
+      }
+      updateCompareBadge();
+      renderComparisonTable();
+    }
+
+    function renderComparisonTable() {
+      const tableWrapper = document.getElementById('comparison-table-wrapper');
+      if (!tableWrapper) return;
+
+      // Populate dropdowns
+      [0, 1, 2].forEach(i => {
+        const select = document.getElementById(`compare-select-${i}`);
+        if (!select) return;
+        select.innerHTML = '<option value="">Select a School...</option>' + 
+          SF_SCHOOLS.map(s => `<option value="${s.id}" ${currentComparison[i] === s.id ? 'selected' : ''}>${s.name}</option>`).join('');
+      });
+
+      const selectedSchools = currentComparison.map(id => SF_SCHOOLS.find(s => s.id === id)).filter(Boolean);
+
+      if (selectedSchools.length === 0) {
+        tableWrapper.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Select schools above or click "+ Compare" in the directory to inspect side-by-side.</div>`;
+        return;
+      }
+
+      const rows = [
+        { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>` },
+        { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
+        { label: "Scale & Teaming Model", get: s => `<strong>${s.scaleCategory}</strong> (~${s.enrollment} students)<br><span class="text-[11px] text-slate-500">${s.scaleDetail}</span>` },
+        { label: "Demographics & Socioeconomics", get: s => s.demographics ? `<strong>${s.demographics.summary}</strong><br><span class="text-[11px] text-amber-800 font-semibold">${s.demographics.sed || ''}</span>` : 'Certified CDE Data' },
+        { label: "Neighborhood & Muni", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-slate-500 text-[11px]">Muni: ${s.muni}</span>` },
+        { label: "Languages & Biliteracy", get: s => s.languages.join('<br>') },
+        { label: "Arts & Performing Electives", get: s => s.arts },
+        { label: "Athletics", get: s => s.sports },
+        { label: "Bell Hours", get: s => s.bellHours }
+      ];
+
+      tableWrapper.innerHTML = `
+        <table class="w-full text-left text-xs border border-slate-200 rounded-2xl overflow-hidden">
+          <thead class="bg-slate-100 text-slate-700">
+            <tr>
+              <th class="p-3 font-bold uppercase text-[10px] w-1/4">Feature</th>
+              ${selectedSchools.map(s => `<th class="p-3 font-bold text-sm text-slate-900">${s.name}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 bg-white">
+            ${rows.map(r => `
+              <tr>
+                <td class="p-3 font-bold text-slate-600 bg-slate-50/50 align-top">${r.label}</td>
+                ${selectedSchools.map(s => `<td class="p-3 align-top leading-relaxed text-slate-700">${r.get(s)}</td>`).join('')}
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function openModal(schoolId) {
+      const school = SF_SCHOOLS.find(s => s.id === schoolId);
+      if (!school) return;
+
+      document.getElementById('modal-name').innerText = school.name;
+      document.getElementById('modal-sector').innerText = school.sector;
+      document.getElementById('modal-address').innerText = school.address;
+      document.getElementById('modal-enrollment').innerText = school.enrollment;
+      document.getElementById('modal-bell').innerText = school.bellHours;
+      document.getElementById('modal-muni').innerText = school.muni;
+      document.getElementById('modal-afterschool').innerText = school.tuition;
+      document.getElementById('modal-hs-pipeline').innerText = school.hsFeeders;
+      document.getElementById('modal-description').innerText = school.description;
+      document.getElementById('modal-scale-detail').innerText = school.scaleDetail;
+      document.getElementById('modal-languages').innerText = school.languages.join(', ');
+      document.getElementById('modal-arts').innerText = school.arts;
+      document.getElementById('modal-sports').innerText = school.sports;
+      document.getElementById('modal-feeders').innerText = school.feeders;
+
+      // Populate Dynamic Fit Score Calculation Breakdown
+      const fitData = calculateSchoolFitScore(school);
+      const scoreBadge = document.getElementById('modal-fit-score-badge');
+      if (scoreBadge) scoreBadge.innerText = `${fitData.finalScore}%`;
+
+      const fitBreakdownContainer = document.getElementById('modal-fit-breakdown');
+      if (fitBreakdownContainer) {
+        fitBreakdownContainer.innerHTML = fitData.breakdown.map(item => `
+          <div class="pt-1.5 first:pt-0 flex items-start justify-between gap-3">
+            <div class="space-y-0.5">
+              <strong class="text-slate-800 font-semibold block text-[11px]">${item.category}</strong>
+              <p class="text-[10px] text-slate-500 leading-snug">${item.description}</p>
+            </div>
+            <span class="badge-pill bg-teal-100 text-teal-800 font-bold text-[10px] whitespace-nowrap">+${item.points} pts</span>
+          </div>
+        `).join('') + `
+          <div class="pt-2 flex items-center justify-between text-[11px] font-bold text-slate-700 border-t border-teal-200/80">
+            <span>Points Earned: ${fitData.rawTotal} / 100 max pts</span>
+            <span class="text-brand-marine font-extrabold text-xs">Total Fit Score: ${fitData.finalScore}%</span>
+          </div>
+        `;
+      }
+
+      const demoContainer = document.getElementById('modal-demographics-container');
+      if (demoContainer && school.demographics) {
+        demoContainer.innerHTML = `
+          <div class="font-semibold text-slate-800 mb-1">${school.demographics.summary}</div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            ${school.demographics.sed ? `<span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-semibold text-[11px]">${school.demographics.sed}</span>` : ''}
+            ${school.demographics.el ? `<span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200 font-semibold text-[11px]">${school.demographics.el}</span>` : ''}
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            ${(school.demographics.breakdown || []).map(b => `
+              <div class="p-2 bg-white rounded-xl border border-slate-200 text-center">
+                <span class="block font-extrabold text-brand-marine text-xs">${b.pct}</span>
+                <span class="text-[10px] text-slate-500">${b.label}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      document.getElementById('school-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('school-modal').classList.add('hidden');
+    }
+
+    function openSourcesModal() {
+      document.getElementById('sources-modal').classList.remove('hidden');
+    }
+
+    function closeSourcesModal() {
+      document.getElementById('sources-modal').classList.add('hidden');
+    }
+
+    function openScaleExplainerModal() {
+      document.getElementById('scale-modal').classList.remove('hidden');
+    }
+
+    function closeScaleExplainerModal() {
+      document.getElementById('scale-modal').classList.add('hidden');
+    }
+
+    function openScoringModal() {
+      document.getElementById('scoring-modal').classList.remove('hidden');
+    }
+
+    function closeScoringModal() {
+      document.getElementById('scoring-modal').classList.add('hidden');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runQuizMatching();
+      renderDirectoryCards();
+      updateCompareBadge();
+
+      // Keyboard escape for modal closures
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeModal();
+          closeSourcesModal();
+          closeScaleExplainerModal();
+          closeScoringModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
