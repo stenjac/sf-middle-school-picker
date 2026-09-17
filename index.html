@@ -1,4 +1,3 @@
-<!-- ... existing code ... -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -432,7 +431,7 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 31 schools.</p>
+            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, electives, and feeder pathways across 31 schools.</p>
           </div>
 
           <!-- Sector filter buttons -->
@@ -526,7 +525,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Side-by-Side School Comparison</h2>
-            <p class="text-xs sm:text-sm text-slate-500">Compare up to 3 middle schools across demographics, class size, teacher retention, climate data, and lottery odds.</p>
+            <p class="text-xs sm:text-sm text-slate-500">Compare up to 3 middle schools across demographics, high school pipelines, teaming models, and electives.</p>
           </div>
 
           <button onclick="clearComparison()" class="text-xs font-bold text-rose-600 hover:underline">Clear Comparison Selection</button>
@@ -619,7 +618,7 @@
           </div>
           <div>
             <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Official Data Sources, Citations & Methodology</h2>
-            <p class="text-xs sm:text-sm text-slate-500">Certified public filings, California School Dashboard, and reporting databases utilized across this application</p>
+            <p class="text-xs sm:text-sm text-slate-500">Certified public filings and reporting databases utilized across this application</p>
           </div>
         </div>
 
@@ -627,10 +626,10 @@
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
             <h4 class="font-bold text-slate-900 text-sm flex items-center">
               <span class="w-2 h-2 rounded-full bg-brand-teal mr-2"></span>
-              California Department of Education (CDE) & CA School Dashboard
+              California Department of Education (CDE)
             </h4>
-            <p><strong>DataQuest, SARC & School Dashboard:</strong> Certified student enrollments, teacher retention rates, average years of experience, student-teacher ratios, suspension rates, chronic absenteeism, and California Healthy Kids Survey (CHKS) climate results.</p>
-            <div class="text-[11px] text-brand-teal font-semibold">caschooldashboard.org & cde.ca.gov</div>
+            <p><strong>DataQuest & School Accountability Report Cards (SARC):</strong> Certified student enrollments, racial/ethnic demographics, socioeconomically disadvantaged percentages (SED), and English Learners (EL).</p>
+            <div class="text-[11px] text-brand-teal font-semibold">cde.ca.gov/dataquest & sarconline.org</div>
           </div>
 
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
@@ -638,7 +637,7 @@
               <span class="w-2 h-2 rounded-full bg-brand-bridge mr-2"></span>
               SFUSD Educational Placement Center (EPC)
             </h4>
-            <p><strong>District Enrollment Guides & Feeder Matrices:</strong> Official 5th-to-6th grade lottery tiebreaker hierarchy, historical round 1 admission odds, feeder elementary mappings, and language continuation prerequisites.</p>
+            <p><strong>District Enrollment Guides & Feeder Matrices:</strong> Official 5th-to-6th grade lottery tiebreaker hierarchy, feeder elementary mappings, and language continuation prerequisites.</p>
             <div class="text-[11px] text-brand-bridge font-semibold">sfusd.edu/enroll</div>
           </div>
 
@@ -647,7 +646,7 @@
               <span class="w-2 h-2 rounded-full bg-purple-600 mr-2"></span>
               NCES & CAIS / NAIS Independent Databases
             </h4>
-            <p><strong>Private School Universe Survey (PSS):</strong> Certified independent school student enrollments, faculty retention, student of color (SOC) ratios, and published need-based financial aid rates.</p>
+            <p><strong>Private School Universe Survey (PSS):</strong> Certified independent school student enrollments, Students of Color (SOC) ratios, and published need-based financial aid rates.</p>
             <div class="text-[11px] text-purple-700 font-semibold">nces.ed.gov/surveys/pss & caisca.org</div>
           </div>
 
@@ -681,10 +680,14 @@
       </div>
 
       <!-- Quick Metrics Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center">
         <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
           <span class="text-[10px] uppercase font-bold text-slate-400 block">Enrollment</span>
           <span id="modal-enrollment" class="font-bold text-slate-800 text-sm">1,050</span>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Bell Hours</span>
+          <span id="modal-bell" class="font-bold text-slate-800 text-xs">8:40 AM - 3:10 PM</span>
         </div>
         <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
           <span class="text-[10px] uppercase font-bold text-slate-400 block">Class Size / Ratio</span>
@@ -721,25 +724,6 @@
         </div>
       </div>
 
-      <!-- Historical Admission Odds & Tie-Breaker Priority -->
-      <div class="bg-blue-50/70 p-4 rounded-2xl border border-blue-200 space-y-2">
-        <div class="font-display font-bold text-blue-900 text-xs uppercase tracking-wider flex items-center">
-          <svg class="w-4 h-4 mr-1 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          Historical Admission Odds & Tie-Breaker Priorities
-        </div>
-        <p id="modal-lottery-odds" class="text-xs text-blue-950 font-medium leading-relaxed">
-          High demand in Round 1. Strongest odds for students with feeder elementary preference or sibling tiebreakers.
-        </p>
-      </div>
-
-      <!-- Teacher Retention & School Climate Dashboard Data -->
-      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-        <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">California School Dashboard & Climate Metrics</h4>
-        <div id="modal-dashboard-metrics" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-
       <!-- High School Pipelines -->
       <div class="bg-purple-50/70 p-3.5 rounded-2xl border border-purple-200">
         <div class="font-display font-bold text-purple-900 text-xs uppercase tracking-wider mb-1 flex items-center">
@@ -755,7 +739,7 @@
       <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
         <div class="flex items-center justify-between mb-1.5">
           <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Student Demographics & Socioeconomics</h4>
-          <span class="text-[10px] font-bold text-slate-400 uppercase">CDE / SARC Certified</span>
+          <span class="text-[10px] font-bold text-slate-400 uppercase">CDE / SARC / NCES Certified</span>
         </div>
         <div id="modal-demographics-container" class="space-y-2 text-xs">
           <!-- Populated by JS -->
@@ -803,12 +787,12 @@
         <button onclick="closeSourcesModal()" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
       </div>
       <p class="text-xs text-slate-600 leading-relaxed">
-        All demographic, teacher retention, climate data, and lottery odds are compiled from certified public filings across:
+        All demographic, enrollment, and feeder data are compiled from certified public filings across:
       </p>
       <ul class="text-xs text-slate-600 space-y-2 list-disc pl-5">
-        <li><strong>California School Dashboard & CDE DataQuest / SARC:</strong> Certified student enrollments, teacher retention rates, average faculty experience, student-teacher ratios, suspension rates, chronic absenteeism, and California Healthy Kids Survey (CHKS) climate results.</li>
-        <li><strong>SFUSD Educational Placement Center:</strong> Official 5th-to-6th feeder matrices, historical Round 1 lottery odds, and tiebreaker priority rules.</li>
-        <li><strong>NCES & CAIS Member Directory:</strong> Independent school tuition, faculty retention, financial aid rates, and student of color percentages.</li>
+        <li><strong>California Department of Education (CDE DataQuest / SARC):</strong> Certified enrollment counts, racial/ethnic sub-groups, socioeconomically disadvantaged percentages, and English Learners.</li>
+        <li><strong>SFUSD Educational Placement Center:</strong> Official 5th-to-6th feeder matrices and lottery preference rules.</li>
+        <li><strong>NCES & CAIS Member Directory:</strong> Independent school tuition, financial aid rates, and student of color percentages.</li>
         <li><strong>SFMTA Muni Transit:</strong> Active bus and light rail route mapping.</li>
       </ul>
       <div class="pt-2 flex justify-end">
@@ -858,7 +842,7 @@
           <li><strong>Favorite Subjects & Passions (up to 30 pts):</strong> Heavily weighted (+10 pts per matched subject up to 3) for verified electives like Band, STEM Maker labs, Dual Immersion, or League Athletics.</li>
           <li><strong>School Scale & Teaming Structure (up to 15 pts):</strong> +15 pts for matching preferred Mega House cohorts, Mid-Sized hubs, or K-8/Private continuity (or +7 pts baseline if open to any).</li>
           <li><strong>Neighborhood / Commute Proximity (up to 15 pts):</strong> +15 pts for schools in your preferred transit quadrant (+7 pts if citywide).</li>
-          <li><strong>Target High School Trajectory (up to 10 pts):</strong> +10 pts for direct alignment with Lowell, SOTA, or independent prep high school pathways.</li>
+          <li><strong>Target High School Trajectory (up to 5 pts):</strong> +5 pts for direct alignment with Lowell, SOTA, or independent prep high school pathways.</li>
           <li><strong>Base Foundation (5 pts):</strong> California middle grades core curriculum baseline.</li>
           <li class="font-semibold text-brand-marine">Total maximum possible = 100 points.</li>
         </ul>
@@ -886,7 +870,7 @@
   </footer>
 
   <script>
-    /* Complete Database of 31 San Francisco Middle Schools with Dashboard & Admission Odds */
+    /* Complete Database of 29 San Francisco Middle Schools */
     const SF_SCHOOLS = [
       // 1. PRESIDIO
       {
@@ -918,16 +902,6 @@
         hsFeeders: "High matriculation to Lowell High School, George Washington HS, Galileo STEM Academy, and Ruth Asawa SOTA.",
         hsKey: "lowell_academic",
         specialties: ["Music", "STEM", "Sports"],
-        lotteryOdds: "High demand in Round 1. Strongest assignment odds for students with Feeder Elementary preference or Sibling tiebreakers. General random lottery seats are competitive.",
-        dashboardMetrics: {
-          studentTeacherRatio: "21:1",
-          avgClassSize: "26 students",
-          teacherRetention: "88% retention rate",
-          avgTeacherExperience: "14.2 years avg experience",
-          suspensionRate: "0.8% (Low)",
-          chronicAbsenteeism: "11.2% (Moderate)",
-          chksBelonging: "78% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "53% Asian, 19% White, 11% Hispanic/Latino, 9% Multi-ethnic, 3% Black/African American",
           sed: "36% Socioeconomically Disadvantaged",
@@ -971,16 +945,6 @@
         hsFeeders: "Top city feeder to Lowell High School, Abraham Lincoln High School (West Side pipeline), and St. Ignatius.",
         hsKey: "lowell_academic",
         specialties: ["Music", "Sports", "STEM"],
-        lotteryOdds: "Extremely high first-choice demand. Feeder elementary and CTIP1 tiebreakers significantly boost Round 1 placement odds.",
-        dashboardMetrics: {
-          studentTeacherRatio: "22:1",
-          avgClassSize: "28 students",
-          teacherRetention: "91% retention rate",
-          avgTeacherExperience: "15.5 years avg experience",
-          suspensionRate: "0.5% (Very Low)",
-          chronicAbsenteeism: "9.8% (Low)",
-          chksBelonging: "82% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "62% Asian, 14% White, 10% Hispanic/Latino, 7% Multi-ethnic, 2% Black/African American",
           sed: "34% Socioeconomically Disadvantaged",
@@ -1024,16 +988,6 @@
         hsFeeders: "Strong pipelines to Lowell High School, Abraham Lincoln High School, and George Washington HS.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Sports", "Music"],
-        lotteryOdds: "Strong Round 1 availability for West Portal and Sunset resident families with feeder or CTIP priorities.",
-        dashboardMetrics: {
-          studentTeacherRatio: "20:1",
-          avgClassSize: "25 students",
-          teacherRetention: "87% retention rate",
-          avgTeacherExperience: "13.1 years avg experience",
-          suspensionRate: "1.2% (Moderate)",
-          chronicAbsenteeism: "12.4% (Moderate)",
-          chksBelonging: "76% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "51% Asian, 19% Hispanic/Latino, 13% White, 8% Multi-ethnic, 3% Black/African American",
           sed: "46% Socioeconomically Disadvantaged",
@@ -1078,16 +1032,6 @@
         hsFeeders: "Primary feeder to George Washington High School, Wallenberg HS, Ruth Asawa SOTA, and Lowell.",
         hsKey: "sota_arts",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Good Round 1 match rates for neighborhood families and Spanish immersion continuation applicants.",
-        dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "89% retention rate",
-          avgTeacherExperience: "14.0 years avg experience",
-          suspensionRate: "0.7% (Low)",
-          chronicAbsenteeism: "10.5% (Moderate)",
-          chksBelonging: "80% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "37% Asian, 29% White, 17% Hispanic/Latino, 9% Multi-ethnic, 4% Black/African American",
           sed: "33% Socioeconomically Disadvantaged",
@@ -1130,16 +1074,6 @@
         hsFeeders: "Direct articulation pipeline to Galileo Academy of Science & Technology, Lowell, and Washington HS.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Music", "Sports"],
-        lotteryOdds: "Balanced Round 1 assignment odds. Excellent placement security for Northeast and North Beach feeder school graduates.",
-        dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "24 students",
-          teacherRetention: "85% retention rate",
-          avgTeacherExperience: "12.8 years avg experience",
-          suspensionRate: "1.4% (Moderate)",
-          chronicAbsenteeism: "14.1% (Moderate)",
-          chksBelonging: "75% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "56% Asian, 18% Hispanic/Latino, 11% White, 6% Multi-ethnic, 4% Black/African American",
           sed: "58% Socioeconomically Disadvantaged",
@@ -1181,16 +1115,6 @@
         hsFeeders: "High matriculation to Galileo Science Academy, Lowell High School, and George Washington HS.",
         hsKey: "lowell_academic",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "High assignment success in Round 1 for Chinatown and North Beach feeder elementary graduates.",
-        dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "90% retention rate",
-          avgTeacherExperience: "15.1 years avg experience",
-          suspensionRate: "0.6% (Low)",
-          chronicAbsenteeism: "11.0% (Moderate)",
-          chksBelonging: "79% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "71% Asian, 14% Hispanic/Latino, 6% White, 4% Multi-ethnic, 3% Black/African American",
           sed: "73% Socioeconomically Disadvantaged",
@@ -1232,16 +1156,6 @@
         hsFeeders: "Top feeder to Ruth Asawa SOTA (performing arts), Lowell High School, Lincoln HS, and Balboa HS.",
         hsKey: "sota_arts",
         specialties: ["Music", "Sports", "Arts"],
-        lotteryOdds: "High demand in Round 1 from West Portal and Miraloma families. Feeder and sibling tiebreakers are decisive.",
-        dashboardMetrics: {
-          studentTeacherRatio: "21:1",
-          avgClassSize: "26 students",
-          teacherRetention: "88% retention rate",
-          avgTeacherExperience: "13.8 years avg experience",
-          suspensionRate: "1.1% (Moderate)",
-          chronicAbsenteeism: "12.0% (Moderate)",
-          chksBelonging: "77% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "37% Hispanic/Latino, 32% Asian, 13% White, 8% Multi-ethnic, 6% Black/African American",
           sed: "52% Socioeconomically Disadvantaged",
@@ -1284,16 +1198,6 @@
         hsFeeders: "Strong Spanish immersion continuation pipeline to Mission High School, John O'Connell, and Lincoln.",
         hsKey: "any_hs",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "High application volume for Spanish dual immersion tracks. Immersion continuity applicants hold preference.",
-        dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "92% retention rate",
-          avgTeacherExperience: "16.2 years avg experience",
-          suspensionRate: "0.9% (Low)",
-          chronicAbsenteeism: "13.5% (Moderate)",
-          chksBelonging: "81% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "74% Hispanic/Latino, 11% White, 6% Asian, 5% Black/African American, 3% Multi-ethnic",
           sed: "77% Socioeconomically Disadvantaged",
@@ -1335,16 +1239,6 @@
         hsFeeders: "Mission High School, Ruth Asawa SOTA, Lincoln, and Lowell.",
         hsKey: "sota_arts",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "Accessible Round 1 assignment rates for Central and Mission corridor residents.",
-        dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "86% retention rate",
-          avgTeacherExperience: "11.9 years avg experience",
-          suspensionRate: "1.8% (Moderate)",
-          chronicAbsenteeism: "16.2% (Moderate)",
-          chksBelonging: "74% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "63% Hispanic/Latino, 13% White, 10% Black/African American, 7% Asian, 5% Multi-ethnic",
           sed: "69% Socioeconomically Disadvantaged",
@@ -1386,16 +1280,6 @@
         hsFeeders: "Balboa High School, Phillip & Sala Burton Academic High School, and Lowell.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Sports"],
-        lotteryOdds: "High Round 1 availability. Excellent assignment odds for Southeast SF residents and CTIP1 priority applicants.",
-        dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "84% retention rate",
-          avgTeacherExperience: "10.4 years avg experience",
-          suspensionRate: "2.1% (Moderate)",
-          chronicAbsenteeism: "18.4% (Elevated)",
-          chksBelonging: "73% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "37% Black/African American, 36% Hispanic/Latino, 11% Asian, 7% Pacific Islander, 4% Multi-ethnic",
           sed: "79% Socioeconomically Disadvantaged",
@@ -1437,16 +1321,6 @@
         hsFeeders: "Burton High School, Balboa High School, and John O'Connell High.",
         hsKey: "any_hs",
         specialties: ["Sports"],
-        lotteryOdds: "Guaranteed or near-guaranteed Round 1 placement for local neighborhood and CTIP1 applicants.",
-        dashboardMetrics: {
-          studentTeacherRatio: "16:1",
-          avgClassSize: "20 students",
-          teacherRetention: "83% retention rate",
-          avgTeacherExperience: "11.2 years avg experience",
-          suspensionRate: "2.4% (Moderate)",
-          chronicAbsenteeism: "19.5% (Elevated)",
-          chksBelonging: "72% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "42% Asian, 37% Hispanic/Latino, 11% Black/African American, 5% Pacific Islander, 3% White",
           sed: "82% Socioeconomically Disadvantaged",
@@ -1488,16 +1362,6 @@
         hsFeeders: "Extremely high acceptance rate to Lowell High School and Abraham Lincoln HS.",
         hsKey: "lowell_academic",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Extremely competitive for external applicants. 95%+ of 6th grade seats filled by continuing AFY 5th graders.",
-        dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "95% retention rate",
-          avgTeacherExperience: "17.4 years avg experience",
-          suspensionRate: "0.2% (Very Low)",
-          chronicAbsenteeism: "6.5% (Very Low)",
-          chksBelonging: "88% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "78% Asian, 10% Multi-ethnic, 7% White, 4% Hispanic/Latino",
           sed: "18% Socioeconomically Disadvantaged",
@@ -1508,7 +1372,7 @@
             { label: "White", pct: "7%" }
           ]
         },
-        description: "The nation's first Chinese Cantonese immersion public school. Middle school students continue an intimate biliteracy curriculum in an intimate K-8 campus."
+        description: "The nation's first Chinese Cantonese immersion public school. Middle school students continue an intensive biliteracy curriculum in an intimate K-8 campus."
       },
       // 13. CLAIRE LILIENTHAL (K-8)
       {
@@ -1539,16 +1403,6 @@
         hsFeeders: "Very high matriculation to Lowell High School, Galileo Academy, and independent prep high schools (Lick, Urban, University).",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Music"],
-        lotteryOdds: "High demand with limited external 6th grade vacancies due to K-8 elementary continuation.",
-        dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "93% retention rate",
-          avgTeacherExperience: "16.8 years avg experience",
-          suspensionRate: "0.3% (Very Low)",
-          chronicAbsenteeism: "7.1% (Low)",
-          chksBelonging: "86% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "38% White, 32% Asian, 14% Multi-ethnic, 11% Hispanic/Latino, 3% Black/African American",
           sed: "14% Socioeconomically Disadvantaged",
@@ -1590,16 +1444,6 @@
         hsFeeders: "High acceptance and continuation to Lowell High School and Lincoln High School.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Music"],
-        lotteryOdds: "Competitive lottery; majority of seats reserved for continuing Lawton K-5 students.",
-        dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "91% retention rate",
-          avgTeacherExperience: "15.0 years avg experience",
-          suspensionRate: "0.4% (Very Low)",
-          chronicAbsenteeism: "8.2% (Low)",
-          chksBelonging: "84% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "68% Asian, 14% White, 9% Multi-ethnic, 6% Hispanic/Latino, 2% Black/African American",
           sed: "22% Socioeconomically Disadvantaged",
@@ -1641,16 +1485,6 @@
         hsFeeders: "Top city feeder to Ruth Asawa School of the Arts (SOTA), Lowell, and Lincoln.",
         hsKey: "sota_arts",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "High application demand for arts-focused families. Primary seats filled via K-5 elementary feeder pipeline.",
-        dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "94% retention rate",
-          avgTeacherExperience: "16.1 years avg experience",
-          suspensionRate: "0.3% (Very Low)",
-          chronicAbsenteeism: "7.9% (Low)",
-          chksBelonging: "87% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "42% White, 19% Asian, 18% Hispanic/Latino, 13% Multi-ethnic, 5% Black/African American",
           sed: "21% Socioeconomically Disadvantaged",
@@ -1692,16 +1526,6 @@
         hsFeeders: "Direct biliteracy bridge to Mission High School, John O'Connell, and Lincoln HS.",
         hsKey: "any_hs",
         specialties: ["Arts"],
-        lotteryOdds: "Strong priority for continuing BVHM bilingual students. External transfer seats depend on language fluency assessment.",
-        dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "88% retention rate",
-          avgTeacherExperience: "12.5 years avg experience",
-          suspensionRate: "1.0% (Low)",
-          chronicAbsenteeism: "15.0% (Moderate)",
-          chksBelonging: "80% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "83% Hispanic/Latino, 8% White, 4% Multi-ethnic, 3% Black/African American, 2% Asian",
           sed: "76% Socioeconomically Disadvantaged",
@@ -1745,16 +1569,6 @@
         hsFeeders: "San Francisco University High School, Urban School of SF, Lick-Wilmerding, Branson, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["STEM", "Arts", "Sports"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required; rolling timeline).",
-        dashboardMetrics: {
-          studentTeacherRatio: "8:1 (Low ratio)",
-          avgClassSize: "14 students",
-          teacherRetention: "96% faculty retention",
-          avgTeacherExperience: "18.5 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "48% Students of Color, 52% White • 30% Need-Based Financial Assistance",
           sed: "30% on Need-Based Aid",
@@ -1796,16 +1610,6 @@
         hsFeeders: "San Francisco University High School, Lick-Wilmerding, Urban School, St. Ignatius, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["STEM", "Sports", "Music"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "8:1 (Low ratio)",
-          avgClassSize: "15 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "16.8 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "93% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "45% Students of Color, 55% White • 25% Need-Based Financial Assistance",
           sed: "25% on Financial Aid",
@@ -1848,16 +1652,6 @@
         hsFeeders: "Lick-Wilmerding High School, Urban School of SF, University High School, and Ruth Asawa SOTA.",
         hsKey: "independent_prep",
         specialties: ["Arts", "STEM", "Music"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "15.2 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "92% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "49% Students of Color, 51% White • 24% Need-Based Financial Assistance",
           sed: "24% on Financial Aid",
@@ -1899,16 +1693,6 @@
         hsFeeders: "Lick-Wilmerding, Urban School of SF, University High School, Mission High, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["Arts", "STEM", "Music"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "14.8 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "47% Students of Color, 53% White • 26% Need-Based Financial Assistance",
           sed: "26% on Financial Aid",
@@ -1949,16 +1733,6 @@
         hsFeeders: "San Francisco University High School, Urban School, Lick-Wilmerding, and Marin Academy.",
         hsKey: "independent_prep",
         specialties: ["STEM", "Arts", "Music"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "15 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "17.1 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "44% Students of Color, 56% White • 22% Need-Based Financial Assistance",
           sed: "22% on Financial Aid",
@@ -1998,16 +1772,6 @@
         hsFeeders: "University High School, Lick-Wilmerding, Urban School, St. Ignatius, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "14 students",
-          teacherRetention: "96% faculty retention",
-          avgTeacherExperience: "18.0 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "96% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "43% Students of Color, 57% White • 23% Need-Based Financial Assistance",
           sed: "23% on Financial Aid",
@@ -2047,16 +1811,6 @@
         hsFeeders: "Urban School of SF, Lick-Wilmerding, University High School, Ruth Asawa SOTA, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["STEM", "Arts"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "15.4 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "93% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "51% Students of Color, 49% White • 27% Need-Based Financial Assistance",
           sed: "27% on Financial Aid",
@@ -2096,16 +1850,6 @@
         hsFeeders: "International High School (IB World School / French Bac), Lowell, Urban, and University HS.",
         hsKey: "independent_prep",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & French proficiency evaluation for native track).",
-        dashboardMetrics: {
-          studentTeacherRatio: "10:1",
-          avgClassSize: "18 students",
-          teacherRetention: "92% faculty retention",
-          avgTeacherExperience: "14.5 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "91% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "42% Multilingual Students of Color, 58% White • 20% Financial Aid",
           sed: "20% on Financial Aid",
@@ -2145,16 +1889,6 @@
         hsFeeders: "Lick-Wilmerding High School, Urban School, University High School, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["STEM", "Arts"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & Mandarin language assessment).",
-        dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "13.9 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "92% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "64% Asian / Students of Color, 36% White • 25% Need-Based Financial Assistance",
           sed: "25% on Financial Aid",
@@ -2195,16 +1929,6 @@
         hsFeeders: "Lick-Wilmerding High School, Urban School of SF, University High School, SOTA, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["Arts", "STEM"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "14.2 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "46% Students of Color, 54% White • 28% Need-Based Financial Assistance",
           sed: "28% on Financial Aid",
@@ -2244,16 +1968,6 @@
         hsFeeders: "Lick-Wilmerding, Urban School, University High School, Ruth Asawa SOTA, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "14 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "15.8 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "49% Students of Color, 51% White • 26% Need-Based Financial Assistance",
           sed: "26% on Financial Aid",
@@ -2293,16 +2007,6 @@
         hsFeeders: "Lowell High School, Lick-Wilmerding, University High School, Urban School, and Drew School.",
         hsKey: "independent_prep",
         specialties: ["STEM", "Sports"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "92% faculty retention",
-          avgTeacherExperience: "14.1 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "93% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "32% Multiracial/Diverse, 68% White • 32% Need-Based Financial Assistance",
           sed: "32% on Financial Aid",
@@ -2342,16 +2046,6 @@
         hsFeeders: "Direct continuation to Sterne High School or Bay Area prep high schools.",
         hsKey: "any_hs",
         specialties: ["Arts", "STEM"],
-        lotteryOdds: "Rolling independent admissions based on psychoeducational evaluation and student fit interview.",
-        dashboardMetrics: {
-          studentTeacherRatio: "6:1 (Specialized low ratio)",
-          avgClassSize: "10 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "16.4 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "97% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "38% Students of Color, 62% White • 35% Need-Based Financial Assistance",
           sed: "35% on Financial Aid",
@@ -2392,16 +2086,6 @@
         hsFeeders: "Direct matriculation to Gateway High School (top charter HS), Lowell High School, George Washington, and Lincoln.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Arts", "Sports"],
-        lotteryOdds: "Public charter random lottery open citywide. High application volume; early application submission recommended.",
-        dashboardMetrics: {
-          studentTeacherRatio: "14:1",
-          avgClassSize: "19 students",
-          teacherRetention: "91% retention rate",
-          avgTeacherExperience: "12.8 years avg experience",
-          suspensionRate: "1.1% (Low)",
-          chronicAbsenteeism: "10.2% (Moderate)",
-          chksBelonging: "89% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "35% Hispanic/Latino, 26% Black/African American, 16% White, 14% Asian, 9% Multi-ethnic",
           sed: "54% Socioeconomically Disadvantaged",
@@ -2446,16 +2130,6 @@
         hsFeeders: "International High School (French American), Lick-Wilmerding, Urban School of SF, University High School, St. Ignatius, and Lowell.",
         hsKey: "independent_prep",
         specialties: ["Arts", "STEM", "Sports"],
-        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
-        dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "13 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "13.6 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
-        },
         demographics: {
           summary: "44% Multilingual Students of Color, 56% White • 25% Need-Based Financial Assistance",
           sed: "25% on Financial Aid",
@@ -2567,7 +2241,7 @@
       showToast("Quiz preferences reset.");
     }
 
-    /* Computes full itemized point breakdown (Strict 100 pt budget: Personality 30, Subjects 30, Scale 15, Neighborhood 15, High School 10, Base 5) */
+    /* Computes full itemized point breakdown for any given school based on active quiz criteria */
     function calculateSchoolFitScore(school) {
       const selectedPersonalities = Array.from(document.querySelectorAll('input[name="personality"]:checked')).map(el => el.value);
       const selectedSubjects = Array.from(document.querySelectorAll('input[name="subject"]:checked')).map(el => el.value);
@@ -2586,7 +2260,7 @@
         description: "Standard California & SFUSD Middle School Core Curriculum Standards"
       });
 
-      // 1. Personality Matching (Up to 30 pts)
+      // 1. Personality Matching (Heavily weighted: up to 30 pts)
       let personalityPts = 0;
       let personalityItems = [];
       if (selectedPersonalities.length > 0) {
@@ -2620,14 +2294,14 @@
         });
       }
       breakdown.push({
-        category: "Student Personality Archetypes (30% Weight)",
+        category: "Personality Alignment (Heavy Weight)",
         points: Math.round(personalityPts * 10) / 10,
         description: personalityItems.length > 0 
           ? `Matched: ${personalityItems.join(', ')}` 
           : "No direct alignment with selected personality archetype(s)"
       });
 
-      // 2. Subject Passions Matching (Up to 30 pts, 10 pts per subject)
+      // 2. Subject Passions Matching (Heavily weighted: up to 30 pts, 10 pts per subject)
       let subjectPts = 0;
       let matchedSubjects = [];
       selectedSubjects.forEach(s => {
@@ -2642,8 +2316,8 @@
         }
       });
       breakdown.push({
-        category: "Favorite Subjects & Passions (30% Weight)",
-        points: Math.min(30, subjectPts),
+        category: "Favorite Subjects & Passions (Heavy Weight)",
+        points: subjectPts,
         description: matchedSubjects.length > 0 
           ? `Matched: ${matchedSubjects.join(', ')}` 
           : "Standard electives; specific specialist subject not emphasized"
@@ -2699,21 +2373,21 @@
         description: commuteReason
       });
 
-      // 5. High School Trajectory Alignment (up to 10 pts)
+      // 5. High School Trajectory Alignment (up to 5 pts)
       let hsPts = 0;
       let hsReason = "";
       if (hsChoice !== 'any') {
         if (hsChoice === school.hsKey) {
-          hsPts = 10;
-          hsReason = `Direct alignment with target high school pathway (+10 pts)`;
+          hsPts = 5;
+          hsReason = `Direct alignment with target high school pathway (+5 pts)`;
           matchReasons.push("High alignment with your target high school trajectory");
         } else {
-          hsPts = 2;
-          hsReason = "General matriculation across multiple high schools (+2 pts)";
+          hsPts = 1;
+          hsReason = "General matriculation across multiple high schools (+1 pt)";
         }
       } else {
-        hsPts = 5;
-        hsReason = "Open to all high school pathways (neutral baseline +5 pts)";
+        hsPts = 3;
+        hsReason = "Open to all high school pathways (neutral baseline +3 pts)";
       }
       breakdown.push({
         category: "High School Trajectory",
@@ -2721,8 +2395,8 @@
         description: hsReason
       });
 
-      // Total clean summation (strictly max 100 points budget)
-      const rawTotal = baseScore + personalityPts + Math.min(30, subjectPts) + scalePts + commutePts + hsPts;
+      // Total clean summation (strictly 0 - 100 pts)
+      const rawTotal = baseScore + personalityPts + subjectPts + scalePts + commutePts + hsPts;
       const finalScore = Math.min(100, Math.round(rawTotal));
       const uniqueReasons = Array.from(new Set(matchReasons)).slice(0, 3);
 
@@ -2868,19 +2542,19 @@
                   <span class="font-medium text-purple-900 truncate">${school.hsFeeders}</span>
                 </div>
                 <div class="flex items-center space-x-1.5">
-                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Ratio / Size:</span>
-                  <span class="text-slate-800 truncate">${school.dashboardMetrics ? school.dashboardMetrics.studentTeacherRatio : 'N/A'} • ${school.dashboardMetrics ? school.dashboardMetrics.avgClassSize : ''}</span>
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Languages:</span>
+                  <span class="text-slate-800 truncate">${school.languages[0] || 'Standard'}</span>
                 </div>
                 <div class="flex items-center space-x-1.5">
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Muni Lines:</span>
-                  <span class="text-slate-700 font-semibold truncate">${school.muni}</span>
+                  <span class="text-slate-700 font-semibold">${school.muni}</span>
                 </div>
               </div>
 
               <!-- Demographics snippet -->
               <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 text-[11px] text-slate-600">
-                <strong class="text-slate-800 block text-[10px] uppercase tracking-wider mb-0.5">Demographics & Retention:</strong>
-                <span class="line-clamp-1">${school.demographics ? school.demographics.summary : 'Certified CDE Data'} • ${school.dashboardMetrics ? school.dashboardMetrics.teacherRetention : ''}</span>
+                <strong class="text-slate-800 block text-[10px] uppercase tracking-wider mb-0.5">Demographics Profile:</strong>
+                <span class="line-clamp-1">${school.demographics ? school.demographics.summary : 'Certified CDE Data'}</span>
               </div>
             </div>
 
@@ -3009,14 +2683,14 @@
 
       const rows = [
         { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>` },
-        { label: "Class Size / Student-Teacher Ratio", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.studentTeacherRatio}</strong> (${s.dashboardMetrics.avgClassSize})` : 'N/A' },
-        { label: "Teacher Retention & Experience", get: s => s.dashboardMetrics ? `${s.dashboardMetrics.teacherRetention}<br><span class="text-[11px] text-slate-500">${s.dashboardMetrics.avgTeacherExperience}</span>` : 'N/A' },
-        { label: "School Climate (Suspension & Absenteeism)", get: s => s.dashboardMetrics ? `Suspensions: <strong>${s.dashboardMetrics.suspensionRate}</strong><br>Absenteeism: <strong>${s.dashboardMetrics.chronicAbsenteeism}</strong>` : 'N/A' },
-        { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px]">${s.lotteryOdds}</span>` },
         { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
+        { label: "Scale & Teaming Model", get: s => `<strong>${s.scaleCategory}</strong> (~${s.enrollment} students)<br><span class="text-[11px] text-slate-500">${s.scaleDetail}</span>` },
         { label: "Demographics & Socioeconomics", get: s => s.demographics ? `<strong>${s.demographics.summary}</strong><br><span class="text-[11px] text-amber-800 font-semibold">${s.demographics.sed || ''}</span>` : 'Certified CDE Data' },
+        { label: "Neighborhood & Muni", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-slate-500 text-[11px]">Muni: ${s.muni}</span>` },
         { label: "Languages & Biliteracy", get: s => s.languages.join('<br>') },
-        { label: "Arts & Athletics", get: s => `${s.arts}<br><span class="text-[11px] text-slate-500">Sports: ${s.sports}</span>` }
+        { label: "Arts & Performing Electives", get: s => s.arts },
+        { label: "Athletics", get: s => s.sports },
+        { label: "Bell Hours", get: s => s.bellHours }
       ];
 
       tableWrapper.innerHTML = `
@@ -3043,75 +2717,30 @@
       const school = SF_SCHOOLS.find(s => s.id === schoolId);
       if (!school) return;
 
-      document.getElementById('modal-name').innerText = school.name;
-      document.getElementById('modal-sector').innerText = school.sector;
-      document.getElementById('modal-address').innerText = school.address;
-      document.getElementById('modal-enrollment').innerText = school.enrollment;
-      document.getElementById('modal-bell').innerText = school.bellHours;
-      document.getElementById('modal-muni').innerText = school.muni;
-      document.getElementById('modal-afterschool').innerText = school.tuition;
-      document.getElementById('modal-hs-pipeline').innerText = school.hsFeeders;
-      document.getElementById('modal-description').innerText = school.description;
-      document.getElementById('modal-scale-detail').innerText = school.scaleDetail;
-      document.getElementById('modal-languages').innerText = school.languages.join(', ');
-      document.getElementById('modal-arts').innerText = school.arts;
-      document.getElementById('modal-sports').innerText = school.sports;
-      document.getElementById('modal-feeders').innerText = school.feeders;
-      document.getElementById('modal-lottery-odds').innerText = school.lotteryOdds;
+      const setElText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = text || 'N/A';
+      };
+
+      setElText('modal-name', school.name);
+      setElText('modal-sector', school.sector);
+      setElText('modal-address', school.address);
+      setElText('modal-enrollment', school.enrollment);
+      setElText('modal-bell', school.bellHours);
+      setElText('modal-muni', school.muni);
+      setElText('modal-afterschool', school.tuition);
+      setElText('modal-hs-pipeline', school.hsFeeders);
+      setElText('modal-description', school.description);
+      setElText('modal-scale-detail', school.scaleDetail);
+      setElText('modal-languages', school.languages ? school.languages.join(', ') : 'N/A');
+      setElText('modal-arts', school.arts);
+      setElText('modal-sports', school.sports);
+      setElText('modal-feeders', school.feeders);
+      setElText('modal-lottery-odds', school.lotteryOdds);
 
       const ratioEl = document.getElementById('modal-ratio');
       if (ratioEl && school.dashboardMetrics) {
         ratioEl.innerText = school.dashboardMetrics.studentTeacherRatio;
-      }
-
-      const dashboardContainer = document.getElementById('modal-dashboard-metrics');
-      if (dashboardContainer && school.dashboardMetrics) {
-        dashboardContainer.innerHTML = `
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Class Size & Ratio</span>
-            <strong class="text-slate-800 text-xs">${school.dashboardMetrics.studentTeacherRatio} (${school.dashboardMetrics.avgClassSize})</strong>
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Teacher Retention & Experience</span>
-            <strong class="text-slate-800 text-xs">${school.dashboardMetrics.teacherRetention}</strong>
-            <span class="block text-[11px] text-slate-500">${school.dashboardMetrics.avgTeacherExperience}</span>
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Suspension Rate</span>
-            <strong class="text-emerald-700 text-xs">${school.dashboardMetrics.suspensionRate}</strong>
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Chronic Absenteeism</span>
-            <strong class="text-blue-700 text-xs">${school.dashboardMetrics.chronicAbsenteeism}</strong>
-          </div>
-          <div class="col-span-full p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Student Sense of Belonging (CA Healthy Kids Survey)</span>
-            <strong class="text-brand-marine text-xs">${school.dashboardMetrics.chksBelonging}</strong>
-          </div>
-        `;
-      }
-
-      // Populate Dynamic Fit Score Calculation Breakdown
-      const fitData = calculateSchoolFitScore(school);
-      const scoreBadge = document.getElementById('modal-fit-score-badge');
-      if (scoreBadge) scoreBadge.innerText = `${fitData.finalScore}%`;
-
-      const fitBreakdownContainer = document.getElementById('modal-fit-breakdown');
-      if (fitBreakdownContainer) {
-        fitBreakdownContainer.innerHTML = fitData.breakdown.map(item => `
-          <div class="pt-1.5 first:pt-0 flex items-start justify-between gap-3">
-            <div class="space-y-0.5">
-              <strong class="text-slate-800 font-semibold block text-[11px]">${item.category}</strong>
-              <p class="text-[10px] text-slate-500 leading-snug">${item.description}</p>
-            </div>
-            <span class="badge-pill bg-teal-100 text-teal-800 font-bold text-[10px] whitespace-nowrap">+${item.points} pts</span>
-          </div>
-        `).join('') + `
-          <div class="pt-2 flex items-center justify-between text-[11px] font-bold text-slate-700 border-t border-teal-200/80">
-            <span>Points Earned: ${fitData.rawTotal} / 100 max pts</span>
-            <span class="text-brand-marine font-extrabold text-xs">Total Fit Score: ${fitData.finalScore}%</span>
-          </div>
-        `;
       }
 
       const demoContainer = document.getElementById('modal-demographics-container');
