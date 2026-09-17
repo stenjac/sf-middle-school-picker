@@ -163,7 +163,7 @@
   </header>
 
   <!-- Notification Toast Container -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-2 border border-slate-700">
+  <div id="toast" class="fixed bottom-5 right-5 z-[9999] transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-2 border border-slate-700">
     <span id="toast-icon">✨</span>
     <span id="toast-message">Notification message</span>
   </div>
@@ -666,7 +666,7 @@
   </main>
 
   <!-- School Profile Modal -->
-  <div id="school-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+  <div id="school-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh] space-y-4">
       <div class="flex items-start justify-between border-b border-slate-100 pb-3">
         <div>
@@ -780,7 +780,7 @@
   </div>
 
   <!-- Sources Modal -->
-  <div id="sources-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+  <div id="sources-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <h3 class="font-display font-bold text-lg text-slate-900">Website Data Sources & Methodology</h3>
@@ -802,7 +802,7 @@
   </div>
 
   <!-- Scale Explainer Modal -->
-  <div id="scale-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+  <div id="scale-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <h3 class="font-display font-bold text-lg text-slate-900">What is School Scale & Teaming?</h3>
@@ -829,7 +829,7 @@
   </div>
 
   <!-- Scoring Algorithm Modal -->
-  <div id="scoring-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+  <div id="scoring-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <h3 class="font-display font-bold text-lg text-slate-900">How the FIT Score is Calculated</h3>
@@ -2683,8 +2683,12 @@
 
       const rows = [
         { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>` },
+        { label: "Class Size & Student-Teacher Ratio", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.studentTeacherRatio}</strong> (${s.dashboardMetrics.avgClassSize})` : 'N/A' },
+        { label: "Teacher Retention & Experience", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.teacherRetention}</strong><br><span class="text-[11px] text-slate-500">${s.dashboardMetrics.avgTeacherExperience}</span>` : 'N/A' },
+        { label: "School Climate (Suspensions & Absenteeism)", get: s => s.dashboardMetrics ? `Suspension: <strong>${s.dashboardMetrics.suspensionRate}</strong><br>Absenteeism: <strong>${s.dashboardMetrics.chronicAbsenteeism}</strong>` : 'N/A' },
+        { label: "Sense of Safety & Belonging (CHKS)", get: s => s.dashboardMetrics ? `<strong class="text-brand-marine">${s.dashboardMetrics.chksBelonging}</strong>` : 'N/A' },
+        { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px] leading-relaxed">${s.lotteryOdds || 'N/A'}</span>` },
         { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
-        { label: "Scale & Teaming Model", get: s => `<strong>${s.scaleCategory}</strong> (~${s.enrollment} students)<br><span class="text-[11px] text-slate-500">${s.scaleDetail}</span>` },
         { label: "Demographics & Socioeconomics", get: s => s.demographics ? `<strong>${s.demographics.summary}</strong><br><span class="text-[11px] text-amber-800 font-semibold">${s.demographics.sed || ''}</span>` : 'Certified CDE Data' },
         { label: "Neighborhood & Muni", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-slate-500 text-[11px]">Muni: ${s.muni}</span>` },
         { label: "Languages & Biliteracy", get: s => s.languages.join('<br>') },
@@ -2714,6 +2718,8 @@
     }
 
     function openModal(schoolId) {
+      if (sfMap) sfMap.closePopup();
+
       const school = SF_SCHOOLS.find(s => s.id === schoolId);
       if (!school) return;
 
@@ -2741,6 +2747,34 @@
       const ratioEl = document.getElementById('modal-ratio');
       if (ratioEl && school.dashboardMetrics) {
         ratioEl.innerText = school.dashboardMetrics.studentTeacherRatio;
+      }
+
+      // Populate California School Dashboard & Climate Metrics Cards
+      const dashboardContainer = document.getElementById('modal-dashboard-metrics');
+      if (dashboardContainer && school.dashboardMetrics) {
+        dashboardContainer.innerHTML = `
+          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Class Size & Ratio</span>
+            <strong class="text-slate-800 text-xs">${school.dashboardMetrics.studentTeacherRatio} (${school.dashboardMetrics.avgClassSize})</strong>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Teacher Retention & Experience</span>
+            <strong class="text-slate-800 text-xs">${school.dashboardMetrics.teacherRetention}</strong>
+            <span class="block text-[11px] text-slate-500">${school.dashboardMetrics.avgTeacherExperience}</span>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Suspension Rate</span>
+            <strong class="text-emerald-700 text-xs">${school.dashboardMetrics.suspensionRate}</strong>
+          </div>
+          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Chronic Absenteeism</span>
+            <strong class="text-blue-700 text-xs">${school.dashboardMetrics.chronicAbsenteeism}</strong>
+          </div>
+          <div class="col-span-full p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">Student Sense of Belonging (CA Healthy Kids Survey)</span>
+            <strong class="text-brand-marine text-xs">${school.dashboardMetrics.chksBelonging}</strong>
+          </div>
+        `;
       }
 
       // Populate Dynamic Fit Score Calculation & Itemized Breakdown
