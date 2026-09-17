@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SF Middle School Navigator (Family Guide)</title>
+  <title>SF Middle School Navigator (5th Grade Family Guide)</title>
   
   <!-- Google Analytics 4 (GA4) Tracker Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLVHRYXFB5"></script>
@@ -131,7 +131,7 @@
 
           <button onclick="switchTab('directory')" id="tab-btn-directory" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            <span>Directory (31)</span>
+            <span>Directory (39)</span>
           </button>
 
           <button onclick="switchTab('map')" id="tab-btn-map" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
@@ -427,15 +427,15 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 31 schools.</p>
+            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 39 schools.</p>
           </div>
 
           <!-- Sector filter buttons -->
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (31)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (12)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (5)</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (14)</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (39)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (16)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (7)</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (16)</button>
           </div>
         </div>
 
@@ -2461,9 +2461,428 @@
           ]
         },
         description: "The only Reggio Emilia-inspired and certified International Baccalaureate (IB) Italian immersion school in the world. Located on 18th St in the Mission, La Scuola fosters critical inquiry, design thinking, environmental consciousness, and global multilingual fluency."
+      },
+      // 32. THOMAS EDISON CHARTER ACADEMY (TECA)
+      {
+        id: "teca",
+        name: "Thomas Edison Charter Academy (TECA)",
+        sector: "Public Charter",
+        type: "Public Charter K-8 (Spanish Dual Language & STEAM)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "K-8 charter community on 22nd St; middle schoolers benefit from departmentalized bilingual advisory and modern STEAM maker suites.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven"],
+        subjectStrengths: ["languages", "stem_maker", "arts_drama", "sports_athletics"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Middle 6-8)",
+        neighborhood: "Mission",
+        address: "3531 22nd St, San Francisco, CA 94114",
+        lat: 37.7554,
+        lng: -122.4243,
+        enrollment: 640,
+        tuition: "Public Charter (Free Tuition)",
+        bellHours: "8:15 AM - 3:15 PM",
+        muni: "24 Divisadero, J-Church, 48 Quintara, 24th St BART",
+        afterSchool: "TECA After School Learning & Robotics Club",
+        languages: ["Spanish Dual Language Immersion (50:50) & Spanish Electives"],
+        languageKey: "spanish",
+        arts: "Folklorico & Modern Dance, Visual Arts, Digital Graphic Design, Music",
+        sports: "Soccer, Basketball, Volleyball, Track",
+        feeders: "Citywide open charter lottery; guaranteed continuation for TECA elementary students",
+        hsFeeders: "Mission High School, Abraham Lincoln High School, Lowell, and Gateway High School.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Arts", "Sports"],
+        lotteryOdds: "Public charter lottery with open citywide access. Continuous TECA 5th graders receive priority.",
+        dashboardMetrics: {
+          studentTeacherRatio: "20:1",
+          avgClassSize: "24 students",
+          teacherRetention: "86% retention rate",
+          avgTeacherExperience: "11.5 years avg experience",
+          suspensionRate: "1.2% (Moderate)",
+          chronicAbsenteeism: "13.8% (Moderate)",
+          chksBelonging: "82% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "72% Hispanic/Latino, 11% White, 7% Asian, 5% Black/African American, 5% Multi-ethnic",
+          sed: "68% Socioeconomically Disadvantaged",
+          el: "36% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "72%" },
+            { label: "White", pct: "11%" },
+            { label: "Asian", pct: "7%" },
+            { label: "Two or More", pct: "5%" }
+          ]
+        },
+        description: "A longstanding, high-demand K-8 public charter school at the Mission/Noe border featuring a proven Spanish Dual Immersion curriculum, hands-on STEAM labs, and robust community engagement."
+      },
+      // 33. ALTA VISTA MIDDLE SCHOOL
+      {
+        id: "alta_vista",
+        name: "Alta Vista School (Middle School)",
+        sector: "Independent Private",
+        type: "Independent 6-8 (STEAM & Inquiry-Based)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "State-of-the-art middle school campus at 2558 Mission St; inquiry science labs, engineering workshops, and intimate seminar cohorts.",
+        personalityTags: ["Analytical Problem Solver & Independent Learner", "Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["stem_maker", "math_accelerated", "arts_drama", "sports_athletics"],
+        hasHumanitiesWriting: true,
+        grades: "6-8 (Middle Campus)",
+        neighborhood: "Mission",
+        address: "2558 Mission St, San Francisco, CA 94110",
+        lat: 37.7578,
+        lng: -122.4188,
+        enrollment: 160,
+        tuition: "~$44,500/yr (24% on Financial Aid)",
+        bellHours: "8:30 AM - 3:20 PM",
+        muni: "14 Mission, 49 Van Ness, 24th St BART",
+        afterSchool: "Alta Vista Extended Day, Maker Studio & Robotics",
+        languages: ["Spanish Continuum & Applied Computational Languages"],
+        languageKey: "spanish",
+        arts: "Digital Media, Fabrication Design, Theater Arts, Band",
+        sports: "BAIAL Basketball, Volleyball, Soccer, Cross Country",
+        feeders: "Independent admissions (Kindergarten and 6th grade entry)",
+        hsFeeders: "Exceptional secondary placement to Lick-Wilmerding, Urban School, University High School, Lowell, and Ruth Asawa SOTA.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts", "Sports"],
+        lotteryOdds: "Independent Admissions Application (family interview, student visit, and recommendation portfolio).",
+        dashboardMetrics: {
+          studentTeacherRatio: "8:1 (Low ratio)",
+          avgClassSize: "14 students",
+          teacherRetention: "95% faculty retention",
+          avgTeacherExperience: "14.6 years avg experience",
+          suspensionRate: "0.0% (None)",
+          chronicAbsenteeism: "<3% (Minimal)",
+          chksBelonging: "96% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "44% Students of Color, 56% White • 24% Need-Based Financial Assistance",
+          sed: "24% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "44%" },
+            { label: "White", pct: "56%" },
+            { label: "Aid Recipients", pct: "24%" }
+          ]
+        },
+        description: "Alta Vista Middle School's campus in the Mission emphasizes engineering, experiential scientific research, design thinking, and progressive humanities in tight seminar classes."
+      },
+      // 34. CREATIVE ARTS CHARTER SCHOOL
+      {
+        id: "creative_arts",
+        name: "Creative Arts Charter School (CACS)",
+        sector: "Public Charter",
+        type: "Public Charter K-8 (Arts-Integrated Expeditionary Learning)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Western Addition campus; ~50 students per grade with arts-integrated project expeditions and co-teaching model.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["arts_drama", "music_band", "stem_maker"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Middle 6-8)",
+        neighborhood: "Marina",
+        address: "1601 Turk St, San Francisco, CA 94115",
+        lat: 37.7797,
+        lng: -122.4358,
+        enrollment: 440,
+        tuition: "Public Charter (Free Tuition)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "5 Fulton, 31 Balboa, 38 Geary, 22 Fillmore",
+        afterSchool: "Creative Arts After School Program (CASP)",
+        languages: ["Spanish World Language & Literary Arts"],
+        languageKey: "spanish",
+        arts: "Visual Arts, Ceramics, Theater Production, Chorus, Strings, Instrumental Winds",
+        sports: "Volleyball, Basketball, Track, Soccer",
+        feeders: "Citywide open charter lottery; priority for continuing CACS elementary cohorts",
+        hsFeeders: "Premier feeder to Ruth Asawa School of the Arts (SOTA), Lowell High School, George Washington, and Urban School.",
+        hsKey: "sota_arts",
+        specialties: ["Arts", "Music"],
+        lotteryOdds: "Open public charter lottery with high artistic family demand. Sibling and staff priorities apply.",
+        dashboardMetrics: {
+          studentTeacherRatio: "17:1",
+          avgClassSize: "21 students",
+          teacherRetention: "90% retention rate",
+          avgTeacherExperience: "13.2 years avg experience",
+          suspensionRate: "0.8% (Low)",
+          chronicAbsenteeism: "9.4% (Low)",
+          chksBelonging: "88% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "38% White, 24% Hispanic/Latino, 15% Black/African American, 13% Multi-ethnic, 10% Asian",
+          sed: "32% Socioeconomically Disadvantaged",
+          el: "9% English Learners",
+          breakdown: [
+            { label: "White", pct: "38%" },
+            { label: "Hispanic/Latino", pct: "24%" },
+            { label: "African American", pct: "15%" },
+            { label: "Two or More", pct: "13%" }
+          ]
+        },
+        description: "A beloved, arts-rich tuition-free public charter school in the Western Addition integrating visual arts, drama, dance, and music directly into academic expeditionary projects."
+      },
+      // 35. MARTIN LUTHER KING JR. ACADEMIC MIDDLE SCHOOL
+      {
+        id: "mlk",
+        name: "Dr. Martin Luther King, Jr. Academic Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Portola neighborhood campus with dedicated STEAM academies, restorative circles, and on-site Bayview YMCA Beacon hub.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["stem_maker", "sports_athletics", "math_accelerated", "music_band"],
+        grades: "6-8",
+        neighborhood: "Excelsior",
+        address: "350 Girard St, San Francisco, CA 94134",
+        lat: 37.7282,
+        lng: -122.4045,
+        enrollment: 400,
+        tuition: "Public (Free)",
+        bellHours: "9:30 AM - 4:00 PM",
+        muni: "44 O'Shaughnessy, 54 Felton, 29 Sunset, 9 San Bruno",
+        afterSchool: "Bayview YMCA Beacon After School Program",
+        languages: ["Spanish World Language", "Cantonese Elective"],
+        languageKey: "spanish",
+        arts: "Instrumental Band, Studio Visual Arts, Dance, Digital Media",
+        sports: "Baseball, Basketball, Flag Football, Soccer, Softball, Track, Volleyball",
+        feeders: "Bret Harte, E.R. Taylor, Cleveland, Hillcrest",
+        hsFeeders: "Phillip & Sala Burton High School, Balboa High School, George Washington, and Lowell.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Sports"],
+        lotteryOdds: "Strong Round 1 availability. Excellent placement odds for Southeast SF residents and CTIP1 priority applicants.",
+        dashboardMetrics: {
+          studentTeacherRatio: "16:1",
+          avgClassSize: "20 students",
+          teacherRetention: "83% retention rate",
+          avgTeacherExperience: "10.8 years avg experience",
+          suspensionRate: "2.5% (Moderate)",
+          chronicAbsenteeism: "19.8% (Elevated)",
+          chksBelonging: "74% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "41% Hispanic/Latino, 32% Asian, 16% Black/African American, 6% Pacific Islander, 3% White",
+          sed: "78% Socioeconomically Disadvantaged",
+          el: "39% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "41%" },
+            { label: "Asian", pct: "32%" },
+            { label: "African American", pct: "16%" },
+            { label: "Pacific Islander", pct: "6%" }
+          ]
+        },
+        description: "Located in the Portola district, MLK is an SFUSD community school centering Project-Based Learning, comprehensive STEAM labs, AVID college readiness, and rich athletics."
+      },
+      // 36. BESSIE CARMICHAEL (K-8)
+      {
+        id: "bessie_carmichael",
+        name: "Bessie Carmichael School (Filipino Ed Center K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative (Filipino Biliteracy)",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Dedicated SOMA Middle School campus at 824 Harrison St; close-knit cohorts with Galing Bata community support.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["languages", "arts_drama", "stem_maker"],
+        hasHumanitiesWriting: true,
+        grades: "PreK-8 (6-8 Middle Campus)",
+        neighborhood: "SOMA",
+        address: "824 Harrison St, San Francisco, CA 94107",
+        lat: 37.7808,
+        lng: -122.4007,
+        enrollment: 260,
+        tuition: "Public (Free)",
+        bellHours: "9:30 AM - 3:45 PM",
+        muni: "12 Folsom, 30 Stockton, 45 Union-Stockton, Powell BART",
+        afterSchool: "Galing Bata After School & Beacon Program",
+        languages: ["Filipino (Tagalog) Biliteracy & World Language Pathway"],
+        languageKey: "filipino",
+        arts: "Kulintang Percussion, Traditional & Modern Dance, Muralism",
+        sports: "Basketball, Volleyball, Track",
+        feeders: "Guaranteed continuation for Bessie Carmichael PK-5 students",
+        hsFeeders: "Balboa High School, Galileo Academy of Science & Technology, Lincoln, and Lowell.",
+        hsKey: "lowell_academic",
+        specialties: ["Arts", "STEM"],
+        lotteryOdds: "Strong priority for continuing Bessie Carmichael elementary students and SOMA community applicants.",
+        dashboardMetrics: {
+          studentTeacherRatio: "18:1",
+          avgClassSize: "22 students",
+          teacherRetention: "87% retention rate",
+          avgTeacherExperience: "12.0 years avg experience",
+          suspensionRate: "1.2% (Moderate)",
+          chronicAbsenteeism: "14.6% (Moderate)",
+          chksBelonging: "81% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "46% Filipino / Asian, 36% Hispanic/Latino, 8% Black/African American, 5% White, 4% Multi-ethnic",
+          sed: "75% Socioeconomically Disadvantaged",
+          el: "42% English Learners",
+          breakdown: [
+            { label: "Filipino / Asian", pct: "46%" },
+            { label: "Hispanic/Latino", pct: "36%" },
+            { label: "African American", pct: "8%" },
+            { label: "White", pct: "5%" }
+          ]
+        },
+        description: "The nation's preeminent Filipino-English bilingual public school. Middle school students thrive on a dedicated Harrison St campus enriched by the Galing Bata cultural community."
+      },
+      // 37. THE NEW SCHOOL OF SAN FRANCISCO
+      {
+        id: "new_school_sf",
+        name: "The New School of San Francisco",
+        sector: "Public Charter",
+        type: "Public Charter K-8 (Inquiry & Project-Based)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "North Beach historic campus; small inquiry cohorts (~60 students/grade) with heavy focus on student agency and equity.",
+        personalityTags: ["Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Middle 6-8)",
+        neighborhood: "Marina",
+        address: "940 Filbert St, San Francisco, CA 94133",
+        lat: 37.8009,
+        lng: -122.4147,
+        enrollment: 460,
+        tuition: "Public Charter (Free Tuition)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "30 Stockton, 45 Union-Stockton, 8 Bayshore, Powell-Hyde Cable Car",
+        afterSchool: "New School Extended Learning & Maker Clubs",
+        languages: ["Spanish Language Exploration & Global Humanities"],
+        languageKey: "spanish",
+        arts: "Studio Design, Maker Fabrication, Film & Podcasting, Theater",
+        sports: "Cross Country, Basketball, Volleyball, Soccer",
+        feeders: "Open public charter lottery citywide; weighted for socio-economic equity",
+        hsFeeders: "Lowell High School, Galileo Academy, George Washington, and top independent prep high schools.",
+        hsKey: "lowell_academic",
+        specialties: ["STEM", "Arts"],
+        lotteryOdds: "Public charter lottery with citywide access. Highly ranked for reading and math proficiency.",
+        dashboardMetrics: {
+          studentTeacherRatio: "14:1",
+          avgClassSize: "18 students",
+          teacherRetention: "92% retention rate",
+          avgTeacherExperience: "13.4 years avg experience",
+          suspensionRate: "0.4% (Very Low)",
+          chronicAbsenteeism: "7.8% (Low)",
+          chksBelonging: "91% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "43% White, 24% Hispanic/Latino, 16% Asian, 11% Multi-ethnic, 6% Black/African American",
+          sed: "34% Socioeconomically Disadvantaged",
+          el: "12% English Learners",
+          breakdown: [
+            { label: "White", pct: "43%" },
+            { label: "Hispanic/Latino", pct: "24%" },
+            { label: "Asian", pct: "16%" },
+            { label: "Two or More", pct: "11%" }
+          ]
+        },
+        description: "A top-ranked public charter K-8 in North Beach that champions hands-on inquiry, personalized learning plans, social justice, and high academic performance."
+      },
+      // 38. SAN FRANCISCO WALDORF SCHOOL
+      {
+        id: "sf_waldorf",
+        name: "San Francisco Waldorf School",
+        sector: "Independent Private",
+        type: "Independent K-8 (Waldorf Experiential Learning)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Pacific Heights Washington St campus; loop teaching structure where teachers journey with cohorts across multiple years.",
+        personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["arts_drama", "music_band", "stem_maker"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Middle 6-8)",
+        neighborhood: "Marina",
+        address: "2938 Washington St, San Francisco, CA 94115",
+        lat: 37.7901,
+        lng: -122.4438,
+        enrollment: 310,
+        tuition: "~$39,800/yr (28% on Financial Aid)",
+        bellHours: "8:20 AM - 3:10 PM",
+        muni: "1 California, 24 Divisadero, 3 Jackson",
+        afterSchool: "Waldorf Extended Day, Eurythmy & Ensembles",
+        languages: ["Spanish & German Continuum"],
+        languageKey: "spanish",
+        arts: "Orchestral Strings, Woodworking, Metalwork, Eurythmy, Stage Drama",
+        sports: "Volleyball, Basketball, Cross Country, Track",
+        feeders: "Independent admissions (K and 6th grade entry)",
+        hsFeeders: "Direct articulation to SF Waldorf High School (West Portal campus), Lick-Wilmerding, Urban School, SOTA, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Arts", "Music"],
+        lotteryOdds: "Independent Admissions Application (family visit, interview, and student classroom observation).",
+        dashboardMetrics: {
+          studentTeacherRatio: "9:1",
+          avgClassSize: "15 students",
+          teacherRetention: "94% faculty retention",
+          avgTeacherExperience: "16.2 years avg experience",
+          suspensionRate: "0.0% (None)",
+          chronicAbsenteeism: "<3% (Minimal)",
+          chksBelonging: "95% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "41% Students of Color, 59% White • 28% Need-Based Financial Assistance",
+          sed: "28% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "41%" },
+            { label: "White", pct: "59%" },
+            { label: "Aid Recipients", pct: "28%" }
+          ]
+        },
+        description: "Located in Pacific Heights, SF Waldorf provides an experiential, arts-infused curriculum emphasizing craft, string orchestra, outdoor sciences, and healthy developmental pacing."
+      },
+      // 39. PAUL REVERE PREK-8 SCHOOL
+      {
+        id: "paul_revere",
+        name: "Paul Revere PreK-8 School",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative (STEM & Spanish)",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Bernal Heights hill campus; small middle school cohorts with strong family partnerships and active community garden.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Sensitive, Observant or Easily Overstimulated"],
+        subjectStrengths: ["stem_maker", "sports_athletics", "languages"],
+        grades: "PreK-8 (6-8 Middle)",
+        neighborhood: "Mission",
+        address: "555 Tompkins Ave, San Francisco, CA 94110",
+        lat: 37.7371,
+        lng: -122.4142,
+        enrollment: 240,
+        tuition: "Public (Free)",
+        bellHours: "8:40 AM - 3:10 PM",
+        muni: "24 Divisadero, 67 Bernal Heights, 14 Mission",
+        afterSchool: "Paul Revere ExCEL & YMCA Program",
+        languages: ["Spanish World Language & Dual Support"],
+        languageKey: "spanish",
+        arts: "Visual Arts, Ceramics, Digital Photography, Drama",
+        sports: "Basketball, Volleyball, Soccer, Track",
+        feeders: "Guaranteed continuation for Paul Revere elementary students",
+        hsFeeders: "Balboa High School, Phillip & Sala Burton, Mission High, and Lowell.",
+        hsKey: "any_hs",
+        specialties: ["STEM", "Sports"],
+        lotteryOdds: "Balanced Round 1 placement odds for Bernal Heights families and continuing elementary students.",
+        dashboardMetrics: {
+          studentTeacherRatio: "17:1",
+          avgClassSize: "21 students",
+          teacherRetention: "85% retention rate",
+          avgTeacherExperience: "11.7 years avg experience",
+          suspensionRate: "1.5% (Moderate)",
+          chronicAbsenteeism: "16.4% (Moderate)",
+          chksBelonging: "77% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "61% Hispanic/Latino, 15% Black/African American, 11% Asian, 7% White, 5% Multi-ethnic",
+          sed: "79% Socioeconomically Disadvantaged",
+          el: "35% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "61%" },
+            { label: "African American", pct: "15%" },
+            { label: "Asian", pct: "11%" },
+            { label: "White", pct: "7%" }
+          ]
+        },
+        description: "Set in Bernal Heights, Paul Revere provides an intimate PreK-8 community focusing on hands-on environmental sciences, garden education, technology integration, and personalized academic intervention."
       }
     ];
 
+    /* State Management */
     let currentComparison = ["presidio", "giannini", "hoover"];
     let directorySectorFilter = "all";
     let sfMap = null;
@@ -2495,6 +2914,7 @@
 
     function showToast(message, icon = "✨") {
       const toast = document.getElementById('toast');
+      if (!toast) return;
       document.getElementById('toast-message').innerText = message;
       document.getElementById('toast-icon').innerText = icon;
       toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
@@ -2510,7 +2930,8 @@
         showToast("Maximum of 3 personality traits allowed.", "⚠️");
         return;
       }
-      document.getElementById('personality-counter').innerText = `${checkedBoxes.length}/3 Selected`;
+      const counter = document.getElementById('personality-counter');
+      if (counter) counter.innerText = `${checkedBoxes.length}/3 Selected`;
       
       document.querySelectorAll('#personality-options label').forEach(label => {
         const input = label.querySelector('input');
@@ -2532,7 +2953,8 @@
         showToast("Maximum of 3 favorite subjects allowed.", "⚠️");
         return;
       }
-      document.getElementById('subject-counter').innerText = `${checkedBoxes.length}/3 Selected`;
+      const counter = document.getElementById('subject-counter');
+      if (counter) counter.innerText = `${checkedBoxes.length}/3 Selected`;
 
       document.querySelectorAll('#subject-options label').forEach(label => {
         const input = label.querySelector('input');
@@ -2550,13 +2972,19 @@
     function resetQuiz() {
       document.querySelectorAll('input[name="personality"]').forEach((input, i) => input.checked = (i === 0));
       document.querySelectorAll('input[name="subject"]').forEach((input, i) => input.checked = (i < 2));
-      document.querySelector('input[name="scale"][value="all"]').checked = true;
-      document.getElementById('quiz-sector').value = 'all';
-      document.getElementById('quiz-quadrant').value = 'all';
-      document.getElementById('quiz-hs').value = 'any';
+      const anyScale = document.querySelector('input[name="scale"][value="all"]');
+      if (anyScale) anyScale.checked = true;
+      const sector = document.getElementById('quiz-sector');
+      if (sector) sector.value = 'all';
+      const quadrant = document.getElementById('quiz-quadrant');
+      if (quadrant) quadrant.value = 'all';
+      const hs = document.getElementById('quiz-hs');
+      if (hs) hs.value = 'any';
 
-      handlePersonalityChange(document.querySelector('input[name="personality"]:checked'));
-      handleSubjectChange(document.querySelector('input[name="subject"]:checked'));
+      const firstPersonality = document.querySelector('input[name="personality"]:checked');
+      if (firstPersonality) handlePersonalityChange(firstPersonality);
+      const firstSubject = document.querySelector('input[name="subject"]:checked');
+      if (firstSubject) handleSubjectChange(firstSubject);
       showToast("Quiz preferences reset.");
     }
 
@@ -2564,7 +2992,6 @@
       const selectedPersonalities = Array.from(document.querySelectorAll('input[name="personality"]:checked')).map(el => el.value);
       const selectedSubjects = Array.from(document.querySelectorAll('input[name="subject"]:checked')).map(el => el.value);
       const scaleChoice = (document.querySelector('input[name="scale"]:checked')?.value) || 'all';
-      const sectorChoice = document.getElementById('quiz-sector')?.value || 'all';
       const quadrantChoice = document.getElementById('quiz-quadrant')?.value || 'all';
       const hsChoice = document.getElementById('quiz-hs')?.value || 'any';
 
@@ -2713,7 +3140,6 @@
         description: hsReason
       });
 
-      // Total clean summation (strictly max 100 points budget)
       const rawTotal = baseScore + personalityPts + Math.min(30, subjectPts) + scalePts + commutePts + hsPts;
       const finalScore = Math.min(100, Math.round(rawTotal));
       const uniqueReasons = Array.from(new Set(matchReasons)).slice(0, 3);
@@ -2775,7 +3201,6 @@
               </div>
             </div>
 
-            <!-- Match Highlights -->
             <div class="pl-8 flex flex-wrap gap-1">
               ${school.topReasons.map(r => `<span class="badge-pill bg-teal-50 text-teal-800 border border-teal-200/60 text-[10px]">✓ ${r}</span>`).join('')}
             </div>
@@ -2790,10 +3215,10 @@
         b.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
         b.classList.add('text-slate-600');
       });
-      if (sec === 'all') document.getElementById('sec-btn-all').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
-      if (sec === 'SFUSD Comprehensive') document.getElementById('sec-btn-comp').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
-      if (sec === 'SFUSD K-8') document.getElementById('sec-btn-k8').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
-      if (sec === 'Independent Private') document.getElementById('sec-btn-priv').classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'all') document.getElementById('sec-btn-all')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'SFUSD Comprehensive') document.getElementById('sec-btn-comp')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'SFUSD K-8') document.getElementById('sec-btn-k8')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'Independent Private') document.getElementById('sec-btn-priv')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       renderDirectoryCards();
     }
 
@@ -2852,7 +3277,6 @@
                 </button>
               </div>
 
-              <!-- Key Attributes -->
               <div class="space-y-1.5 text-xs text-slate-600">
                 <div class="flex items-center space-x-1.5">
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">High School:</span>
@@ -2868,14 +3292,12 @@
                 </div>
               </div>
 
-              <!-- Demographics snippet -->
               <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 text-[11px] text-slate-600">
                 <strong class="text-slate-800 block text-[10px] uppercase tracking-wider mb-0.5">Demographics & Retention:</strong>
                 <span class="line-clamp-1">${school.demographics ? school.demographics.summary : 'Certified CDE Data'} • ${school.dashboardMetrics ? school.dashboardMetrics.teacherRetention : ''}</span>
               </div>
             </div>
 
-            <!-- Card Action Footer -->
             <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs font-bold text-slate-700">${school.tuition}</span>
               <button onclick="openModal('${school.id}')" class="text-xs font-bold text-brand-teal hover:underline flex items-center">
