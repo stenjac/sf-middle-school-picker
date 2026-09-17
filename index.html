@@ -14,7 +14,7 @@
     gtag('config', 'G-XLVHRYXFB5');
   </script>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -100,8 +100,10 @@
     }
   </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
 
+  <!-- Header -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
@@ -131,7 +133,7 @@
 
           <button onclick="switchTab('directory')" id="tab-btn-directory" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            <span>Directory (39)</span>
+            <span>Directory (43)</span>
           </button>
 
           <button onclick="switchTab('map')" id="tab-btn-map" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap">
@@ -168,6 +170,7 @@
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
 
+    <!-- TAB 1: MATCH QUIZ -->
     <section id="tab-quiz" class="tab-content block space-y-6">
       
       <!-- Hero Banner -->
@@ -420,6 +423,7 @@
 
     </section>
 
+    <!-- TAB 2: COMPREHENSIVE SCHOOL DIRECTORY -->
     <section id="tab-directory" class="tab-content hidden space-y-6">
       
       <!-- Filter Bar -->
@@ -427,15 +431,15 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 39 schools.</p>
+            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 43 schools.</p>
           </div>
 
           <!-- Sector filter buttons -->
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (39)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (16)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (7)</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (16)</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (43)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (17)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (8)</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (18)</button>
           </div>
         </div>
 
@@ -492,6 +496,7 @@
 
     </section>
 
+    <!-- TAB 3: INTERACTIVE SF MAP -->
     <section id="tab-map" class="tab-content hidden space-y-4">
       <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -514,6 +519,7 @@
       </div>
     </section>
 
+    <!-- TAB 4: SIDE-BY-SIDE COMPARISON -->
     <section id="tab-compare" class="tab-content hidden space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
@@ -556,6 +562,7 @@
       </div>
     </section>
 
+    <!-- TAB 5: LOTTERY & HIGH SCHOOL GUIDE -->
     <section id="tab-guide" class="tab-content hidden space-y-6">
       
       <!-- Lottery Strategy Guide -->
@@ -657,6 +664,7 @@
 
   </main>
 
+  <!-- School Profile Modal (High Z-Index above Map) -->
   <div id="school-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh] space-y-4">
       <div class="flex items-start justify-between border-b border-slate-100 pb-3">
@@ -848,7 +856,7 @@
       <div class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
         <p>The Fit Score is computed out of a <strong>strict 100-point budget</strong> where your child's personality and passions carry the greatest weight (60% of the total score):</p>
         <ul class="space-y-1.5 list-disc pl-5">
-          <li><strong>Student Personality Archetypes (up to 30 pts):</strong> Heavily weighted (+10 pts per selected archetype, divided across up to 3 choices) based on class environment, scale, and sensory support.</li>
+          <li><strong>Student Personality Archetypes (up to 30 pts):</strong> Heavily weighted (+10 pts per selected archetype, divided across up to 3 choices) based on class environment, scale, sensory support, and literature/writing passions.</li>
           <li><strong>Favorite Subjects & Passions (up to 30 pts):</strong> Heavily weighted (+10 pts per matched subject up to 3) for verified electives like Band, STEM Maker labs, Dual Immersion, or League Athletics.</li>
           <li><strong>School Scale & Teaming Structure (up to 15 pts):</strong> +15 pts for matching preferred Mega House cohorts, Mid-Sized hubs, or K-8/Private continuity (or +7 pts baseline if open to any).</li>
           <li><strong>Neighborhood / Commute Proximity (up to 15 pts):</strong> +15 pts for schools in your preferred transit quadrant (+7 pts if citywide).</li>
@@ -880,7 +888,7 @@
   </footer>
 
   <script>
-    /* Complete Database of 31 San Francisco Middle Schools with Certified Dashboard & Admission Odds */
+    /* Complete Database of 43 San Francisco Middle Schools with Certified Dashboard & Admission Odds */
     const SF_SCHOOLS = [
       // 1. PRESIDIO
       {
@@ -1300,6 +1308,7 @@
         },
         description: "In Noe Valley bordering the Mission, James Lick is the flagship Two-Way Spanish Dual Immersion middle school, celebrated for biliteracy and folklorico."
       },
+
       // 9. EVERETT
       {
         id: "everett",
@@ -1709,7 +1718,6 @@
         description: "San Francisco's historic community Spanish Two-Way Dual Immersion K-8 school, fostering bilingual fluency and cultural advocacy."
       },
 
-      // --- INDEPENDENT & PRIVATE MIDDLE SCHOOLS ---
       // 17. BURKE'S
       {
         id: "burkes",
@@ -2110,6 +2118,7 @@
         },
         description: "Located in Hayes Valley, FAIS combines French Ministry curriculum with American inquiry, preparing students for bilingual IB diplomas."
       },
+
       // 25. PRESIDIO KNOLLS SCHOOL (PKS)
       {
         id: "pks",
@@ -2619,6 +2628,7 @@
         },
         description: "A beloved, arts-rich tuition-free public charter school in the Western Addition integrating visual arts, drama, dance, and music directly into academic expeditionary projects."
       },
+
       // 35. MARTIN LUTHER KING JR. ACADEMIC MIDDLE SCHOOL
       {
         id: "mlk",
@@ -2879,6 +2889,213 @@
           ]
         },
         description: "Set in Bernal Heights, Paul Revere provides an intimate PreK-8 community focusing on hands-on environmental sciences, garden education, technology integration, and personalized academic intervention."
+      },
+      // 40. SAN FRANCISCO COMMUNITY SCHOOL (SFCS K-8)
+      {
+        id: "sfcs",
+        name: "San Francisco Community School (SFCS K-8)",
+        sector: "SFUSD K-8",
+        type: "K-8 Public Alternative (Social Justice & Project-Based)",
+        scaleCategory: "K-8 / Compact (<450)",
+        scaleType: "K-8",
+        scaleDetail: "Intimate multi-age cohorts in the Excelsior; strong student voice, restorative justice, and community expeditions.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul"],
+        subjectStrengths: ["stem_maker", "arts_drama"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (6-8 Middle)",
+        neighborhood: "Excelsior",
+        address: "125 Excelsior Ave, San Francisco, CA 94112",
+        lat: 37.7262,
+        lng: -122.4285,
+        enrollment: 280,
+        tuition: "Public (Free)",
+        bellHours: "8:40 AM - 3:10 PM",
+        muni: "14 Mission, 49 Van Ness, 52 Excelsior, Balboa Park BART",
+        afterSchool: "SFCS Beacon Extended Care (BACR)",
+        languages: ["Spanish Language Elective & Humanities"],
+        languageKey: "spanish",
+        arts: "Murals, Printmaking, Community Theater, Creative Expression",
+        sports: "Basketball, Volleyball, Track",
+        feeders: "Guaranteed continuation for SFCS elementary students; open citywide lottery",
+        hsFeeders: "Balboa High School, Mission High School, John O'Connell, and Lowell.",
+        hsKey: "any_hs",
+        specialties: ["Arts", "STEM"],
+        lotteryOdds: "Balanced Round 1 odds for neighborhood Excelsior families and continuing elementary cohorts.",
+        dashboardMetrics: {
+          studentTeacherRatio: "17:1",
+          avgClassSize: "21 students",
+          teacherRetention: "89% retention rate",
+          avgTeacherExperience: "13.0 years avg experience",
+          suspensionRate: "1.1% (Low)",
+          chronicAbsenteeism: "14.2% (Moderate)",
+          chksBelonging: "82% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "56% Hispanic/Latino, 22% Asian, 10% Black/African American, 7% White, 5% Multi-ethnic",
+          sed: "72% Socioeconomically Disadvantaged",
+          el: "31% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "56%" },
+            { label: "Asian", pct: "22%" },
+            { label: "African American", pct: "10%" },
+            { label: "White", pct: "7%" }
+          ]
+        },
+        description: "A longstanding SFUSD alternative K-8 school in the Excelsior emphasizing student agency, multi-age collaboration, anti-bias education, and hands-on community projects."
+      },
+      // 41. KIPP BAYVIEW ACADEMY
+      {
+        id: "kipp_bayview",
+        name: "KIPP Bayview Academy",
+        sector: "Public Charter",
+        type: "Public Charter (5-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Structured middle school cohorts with extended learning day, double periods of literacy and math, and strong restorative culture.",
+        personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
+        subjectStrengths: ["math_accelerated", "sports_athletics", "stem_maker"],
+        grades: "5-8",
+        neighborhood: "Excelsior",
+        address: "1060 Key Ave, San Francisco, CA 94124",
+        lat: 37.7215,
+        lng: -122.3942,
+        enrollment: 330,
+        tuition: "Public Charter (Free Tuition)",
+        bellHours: "8:00 AM - 3:45 PM",
+        muni: "29 Sunset, 54 Felton, T-Third",
+        afterSchool: "KIPP Beyond After-School & Competitive Athletics",
+        languages: ["Spanish World Language & Academic Intervention"],
+        languageKey: "spanish",
+        arts: "Visual Arts, Spoken Word, Step & Dance, Digital Media",
+        sports: "Flag Football, Basketball, Track & Field, Volleyball, Soccer",
+        feeders: "Citywide open charter lottery; priority for Southeast SF families",
+        hsFeeders: "Direct matriculation to KIPP San Francisco College Prep (Hunter's Point), Balboa, and Lowell.",
+        hsKey: "lowell_academic",
+        specialties: ["Sports", "STEM"],
+        lotteryOdds: "Open public charter lottery with strong availability for Southeast SF residents and CTIP1 priority applicants.",
+        dashboardMetrics: {
+          studentTeacherRatio: "15:1",
+          avgClassSize: "20 students",
+          teacherRetention: "82% retention rate",
+          avgTeacherExperience: "9.8 years avg experience",
+          suspensionRate: "2.8% (Moderate)",
+          chronicAbsenteeism: "18.5% (Elevated)",
+          chksBelonging: "79% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "52% Black/African American, 36% Hispanic/Latino, 6% Pacific Islander, 4% Asian, 2% White",
+          sed: "83% Socioeconomically Disadvantaged",
+          el: "26% English Learners",
+          breakdown: [
+            { label: "African American", pct: "52%" },
+            { label: "Hispanic/Latino", pct: "36%" },
+            { label: "Pacific Islander", pct: "6%" },
+            { label: "Asian", pct: "4%" }
+          ]
+        },
+        description: "A tuition-free public charter middle school in Bayview-Hunters Point preparing students for college and career through high academic expectations, athletics, and community leadership."
+      },
+      // 42. SYNERGY SCHOOL
+      {
+        id: "synergy",
+        name: "Synergy School",
+        sector: "Independent Private",
+        type: "Independent K-8 Cooperative",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Progressive teacher-parent cooperative in the Mission; intimate multi-age cohorts (~22 students/grade) and democratic governance.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["arts_drama", "stem_maker"],
+        hasHumanitiesWriting: true,
+        grades: "K-8 (Middle 6-8)",
+        neighborhood: "Mission",
+        address: "1387 Valencia St, San Francisco, CA 94110",
+        lat: 37.7518,
+        lng: -122.4211,
+        enrollment: 195,
+        tuition: "~$27,500/yr (Affordable model / 30% Financial Aid)",
+        bellHours: "8:30 AM - 3:00 PM",
+        muni: "14 Mission, 49 Van Ness, 24th St BART",
+        afterSchool: "Synergy Extended Day & Creative Clubs",
+        languages: ["Spanish Continuum & Cultural Studies"],
+        languageKey: "spanish",
+        arts: "Studio Art, Ceramics, Drama & Improv, Woodworking",
+        sports: "Basketball, Volleyball, Ultimate Frisbee, Track",
+        feeders: "Independent admissions (K and 6th grade entry)",
+        hsFeeders: "Lick-Wilmerding High School, Urban School of SF, University High School, Ruth Asawa SOTA, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Arts", "STEM"],
+        lotteryOdds: "Independent Admissions Application (family visit, interview, and student classroom observation).",
+        dashboardMetrics: {
+          studentTeacherRatio: "8:1",
+          avgClassSize: "14 students",
+          teacherRetention: "93% faculty retention",
+          avgTeacherExperience: "16.0 years avg experience",
+          suspensionRate: "0.0% (None)",
+          chronicAbsenteeism: "<3% (Minimal)",
+          chksBelonging: "96% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "48% Students of Color, 52% White • 30% Need-Based Financial Assistance",
+          sed: "30% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "48%" },
+            { label: "White", pct: "52%" },
+            { label: "Aid Recipients", pct: "30%" }
+          ]
+        },
+        description: "A nationally recognized independent progressive cooperative school on Valencia St in the Mission, known for its affordable tuition model, hands-on arts, and close-knit community."
+      },
+      // 43. CONVENT & STUART HALL
+      {
+        id: "convent_stuart",
+        name: "Convent & Stuart Hall (Schools of the Sacred Heart)",
+        sector: "Independent Private",
+        type: "Independent K-12 (Single-Gender K-8 Divisions)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Historic Pacific Heights Broadway campus; single-gender middle classes (Convent for girls, Stuart Hall for boys) with co-ed social activities.",
+        personalityTags: ["Outgoing, Social & Spirit-Driven", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["stem_maker", "sports_athletics", "arts_drama", "math_accelerated"],
+        hasHumanitiesWriting: true,
+        grades: "K-12 (Middle 5-8)",
+        neighborhood: "Marina",
+        address: "2222 Broadway, San Francisco, CA 94115",
+        lat: 37.7938,
+        lng: -122.4342,
+        enrollment: 620,
+        tuition: "~$46,900/yr (25% on Financial Aid)",
+        bellHours: "8:15 AM - 3:15 PM",
+        muni: "22 Fillmore, 3 Jackson, 45 Union-Stockton",
+        afterSchool: "Extended Day, Robotics & BAIAL Athletics",
+        languages: ["Spanish, French & Mandarin Pathways"],
+        languageKey: "spanish",
+        arts: "Choral, Instrumental Ensemble, Theater Production, Studio Arts",
+        sports: "BAIAL Basketball, Soccer, Volleyball, Cross Country, Golf, Track",
+        feeders: "Independent admissions (K, 5th, and 6th grade entry)",
+        hsFeeders: "Direct continuation to Convent & Stuart Hall High Schools, University High School, Lick-Wilmerding, St. Ignatius, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["Sports", "STEM", "Arts"],
+        lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
+        dashboardMetrics: {
+          studentTeacherRatio: "8:1",
+          avgClassSize: "16 students",
+          teacherRetention: "95% faculty retention",
+          avgTeacherExperience: "16.5 years avg experience",
+          suspensionRate: "0.0% (None)",
+          chronicAbsenteeism: "<3% (Minimal)",
+          chksBelonging: "94% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "42% Students of Color, 58% White • 25% Need-Based Financial Assistance",
+          sed: "25% on Financial Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "42%" },
+            { label: "White", pct: "58%" },
+            { label: "Aid Recipients", pct: "25%" }
+          ]
+        },
+        description: "A prestigious independent school on Broadway in Pacific Heights providing single-gender middle school learning environments that optimize academic confidence, international exchange, and leadership."
       }
     ];
 
@@ -2988,6 +3205,7 @@
       showToast("Quiz preferences reset.");
     }
 
+    /* Computes full itemized point breakdown (Strict 100 pt budget: Personality 30, Subjects 30, Scale 15, Neighborhood 15, High School 10, Base 5) */
     function calculateSchoolFitScore(school) {
       const selectedPersonalities = Array.from(document.querySelectorAll('input[name="personality"]:checked')).map(el => el.value);
       const selectedSubjects = Array.from(document.querySelectorAll('input[name="subject"]:checked')).map(el => el.value);
@@ -3201,6 +3419,7 @@
               </div>
             </div>
 
+            <!-- Match Highlights -->
             <div class="pl-8 flex flex-wrap gap-1">
               ${school.topReasons.map(r => `<span class="badge-pill bg-teal-50 text-teal-800 border border-teal-200/60 text-[10px]">✓ ${r}</span>`).join('')}
             </div>
@@ -3317,7 +3536,6 @@
       if (!sfMap) {
         sfMap = L.map('sf-map-canvas').setView([37.760, -122.440], 12);
 
-        // Esri World Street Map: Clean, high-resolution tiles with no watermarks or API key requirements
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
           maxZoom: 18,
           attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, USGS, NPS'
@@ -3419,18 +3637,15 @@
 
       const rows = [
         { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>` },
-        { label: "Class Size / Student-Teacher Ratio", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.studentTeacherRatio}</strong> (${s.dashboardMetrics.avgClassSize})` : 'N/A' },
+        { label: "Class Size & Student-Teacher Ratio", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.studentTeacherRatio}</strong> (${s.dashboardMetrics.avgClassSize})` : 'N/A' },
         { label: "Teacher Retention & Experience", get: s => s.dashboardMetrics ? `${s.dashboardMetrics.teacherRetention}<br><span class="text-[11px] text-slate-500">${s.dashboardMetrics.avgTeacherExperience}</span>` : 'N/A' },
-        { label: "School Climate (Suspension & Absenteeism)", get: s => s.dashboardMetrics ? `Suspensions: <strong>${s.dashboardMetrics.suspensionRate}</strong><br>Absenteeism: <strong>${s.dashboardMetrics.chronicAbsenteeism}</strong>` : 'N/A' },
+        { label: "School Climate (Suspensions & Absenteeism)", get: s => s.dashboardMetrics ? `Suspensions: <strong>${s.dashboardMetrics.suspensionRate}</strong><br>Absenteeism: <strong>${s.dashboardMetrics.chronicAbsenteeism}</strong>` : 'N/A' },
         { label: "Sense of Safety & Belonging (CHKS)", get: s => s.dashboardMetrics ? `<strong class="text-brand-marine">${s.dashboardMetrics.chksBelonging}</strong>` : 'N/A' },
-        { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px] leading-relaxed">${s.lotteryOdds || 'N/A'}</span>` },
+        { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px]">${s.lotteryOdds}</span>` },
         { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
         { label: "Demographics & Socioeconomics", get: s => s.demographics ? `<strong>${s.demographics.summary}</strong><br><span class="text-[11px] text-amber-800 font-semibold">${s.demographics.sed || ''}</span>` : 'Certified CDE Data' },
-        { label: "Neighborhood & Muni", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-slate-500 text-[11px]">Muni: ${s.muni}</span>` },
         { label: "Languages & Biliteracy", get: s => s.languages.join('<br>') },
-        { label: "Arts & Performing Electives", get: s => s.arts },
-        { label: "Athletics", get: s => s.sports },
-        { label: "Bell Hours", get: s => s.bellHours }
+        { label: "Arts & Athletics", get: s => `${s.arts}<br><span class="text-[11px] text-slate-500">Sports: ${s.sports}</span>` }
       ];
 
       tableWrapper.innerHTML = `
@@ -3453,39 +3668,34 @@
       `;
     }
 
-    function openModal(schoolId) {
-      if (sfMap) sfMap.closePopup();
+    function setElText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.innerText = text || '';
+    }
 
+    function openModal(schoolId) {
       const school = SF_SCHOOLS.find(s => s.id === schoolId);
       if (!school) return;
 
-      const setElText = (id, text) => {
-        const el = document.getElementById(id);
-        if (el) el.innerText = text || 'N/A';
-      };
+      if (sfMap) sfMap.closePopup();
 
       setElText('modal-name', school.name);
       setElText('modal-sector', school.sector);
       setElText('modal-address', school.address);
       setElText('modal-enrollment', school.enrollment);
       setElText('modal-bell', school.bellHours);
+      setElText('modal-ratio', school.dashboardMetrics ? school.dashboardMetrics.studentTeacherRatio : 'N/A');
       setElText('modal-muni', school.muni);
       setElText('modal-afterschool', school.tuition);
       setElText('modal-hs-pipeline', school.hsFeeders);
       setElText('modal-description', school.description);
       setElText('modal-scale-detail', school.scaleDetail);
-      setElText('modal-languages', school.languages ? school.languages.join(', ') : 'N/A');
+      setElText('modal-languages', school.languages.join(', '));
       setElText('modal-arts', school.arts);
       setElText('modal-sports', school.sports);
       setElText('modal-feeders', school.feeders);
       setElText('modal-lottery-odds', school.lotteryOdds);
 
-      const ratioEl = document.getElementById('modal-ratio');
-      if (ratioEl && school.dashboardMetrics) {
-        ratioEl.innerText = school.dashboardMetrics.studentTeacherRatio;
-      }
-
-      // Populate California School Dashboard & Climate Metrics Cards
       const dashboardContainer = document.getElementById('modal-dashboard-metrics');
       if (dashboardContainer && school.dashboardMetrics) {
         dashboardContainer.innerHTML = `
@@ -3513,17 +3723,13 @@
         `;
       }
 
-      // Populate Dynamic Fit Score Calculation & Itemized Breakdown
       const fitData = calculateSchoolFitScore(school);
-      const scoreBadge = document.getElementById('modal-fit-score-badge');
-      if (scoreBadge) {
-        scoreBadge.innerText = `${fitData.finalScore}%`;
-      }
+      setElText('modal-fit-score-badge', `${fitData.finalScore}%`);
 
       const fitBreakdownContainer = document.getElementById('modal-fit-breakdown');
       if (fitBreakdownContainer) {
         fitBreakdownContainer.innerHTML = fitData.breakdown.map(item => `
-          <div class="pt-2 first:pt-0 flex items-start justify-between gap-3">
+          <div class="pt-1.5 first:pt-0 flex items-start justify-between gap-3">
             <div class="space-y-0.5">
               <strong class="text-slate-800 font-semibold block text-[11px]">${item.category}</strong>
               <p class="text-[10px] text-slate-500 leading-snug">${item.description}</p>
@@ -3531,7 +3737,7 @@
             <span class="badge-pill bg-teal-100 text-teal-800 font-bold text-[10px] whitespace-nowrap">+${item.points} pts</span>
           </div>
         `).join('') + `
-          <div class="pt-2.5 mt-2 flex items-center justify-between text-[11px] font-bold text-slate-700 border-t border-teal-200/80">
+          <div class="pt-2 flex items-center justify-between text-[11px] font-bold text-slate-700 border-t border-teal-200/80">
             <span>Points Earned: ${fitData.rawTotal} / 100 max pts</span>
             <span class="text-brand-marine font-extrabold text-xs">Total Fit Score: ${fitData.finalScore}%</span>
           </div>
@@ -3557,35 +3763,35 @@
         `;
       }
 
-      document.getElementById('school-modal').classList.remove('hidden');
+      document.getElementById('school-modal')?.classList.remove('hidden');
     }
 
     function closeModal() {
-      document.getElementById('school-modal').classList.add('hidden');
+      document.getElementById('school-modal')?.classList.add('hidden');
     }
 
     function openSourcesModal() {
-      document.getElementById('sources-modal').classList.remove('hidden');
+      document.getElementById('sources-modal')?.classList.remove('hidden');
     }
 
     function closeSourcesModal() {
-      document.getElementById('sources-modal').classList.add('hidden');
+      document.getElementById('sources-modal')?.classList.add('hidden');
     }
 
     function openScaleExplainerModal() {
-      document.getElementById('scale-modal').classList.remove('hidden');
+      document.getElementById('scale-modal')?.classList.remove('hidden');
     }
 
     function closeScaleExplainerModal() {
-      document.getElementById('scale-modal').classList.add('hidden');
+      document.getElementById('scale-modal')?.classList.add('hidden');
     }
 
     function openScoringModal() {
-      document.getElementById('scoring-modal').classList.remove('hidden');
+      document.getElementById('scoring-modal')?.classList.remove('hidden');
     }
 
     function closeScoringModal() {
-      document.getElementById('scoring-modal').classList.add('hidden');
+      document.getElementById('scoring-modal')?.classList.add('hidden');
     }
 
     window.addEventListener('DOMContentLoaded', () => {
