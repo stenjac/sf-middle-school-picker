@@ -2683,11 +2683,11 @@
 
       const rows = [
         { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>` },
-        { label: "Class Size & Student-Teacher Ratio", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.studentTeacherRatio}</strong> (${s.dashboardMetrics.avgClassSize})` : 'N/A' },
-        { label: "Teacher Retention & Experience", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.teacherRetention}</strong><br><span class="text-[11px] text-slate-500">${s.dashboardMetrics.avgTeacherExperience}</span>` : 'N/A' },
-        { label: "School Climate (Suspensions & Absenteeism)", get: s => s.dashboardMetrics ? `Suspension: <strong>${s.dashboardMetrics.suspensionRate}</strong><br>Absenteeism: <strong>${s.dashboardMetrics.chronicAbsenteeism}</strong>` : 'N/A' },
-        { label: "Sense of Safety & Belonging (CHKS)", get: s => s.dashboardMetrics ? `<strong class="text-brand-marine">${s.dashboardMetrics.chksBelonging}</strong>` : 'N/A' },
-        { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px] leading-relaxed">${s.lotteryOdds || 'N/A'}</span>` },
+        { label: "Class Size & Student-Teacher Ratio", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.studentTeacherRatio}</strong> (${s.dashboardMetrics.avgClassSize})` : '<span class="text-slate-400">Data pending CDE release</span>' },
+        { label: "Teacher Retention & Experience", get: s => s.dashboardMetrics ? `<strong>${s.dashboardMetrics.teacherRetention}</strong><br><span class="text-[11px] text-slate-500">${s.dashboardMetrics.avgTeacherExperience}</span>` : '<span class="text-slate-400">Data pending CDE release</span>' },
+        { label: "School Climate (Suspensions & Absenteeism)", get: s => s.dashboardMetrics ? `Suspension: <strong>${s.dashboardMetrics.suspensionRate}</strong><br>Absenteeism: <strong>${s.dashboardMetrics.chronicAbsenteeism}</strong>` : '<span class="text-slate-400">Data pending CDE release</span>' },
+        { label: "Sense of Safety & Belonging (CHKS)", get: s => s.dashboardMetrics ? `<strong class="text-brand-marine">${s.dashboardMetrics.chksBelonging}</strong>` : '<span class="text-slate-400">Data pending CDE release</span>' },
+        { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px] leading-relaxed">${s.lotteryOdds || 'Consult SFUSD EPC'}</span>` },
         { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
         { label: "Demographics & Socioeconomics", get: s => s.demographics ? `<strong>${s.demographics.summary}</strong><br><span class="text-[11px] text-amber-800 font-semibold">${s.demographics.sed || ''}</span>` : 'Certified CDE Data' },
         { label: "Neighborhood & Muni", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-slate-500 text-[11px]">Muni: ${s.muni}</span>` },
