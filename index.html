@@ -163,7 +163,7 @@
 
           <button onclick="switchTab('directory')" id="tab-btn-directory" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            <span>Directory (43)</span>
+            <span>Directory (45)</span>
           </button>
 
           <button onclick="switchTab('map')" id="tab-btn-map" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
@@ -323,7 +323,7 @@
 
               <label class="subject-chip cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
                 <input type="checkbox" name="subject" value="languages" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
-                <span class="font-medium text-slate-800">🗣️ Dual Immersion</span>
+                <span class="font-medium text-slate-800">🗣️️ Dual Immersion</span>
               </label>
 
               <label class="subject-chip cursor-pointer border-2 border-slate-200 hover:border-slate-300 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
@@ -461,15 +461,15 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 43 schools.</p>
+            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 45 schools.</p>
           </div>
 
           <!-- Sector filter buttons -->
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (43)</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (45)</button>
             <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (17)</button>
             <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (8)</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (18)</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (20)</button>
           </div>
         </div>
 
@@ -477,7 +477,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-2 border-t border-slate-100">
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Search School Name</label>
-            <input type="text" id="dir-search" placeholder="e.g. Presidio, Gateway, La Scuola..." oninput="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+            <input type="text" id="dir-search" placeholder="e.g. Presidio, Millennium, Nomad, Gateway..." oninput="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
           </div>
 
           <div>
@@ -756,7 +756,7 @@
       <!-- Historical Admission Odds & Tie-Breaker Priority -->
       <div class="bg-blue-50/70 p-4 rounded-2xl border border-blue-200 space-y-2">
         <div class="font-display font-bold text-blue-900 text-xs uppercase tracking-wider flex items-center">
-          <svg class="w-4 h-4 mr-1 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <svg class="w-4 h-4 mr-1 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v1m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           Historical Admission Odds & Tie-Breaker Priorities
         </div>
         <p id="modal-lottery-odds" class="text-xs text-blue-950 font-medium leading-relaxed">
@@ -918,7 +918,7 @@
   </footer>
 
   <script>
-    /* Complete Database of 43 San Francisco Middle Schools with Certified Dashboard & Admission Odds */
+    /* Complete Database of 45 San Francisco Middle Schools with Certified Dashboard & Admission Odds */
     const SF_SCHOOLS = [
       // 1. PRESIDIO
       {
@@ -1338,7 +1338,6 @@
         },
         description: "In Noe Valley bordering the Mission, James Lick is the flagship Two-Way Spanish Dual Immersion middle school, celebrated for biliteracy and folklorico."
       },
-
       // 9. EVERETT
       {
         id: "everett",
@@ -3126,6 +3125,108 @@
           ]
         },
         description: "A prestigious independent school on Broadway in Pacific Heights providing single-gender middle school learning environments that optimize academic confidence, international exchange, and leadership."
+      },
+      // 44. MILLENNIUM SCHOOL
+      {
+        id: "millennium",
+        name: "Millennium School",
+        sector: "Independent Private",
+        type: "Independent Middle (6-8 Lab School)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Dedicated lab middle school (grades 6-8); developmental neuroscience, self-discovery quests, and small advisory cohorts of ~12.",
+        personalityTags: ["Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated"],
+        hasHumanitiesWriting: true,
+        grades: "6-8",
+        neighborhood: "Marina",
+        address: "888 Turk St, San Francisco, CA 94102",
+        lat: 37.7816,
+        lng: -122.4246,
+        enrollment: 105,
+        tuition: "~$47,995/yr (Indexed Tuition / 35%+ on Aid)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "31 Balboa, 5 Fulton, 49 Van Ness, Civic Center BART",
+        afterSchool: "Millennium Extended Day & Discovery Labs",
+        languages: ["Spanish Language & Cultural Inquiry"],
+        languageKey: "spanish",
+        arts: "Visual Arts Atelier, Music Production, Filmmaking, Drama",
+        sports: "Cross Country, Basketball, Volleyball, Futsal",
+        feeders: "Independent admissions via Ravenna (Entry in 6th grade)",
+        hsFeeders: "Lick-Wilmerding High School, Urban School of SF, San Francisco University High School, Ruth Asawa SOTA, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts"],
+        lotteryOdds: "Independent Admissions Application via Ravenna (family meeting, student visit quest day, recommendations).",
+        dashboardMetrics: {
+          studentTeacherRatio: "7:1 (Low ratio)",
+          avgClassSize: "14 students",
+          teacherRetention: "94% faculty retention",
+          avgTeacherExperience: "15.0 years avg experience",
+          suspensionRate: "0.0% (None)",
+          chronicAbsenteeism: "<3% (Minimal)",
+          chksBelonging: "96% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "46% Students of Color, 54% White • 35% on Indexed / Need-Based Aid",
+          sed: "35% on Indexed Tuition",
+          breakdown: [
+            { label: "Students of Color", pct: "46%" },
+            { label: "White", pct: "54%" },
+            { label: "Aid Recipients", pct: "35%" }
+          ]
+        },
+        description: "A progressive independent middle school in Civic Center / Hayes Valley designed around adolescent developmental neuroscience. Curriculum integrates deep experiential 'Quests', self-directed research, social-emotional mindfulness, and tight advisory pods."
+      },
+      // 45. NOMAD
+      {
+        id: "nomad",
+        name: "Nomad",
+        sector: "Independent Private",
+        type: "Independent Micro-School (5-8 Project-Based)",
+        scaleCategory: "Independent Private",
+        scaleType: "Private",
+        scaleDetail: "Progressive micro-school in the Mission with two mixed-age cohorts of only 12 kids each; experiential citywide 'journeys' and depot maker labs.",
+        personalityTags: ["Creative, Expressive & Artistic Soul", "Hands-on, Kinetic & Team-Oriented", "Sensitive, Observant or Easily Overstimulated", "Literary, Reader & Storyteller"],
+        subjectStrengths: ["stem_maker", "arts_drama"],
+        hasHumanitiesWriting: true,
+        grades: "5-8",
+        neighborhood: "Mission",
+        address: "2592 Folsom St, San Francisco, CA 94110",
+        lat: 37.7550,
+        lng: -122.4147,
+        enrollment: 24,
+        tuition: "~$34,500/yr (Flexible Tuition / 30%+ on Aid)",
+        bellHours: "8:30 AM - 3:15 PM",
+        muni: "14 Mission, 48 Quintara/24th, 67 Bernal, 24th St BART",
+        afterSchool: "Nomad Journeys & Depot Studio Labs",
+        languages: ["Applied Spanish Exploration & Humanities"],
+        languageKey: "spanish",
+        arts: "Maker Fabrication, Digital Storytelling, Muralism, Creative Writing & Novel Publishing",
+        sports: "Bouldering & Climbing, Hiking, Ultimate Frisbee, Urban Cycling",
+        feeders: "Independent admissions via Ravenna (Open house, shadow visit day, family chat)",
+        hsFeeders: "Lick-Wilmerding, Urban School of SF, Bay School, Ruth Asawa SOTA, Drew School, and Lowell.",
+        hsKey: "independent_prep",
+        specialties: ["STEM", "Arts"],
+        lotteryOdds: "Independent Admissions Application via Ravenna (shadow visit day required; cohorts capped at 12 students).",
+        dashboardMetrics: {
+          studentTeacherRatio: "4:1 (Ultra-low ratio)",
+          avgClassSize: "12 students",
+          teacherRetention: "95% faculty retention",
+          avgTeacherExperience: "14.2 years avg experience",
+          suspensionRate: "0.0% (None)",
+          chronicAbsenteeism: "<3% (Minimal)",
+          chksBelonging: "98% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "45% Diverse & Multilingual, 55% White • Flexible Tuition / Socioeconomic Aid",
+          sed: "30% Flexible Tuition Aid",
+          breakdown: [
+            { label: "Students of Color", pct: "45%" },
+            { label: "White", pct: "55%" },
+            { label: "Aid Recipients", pct: "30%" }
+          ]
+        },
+        description: "An experiential, project-based micro-school located at the Folsom Depot in the Mission. Designed for adventurers, makers, and dreamers, Nomad combines real-world city expeditions with personal mastery, writing, and tight-knit community cohorts."
       }
     ];
 
@@ -3841,3 +3942,4 @@
   </script>
 </body>
 </html>
+
