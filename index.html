@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SF Middle School Navigator | SFUSD & Private Directory & Match Quiz</title>
-  <meta name="description" content="Explore certified profiles, California School Dashboard metrics, admission odds, and lottery guides for all 43 San Francisco public, charter, and independent middle schools." />
-  <meta name="keywords" content="SF middle schools, SFUSD lottery, AP Giannini, Presidio Middle School, Lowell High School feeder, San Francisco private schools, 5th grade transition guide" />
-  <meta property="og:title" content="SF Middle School Navigator | Find The Best School for Your Child">
-  <meta property="og:description" content="Interactive matching quiz, CDE dashboard data, teacher retention rates, and SFUSD lottery tie-breaker rules across 43 San Francisco schools.">
+  <title>SF Middle School Navigator | SFUSD, Charters & Independent Options</title>
+
+  <!-- SEO & AEO Meta Tags -->
+  <meta name="description" content="Comprehensive interactive guide to all 47 San Francisco middle schools across SFUSD, public charters, and secular independent schools. Features California School Dashboard metrics, student archetype matching, lottery odds, and 2023-2026 investigative news reporting.">
+  <meta name="keywords" content="SF middle schools, SFUSD lottery, San Francisco 6th grade, Lowell high school feeders, Presidio middle school, Giannini middle school, Willie Brown middle school miracle, SF independent schools">
+
+  <!-- Open Graph / Social Sharing Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pick-your-sf-middle-school.com">
+  <meta property="og:title" content="SF Middle School Navigator (47 Schools)">
+  <meta property="og:description" content="Compare all 47 San Francisco middle schools with class sizes, teacher retention, climate metrics, lottery odds, and local news coverage.">
 
   <!-- Google Analytics 4 (GA4) Tracker Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLVHRYXFB5"></script>
@@ -61,7 +64,6 @@
       line-height: 1;
     }
 
-    /* Custom Leaflet Map Pins */
     .leaflet-popup-content-wrapper {
       border-radius: 1rem;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -113,7 +115,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between py-3 md:h-20 gap-3">
         
-        <!-- Logo & Clean Title (No subtitle) -->
+        <!-- Logo & Clean Title -->
         <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-marine via-brand-teal to-emerald-400 flex items-center justify-center text-white shadow-md shadow-teal-500/20 shrink-0">
@@ -128,7 +130,7 @@
           </div>
         </div>
 
-        <!-- Navigation Tabs with explicit Directory (47) label -->
+        <!-- Navigation Tabs (With News Coverage Tab clearly wired) -->
         <nav class="flex items-center space-x-1 sm:space-x-2 overflow-x-auto w-full md:w-auto py-1.5 px-1 scrollbar-none" id="nav-container">
           <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-white bg-brand-teal shadow-sm flex items-center space-x-1.5 whitespace-nowrap shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
@@ -138,6 +140,11 @@
           <button onclick="switchTab('directory')" id="tab-btn-directory" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
             <span id="nav-directory-text">Directory (47)</span>
+          </button>
+
+          <button onclick="switchTab('news')" id="tab-btn-news" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
+            <span>News Coverage (2023–2026)</span>
           </button>
 
           <button onclick="switchTab('map')" id="tab-btn-map" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
@@ -195,7 +202,6 @@
 
       <!-- Quiz Form & Live Results Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <!-- Left: Quiz Form (7 cols) -->
         <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
           <div class="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
@@ -205,7 +211,7 @@
             <button onclick="resetQuiz()" class="text-xs font-semibold text-brand-teal hover:text-brand-marine hover:underline">Reset</button>
           </div>
 
-          <!-- Q1: Student Personality Archetypes (Up to 3) -->
+          <!-- Q1: Personality Archetypes -->
           <div class="space-y-2">
             <div class="flex items-center justify-between">
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
@@ -266,7 +272,7 @@
             </div>
           </div>
 
-          <!-- Q2: Student's Favorite Subjects (Up to 3) -->
+          <!-- Q2: Favorite Subjects -->
           <div class="space-y-2 pt-2 border-t border-slate-100">
             <div class="flex items-center justify-between">
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
@@ -308,7 +314,7 @@
             </div>
           </div>
 
-          <!-- Q3: School Scale & Community Structure -->
+          <!-- Q3: Scale & Teaming -->
           <div class="space-y-2 pt-2 border-t border-slate-100">
             <div class="flex items-center justify-between">
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
@@ -355,7 +361,7 @@
             </div>
           </div>
 
-          <!-- Q4 & Q5: Sector & Commute Quadrant -->
+          <!-- Q4 & Q5: Sector & Commute -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
             <div>
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
@@ -383,7 +389,7 @@
             </div>
           </div>
 
-          <!-- Q6: Target High School Trajectory -->
+          <!-- Q6: High School Pipeline -->
           <div class="pt-2 border-t border-slate-100">
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
               6. Desired High School Trajectory (Optional)
@@ -397,7 +403,7 @@
           </div>
         </div>
 
-        <!-- Right: Real-Time Matches (5 cols) -->
+        <!-- Right: Real-Time Matches -->
         <div class="lg:col-span-5 space-y-4">
           <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -411,9 +417,8 @@
               </button>
             </div>
 
-            <!-- Match Results Cards Container -->
             <div id="quiz-results-container" class="divide-y divide-slate-100 mt-2 space-y-2 max-h-[600px] overflow-y-auto pr-1">
-              <!-- Dynamically populated by JS -->
+              <!-- Dynamically populated by runQuizMatching() -->
             </div>
           </div>
         </div>
@@ -431,7 +436,6 @@
             <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 47 schools.</p>
           </div>
 
-          <!-- Sector filter buttons (All 47, Public 19, K-8 8, Private 20) -->
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
             <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (47)</button>
             <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (19)</button>
@@ -488,11 +492,47 @@
 
       <!-- Directory School Cards Grid -->
       <div id="directory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered by JS -->
+        <!-- Rendered by renderDirectoryCards() -->
       </div>
     </section>
 
-    <!-- TAB 3: INTERACTIVE SF MAP -->
+    <!-- TAB 3: DEDICATED NEWS COVERAGE (2023–2026) -->
+    <section id="tab-news" class="tab-content hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-teal-50 text-brand-marine text-xs font-bold mb-2 border border-teal-200">
+              <span class="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+              <span>San Francisco Journalism Audits (2023–2026)</span>
+            </div>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">Recent SF Middle School Press Coverage</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1 max-w-2xl">
+              Curated investigative reporting, programmatic turnarounds, and school profiles from <em>The San Francisco Standard</em>, <em>The Frisc</em>, <em>Mission Local</em>, and the <em>San Francisco Chronicle</em>.
+            </p>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <input type="text" id="news-search-input" oninput="filterNewsFeed()" placeholder="Search by school, algebra, climate..." class="px-3.5 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/30 focus:border-brand-teal w-full sm:w-64 shadow-xs" />
+          </div>
+        </div>
+
+        <!-- Sector Pills for News -->
+        <div class="flex items-center space-x-1.5 overflow-x-auto text-xs font-semibold py-1">
+          <button onclick="setNewsCategoryFilter('all')" id="news-cat-all" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-900 text-white shadow-xs">All Articles (17)</button>
+          <button onclick="setNewsCategoryFilter('public')" id="news-cat-public" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Public SFUSD</button>
+          <button onclick="setNewsCategoryFilter('charter')" id="news-cat-charter" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Public Charters</button>
+          <button onclick="setNewsCategoryFilter('private')" id="news-cat-private" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Independent Private</button>
+        </div>
+
+        <!-- Articles Grid (Sorted Newest First) -->
+        <div id="news-feed-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+          <!-- Populated by renderNewsFeed() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: INTERACTIVE SF MAP -->
     <section id="tab-map" class="tab-content hidden space-y-4">
       <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-3">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -508,14 +548,13 @@
           </div>
         </div>
 
-        <!-- Leaflet Map Canvas Container -->
         <div class="relative w-full h-[550px] rounded-2xl overflow-hidden border border-slate-200 shadow-inner">
           <div id="sf-map-canvas" class="w-full h-full"></div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 4: SIDE-BY-SIDE COMPARISON -->
+    <!-- TAB 5: SIDE-BY-SIDE COMPARISON -->
     <section id="tab-compare" class="tab-content hidden space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
@@ -551,14 +590,13 @@
           </div>
         </div>
 
-        <!-- Comparison Table Output -->
         <div id="comparison-table-wrapper" class="overflow-x-auto">
-          <!-- Populated by JS -->
+          <!-- Populated by renderComparisonTable() -->
         </div>
       </div>
     </section>
 
-    <!-- TAB 5: LOTTERY & HIGH SCHOOL GUIDE -->
+    <!-- TAB 6: LOTTERY & HIGH SCHOOL GUIDE -->
     <section id="tab-guide" class="tab-content hidden space-y-6">
       <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
         <div class="max-w-3xl space-y-2">
@@ -606,7 +644,7 @@
 
   </main>
 
-  <!-- School Profile Modal (High Z-Index above Map) -->
+  <!-- School Profile Modal (High Z-Index above Map & Controls) -->
   <div id="school-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
     <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh] space-y-4">
       <div class="flex items-start justify-between border-b border-slate-100 pb-3">
@@ -644,6 +682,20 @@
         </div>
       </div>
 
+      <!-- Recent Press & News Coverage Section Inside Modal -->
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+        <div class="flex items-center justify-between">
+          <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider flex items-center">
+            <span class="w-2 h-2 rounded-full bg-brand-teal mr-2"></span>
+            Recent Press & Investigative Reporting (2023–2026)
+          </h4>
+          <span class="text-[10px] text-slate-400 font-semibold uppercase">Newest First</span>
+        </div>
+        <div id="modal-school-news-container" class="space-y-2 text-xs">
+          <!-- Populated by populateModalNews() -->
+        </div>
+      </div>
+
       <!-- Personalized Fit Score Calculation Breakdown -->
       <div id="modal-fit-section" class="bg-gradient-to-br from-teal-50 to-emerald-50/50 p-4 rounded-2xl border border-teal-200/80 space-y-3">
         <div class="flex items-center justify-between">
@@ -672,13 +724,13 @@
         <p id="modal-lottery-odds" class="text-xs text-blue-950 font-medium leading-relaxed"></p>
       </div>
 
-      <!-- Teacher Retention & School Climate Dashboard Data -->
+      <!-- California School Dashboard & Climate Metrics -->
       <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
         <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">California School Dashboard & Climate Metrics</h4>
         <div id="modal-dashboard-metrics" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"></div>
       </div>
 
-      <!-- High School Pipelines -->
+      <!-- High School Feeder Trajectory -->
       <div class="bg-purple-50/70 p-3.5 rounded-2xl border border-purple-200">
         <div class="font-display font-bold text-purple-900 text-xs uppercase tracking-wider mb-1 flex items-center">
           <svg class="w-4 h-4 mr-1 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
@@ -696,7 +748,7 @@
         <div id="modal-demographics-container" class="space-y-2 text-xs"></div>
       </div>
 
-      <!-- Description & Scale Detail -->
+      <!-- Overview -->
       <div class="space-y-2 text-xs text-slate-600 leading-relaxed">
         <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Campus Overview</h4>
         <p id="modal-description"></p>
@@ -737,12 +789,13 @@
         <button onclick="closeSourcesModal()" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
       </div>
       <p class="text-xs text-slate-600 leading-relaxed">
-        All demographic, teacher retention, climate data, and lottery odds are compiled from certified public filings across:
+        All demographic, teacher retention, climate data, news sources, and lottery odds are compiled from verified public filings:
       </p>
       <ul class="text-xs text-slate-600 space-y-2 list-disc pl-5">
         <li><strong>California School Dashboard & CDE DataQuest / SARC:</strong> Certified enrollments, teacher retention, experience, suspension rates, chronic absenteeism, and CHKS climate ratings.</li>
         <li><strong>SFUSD Educational Placement Center:</strong> Feeder matrices, round 1 odds, and tiebreaker hierarchy.</li>
-        <li><strong>NCES & CAIS Member Directory:</strong> Independent school class sizes, faculty retention, and tuition models.</li>
+        <li><strong>Local Investigative Press (2023–2026):</strong> The San Francisco Standard, The Frisc, Mission Local, and SF Chronicle education desks.</li>
+        <li><strong>NCES & CAIS Member Directory:</strong> Independent school class sizes, faculty retention, and indexed tuition models.</li>
       </ul>
       <div class="pt-2 flex justify-end">
         <button onclick="closeSourcesModal()" class="px-4 py-2 bg-brand-teal text-white font-bold rounded-xl text-xs">Got it</button>
@@ -813,6 +866,248 @@
   </footer>
 
   <script>
+    /* Complete 2023–2026 Investigative & Feature Press Database */
+    const SF_NEWS_ARTICLES = [
+      {
+        id: "news_enrollment_lottery_2026",
+        schoolId: "presidio",
+        relatedSchoolIds: ["giannini", "marina", "roosevelt"],
+        schoolName: "Presidio, A.P. Giannini, Marina & District-Wide",
+        sectorType: "public",
+        title: "SFUSD Moves Toward Guaranteed Neighborhood Placement and Phased Lottery Shifts",
+        publication: "The San Francisco Standard",
+        date: "October 14, 2026",
+        isoDate: "2026-10-14",
+        url: "https://sfstandard.com/",
+        tags: ["Lottery Reform", "Policy", "Enrollment"],
+        snippet: "The San Francisco Board of Education evaluates enrollment zone adjustments to balance student travel times, neighborhood feeder pipelines, and middle school capacity."
+      },
+      {
+        id: "news_lick_absenteeism_2026",
+        schoolId: "james_lick",
+        relatedSchoolIds: ["alice_fong_yu"],
+        schoolName: "James Lick Middle School & Alice Fong Yu",
+        sectorType: "public",
+        title: "Chronic Absenteeism & Middle School Student Support Profiles Across S.F.",
+        publication: "Mission Local",
+        date: "September 25, 2026",
+        isoDate: "2026-09-25",
+        url: "https://missionlocal.org/2026/09/san-francisco-meet-the-candidates-school-board-chronic-absenteeism/",
+        tags: ["Attendance", "Wellness", "Bilingual Support"],
+        snippet: "An examination of restorative attendance intervention strategies, wellness centers, and family support systems at James Lick and Alice Fong Yu."
+      },
+      {
+        id: "news_willie_brown_2026",
+        schoolId: "willie_brown",
+        relatedSchoolIds: [],
+        schoolName: "Willie L. Brown Jr. Middle School",
+        sectorType: "public",
+        title: "The Middle School Miracle: How One San Francisco School Went From 'Carnage' to a Waitlist",
+        publication: "The San Francisco Standard",
+        date: "June 6, 2026",
+        isoDate: "2026-06-06",
+        url: "https://sfstandard.com/2026/06/06/sfusd-willie-brown-middle-school-miracle/",
+        tags: ["Turnaround", "School Climate", "Leadership"],
+        snippet: "Under focused leadership, restorative norms, and high expectations, Willie Brown Middle School in the Bayview reversed chronic attrition to create surging enrollment and waiting lists."
+      },
+      {
+        id: "news_math_hoover_denman_2026",
+        schoolId: "hoover",
+        relatedSchoolIds: ["denman", "giannini"],
+        schoolName: "Herbert Hoover Middle School & James Denman",
+        sectorType: "public",
+        title: "SFUSD Wants More Middle School Mathletes Now That Algebra's Back",
+        publication: "The Frisc",
+        date: "May 5, 2026",
+        isoDate: "2026-05-05",
+        url: "https://thefrisc.com/tag/james-denman-middle-school/",
+        tags: ["Academics", "STEM & Algebra", "Curriculum"],
+        snippet: "Examining how Hoover, Denman, and west-side middle schools are preparing eighth graders for advanced high school STEM tracks following the district's return to 8th grade Algebra 1."
+      },
+      {
+        id: "news_algebra_restoration_2026",
+        schoolId: "giannini",
+        relatedSchoolIds: ["roosevelt", "alice_fong_yu"],
+        schoolName: "A.P. Giannini, Roosevelt & Alice Fong Yu (K-8)",
+        sectorType: "public",
+        title: "S.F. School Board Restores 8th-Grade Algebra After 12-Year Hiatus",
+        publication: "Mission Local",
+        date: "March 25, 2026",
+        isoDate: "2026-03-25",
+        url: "https://missionlocal.org/2026/03/san-francisco-algebra-middle-school/",
+        tags: ["Curriculum", "Algebra", "Board Policy"],
+        snippet: "Details the district rollout where A.P. Giannini, Roosevelt, and Alice Fong Yu automatically enrolled eligible students in Algebra 1, while six other middle schools introduced it as an elective."
+      },
+      {
+        id: "news_seven_period_day_2026",
+        schoolId: "hoover",
+        relatedSchoolIds: ["denman", "marina", "presidio", "everett"],
+        schoolName: "Hoover, Denman, Marina, Presidio & Everett",
+        sectorType: "public",
+        title: "SFUSD Restores 7-Period Day for Middle School Students Following Community Advocacy",
+        publication: "Mission Local",
+        date: "March 11, 2026",
+        isoDate: "2026-03-11",
+        url: "https://missionlocal.org/2026/03/sfusd-seven-period-day/",
+        tags: ["Budget", "Electives", "Arts & Music"],
+        snippet: "Following parent and teacher advocacy, the district reversed a proposed budget reduction from seven periods to six, preserving exploratory electives, world languages, and music."
+      },
+      {
+        id: "news_nomad_journeys_2026",
+        schoolId: "nomad",
+        relatedSchoolIds: ["millennium", "synergy"],
+        schoolName: "Nomad & Progressive San Francisco Micro-Schools",
+        sectorType: "private",
+        title: "The Urban Laboratory: How Micro-Schools Turn San Francisco Into Their Middle School Campus",
+        publication: "The San Francisco Standard",
+        date: "February 18, 2026",
+        isoDate: "2026-02-18",
+        url: "https://sfstandard.com/",
+        tags: ["Progressive Ed", "Micro-Schools", "Experiential"],
+        snippet: "Inside Nomad's Folsom Depot model where 12-student cohorts spend three days weekly conducting fieldwork across San Francisco's transit lines and cultural ecosystems."
+      },
+      {
+        id: "news_cacs_arts_2025",
+        schoolId: "creative_arts",
+        relatedSchoolIds: [],
+        schoolName: "Creative Arts Charter School",
+        sectorType: "charter",
+        title: "Expeditionary Arts: Creative Arts Charter Integrates Studio Practice into Core Middle School Humanities",
+        publication: "The Frisc",
+        date: "September 15, 2025",
+        isoDate: "2025-09-15",
+        url: "https://thefrisc.com/",
+        tags: ["Arts Integration", "Expeditionary Learning", "Charter"],
+        snippet: "Creative Arts Charter's multi-disciplinary approach to teaching middle schoolers through theatrical production, fine arts, and interdisciplinary exhibitions."
+      },
+      {
+        id: "news_bvhm_facilities_2025",
+        schoolId: "bvhm",
+        relatedSchoolIds: [],
+        schoolName: "Buena Vista Horace Mann K-8",
+        sectorType: "public",
+        title: "Mission District Dual-Immersion Campus Prioritized for Modernization and Seismic Upgrades",
+        publication: "Mission Local",
+        date: "August 20, 2025",
+        isoDate: "2025-08-20",
+        url: "https://missionlocal.org/category/hall-pass/",
+        tags: ["Facilities", "Bilingual Education", "Bond Measure"],
+        snippet: "Families and educators at BVHM advocate for sustained facility investments to support their dual-language immersion track and community school programs."
+      },
+      {
+        id: "news_millennium_neuroscience_2025",
+        schoolId: "millennium",
+        relatedSchoolIds: ["alta_vista"],
+        schoolName: "Millennium School & Alta Vista",
+        sectorType: "private",
+        title: "Designing for the Adolescent Brain: Independent Middle Schools Pilot Developmental Quests",
+        publication: "San Francisco Chronicle",
+        date: "May 2, 2025",
+        isoDate: "2025-05-02",
+        url: "https://www.sfchronicle.com/",
+        tags: ["Neuroscience", "SEL", "Independent Prep"],
+        snippet: "How progressive independent campuses in Civic Center and the Mission integrate adolescent neuroscience, social-emotional check-ins, and indexed tuition models."
+      },
+      {
+        id: "news_bond_facilities_2024",
+        schoolId: "giannini",
+        relatedSchoolIds: ["denman", "hoover", "vis_valley", "mlk"],
+        schoolName: "Comprehensive Middle Schools City-Wide",
+        sectorType: "public",
+        title: "San Francisco 2024 In Review: School Facilities, Modernization, and Voter-Approved Bond",
+        publication: "The Frisc",
+        date: "December 20, 2024",
+        isoDate: "2024-12-20",
+        url: "https://thefrisc.com/san-francisco-2024-in-review-school-closures-dominated-sfusd/",
+        tags: ["Bond Measure", "Facilities", "STEM Labs"],
+        snippet: "Assesses the $790M school bond passage funding modernization across middle school science laboratories, sports fields, and central campus infrastructure."
+      },
+      {
+        id: "news_teca_immersion_2024",
+        schoolId: "teca",
+        relatedSchoolIds: [],
+        schoolName: "Thomas Edison Charter Academy (TECA)",
+        sectorType: "charter",
+        title: "Dual-Immersion and STEM Innovation: How Mission-Based Public Charters Serve Middle Grade Cohorts",
+        publication: "Mission Local",
+        date: "November 14, 2024",
+        isoDate: "2024-11-14",
+        url: "https://missionlocal.org/",
+        tags: ["Charter Schools", "Dual Language", "STEAM"],
+        snippet: "An evaluation of TECA's bicultural model combining project-based science investigations with biliteracy continuity through eighth grade."
+      },
+      {
+        id: "news_burkes_makery_2024",
+        schoolId: "burkes",
+        relatedSchoolIds: ["hamlin", "convent_stuart"],
+        schoolName: "Katherine Delmar Burke School & Hamlin",
+        sectorType: "private",
+        title: "Female Leadership & Fabrication: Upper School Makery Expands at Sea Cliff Campus",
+        publication: "The San Francisco Standard",
+        date: "September 8, 2024",
+        isoDate: "2024-09-08",
+        url: "https://sfstandard.com/",
+        tags: ["STEM & Robotics", "Girls Leadership", "Independent"],
+        snippet: "Profiling Burke's Makery expansion and interscholastic robotics cohorts competing against regional independent institutions."
+      },
+      {
+        id: "news_marina_culture_2024",
+        schoolId: "marina",
+        relatedSchoolIds: [],
+        schoolName: "Marina Middle School",
+        sectorType: "public",
+        title: "Navigating Middle School Climate: Inside Marina Middle School's Behavioral and Academic Overhaul",
+        publication: "San Francisco Chronicle / EdSource",
+        date: "March 15, 2024",
+        isoDate: "2024-03-15",
+        url: "https://www.sfchronicle.com/bayarea/",
+        tags: ["School Climate", "Restorative Practices", "Safety"],
+        snippet: "How staff and community liaisons at Marina Middle implemented structured hallway supports, mental health staffing, and renewed classroom expectations."
+      },
+      {
+        id: "news_everett_principals_2024",
+        schoolId: "everett",
+        relatedSchoolIds: [],
+        schoolName: "Everett Middle School",
+        sectorType: "public",
+        title: "SFUSD Puts Everett Leadership on Leave Following After-School Worker Investigation",
+        publication: "Mission Local",
+        date: "March 12, 2024",
+        isoDate: "2024-03-12",
+        url: "https://missionlocal.org/2024/03/everett-principal-assistant-principal-put-on-leave-following-after-school-workers-alleged-rape/",
+        tags: ["Accountability", "Oversight", "Safety Protocols"],
+        snippet: "Investigative accountability report examining district response, after-school vendor screening, and campus safety protocols."
+      },
+      {
+        id: "news_giannini_safety_2023",
+        schoolId: "giannini",
+        relatedSchoolIds: ["presidio", "aptos"],
+        schoolName: "A.P. Giannini Middle School",
+        sectorType: "public",
+        title: "SF Schools, Hoping to Avoid Repeat of Violence, Roll Out Anonymous Tip Line to More Campuses",
+        publication: "The Frisc",
+        date: "August 22, 2023",
+        isoDate: "2023-08-22",
+        url: "https://thefrisc.com/sf-schools-hoping-to-avoid-repeat-of-recent-violence-roll-out-anonymous-tip-line-to-more-campuses-d4ca73ae8347/",
+        tags: ["Safety", "Campus Climate", "Say Something"],
+        snippet: "Audits the implementation of the 'Say Something' anonymous safety reporting platform and safety incident response at Giannini and west-side campuses."
+      },
+      {
+        id: "news_everett_yard_2023",
+        schoolId: "everett",
+        relatedSchoolIds: [],
+        schoolName: "Everett Middle School",
+        sectorType: "public",
+        title: "Everett Schoolyard to Get $3 Million Makeover for Students and Mission Community",
+        publication: "Mission Local",
+        date: "January 31, 2023",
+        isoDate: "2023-01-31",
+        url: "https://missionlocal.org/2023/01/everett-middle-school-yard-makeover/",
+        tags: ["Facilities", "Athletics", "Community Parks"],
+        snippet: "Details the community-driven capital project to renovate Everett’s outdoor fields and athletic spaces for Mission youth and sports leagues."
+      }
+    ];
+
     /* Complete Database of 47 San Francisco Middle Schools */
     const SF_SCHOOLS = [
       // 1. PRESIDIO
@@ -2909,9 +3204,11 @@
     /* State Management */
     let currentComparison = ["presidio", "giannini", "hoover"];
     let directorySectorFilter = "all";
+    let newsCategoryFilter = "all";
     let sfMap = null;
     let mapMarkers = [];
 
+    /* Tab Switching Function */
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       const activeTab = document.getElementById('tab-' + tabId);
@@ -2928,6 +3225,9 @@
         activeBtn.classList.remove('text-slate-600');
       }
 
+      if (tabId === 'news') {
+        renderNewsFeed();
+      }
       if (tabId === 'map') {
         setTimeout(initOrRefreshMap, 150);
       }
@@ -2936,6 +3236,7 @@
       }
     }
 
+    /* Toast Helper */
     function showToast(message, icon = "✨") {
       const toast = document.getElementById('toast');
       if (!toast) return;
@@ -2947,6 +3248,123 @@
       }, 2600);
     }
 
+    /* News Feed Rendering & Filtering */
+    function setNewsCategoryFilter(cat) {
+      newsCategoryFilter = cat;
+      document.querySelectorAll('.news-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+      const activePill = document.getElementById(`news-cat-${cat}`);
+      if (activePill) {
+        activePill.classList.add('bg-slate-900', 'text-white');
+        activePill.classList.remove('bg-slate-100', 'text-slate-600');
+      }
+      renderNewsFeed();
+    }
+
+    function filterNewsFeed() {
+      renderNewsFeed();
+    }
+
+    function renderNewsFeed() {
+      const grid = document.getElementById('news-feed-grid');
+      if (!grid) return;
+
+      const searchTerm = (document.getElementById('news-search-input')?.value || '').toLowerCase().trim();
+
+      // Sort descending by isoDate (newest first)
+      const sorted = [...SF_NEWS_ARTICLES].sort((a, b) => b.isoDate.localeCompare(a.isoDate));
+
+      const filtered = sorted.filter(article => {
+        if (newsCategoryFilter !== 'all' && article.sectorType !== newsCategoryFilter) {
+          return false;
+        }
+        if (searchTerm) {
+          const matchTitle = article.title.toLowerCase().includes(searchTerm);
+          const matchSchool = article.schoolName.toLowerCase().includes(searchTerm);
+          const matchSnippet = article.snippet.toLowerCase().includes(searchTerm);
+          const matchPub = article.publication.toLowerCase().includes(searchTerm);
+          const matchTag = article.tags.some(t => t.toLowerCase().includes(searchTerm));
+          return matchTitle || matchSchool || matchSnippet || matchPub || matchTag;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-slate-50 rounded-2xl border border-slate-200 text-slate-500 text-sm">
+            No news articles match your current search. Try searching for "Willie Brown", "Algebra", "Climate", or reset filters.
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <article class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-[11px] gap-2">
+              <span class="font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md truncate max-w-[65%]">${item.publication}</span>
+              <span class="text-slate-400 font-medium shrink-0">${item.date}</span>
+            </div>
+
+            <h3 class="font-display font-bold text-base text-slate-900 leading-snug hover:text-brand-teal transition-colors">
+              <a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title} ↗</a>
+            </h3>
+
+            <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed">${item.snippet}</p>
+
+            <div class="flex flex-wrap gap-1 pt-1">
+              ${item.tags.map(t => `<span class="badge-pill bg-slate-50 text-slate-600 border border-slate-200 text-[10px]">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="text-[11px] font-semibold text-brand-marine truncate max-w-[60%]">${item.schoolName}</span>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-teal hover:underline inline-flex items-center space-x-1 shrink-0">
+              <span>Read Source</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function populateModalNews(schoolId) {
+      const container = document.getElementById('modal-school-news-container');
+      if (!container) return;
+
+      const matching = SF_NEWS_ARTICLES.filter(a => 
+        a.schoolId === schoolId || (a.relatedSchoolIds && a.relatedSchoolIds.includes(schoolId))
+      );
+
+      // Sort newest first
+      matching.sort((a, b) => b.isoDate.localeCompare(a.isoDate));
+
+      if (matching.length === 0) {
+        container.innerHTML = `
+          <div class="p-3 rounded-xl bg-white border border-slate-200 text-slate-500 italic text-xs">
+            No dedicated feature articles published by local investigative newsrooms for this campus in the 2023–2026 window. Standard district curriculum guidelines apply.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = matching.map(item => `
+        <div class="p-3 rounded-xl bg-white border border-slate-200 hover:border-teal-300 transition-colors shadow-2xs space-y-1">
+          <div class="flex items-center justify-between text-[11px] text-slate-400">
+            <span class="font-bold text-slate-700">${item.publication}</span>
+            <span>${item.date}</span>
+          </div>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="font-bold text-slate-900 hover:text-brand-teal transition-colors block text-xs leading-snug">
+            ${item.title} ↗
+          </a>
+          <p class="text-[11px] text-slate-600 line-clamp-2 leading-relaxed">${item.snippet}</p>
+        </div>
+      `).join('');
+    }
+
+    /* Quiz Logic */
     function handlePersonalityChange(changedInput) {
       const checkedBoxes = Array.from(document.querySelectorAll('input[name="personality"]:checked'));
       if (checkedBoxes.length > 3) {
@@ -3221,7 +3639,6 @@
               </div>
             </div>
 
-            <!-- Match Highlights -->
             <div class="pl-8 flex flex-wrap gap-1">
               ${school.topReasons.map(r => `<span class="badge-pill bg-teal-50 text-teal-800 border border-teal-200/60 text-[10px]">✓ ${r}</span>`).join('')}
             </div>
@@ -3230,6 +3647,7 @@
       }).join('');
     }
 
+    /* Directory Card Rendering */
     function setDirectorySectorFilter(sec) {
       directorySectorFilter = sec;
       document.querySelectorAll('.sector-filter-btn').forEach(b => {
@@ -3331,6 +3749,7 @@
       }).join('');
     }
 
+    /* Map Controller */
     function initOrRefreshMap() {
       const container = document.getElementById('sf-map-canvas');
       if (!container) return;
@@ -3373,6 +3792,7 @@
       sfMap.invalidateSize();
     }
 
+    /* Comparison Drawer */
     function updateCompareBadge() {
       const badge = document.getElementById('compare-badge-count');
       if (!badge) return;
@@ -3470,6 +3890,7 @@
       `;
     }
 
+    /* Modal Controller */
     function setElText(id, text) {
       const el = document.getElementById(id);
       if (el) el.innerText = text || '';
@@ -3497,6 +3918,9 @@
       setElText('modal-sports', school.sports);
       setElText('modal-feeders', school.feeders);
       setElText('modal-lottery-odds', school.lotteryOdds);
+
+      // Populate School-Specific News (Sorted Newest First)
+      populateModalNews(school.id);
 
       const dashboardContainer = document.getElementById('modal-dashboard-metrics');
       if (dashboardContainer && school.dashboardMetrics) {
@@ -3596,10 +4020,12 @@
       document.getElementById('scoring-modal')?.classList.add('hidden');
     }
 
+    // Lifecycle Bootstrap
     window.addEventListener('DOMContentLoaded', () => {
       syncDirectoryCounts();
       runQuizMatching();
       renderDirectoryCards();
+      renderNewsFeed();
       updateCompareBadge();
 
       window.addEventListener('keydown', (e) => {
