@@ -862,7 +862,7 @@
           <li><strong>Each article is hand-labeled</strong> positive, mixed or negative for each school it's about, and weighted 1 if the school is the subject or 0.5 if it's a featured example.</li>
           <li><strong>Recent coverage counts more:</strong> full weight under 12 months, half weight at 12–24 months, nothing after that.</li>
           <li><strong>Follow-ups count once.</strong> Two articles on the same incident are one story.</li>
-          <li><strong>Result:</strong> a total of +1 or more → <span class="text-emerald-700 font-bold">↑ +5</span>; −1 or less → <span class="text-rose-700 font-bold">↓ −5</span>; anything in between → 0, labeled as a faint/mixed signal or no coverage.</li>
+          <li><strong>Result:</strong> a total of +1 or more shows as <span class="text-emerald-700 font-bold">Getting better</span>; −1 or less as <span class="text-rose-700 font-bold">Getting worse</span>. Smaller totals show as <span class="text-emerald-600 font-bold">Some good news</span>, <span class="text-amber-700 font-bold">Mixed press</span> or <span class="text-rose-600 font-bold">Some concerns</span>. Schools with nothing written about them show no badge.</li>
         </ul>
         <p class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-amber-900"><strong>Read it with care:</strong> most schools get no coverage at all, and press gravitates to scandals and turnarounds. "No coverage" is not a neutral rating — it means there's nothing to go on. Check each school's evidence list before drawing conclusions.</p>
       </div>
@@ -932,7 +932,7 @@
        For each school: sum(sentiment × strength × age weight), one entry
        per story (follow-ups don't double-count).
        Age weight: < 12 months = 1, 12–24 months = 0.5, older = 0.
-       ≥ +1 → Trending up (+5) · ≤ −1 → Trending down (−5)
+       ≥ +1 → "Getting better" · ≤ −1 → "Getting worse" (labels only; no points shown)
        anything else → 0 (with "faint signal" or "no coverage" label)
        ------------------------------------------------------------------ */
     const MOMENTUM_THRESHOLD = 1;
@@ -993,15 +993,16 @@
       const counted = evidence.filter(e => e.weight > 0);
       const raw = Math.round(counted.reduce((s, e) => s + e.contribution, 0) * 100) / 100;
 
-      let state, points, label, icon;
-      if (raw >= MOMENTUM_THRESHOLD) { state = "up"; points = 5; label = "Trending up"; icon = "↑"; }
-      else if (raw <= -MOMENTUM_THRESHOLD) { state = "down"; points = -5; label = "Trending down"; icon = "↓"; }
-      else if (counted.length > 0 && raw > 0) { state = "faint_pos"; points = 0; label = "Faint positive signal"; icon = "↗"; }
-      else if (counted.length > 0 && raw < 0) { state = "faint_neg"; points = 0; label = "Faint negative signal"; icon = "↘"; }
-      else if (counted.length > 0) { state = "mixed"; points = 0; label = "Mixed coverage"; icon = "→"; }
-      else { state = "none"; points = 0; label = "No recent school-specific coverage"; icon = "–"; }
+      let state, points, label;
+      let shortLabel;
+      if (raw >= MOMENTUM_THRESHOLD) { state = "up"; points = 5; label = "Getting better"; shortLabel = "Better"; }
+      else if (raw <= -MOMENTUM_THRESHOLD) { state = "down"; points = -5; label = "Getting worse"; shortLabel = "Worse"; }
+      else if (counted.length > 0 && raw > 0) { state = "faint_pos"; points = 0; label = "Some good news"; shortLabel = "Good news"; }
+      else if (counted.length > 0 && raw < 0) { state = "faint_neg"; points = 0; label = "Some concerns"; shortLabel = "Concerns"; }
+      else if (counted.length > 0) { state = "mixed"; points = 0; label = "Mixed press"; shortLabel = "Mixed"; }
+      else { state = "none"; points = 0; label = "No recent coverage"; shortLabel = ""; }
 
-      return { schoolId, raw, points, state, label, icon, evidence, countedCount: counted.length };
+      return { schoolId, raw, points, state, label, shortLabel, evidence, countedCount: counted.length };
     }
 
     const MOMENTUM_STYLES = {
@@ -1013,14 +1014,19 @@
       none:      "bg-slate-50 text-slate-500 border-slate-200"
     };
 
-    function momentumBadge(schoolId, compact = false) {
+    const MOMENTUM_DOTS = {
+      up: "bg-emerald-700", faint_pos: "bg-emerald-500", mixed: "bg-amber-500",
+      faint_neg: "bg-rose-500", down: "bg-rose-700", none: "bg-slate-300"
+    };
+
+    /* size: "short" (quiz cards), "full" (directory, compare). Schools with no
+       coverage get no badge in compact spots; "full" in tables says so. */
+    function momentumBadge(schoolId, size = "full") {
       const m = computeMomentum(schoolId);
-      if (compact && m.state === "none") return "";
-      const pts = m.points > 0 ? "+5" : m.points < 0 ? "−5" : "0";
-      const text = compact
-        ? (m.state === "none" ? "Momentum: –" : `${m.icon} ${pts}`)
-        : `${m.icon} Momentum ${pts} · ${m.label}`;
-      return `<span title="Momentum: ${m.label} (raw ${m.raw}). Based on school-specific press in the last 24 months. Separate from the Fit Score." class="badge-pill border text-[10px] ${MOMENTUM_STYLES[m.state]}">${text}</span>`;
+      if (m.state === "none" && size === "short") return "";
+      if (m.state === "none" && size === "card") return "";
+      const text = size === "short" ? m.shortLabel : m.label;
+      return `<span title="Recent press: ${m.label}. Based on school-specific local news from the last 24 months. Separate from the Fit Score." class="badge-pill border text-[10px] inline-flex items-center gap-1 ${MOMENTUM_STYLES[m.state]}"><span class="inline-block w-1.5 h-1.5 rounded-full ${MOMENTUM_DOTS[m.state]}"></span>${text}</span>`;
     }
 
     /* Metrics provenance: private schools don't report suspension, absenteeism
@@ -3611,7 +3617,7 @@
               <div class="text-right">
                 <span class="font-display font-extrabold text-sm text-brand-marine">${school.fitScore}%</span>
                 <span class="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">Fit Score</span>
-                <span class="block mt-1">${momentumBadge(school.id, true)}</span>
+                <span class="block mt-1">${momentumBadge(school.id, "short")}</span>
               </div>
             </div>
 
@@ -3683,7 +3689,7 @@
                 <div>
                   <div class="flex flex-wrap gap-1 mb-1.5">
                     <span class="badge-pill border text-[10px] font-bold ${sectorBadgeColor}">${school.sector}</span>
-                    ${momentumBadge(school.id, true)}
+                    ${momentumBadge(school.id, "card")}
                   </div>
                   <h3 class="font-display font-bold text-base text-slate-900 hover:text-brand-teal cursor-pointer" onclick="openModal('${school.id}')">
                     ${school.name}
@@ -4003,10 +4009,10 @@
       const m = computeMomentum(schoolId);
       const badgeEl = document.getElementById('modal-momentum-badge');
       const evEl = document.getElementById('modal-momentum-evidence');
-      const pts = m.points > 0 ? '+5' : m.points < 0 ? '−5' : '0';
       if (badgeEl) badgeEl.innerHTML = `
-        <span class="font-display font-extrabold text-xl ${m.points > 0 ? 'text-emerald-700' : m.points < 0 ? 'text-rose-700' : 'text-slate-500'}">${m.icon} ${pts}</span>
-        <span class="block text-[10px] uppercase font-bold text-slate-500 tracking-wider">${m.label}</span>`;
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-bold ${MOMENTUM_STYLES[m.state]}">
+          <span class="inline-block w-2 h-2 rounded-full ${MOMENTUM_DOTS[m.state]}"></span>${m.label}
+        </span>`;
       if (!evEl) return;
       if (m.evidence.length === 0) {
         evEl.innerHTML = `<p class="text-[11px] text-slate-500 italic">No school-specific stories in the press database. Momentum is 0 by default, which means "unknown," not "steady."</p>`;
@@ -4022,9 +4028,9 @@
             <p class="text-[10px] text-slate-500">${e.article.publication} · ${e.article.date} · ${wTxt}</p>
             <p class="text-[10px] text-slate-600">${e.signal.note}</p>
           </div>
-          <span class="font-bold text-[11px] whitespace-nowrap ${tone}">${sentimentWord(e.signal.sentiment)} ${c > 0 ? '+' : ''}${Math.round(c * 100) / 100}</span>
+          <span class="font-bold text-[11px] whitespace-nowrap ${tone}">${sentimentWord(e.signal.sentiment)}${e.weight === 0 ? ' · not counted' : ' ' + (c > 0 ? '+' : '') + (Math.round(c * 100) / 100)}</span>
         </div>`;
-      }).join('') + `<p class="text-[11px] font-bold text-slate-700 pt-1">Weighted total: ${m.raw} (needs ±${MOMENTUM_THRESHOLD} to move the score)</p>`;
+      }).join('') + `<p class="text-[11px] text-slate-500 pt-1">Weighted total ${m.raw}. "Getting better" or "Getting worse" needs ±${MOMENTUM_THRESHOLD}; anything in between shows as some good news, some concerns, or mixed.</p>`;
     }
 
     function openScoringModal() {

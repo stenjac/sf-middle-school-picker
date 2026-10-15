@@ -96,8 +96,9 @@ Old incidents newly reported (e.g. a charge for abuse years ago) get
    - articles merged into `relatedCoverage`;
    - candidates rejected and why (one line each);
    - "Couldn't verify" items;
-   - any school whose Momentum label would change (e.g. "Everett: faint
-     positive → trending up").
+   - any school whose Momentum label would change (labels are: Getting
+     better, Some good news, Mixed press, Some concerns, Getting worse, or
+     no badge; e.g. "Everett: Some good news → Getting better").
 4. If nothing new was found, **don't open a PR** — just report "No new
    coverage this week" with the searches that were run.
 
