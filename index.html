@@ -45,31 +45,6 @@
     }
   </script>
 
-<!-- Local Business / Educational Organization Schema (JSON-LD) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "SF Middle School Navigator",
-  "url": "https://pick-your-sf-middle-school.com",
-  "description": "Comprehensive directory and match quiz for San Francisco 6th-grade families evaluating SFUSD and independent schools.",
-  "audience": {
-    "@type": "Audience",
-    "audienceType": "Parents of 5th graders in San Francisco"
-  },
-  "about": {
-    "@type": "EducationalOrganization",
-    "name": "San Francisco Middle Schools",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "addressCountry": "US"
-    }
-  }
-}
-</script>
-  
   <!-- Leaflet CSS & JS for Interactive Map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -163,7 +138,7 @@
 
           <button onclick="switchTab('directory')" id="tab-btn-directory" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            <span>Directory (45)</span>
+            <span>Directory (46)</span>
           </button>
 
           <button onclick="switchTab('map')" id="tab-btn-map" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
@@ -461,13 +436,13 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 45 schools.</p>
+            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 46 schools.</p>
           </div>
 
           <!-- Sector filter buttons -->
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (45)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (17)</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (46)</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (18)</button>
             <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (8)</button>
             <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (20)</button>
           </div>
@@ -3227,6 +3202,59 @@
           ]
         },
         description: "An experiential, project-based micro-school located at the Folsom Depot in the Mission. Designed for adventurers, makers, and dreamers, Nomad combines real-world city expeditions with personal mastery, writing, and tight-knit community cohorts."
+      },
+      // 46. JAMES DENMAN MIDDLE SCHOOL
+      {
+        id: "denman",
+        name: "James Denman Middle School",
+        sector: "SFUSD Comprehensive",
+        type: "Comprehensive (6-8)",
+        scaleCategory: "Mid-Sized (450–850)",
+        scaleType: "Mid",
+        scaleDetail: "Neighborhood comprehensive middle school in the Excelsior featuring 6th grade core academies, AVID college readiness, and Beacon youth center.",
+        personalityTags: ["Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
+        subjectStrengths: ["stem_maker", "sports_athletics", "music_band", "languages"],
+        grades: "6-8",
+        neighborhood: "Excelsior",
+        address: "241 Oneida Ave, San Francisco, CA 94112",
+        lat: 37.7245,
+        lng: -122.4418,
+        enrollment: 810,
+        tuition: "Public (Free)",
+        bellHours: "9:30 AM - 4:00 PM (Wed 2:15 PM)",
+        muni: "Muni Metro K/M, 54 Felton, 43 Masonic, Balboa Park BART",
+        afterSchool: "Denman Beacon Center (YMCA of SF) / SFMSAL Athletics",
+        languages: ["Spanish World Language", "Cantonese World Language", "AVID Pathway"],
+        languageKey: "spanish",
+        arts: "Instrumental Band, Orchestra, Digital Media Arts, Visual Fine Arts",
+        sports: "Baseball, Girls/Boys Basketball, Volleyball, Track & Field, Soccer",
+        feeders: "Lakeshore, Longfellow, Miraloma, Sheridan, Sunnyside",
+        hsFeeders: "Direct feeder to Balboa High School (adjacent campus), Abraham Lincoln High, Lowell, and Burton.",
+        hsKey: "lowell_academic",
+        specialties: ["Sports", "Music", "STEM"],
+        lotteryOdds: "Balanced Round 1 placement odds. Strong priority for students graduating from its 5 designated feeder elementary schools (Lakeshore, Longfellow, Miraloma, Sheridan, Sunnyside) and sibling tiebreaker.",
+        dashboardMetrics: {
+          studentTeacherRatio: "18:1",
+          avgClassSize: "24 students",
+          teacherRetention: "87% retention rate",
+          avgTeacherExperience: "12.4 years avg experience",
+          suspensionRate: "1.9% (Moderate)",
+          chronicAbsenteeism: "16.8% (Moderate)",
+          chksBelonging: "76% positive sense of safety & belonging"
+        },
+        demographics: {
+          summary: "48% Hispanic/Latino, 27% Asian, 9% Black/African American, 7% White, 6% Filipino, 3% Multi-ethnic",
+          sed: "68% Socioeconomically Disadvantaged",
+          el: "29% English Learners",
+          breakdown: [
+            { label: "Hispanic/Latino", pct: "48%" },
+            { label: "Asian", pct: "27%" },
+            { label: "African American", pct: "9%" },
+            { label: "White", pct: "7%" },
+            { label: "Filipino", pct: "6%" }
+          ]
+        },
+        description: "Known for its motto 'Denman Pride on the South Side,' James Denman Middle School is located near Balboa Park BART in the Excelsior. It offers strong AVID college-readiness, award-winning athletic teams, instrumental music, and comprehensive Beacon support programs."
       }
     ];
 
@@ -3942,4 +3970,3 @@
   </script>
 </body>
 </html>
-
