@@ -6,7 +6,7 @@
   <title>SF Middle School Navigator | SFUSD, Charters & Independent Options</title>
 
   <!-- SEO & AEO Meta Tags -->
-  <meta name="description" content="Compare 47 San Francisco middle schools across SFUSD, public charters and independent schools. Match quiz, map, local news, and a plain-English guide to how SFUSD assigns 6th-grade seats, with 2027-28 key dates.">
+  <meta name="description" content="Compare San Francisco middle schools across SFUSD, public charters and independent schools. Match quiz, map, local news, and a plain-English guide to how SFUSD assigns 6th-grade seats, with 2027-28 key dates.">
   <link rel="canonical" href="https://pick-your-sf-middle-school.com/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -19,15 +19,15 @@
   <meta property="og:site_name" content="SF Middle School Navigator">
   <meta property="og:url" content="https://pick-your-sf-middle-school.com/">
   <meta property="og:title" content="SF Middle School Navigator: find the right San Francisco middle school">
-  <meta property="og:description" content="Compare 47 public, charter and independent middle schools, and learn how SFUSD assigns 6th-grade seats. 2027-28 applications open Oct 23.">
+  <meta property="og:description" content="Compare San Francisco public, charter, independent and Catholic middle schools, and learn how SFUSD assigns 6th-grade seats. 2027-28 applications open Oct 23.">
   <meta property="og:image" content="https://pick-your-sf-middle-school.com/assets/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="SF Middle School Navigator: compare 47 San Francisco middle schools">
+  <meta property="og:image:alt" content="SF Middle School Navigator: compare San Francisco middle schools">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SF Middle School Navigator">
-  <meta name="twitter:description" content="Compare 47 San Francisco middle schools and learn how SFUSD assigns 6th-grade seats.">
+  <meta name="twitter:description" content="Compare San Francisco middle schools and learn how SFUSD assigns 6th-grade seats.">
   <meta name="twitter:image" content="https://pick-your-sf-middle-school.com/assets/og-image.jpg">
 
   <!-- Google Analytics 4 (GA4) Tracker Tag -->
@@ -101,6 +101,13 @@
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
       cursor: pointer;
       transition: transform 0.15s ease-in-out;
+    }
+    .custom-marker-icon.basic-marker {
+      background-color: #ffffff;
+      color: #475569;
+      border: 2px solid #64748b;
+      font-size: 9px;
+      box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
     }
     .custom-marker-icon:hover {
       transform: scale(1.15);
@@ -447,14 +454,15 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 47 schools.</p>
+            <p class="text-xs text-slate-500">Explore San Francisco middle schools: profiles, feeder pathways, programs and recent news. Schools marked "Basic listing" show key facts only for now.</p>
           </div>
 
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (47)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (19)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (8)</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (20)</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private</button>
+            <button onclick="setDirectorySectorFilter('Faith')" id="sec-btn-faith" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Catholic & Faith-based</button>
           </div>
         </div>
 
@@ -551,10 +559,11 @@
             <p class="text-xs text-slate-500">Examine school locations relative to Muni transit corridors, parks, and residential neighborhoods.</p>
           </div>
 
-          <div class="flex items-center space-x-2 text-xs font-semibold">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold">
             <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-teal-600 mr-1"></span> Public Comprehensive & Charters</span>
             <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-indigo-600 mr-1"></span> Public K-8</span>
             <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-purple-600 mr-1"></span> Independent Private</span>
+            <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-white border-2 border-slate-500 mr-1"></span> Basic listing (private / faith-based)</span>
           </div>
         </div>
 
@@ -937,7 +946,7 @@
       <div class="flex items-center justify-center space-x-2 text-brand-marine font-display font-bold text-sm">
         <span>SF Middle School Navigator</span>
         <span>•</span>
-        <span>Directory of 47 Middle Schools</span>
+        <span>San Francisco Middle School Directory</span>
       </div>
       <p class="max-w-md mx-auto">Non-commercial educational guide designed to assist San Francisco families with 6th-grade admissions.</p>
     </div>
@@ -950,6 +959,11 @@
        request — see NEWS_UPDATE.md for the schema and labeling rules.
        ------------------------------------------------------------------ */
     let SF_NEWS_ARTICLES = [];
+    /* Basic listings: private / Catholic / faith-based schools with key facts only
+       (name, type, grades, address, website, map pin). Loaded from
+       data/basic_schools.json. Shown in the directory and on the map; NOT scored
+       in the quiz and NOT available in Compare until they get full profiles. */
+    let SF_BASIC_SCHOOLS = [];
 
 
     /* ------------------------------------------------------------------
@@ -1031,7 +1045,7 @@
     }
 
     /* ------------------------------------------------------------------
-       Areas: 7 groupings drawn from where the 47 schools actually sit
+       Areas: 7 groupings drawn from where the profiled schools actually sit
        (k-means on school coordinates, then adjusted to recognizable SF
        neighborhood lines). "adjacent" gives partial commute credit.
        ------------------------------------------------------------------ */
@@ -1051,9 +1065,27 @@
       const quiz = document.getElementById('quiz-quadrant');
       if (quiz) quiz.innerHTML = '<option value="all">Any area of San Francisco</option>' +
         SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${count(a.key)})</option>`).join('');
+      const dirCount = k => count(k) + SF_BASIC_SCHOOLS.filter(b => b.area === k).length;
       const dir = document.getElementById('dir-filter-hood');
       if (dir) dir.innerHTML = '<option value="all">All areas</option>' +
-        SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${count(a.key)})</option>`).join('');
+        SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${dirCount(a.key)})</option>`).join('');
+    }
+
+    async function loadBasicSchools() {
+      try {
+        const res = await fetch('data/basic_schools.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const list = await res.json();
+        const fullIds = new Set(SF_SCHOOLS.map(s => s.id));
+        SF_BASIC_SCHOOLS = (Array.isArray(list) ? list : []).filter(b => b && b.id && !fullIds.has(b.id));
+      } catch (err) {
+        console.warn('Could not load data/basic_schools.json — basic listings hidden.', err);
+        SF_BASIC_SCHOOLS = [];
+      }
+    }
+    const isFaithBased = b => /catholic|religious/i.test(b.type || '');
+    function escHtml(v) {
+      return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
 
     async function loadNews() {
@@ -1189,7 +1221,7 @@
       }
       return { ...d, provenance: "Unverified — check the California School Dashboard" };
     }
-    /* Complete Database of 47 San Francisco Middle Schools */
+    /* Full school profiles (basic listings live in data/basic_schools.json) */
     const SF_SCHOOLS = [
       // 1. PRESIDIO
       {
@@ -3350,13 +3382,15 @@
 
     /* Dynamic UI Counter Sync */
     function syncDirectoryCounts() {
-      const total = SF_SCHOOLS.length;
+      const total = SF_SCHOOLS.length + SF_BASIC_SCHOOLS.length;
+      const faithCount = SF_BASIC_SCHOOLS.filter(isFaithBased).length;
       const compCount = SF_SCHOOLS.filter(s => s.sector === 'SFUSD Comprehensive' || s.sector === 'Public Charter').length;
       const k8Count = SF_SCHOOLS.filter(s => s.sector === 'SFUSD K-8').length;
-      const privCount = SF_SCHOOLS.filter(s => s.sector === 'Independent Private').length;
+      const privCount = SF_SCHOOLS.filter(s => s.sector === 'Independent Private').length
+        + SF_BASIC_SCHOOLS.filter(b => !isFaithBased(b)).length;
 
       const navText = document.getElementById('nav-directory-text');
-      if (navText) navText.innerText = `Directory (${total})`;
+      if (navText) navText.innerText = 'Directory';
 
       const btnAll = document.getElementById('sec-btn-all');
       if (btnAll) btnAll.innerText = `All (${total})`;
@@ -3369,6 +3403,9 @@
 
       const btnPriv = document.getElementById('sec-btn-priv');
       if (btnPriv) btnPriv.innerText = `Independent Private (${privCount})`;
+
+      const btnFaith = document.getElementById('sec-btn-faith');
+      if (btnFaith) btnFaith.innerText = `Catholic & Faith-based (${faithCount})`;
     }
 
     /* State Management */
@@ -3891,6 +3928,7 @@
       if (sec === 'SFUSD Comprehensive') document.getElementById('sec-btn-comp')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       if (sec === 'SFUSD K-8') document.getElementById('sec-btn-k8')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       if (sec === 'Independent Private') document.getElementById('sec-btn-priv')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'Faith') document.getElementById('sec-btn-faith')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       renderDirectoryCards();
     }
 
@@ -3918,7 +3956,17 @@
         return true;
       });
 
-      if (filtered.length === 0) {
+      // Basic listings have no language/specialty data, so those filters hide them.
+      const basicFiltered = (langFilter !== 'all' || specFilter !== 'all') ? [] : SF_BASIC_SCHOOLS.filter(b => {
+        if (directorySectorFilter === 'Faith' && !isFaithBased(b)) return false;
+        if (directorySectorFilter === 'Independent Private' && isFaithBased(b)) return false;
+        if (directorySectorFilter === 'SFUSD Comprehensive' || directorySectorFilter === 'SFUSD K-8') return false;
+        if (hoodFilter !== 'all' && b.area !== hoodFilter) return false;
+        if (searchTerm && !b.name.toLowerCase().includes(searchTerm) && !(b.neighborhood || '').toLowerCase().includes(searchTerm) && !(b.type || '').toLowerCase().includes(searchTerm) && !(areaByKey(b.area)?.label || '').toLowerCase().includes(searchTerm)) return false;
+        return true;
+      });
+
+      if (filtered.length === 0 && basicFiltered.length === 0) {
         grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-sm">No schools match your search and filter criteria.</div>`;
         return;
       }
@@ -3982,7 +4030,46 @@
             </div>
           </div>
         `;
-      }).join('');
+      }).join('') + basicFiltered.map(basicSchoolCard).join('');
+    }
+
+    function basicSchoolCard(b) {
+      const faith = isFaithBased(b);
+      const badge = faith ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-purple-50 text-purple-800 border-purple-200';
+      const enroll = b.enrollment68
+        ? `${b.enrollment68} students in grades 6–8 <span class="text-slate-400">(CA Dept. of Education, 2025–26)</span>`
+        : 'Not reported';
+      return `
+          <div class="bg-white rounded-3xl p-6 border border-dashed border-slate-300 shadow-sm flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div>
+                <div class="flex flex-wrap gap-1 mb-1.5">
+                  <span class="badge-pill border text-[10px] font-bold ${badge}">${escHtml(b.type)}</span>
+                  <span class="badge-pill border text-[10px] font-bold bg-slate-50 text-slate-500 border-slate-200" title="Key facts only for now. Not scored in the quiz or available in Compare.">Basic listing</span>
+                </div>
+                <h3 class="font-display font-bold text-base text-slate-900">${escHtml(b.name)}</h3>
+                <p class="text-xs text-slate-500">${escHtml(b.neighborhood)} • Grades ${escHtml(b.grades)}</p>
+              </div>
+              <div class="space-y-1.5 text-xs text-slate-600">
+                <div class="flex items-start space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16 shrink-0">Address:</span>
+                  <span class="text-slate-800">${escHtml(b.address)}</span>
+                </div>
+                <div class="flex items-start space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16 shrink-0">Size:</span>
+                  <span class="text-slate-800">${enroll}</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-400">Key facts only. Not scored in the quiz yet.</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-700">${b.tuition ? escHtml(b.tuition) : 'Tuition: see school site'}</span>
+              <a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="text-xs font-bold text-brand-teal hover:underline flex items-center">
+                <span>School website</span>
+                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5h5v5M19 5l-9 9M5 7v12h12"/></svg>
+              </a>
+            </div>
+          </div>`;
     }
 
     /* Map Controller */
@@ -4023,6 +4110,24 @@
 
         const marker = L.marker([school.lat, school.lng], { icon: customIcon }).bindPopup(popupContent).addTo(sfMap);
         mapMarkers.push(marker);
+      });
+
+      SF_BASIC_SCHOOLS.forEach(b => {
+        if (typeof b.lat !== 'number' || typeof b.lng !== 'number') return;
+        const icon = L.divIcon({
+          className: 'custom-map-pin',
+          html: `<div class="custom-marker-icon basic-marker" style="width: 18px; height: 18px;">${escHtml(b.name.replace(/^(St\.|Sts\.|Saint|The|School of the|Our Lady of the|École|Ecole)\s+/i, '').charAt(0))}</div>`,
+          iconSize: [18, 18],
+          iconAnchor: [9, 9]
+        });
+        const popup = `
+          <div class="text-xs">
+            <strong class="font-bold text-slate-900 block text-sm mb-0.5">${escHtml(b.name)}</strong>
+            <span class="badge-pill bg-slate-100 text-slate-700 text-[10px] mb-1.5">${escHtml(b.type)} • Grades ${escHtml(b.grades)} • Basic listing</span>
+            <p class="text-slate-600 text-[11px] mb-2">${escHtml(b.address)}</p>
+            <a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="inline-block px-3 py-1 bg-slate-700 text-white font-bold rounded-lg text-[10px]" style="color:#fff">School website</a>
+          </div>`;
+        mapMarkers.push(L.marker([b.lat, b.lng], { icon, zIndexOffset: -500 }).bindPopup(popup).addTo(sfMap));
       });
 
       sfMap.invalidateSize();
@@ -4296,7 +4401,8 @@
     window.addEventListener('DOMContentLoaded', async () => {
       populateAreaSelects();
       renderKeyDates();
-      await loadNews();
+      await Promise.all([loadNews(), loadBasicSchools()]);
+      populateAreaSelects();
       syncDirectoryCounts();
       syncNewsCounts();
       validateNewsIds();
