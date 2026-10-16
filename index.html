@@ -6,13 +6,29 @@
   <title>SF Middle School Navigator | SFUSD, Charters & Independent Options</title>
 
   <!-- SEO & AEO Meta Tags -->
-  <meta name="description" content="Comprehensive interactive guide to all 47 San Francisco middle schools across SFUSD, public charters, and secular independent schools. Features student archetype matching, a press-based Momentum signal, lottery odds, and 2023-2026 investigative news reporting.">
+  <meta name="description" content="Compare San Francisco middle schools across SFUSD, public charters and independent schools. Match quiz, map, local news, and a plain-English guide to how SFUSD assigns 6th-grade seats, with 2027-28 key dates.">
+  <link rel="canonical" href="https://pick-your-sf-middle-school.com/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#0f766e">
   <meta name="keywords" content="SF middle schools, SFUSD lottery, San Francisco 6th grade, Lowell high school feeders, Presidio middle school, Giannini middle school, Willie Brown middle school miracle, SF independent schools">
 
   <!-- Open Graph / Social Sharing Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SF Middle School Navigator (47 Schools)">
-  <meta property="og:description" content="Compare all 47 San Francisco middle schools with class sizes, teacher retention, climate metrics, lottery odds, and local news coverage.">
+  <meta property="og:site_name" content="SF Middle School Navigator">
+  <meta property="og:url" content="https://pick-your-sf-middle-school.com/">
+  <meta property="og:title" content="SF Middle School Navigator: find the right San Francisco middle school">
+  <meta property="og:description" content="Compare San Francisco public, charter, independent and Catholic middle schools, and learn how SFUSD assigns 6th-grade seats. 2027-28 applications open Oct 23.">
+  <meta property="og:image" content="https://pick-your-sf-middle-school.com/assets/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SF Middle School Navigator: compare San Francisco middle schools">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SF Middle School Navigator">
+  <meta name="twitter:description" content="Compare San Francisco middle schools and learn how SFUSD assigns 6th-grade seats.">
+  <meta name="twitter:image" content="https://pick-your-sf-middle-school.com/assets/og-image.jpg">
 
   <!-- Google Analytics 4 (GA4) Tracker Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLVHRYXFB5"></script>
@@ -85,6 +101,13 @@
       box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
       cursor: pointer;
       transition: transform 0.15s ease-in-out;
+    }
+    .custom-marker-icon.basic-marker {
+      background-color: #ffffff;
+      color: #475569;
+      border: 2px solid #64748b;
+      font-size: 9px;
+      box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
     }
     .custom-marker-icon:hover {
       transform: scale(1.15);
@@ -220,13 +243,13 @@
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
                 1. Student Personality Archetype <span class="text-brand-teal">(Pick up to 3)</span>
               </label>
-              <span id="personality-counter" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">1/3 Selected</span>
+              <span id="personality-counter" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">0/3 Selected</span>
             </div>
             <p class="text-xs text-slate-500">Middle school is an emotional milestone. What kind of environment brings out their best?</p>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1" id="personality-options">
-              <label class="quiz-personality-card cursor-pointer border-2 border-teal-500 bg-teal-50/40 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
-                <input type="checkbox" name="personality" value="outgoing" checked class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
+              <label class="quiz-personality-card cursor-pointer border-2 border-slate-200 p-3 rounded-2xl flex items-start space-x-2.5 transition-all text-xs">
+                <input type="checkbox" name="personality" value="outgoing" class="mt-0.5 rounded text-brand-teal focus:ring-brand-teal" onchange="handlePersonalityChange(this)">
                 <div>
                   <strong class="block text-slate-900 font-semibold">Outgoing & Spirited</strong>
                   <span class="text-slate-500 text-[11px] leading-snug block">Loves high-energy environments, rallies, team spirit, and big social circles.</span>
@@ -281,17 +304,17 @@
               <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">
                 2. Student's Favorite Subjects & Passions <span class="text-brand-teal">(Pick up to 3)</span>
               </label>
-              <span id="subject-counter" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">2/3 Selected</span>
+              <span id="subject-counter" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">0/3 Selected</span>
             </div>
             
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="subject-options">
-              <label class="subject-chip cursor-pointer border-2 border-teal-500 bg-teal-50/50 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
-                <input type="checkbox" name="subject" value="music_band" checked class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+              <label class="subject-chip cursor-pointer border-2 border-slate-200 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="music_band" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
                 <span class="font-medium text-slate-800">🎺 Band & Music</span>
               </label>
 
-              <label class="subject-chip cursor-pointer border-2 border-teal-500 bg-teal-50/50 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
-                <input type="checkbox" name="subject" value="stem_maker" checked class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
+              <label class="subject-chip cursor-pointer border-2 border-slate-200 p-2.5 rounded-xl flex items-center space-x-2 text-xs transition-all">
+                <input type="checkbox" name="subject" value="stem_maker" class="rounded text-brand-teal" onchange="handleSubjectChange(this)">
                 <span class="font-medium text-slate-800">🔬 STEM & Robotics</span>
               </label>
 
@@ -382,12 +405,7 @@
                 5. Preferred SF Geographic Area
               </label>
               <select id="quiz-quadrant" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:ring-2 focus:ring-brand-teal focus:outline-none" onchange="runQuizMatching()">
-                <option value="all">Any San Francisco Neighborhood</option>
-                <option value="Richmond">Richmond / Sunset / West Side</option>
-                <option value="Mission">Mission / Noe / Castro / Central</option>
-                <option value="Marina">Marina / Pacific Heights / Nob Hill</option>
-                <option value="Excelsior">Excelsior / Portola / Bayview</option>
-                <option value="SOMA">SOMA / Potrero Hill</option>
+                <option value="all">Any area of San Francisco</option>
               </select>
             </div>
           </div>
@@ -436,14 +454,15 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h2 class="font-display font-bold text-xl text-slate-900">San Francisco Middle School Directory</h2>
-            <p class="text-xs text-slate-500">Explore certified profiles, student demographics, teacher retention, climate data, and feeder pathways across 47 schools.</p>
+            <p class="text-xs text-slate-500">Explore San Francisco middle schools: profiles, feeder pathways, programs and recent news. Schools marked "Basic listing" show key facts only for now.</p>
           </div>
 
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All (47)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public (19)</button>
-            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8 (8)</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private (20)</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private</button>
+            <button onclick="setDirectorySectorFilter('Faith')" id="sec-btn-faith" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Catholic & Faith-based</button>
           </div>
         </div>
 
@@ -457,13 +476,7 @@
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Neighborhood Area</label>
             <select id="dir-filter-hood" onchange="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
-              <option value="all">All Neighborhoods</option>
-              <option value="Richmond">Richmond / Sea Cliff</option>
-              <option value="Sunset">Sunset / Parkside</option>
-              <option value="Mission">Mission / Noe Valley</option>
-              <option value="Marina">Marina / Pac Heights / Western Addition</option>
-              <option value="Excelsior">Excelsior / Visitacion Valley / Bayview</option>
-              <option value="SOMA">SOMA / Potrero Hill</option>
+              <option value="all">All areas</option>
             </select>
           </div>
 
@@ -546,10 +559,11 @@
             <p class="text-xs text-slate-500">Examine school locations relative to Muni transit corridors, parks, and residential neighborhoods.</p>
           </div>
 
-          <div class="flex items-center space-x-2 text-xs font-semibold">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-semibold">
             <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-teal-600 mr-1"></span> Public Comprehensive & Charters</span>
             <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-indigo-600 mr-1"></span> Public K-8</span>
             <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-purple-600 mr-1"></span> Independent Private</span>
+            <span class="inline-flex items-center"><span class="w-3 h-3 rounded-full bg-white border-2 border-slate-500 mr-1"></span> Basic listing (private / faith-based)</span>
           </div>
         </div>
 
@@ -932,7 +946,7 @@
       <div class="flex items-center justify-center space-x-2 text-brand-marine font-display font-bold text-sm">
         <span>SF Middle School Navigator</span>
         <span>•</span>
-        <span>Directory of 47 Middle Schools</span>
+        <span>San Francisco Middle School Directory</span>
       </div>
       <p class="max-w-md mx-auto">Non-commercial educational guide designed to assist San Francisco families with 6th-grade admissions.</p>
     </div>
@@ -945,6 +959,11 @@
        request — see NEWS_UPDATE.md for the schema and labeling rules.
        ------------------------------------------------------------------ */
     let SF_NEWS_ARTICLES = [];
+    /* Basic listings: private / Catholic / faith-based schools with key facts only
+       (name, type, grades, address, website, map pin). Loaded from
+       data/basic_schools.json. Shown in the directory and on the map; NOT scored
+       in the quiz and NOT available in Compare until they get full profiles. */
+    let SF_BASIC_SCHOOLS = [];
 
 
     /* ------------------------------------------------------------------
@@ -1023,6 +1042,50 @@
       a.download = items.length === 1 ? 'sfusd-' + items[0].date + '.ics' : 'sfusd-2027-28-key-dates.ics';
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
+
+    /* ------------------------------------------------------------------
+       Areas: 7 groupings drawn from where the profiled schools actually sit
+       (k-means on school coordinates, then adjusted to recognizable SF
+       neighborhood lines). "adjacent" gives partial commute credit.
+       ------------------------------------------------------------------ */
+    const SF_AREAS = [
+      { key: "richmond",  label: "Richmond & Sea Cliff",                      hint: "Outer/Inner Richmond, Sea Cliff",                     adjacent: ["sunset", "north"] },
+      { key: "sunset",    label: "Sunset & Parkside",                         hint: "Inner/Outer Sunset, Parkside, Golden Gate Heights",   adjacent: ["richmond", "southwest"] },
+      { key: "southwest", label: "Southwest & Excelsior",                     hint: "Balboa Terrace, Lakeshore, Outer Mission, Excelsior", adjacent: ["sunset", "central", "southeast"] },
+      { key: "north",     label: "Marina, Pacific Heights & Western Addition", hint: "Marina, Pac Heights, Laurel Heights, Fillmore",       adjacent: ["richmond", "northeast", "central"] },
+      { key: "northeast", label: "North Beach, Downtown & SoMa",              hint: "North Beach, Nob Hill, Chinatown, Tenderloin, Hayes Valley, SoMa", adjacent: ["north", "central"] },
+      { key: "central",   label: "Mission, Noe, Castro & Potrero",            hint: "Mission, Noe Valley, Twin Peaks, Potrero Hill",       adjacent: ["north", "northeast", "southwest", "southeast"] },
+      { key: "southeast", label: "Southeast: Bernal to Bayview",              hint: "Bernal Heights, Portola, Bayview, Visitacion Valley", adjacent: ["central", "southwest"] }
+    ];
+    const areaByKey = k => SF_AREAS.find(a => a.key === k);
+
+    function populateAreaSelects() {
+      const count = k => SF_SCHOOLS.filter(s => s.area === k).length;
+      const quiz = document.getElementById('quiz-quadrant');
+      if (quiz) quiz.innerHTML = '<option value="all">Any area of San Francisco</option>' +
+        SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${count(a.key)})</option>`).join('');
+      const dirCount = k => count(k) + SF_BASIC_SCHOOLS.filter(b => b.area === k).length;
+      const dir = document.getElementById('dir-filter-hood');
+      if (dir) dir.innerHTML = '<option value="all">All areas</option>' +
+        SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${dirCount(a.key)})</option>`).join('');
+    }
+
+    async function loadBasicSchools() {
+      try {
+        const res = await fetch('data/basic_schools.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const list = await res.json();
+        const fullIds = new Set(SF_SCHOOLS.map(s => s.id));
+        SF_BASIC_SCHOOLS = (Array.isArray(list) ? list : []).filter(b => b && b.id && !fullIds.has(b.id));
+      } catch (err) {
+        console.warn('Could not load data/basic_schools.json — basic listings hidden.', err);
+        SF_BASIC_SCHOOLS = [];
+      }
+    }
+    const isFaithBased = b => /catholic|religious/i.test(b.type || '');
+    function escHtml(v) {
+      return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     }
 
     async function loadNews() {
@@ -1158,7 +1221,7 @@
       }
       return { ...d, provenance: "Unverified — check the California School Dashboard" };
     }
-    /* Complete Database of 47 San Francisco Middle Schools */
+    /* Full school profiles (basic listings live in data/basic_schools.json) */
     const SF_SCHOOLS = [
       // 1. PRESIDIO
       {
@@ -1171,7 +1234,8 @@
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
         subjectStrengths: ["music_band", "languages", "math_accelerated", "sports_athletics", "arts_drama"],
         hasHumanitiesWriting: true,
-        neighborhood: "Richmond",
+        neighborhood: "Outer Richmond",
+        area: "richmond",
         address: "450 30th Ave, San Francisco, CA 94121",
         lat: 37.78084,
         lng: -122.49009,
@@ -1217,7 +1281,8 @@
         scaleDetail: "Teaming house structure where 6th graders share core academic cohorts and lockers in self-contained clusters.",
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["music_band", "sports_athletics", "math_accelerated", "languages", "stem_maker"],
-        neighborhood: "Sunset",
+        neighborhood: "Outer Sunset",
+        area: "sunset",
         address: "3151 Ortega St, San Francisco, CA 94122",
         lat: 37.75139,
         lng: -122.49724,
@@ -1263,7 +1328,8 @@
         scaleDetail: "Balanced mid-sized community with 3 core grade-level teams and modern science lab wings.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["stem_maker", "languages", "sports_athletics", "math_accelerated"],
-        neighborhood: "Sunset",
+        neighborhood: "Parkside",
+        area: "sunset",
         address: "2290 14th Ave, San Francisco, CA 94116",
         lat: 37.74536,
         lng: -122.47031,
@@ -1310,7 +1376,8 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven", "Literary, Reader & Storyteller"],
         subjectStrengths: ["arts_drama", "music_band", "languages"],
         hasHumanitiesWriting: true,
-        neighborhood: "Richmond",
+        neighborhood: "Inner Richmond",
+        area: "richmond",
         address: "460 Arguello Blvd, San Francisco, CA 94118",
         lat: 37.78228,
         lng: -122.45887,
@@ -1357,6 +1424,7 @@
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["stem_maker", "music_band", "languages", "sports_athletics"],
         neighborhood: "Marina",
+        area: "north",
         address: "3500 Fillmore St, San Francisco, CA 94123",
         lat: 37.80176,
         lng: -122.43636,
@@ -1402,7 +1470,8 @@
         scaleDetail: "Close-knit grade cohorts supported by on-site Chinatown YMCA Beacon youth workers in classrooms.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["languages", "arts_drama", "music_band"],
-        neighborhood: "Marina",
+        neighborhood: "North Beach",
+        area: "northeast",
         address: "2190 Powell St, San Francisco, CA 94133",
         lat: 37.80478,
         lng: -122.41167,
@@ -1448,7 +1517,8 @@
         scaleDetail: "Comprehensive teaming model with strong grade houses and award-winning arts wings.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["music_band", "arts_drama", "sports_athletics", "languages"],
-        neighborhood: "Excelsior",
+        neighborhood: "Balboa Terrace",
+        area: "southwest",
         address: "105 Aptos Ave, San Francisco, CA 94127",
         lat: 37.73017,
         lng: -122.46624,
@@ -1494,7 +1564,8 @@
         scaleDetail: "Intimate dual-language teams where students explore bicultural identity and social justice projects.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["languages", "arts_drama"],
-        neighborhood: "Mission",
+        neighborhood: "Noe Valley",
+        area: "central",
         address: "1220 Noe St, San Francisco, CA 94114",
         lat: 37.74908,
         lng: -122.43172,
@@ -1540,7 +1611,8 @@
         scaleDetail: "Teaming structure paired with late 9:00 AM bell schedule; ideal for adolescent sleep cycles.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["arts_drama", "languages", "sports_athletics"],
-        neighborhood: "Mission",
+        neighborhood: "Mission Dolores",
+        area: "central",
         address: "450 Church St, San Francisco, CA 94114",
         lat: 37.76403,
         lng: -122.42869,
@@ -1586,7 +1658,8 @@
         scaleDetail: "Modern architectural design with flexible STEM learning suites and dedicated wellness center.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "math_accelerated", "sports_athletics"],
-        neighborhood: "Excelsior",
+        neighborhood: "Silver Terrace",
+        area: "southeast",
         address: "2055 Silver Ave, San Francisco, CA 94124",
         lat: 37.73588,
         lng: -122.39987,
@@ -1632,7 +1705,8 @@
         scaleDetail: "Pioneering Quiet Time mindfulness model with small collaborative teams and high counseling support.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["stem_maker", "sports_athletics"],
-        neighborhood: "Excelsior",
+        neighborhood: "Visitacion Valley",
+        area: "southeast",
         address: "1971 Visitacion Ave, San Francisco, CA 94134",
         lat: 37.71529,
         lng: -122.41205,
@@ -1678,7 +1752,8 @@
         scaleDetail: "Portola neighborhood campus with dedicated STEAM academies, restorative circles, and on-site Bayview YMCA Beacon hub.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "sports_athletics", "math_accelerated", "music_band"],
-        neighborhood: "Excelsior",
+        neighborhood: "Portola",
+        area: "southeast",
         address: "350 Girard St, San Francisco, CA 94134",
         lat: 37.72795,
         lng: -122.40491,
@@ -1724,7 +1799,8 @@
         scaleDetail: "Neighborhood comprehensive middle school in the Excelsior featuring 6th grade core academies, AVID college readiness, and Beacon youth center.",
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "sports_athletics", "music_band", "languages"],
-        neighborhood: "Excelsior",
+        neighborhood: "Outer Mission",
+        area: "southwest",
         address: "241 Oneida Ave, San Francisco, CA 94112",
         lat: 37.72181,
         lng: -122.44286,
@@ -1770,7 +1846,8 @@
         scaleDetail: "Just ~70 students per grade; tight family continuity with teachers who have known families for years.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["languages", "math_accelerated", "arts_drama"],
-        neighborhood: "Sunset",
+        neighborhood: "Inner Sunset",
+        area: "sunset",
         address: "1541 12th Ave, San Francisco, CA 94122",
         lat: 37.7594,
         lng: -122.46928,
@@ -1817,6 +1894,7 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["math_accelerated", "stem_maker", "music_band"],
         neighborhood: "Marina",
+        area: "north",
         address: "3630 Divisadero St, San Francisco, CA 94123 (grades 3–8 Winfield Scott campus)",
         lat: 37.80309,
         lng: -122.4434,
@@ -1862,7 +1940,8 @@
         scaleDetail: "Very tight community feel; middle school students buddy with elementary students in outdoor learning.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "math_accelerated", "sports_athletics"],
-        neighborhood: "Sunset",
+        neighborhood: "Central Sunset",
+        area: "sunset",
         address: "1570 31st Ave, San Francisco, CA 94122",
         lat: 37.75796,
         lng: -122.48956,
@@ -1908,7 +1987,8 @@
         scaleDetail: "Middle schoolers at the Mayflower Campus (Twin Peaks); deep arts integration across all subjects.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["arts_drama", "music_band"],
-        neighborhood: "Mission",
+        neighborhood: "Twin Peaks",
+        area: "central",
         address: "500 Corbett Ave, San Francisco, CA 94131 (grades 5–8 Mayeda campus)",
         lat: 37.75778,
         lng: -122.44463,
@@ -1955,6 +2035,7 @@
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["languages", "arts_drama"],
         neighborhood: "Mission",
+        area: "central",
         address: "325 La Grande Ave, San Francisco, CA 94112 (temporary campus during renovation; home campus 3351 23rd St, reopening 2028)",
         lat: 37.7187,
         lng: -122.42471,
@@ -2001,7 +2082,8 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["languages", "arts_drama", "stem_maker"],
         hasHumanitiesWriting: true,
-        neighborhood: "SOMA",
+        neighborhood: "SoMa",
+        area: "northeast",
         address: "824 Harrison St, San Francisco, CA 94103 (grades 6–8 campus)",
         lat: 37.78038,
         lng: -122.40024,
@@ -2047,7 +2129,8 @@
         scaleDetail: "Bernal Heights hill campus; small middle school cohorts with strong family partnerships and active community garden.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["stem_maker", "sports_athletics", "languages"],
-        neighborhood: "Mission",
+        neighborhood: "Bernal Heights",
+        area: "southeast",
         address: "555 Tompkins Ave, San Francisco, CA 94110",
         lat: 37.73711,
         lng: -122.41314,
@@ -2095,6 +2178,7 @@
         subjectStrengths: ["stem_maker", "arts_drama"],
         hasHumanitiesWriting: true,
         neighborhood: "Excelsior",
+        area: "southwest",
         address: "125 Excelsior Ave, San Francisco, CA 94112",
         lat: 37.72581,
         lng: -122.43259,
@@ -2141,7 +2225,8 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
         subjectStrengths: ["stem_maker", "arts_drama", "sports_athletics"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Western Addition",
+        area: "north",
         address: "1512 Golden Gate Ave, San Francisco, CA 94115",
         lat: 37.77917,
         lng: -122.43551,
@@ -2187,6 +2272,7 @@
         subjectStrengths: ["languages", "stem_maker", "arts_drama", "sports_athletics"],
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
+        area: "central",
         address: "3531 22nd St, San Francisco, CA 94114",
         lat: 37.75491,
         lng: -122.42656,
@@ -2231,7 +2317,8 @@
         personalityTags: ["Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["arts_drama", "music_band", "stem_maker"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Western Addition",
+        area: "north",
         address: "1601 Turk St, San Francisco, CA 94115",
         lat: 37.78001,
         lng: -122.43548,
@@ -2276,7 +2363,8 @@
         personalityTags: ["Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller"],
         subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Russian Hill",
+        area: "northeast",
         address: "940 Filbert St, San Francisco, CA 94133",
         lat: 37.80073,
         lng: -122.41496,
@@ -2320,7 +2408,8 @@
         scaleDetail: "Structured middle school cohorts with extended learning day, double periods of literacy and math, and strong restorative culture.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["math_accelerated", "sports_athletics", "stem_maker"],
-        neighborhood: "Excelsior",
+        neighborhood: "Bayview",
+        area: "southeast",
         address: "1060 Key Ave, San Francisco, CA 94124",
         lat: 37.71929,
         lng: -122.3965,
@@ -2364,7 +2453,8 @@
         scaleDetail: "Western Addition charter campus (grades 5–8) on Scott St; small advisory pods, character strengths curriculum, and extended academic support.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["math_accelerated", "sports_athletics", "stem_maker"],
-        neighborhood: "Marina",
+        neighborhood: "Western Addition",
+        area: "north",
         address: "1430 Scott St, Third Floor, San Francisco, CA 94115",
         lat: 37.78299,
         lng: -122.43763,
@@ -2408,7 +2498,8 @@
         scaleDetail: "All-girls 3.5-acre Sea Cliff campus; 40-50 girls per grade with Makery and outdoor sciences.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated", "sports_athletics"],
-        neighborhood: "Richmond",
+        neighborhood: "Sea Cliff",
+        area: "richmond",
         address: "7070 California St, San Francisco, CA 94121",
         lat: 37.78357,
         lng: -122.49318,
@@ -2451,7 +2542,8 @@
         scaleDetail: "All-boys Pacific Heights campus; inquiry-based learning, high kinetic energy, and collaborative projects.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "sports_athletics", "math_accelerated"],
-        neighborhood: "Marina",
+        neighborhood: "Pacific Heights",
+        area: "north",
         address: "2750 Jackson St, San Francisco, CA 94115",
         lat: 37.79179,
         lng: -122.44035,
@@ -2495,7 +2587,8 @@
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated", "Literary, Reader & Storyteller"],
         subjectStrengths: ["arts_drama", "stem_maker", "math_accelerated"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Laurel Heights",
+        area: "north",
         address: "350 Masonic Ave, San Francisco, CA 94118",
         lat: 37.77815,
         lng: -122.44687,
@@ -2540,6 +2633,7 @@
         subjectStrengths: ["arts_drama", "stem_maker"],
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
+        area: "central",
         address: "250 Valencia St, San Francisco, CA 94103",
         lat: 37.76881,
         lng: -122.42234,
@@ -2582,7 +2676,8 @@
         scaleDetail: "Historic Pacific Heights mansion campus; female leadership, debate, and lab sciences.",
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["stem_maker", "math_accelerated", "arts_drama"],
-        neighborhood: "Marina",
+        neighborhood: "Pacific Heights",
+        area: "north",
         address: "2120 Broadway, San Francisco, CA 94115",
         lat: 37.79469,
         lng: -122.43202,
@@ -2625,7 +2720,8 @@
         scaleDetail: "Adjacent to Grace Cathedral on Nob Hill; famous boys' choir, close mentorship, and academic rigor.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["music_band", "arts_drama", "math_accelerated"],
-        neighborhood: "Marina",
+        neighborhood: "Nob Hill",
+        area: "northeast",
         address: "1275 Sacramento St, San Francisco, CA 94108",
         lat: 37.79234,
         lng: -122.41384,
@@ -2669,6 +2765,7 @@
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["stem_maker", "arts_drama"],
         neighborhood: "Mission",
+        area: "central",
         address: "333 Dolores St, San Francisco, CA 94110",
         lat: 37.76366,
         lng: -122.42614,
@@ -2711,7 +2808,8 @@
         scaleDetail: "Hayes Valley civic campus; dual French-American immersion accredited by French Ministry of Education.",
         personalityTags: ["Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["languages", "math_accelerated", "arts_drama"],
-        neighborhood: "Marina",
+        neighborhood: "Hayes Valley",
+        area: "northeast",
         address: "150 Oak St, San Francisco, CA 94102",
         lat: 37.77514,
         lng: -122.42214,
@@ -2754,7 +2852,8 @@
         scaleDetail: "SOMA urban campus; progressive project-based learning with Mandarin-English immersion model.",
         personalityTags: ["Analytical Problem Solver & Independent Learner", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["languages", "stem_maker", "math_accelerated"],
-        neighborhood: "SOMA",
+        neighborhood: "SoMa",
+        area: "northeast",
         address: "250 10th St, San Francisco, CA 94103",
         lat: 37.77338,
         lng: -122.41363,
@@ -2798,7 +2897,8 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller"],
         subjectStrengths: ["arts_drama", "stem_maker"],
         hasHumanitiesWriting: true,
-        neighborhood: "SOMA",
+        neighborhood: "Potrero Hill",
+        area: "central",
         address: "1555 Mariposa St, San Francisco, CA 94107",
         lat: 37.76364,
         lng: -122.39913,
@@ -2841,7 +2941,8 @@
         scaleDetail: "Portola district garden campus; Orff Schulwerk music, working eco-gardens, and experiential learning.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["music_band", "arts_drama", "stem_maker"],
-        neighborhood: "Excelsior",
+        neighborhood: "Portola",
+        area: "southeast",
         address: "300 Gaven St, San Francisco, CA 94134",
         lat: 37.73264,
         lng: -122.41122,
@@ -2884,7 +2985,8 @@
         scaleDetail: "Lake Merced Brotherhood Way campus; robust athletic fields, design maker lab, and values-based education.",
         personalityTags: ["Analytical Problem Solver & Independent Learner", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["stem_maker", "math_accelerated", "languages"],
-        neighborhood: "Sunset",
+        neighborhood: "Lakeshore",
+        area: "southwest",
         address: "655 Brotherhood Way, San Francisco, CA 94132",
         lat: 37.71341,
         lng: -122.47437,
@@ -2927,7 +3029,8 @@
         scaleDetail: "Dedicated campus for neurodiverse learners, ADHD, dyslexia, and customized learning profiles.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["stem_maker", "arts_drama"],
-        neighborhood: "Marina",
+        neighborhood: "Chinatown",
+        area: "northeast",
         address: "838 Kearny St, San Francisco, CA 94108",
         lat: 37.79558,
         lng: -122.40494,
@@ -2972,6 +3075,7 @@
         subjectStrengths: ["languages", "arts_drama", "stem_maker", "sports_athletics"],
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
+        area: "central",
         address: "3250 18th St, San Francisco, CA 94110",
         lat: 37.76209,
         lng: -122.41616,
@@ -3016,6 +3120,7 @@
         subjectStrengths: ["stem_maker", "math_accelerated", "arts_drama", "sports_athletics"],
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
+        area: "central",
         address: "2558 Mission St, San Francisco, CA 94110",
         lat: 37.7561,
         lng: -122.41888,
@@ -3059,7 +3164,8 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Literary, Reader & Storyteller"],
         subjectStrengths: ["arts_drama", "music_band", "stem_maker"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Pacific Heights",
+        area: "north",
         address: "2938 Washington St, San Francisco, CA 94115",
         lat: 37.79073,
         lng: -122.44166,
@@ -3104,6 +3210,7 @@
         subjectStrengths: ["arts_drama", "stem_maker"],
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
+        area: "central",
         address: "1387 Valencia St, San Francisco, CA 94110",
         lat: 37.75075,
         lng: -122.42046,
@@ -3147,7 +3254,8 @@
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
         subjectStrengths: ["stem_maker", "sports_athletics", "arts_drama", "math_accelerated"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Pacific Heights",
+        area: "north",
         address: "2222 Broadway, San Francisco, CA 94115",
         lat: 37.79448,
         lng: -122.43369,
@@ -3191,7 +3299,8 @@
         personalityTags: ["Analytical Problem Solver & Independent Learner", "Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated", "Literary, Reader & Storyteller"],
         subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated"],
         hasHumanitiesWriting: true,
-        neighborhood: "Marina",
+        neighborhood: "Tenderloin",
+        area: "northeast",
         address: "888 Turk St, San Francisco, CA 94102",
         lat: 37.78171,
         lng: -122.42303,
@@ -3236,6 +3345,7 @@
         subjectStrengths: ["stem_maker", "arts_drama"],
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
+        area: "central",
         address: "2592 Folsom St, San Francisco, CA 94110",
         lat: 37.75584,
         lng: -122.41447,
@@ -3272,13 +3382,15 @@
 
     /* Dynamic UI Counter Sync */
     function syncDirectoryCounts() {
-      const total = SF_SCHOOLS.length;
+      const total = SF_SCHOOLS.length + SF_BASIC_SCHOOLS.length;
+      const faithCount = SF_BASIC_SCHOOLS.filter(isFaithBased).length;
       const compCount = SF_SCHOOLS.filter(s => s.sector === 'SFUSD Comprehensive' || s.sector === 'Public Charter').length;
       const k8Count = SF_SCHOOLS.filter(s => s.sector === 'SFUSD K-8').length;
-      const privCount = SF_SCHOOLS.filter(s => s.sector === 'Independent Private').length;
+      const privCount = SF_SCHOOLS.filter(s => s.sector === 'Independent Private').length
+        + SF_BASIC_SCHOOLS.filter(b => !isFaithBased(b)).length;
 
       const navText = document.getElementById('nav-directory-text');
-      if (navText) navText.innerText = `Directory (${total})`;
+      if (navText) navText.innerText = 'Directory';
 
       const btnAll = document.getElementById('sec-btn-all');
       if (btnAll) btnAll.innerText = `All (${total})`;
@@ -3291,6 +3403,9 @@
 
       const btnPriv = document.getElementById('sec-btn-priv');
       if (btnPriv) btnPriv.innerText = `Independent Private (${privCount})`;
+
+      const btnFaith = document.getElementById('sec-btn-faith');
+      if (btnFaith) btnFaith.innerText = `Catholic & Faith-based (${faithCount})`;
     }
 
     /* State Management */
@@ -3545,8 +3660,8 @@
     }
 
     function resetQuiz() {
-      document.querySelectorAll('input[name="personality"]').forEach((input, i) => input.checked = (i === 0));
-      document.querySelectorAll('input[name="subject"]').forEach((input, i) => input.checked = (i < 2));
+      document.querySelectorAll('input[name="personality"]').forEach(input => input.checked = false);
+      document.querySelectorAll('input[name="subject"]').forEach(input => input.checked = false);
       const anyScale = document.querySelector('input[name="scale"][value="all"]');
       if (anyScale) anyScale.checked = true;
       const sector = document.getElementById('quiz-sector');
@@ -3556,10 +3671,8 @@
       const hs = document.getElementById('quiz-hs');
       if (hs) hs.value = 'any';
 
-      const firstPersonality = document.querySelector('input[name="personality"]:checked');
-      if (firstPersonality) handlePersonalityChange(firstPersonality);
-      const firstSubject = document.querySelector('input[name="subject"]:checked');
-      if (firstSubject) handleSubjectChange(firstSubject);
+      handlePersonalityChange(null);
+      handleSubjectChange(null);
       showToast("Quiz preferences reset.");
     }
 
@@ -3671,17 +3784,23 @@
       let commutePts = 0;
       let commuteReason = "";
       if (quadrantChoice !== 'all') {
-        if (school.neighborhood === quadrantChoice) {
+        const target = areaByKey(quadrantChoice);
+        const schoolArea = areaByKey(school.area);
+        if (school.area === quadrantChoice) {
           commutePts = 15;
-          commuteReason = `Located within your target ${school.neighborhood} commute zone (+15 pts)`;
-          matchReasons.push(`Located in ${school.neighborhood} commute zone`);
+          commuteReason = `In your chosen area, ${target.label} (+15 pts)`;
+          matchReasons.push(`In your area (${school.neighborhood})`);
+        } else if (target && target.adjacent.includes(school.area)) {
+          commutePts = 7;
+          commuteReason = `In a neighboring area, ${schoolArea.label} (+7 pts)`;
+          matchReasons.push(`Next to your area (${school.neighborhood})`);
         } else {
           commutePts = 0;
-          commuteReason = `Located in ${school.neighborhood} (outside primary ${quadrantChoice} preference) (0 pts)`;
+          commuteReason = `In ${schoolArea ? schoolArea.label : school.neighborhood}, away from ${target ? target.label : 'your area'} (0 pts)`;
         }
       } else {
         commutePts = 7;
-        commuteReason = "Any SF neighborhood acceptable (neutral baseline +7 pts)";
+        commuteReason = "Any area of San Francisco (neutral baseline +7 pts)";
       }
       breakdown.push({
         category: "Location & Transit Proximity",
@@ -3723,8 +3842,25 @@
       };
     }
 
+    function quizHasAnswers() {
+      const any = sel => document.querySelectorAll(sel).length > 0;
+      return any('input[name="personality"]:checked') || any('input[name="subject"]:checked') ||
+        (document.querySelector('input[name="scale"]:checked')?.value || 'all') !== 'all' ||
+        (document.getElementById('quiz-quadrant')?.value || 'all') !== 'all' ||
+        (document.getElementById('quiz-hs')?.value || 'any') !== 'any';
+    }
+
     function runQuizMatching() {
       const sectorChoice = document.getElementById('quiz-sector')?.value || 'all';
+      if (!quizHasAnswers()) {
+        const container = document.getElementById('quiz-results-container');
+        if (container) container.innerHTML = `
+          <div class="p-6 text-center space-y-2">
+            <p class="font-display font-bold text-slate-900 text-sm">Your matches will appear here</p>
+            <p class="text-xs text-slate-500 leading-relaxed">Pick at least one trait, subject, school size, area or high school goal. Scores update as you go.</p>
+          </div>`;
+        return;
+      }
 
       const scoredSchools = SF_SCHOOLS.map(school => {
         if (sectorChoice === 'public_only' && school.sector === 'Independent Private') return null;
@@ -3792,6 +3928,7 @@
       if (sec === 'SFUSD Comprehensive') document.getElementById('sec-btn-comp')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       if (sec === 'SFUSD K-8') document.getElementById('sec-btn-k8')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       if (sec === 'Independent Private') document.getElementById('sec-btn-priv')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+      if (sec === 'Faith') document.getElementById('sec-btn-faith')?.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
       renderDirectoryCards();
     }
 
@@ -3812,14 +3949,24 @@
             return false;
           }
         }
-        if (hoodFilter !== 'all' && s.neighborhood !== hoodFilter) return false;
+        if (hoodFilter !== 'all' && s.area !== hoodFilter) return false;
         if (langFilter !== 'all' && s.languageKey !== langFilter) return false;
         if (specFilter !== 'all' && !s.specialties.includes(specFilter)) return false;
-        if (searchTerm && !s.name.toLowerCase().includes(searchTerm) && !s.neighborhood.toLowerCase().includes(searchTerm)) return false;
+        if (searchTerm && !s.name.toLowerCase().includes(searchTerm) && !s.neighborhood.toLowerCase().includes(searchTerm) && !(areaByKey(s.area)?.label || '').toLowerCase().includes(searchTerm)) return false;
         return true;
       });
 
-      if (filtered.length === 0) {
+      // Basic listings have no language/specialty data, so those filters hide them.
+      const basicFiltered = (langFilter !== 'all' || specFilter !== 'all') ? [] : SF_BASIC_SCHOOLS.filter(b => {
+        if (directorySectorFilter === 'Faith' && !isFaithBased(b)) return false;
+        if (directorySectorFilter === 'Independent Private' && isFaithBased(b)) return false;
+        if (directorySectorFilter === 'SFUSD Comprehensive' || directorySectorFilter === 'SFUSD K-8') return false;
+        if (hoodFilter !== 'all' && b.area !== hoodFilter) return false;
+        if (searchTerm && !b.name.toLowerCase().includes(searchTerm) && !(b.neighborhood || '').toLowerCase().includes(searchTerm) && !(b.type || '').toLowerCase().includes(searchTerm) && !(areaByKey(b.area)?.label || '').toLowerCase().includes(searchTerm)) return false;
+        return true;
+      });
+
+      if (filtered.length === 0 && basicFiltered.length === 0) {
         grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-sm">No schools match your search and filter criteria.</div>`;
         return;
       }
@@ -3883,7 +4030,46 @@
             </div>
           </div>
         `;
-      }).join('');
+      }).join('') + basicFiltered.map(basicSchoolCard).join('');
+    }
+
+    function basicSchoolCard(b) {
+      const faith = isFaithBased(b);
+      const badge = faith ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-purple-50 text-purple-800 border-purple-200';
+      const enroll = b.enrollment68
+        ? `${b.enrollment68} students in grades 6–8 <span class="text-slate-400">(CA Dept. of Education, 2025–26)</span>`
+        : 'Not reported';
+      return `
+          <div class="bg-white rounded-3xl p-6 border border-dashed border-slate-300 shadow-sm flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div>
+                <div class="flex flex-wrap gap-1 mb-1.5">
+                  <span class="badge-pill border text-[10px] font-bold ${badge}">${escHtml(b.type)}</span>
+                  <span class="badge-pill border text-[10px] font-bold bg-slate-50 text-slate-500 border-slate-200" title="Key facts only for now. Not scored in the quiz or available in Compare.">Basic listing</span>
+                </div>
+                <h3 class="font-display font-bold text-base text-slate-900">${escHtml(b.name)}</h3>
+                <p class="text-xs text-slate-500">${escHtml(b.neighborhood)} • Grades ${escHtml(b.grades)}</p>
+              </div>
+              <div class="space-y-1.5 text-xs text-slate-600">
+                <div class="flex items-start space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16 shrink-0">Address:</span>
+                  <span class="text-slate-800">${escHtml(b.address)}</span>
+                </div>
+                <div class="flex items-start space-x-1.5">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16 shrink-0">Size:</span>
+                  <span class="text-slate-800">${enroll}</span>
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-400">Key facts only. Not scored in the quiz yet.</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-700">${b.tuition ? escHtml(b.tuition) : 'Tuition: see school site'}</span>
+              <a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="text-xs font-bold text-brand-teal hover:underline flex items-center">
+                <span>School website</span>
+                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5h5v5M19 5l-9 9M5 7v12h12"/></svg>
+              </a>
+            </div>
+          </div>`;
     }
 
     /* Map Controller */
@@ -3924,6 +4110,24 @@
 
         const marker = L.marker([school.lat, school.lng], { icon: customIcon }).bindPopup(popupContent).addTo(sfMap);
         mapMarkers.push(marker);
+      });
+
+      SF_BASIC_SCHOOLS.forEach(b => {
+        if (typeof b.lat !== 'number' || typeof b.lng !== 'number') return;
+        const icon = L.divIcon({
+          className: 'custom-map-pin',
+          html: `<div class="custom-marker-icon basic-marker" style="width: 18px; height: 18px;">${escHtml(b.name.replace(/^(St\.|Sts\.|Saint|The|School of the|Our Lady of the|École|Ecole)\s+/i, '').charAt(0))}</div>`,
+          iconSize: [18, 18],
+          iconAnchor: [9, 9]
+        });
+        const popup = `
+          <div class="text-xs">
+            <strong class="font-bold text-slate-900 block text-sm mb-0.5">${escHtml(b.name)}</strong>
+            <span class="badge-pill bg-slate-100 text-slate-700 text-[10px] mb-1.5">${escHtml(b.type)} • Grades ${escHtml(b.grades)} • Basic listing</span>
+            <p class="text-slate-600 text-[11px] mb-2">${escHtml(b.address)}</p>
+            <a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="inline-block px-3 py-1 bg-slate-700 text-white font-bold rounded-lg text-[10px]" style="color:#fff">School website</a>
+          </div>`;
+        mapMarkers.push(L.marker([b.lat, b.lng], { icon, zIndexOffset: -500 }).bindPopup(popup).addTo(sfMap));
       });
 
       sfMap.invalidateSize();
@@ -4195,8 +4399,10 @@
 
     // Lifecycle Bootstrap
     window.addEventListener('DOMContentLoaded', async () => {
+      populateAreaSelects();
       renderKeyDates();
-      await loadNews();
+      await Promise.all([loadNews(), loadBasicSchools()]);
+      populateAreaSelects();
       syncDirectoryCounts();
       syncNewsCounts();
       validateNewsIds();

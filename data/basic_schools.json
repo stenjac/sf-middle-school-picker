@@ -1,0 +1,817 @@
+[
+  {
+    "id": "b_adda_clevenger",
+    "name": "Adda Clevenger School",
+    "type": "Independent",
+    "grades": "K–8",
+    "address": "180 Fair Oaks St, San Francisco, CA 94110",
+    "neighborhood": "Mission",
+    "area": "central",
+    "lat": 37.75383,
+    "lng": -122.42424,
+    "website": "https://www.addaclevenger.org",
+    "enrollment68": 35,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_bmyds",
+    "name": "Bais Menachem Yeshiva Day School",
+    "type": "Other religious",
+    "grades": "K–8",
+    "address": "834 28th Ave, San Francisco, CA 94121",
+    "neighborhood": "Central Richmond",
+    "area": "richmond",
+    "lat": 37.77363,
+    "lng": -122.48741,
+    "website": "https://www.bmyds.org",
+    "enrollment68": 18,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_brightworks",
+    "name": "Brightworks School",
+    "type": "Independent",
+    "grades": "K–12",
+    "address": "682 Schofield Rd, San Francisco, CA 94129",
+    "neighborhood": "Presidio",
+    "area": "richmond",
+    "lat": 37.80029,
+    "lng": -122.46866,
+    "website": "https://sfbrightworks.org",
+    "enrollment68": 19,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_cais",
+    "name": "Chinese American International School",
+    "type": "Independent",
+    "grades": "K–8",
+    "address": "3250 19th Ave, San Francisco, CA 94132",
+    "neighborhood": "Lakeshore",
+    "area": "southwest",
+    "lat": 37.72967,
+    "lng": -122.47461,
+    "website": "https://www.cais.org",
+    "enrollment68": 129,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_cornerstone",
+    "name": "Cornerstone Academy (Cambridge campus)",
+    "type": "Other religious",
+    "grades": "4–8",
+    "address": "501 Cambridge St, San Francisco, CA 94134",
+    "neighborhood": "Portola",
+    "area": "southeast",
+    "lat": 37.72518,
+    "lng": -122.41781,
+    "website": "https://www.cornerstone-academy.net",
+    "enrollment68": 98,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_de_marillac",
+    "name": "De Marillac Academy",
+    "type": "Catholic",
+    "grades": "4–8",
+    "address": "175 Golden Gate Ave, San Francisco, CA 94102",
+    "neighborhood": "Tenderloin",
+    "area": "northeast",
+    "lat": 37.78186,
+    "lng": -122.41342,
+    "website": "https://www.demarillac.org",
+    "enrollment68": 68,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_donum_dei",
+    "name": "Donum Dei Classical Academy",
+    "type": "Catholic (independent)",
+    "grades": "K–8",
+    "address": "1560 Treat Ave, San Francisco, CA 94110",
+    "neighborhood": "Mission",
+    "area": "central",
+    "lat": 37.74611,
+    "lng": -122.41255,
+    "website": "https://www.donumdei.org",
+    "enrollment68": 23,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_father_sauer",
+    "name": "Father Sauer Academy (at St. Ignatius)",
+    "type": "Catholic",
+    "grades": "6–8",
+    "address": "2001 37th Ave, San Francisco, CA 94116",
+    "neighborhood": "Outer Sunset",
+    "area": "sunset",
+    "lat": 37.74773,
+    "lng": -122.49544,
+    "website": "https://www.siprep.org/fr-sauer-academy",
+    "enrollment68": null,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_gissv_sf",
+    "name": "German International School of Silicon Valley (SF campus)",
+    "type": "Independent",
+    "grades": "K–12",
+    "address": "117 Diamond St, San Francisco, CA 94114",
+    "neighborhood": "Castro",
+    "area": "central",
+    "lat": 37.76046,
+    "lng": -122.43709,
+    "website": "https://gissv.org",
+    "enrollment68": 25,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_holy_name",
+    "name": "Holy Name School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "1560 40th Ave, San Francisco, CA 94122",
+    "neighborhood": "Outer Sunset",
+    "area": "sunset",
+    "lat": 37.75772,
+    "lng": -122.49921,
+    "website": "https://www.holynamesf.com",
+    "enrollment68": 175,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_kzv",
+    "name": "KZV Armenian School",
+    "type": "Independent",
+    "grades": "K–8",
+    "address": "825 Brotherhood Way, San Francisco, CA 94132",
+    "neighborhood": "Lake Merced",
+    "area": "southwest",
+    "lat": 37.71437,
+    "lng": -122.47754,
+    "website": "https://www.kzv.org",
+    "enrollment68": 29,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_kittredge",
+    "name": "Kittredge School",
+    "type": "Independent",
+    "grades": "K–8",
+    "address": "2355 Lake St, San Francisco, CA 94121",
+    "neighborhood": "Central Richmond",
+    "area": "richmond",
+    "lat": 37.78571,
+    "lng": -122.48466,
+    "website": "https://www.kittredge.org",
+    "enrollment68": 24,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_lycee",
+    "name": "Lycée Français de San Francisco (Ortega campus)",
+    "type": "Independent",
+    "grades": "6–12",
+    "address": "1201 Ortega St, San Francisco, CA 94122",
+    "neighborhood": "Central Sunset",
+    "area": "sunset",
+    "lat": 37.75232,
+    "lng": -122.47642,
+    "website": "https://www.lelycee.org",
+    "enrollment68": 172,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_mission_dolores",
+    "name": "Mission Dolores Academy",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "3371 16th St, San Francisco, CA 94114",
+    "neighborhood": "Mission Dolores",
+    "area": "central",
+    "lat": 37.76453,
+    "lng": -122.42729,
+    "website": "https://www.mdasf.org",
+    "enrollment68": 45,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_olv",
+    "name": "Our Lady of the Visitacion School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "785 Sunnydale Ave, San Francisco, CA 94134",
+    "neighborhood": "Visitacion Valley",
+    "area": "southeast",
+    "lat": 37.71,
+    "lng": -122.40942,
+    "website": "https://www.olvsf.org",
+    "enrollment68": 86,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_presidio_hill",
+    "name": "Presidio Hill School",
+    "type": "Independent",
+    "grades": "K–8",
+    "address": "3839 Washington St, San Francisco, CA 94118",
+    "neighborhood": "Presidio Heights",
+    "area": "north",
+    "lat": 37.78875,
+    "lng": -122.45624,
+    "website": "https://www.presidiohill.org",
+    "enrollment68": 84,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_proof",
+    "name": "Proof School",
+    "type": "Independent",
+    "grades": "6–12",
+    "address": "221 Main St, San Francisco, CA 94105",
+    "neighborhood": "SoMa",
+    "area": "northeast",
+    "lat": 37.79038,
+    "lng": -122.39301,
+    "website": "https://www.proofschool.org",
+    "enrollment68": 57,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_anne",
+    "name": "St. Anne School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "1320 14th Ave, San Francisco, CA 94122",
+    "neighborhood": "Inner Sunset",
+    "area": "sunset",
+    "lat": 37.7634,
+    "lng": -122.47157,
+    "website": "https://www.stanne.com",
+    "enrollment68": 91,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_saic",
+    "name": "St. Anthony–Immaculate Conception School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "299 Precita Ave, San Francisco, CA 94110",
+    "neighborhood": "Bernal Heights",
+    "area": "southeast",
+    "lat": 37.74724,
+    "lng": -122.41362,
+    "website": "https://www.saicsf.org",
+    "enrollment68": 55,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_brendan",
+    "name": "St. Brendan School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "940 Laguna Honda Blvd, San Francisco, CA 94127",
+    "neighborhood": "Forest Hill",
+    "area": "southwest",
+    "lat": 37.74325,
+    "lng": -122.45574,
+    "website": "https://www.stbrendansf.com",
+    "enrollment68": 101,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_brigid",
+    "name": "Saint Brigid Academy",
+    "type": "Catholic (independent)",
+    "grades": "K–8",
+    "address": "2250 Franklin St, San Francisco, CA 94109",
+    "neighborhood": "Pacific Heights",
+    "area": "north",
+    "lat": 37.79508,
+    "lng": -122.42489,
+    "website": "https://www.saintbrigidsf.org",
+    "enrollment68": 16,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_cecilia",
+    "name": "St. Cecilia School",
+    "type": "Catholic",
+    "grades": "JK–8",
+    "address": "660 Vicente St, San Francisco, CA 94116",
+    "neighborhood": "Parkside",
+    "area": "sunset",
+    "lat": 37.73945,
+    "lng": -122.47394,
+    "website": "https://www.stceciliaschool.org",
+    "enrollment68": 187,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_finn_barr",
+    "name": "St. Finn Barr Catholic School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "419 Hearst Ave, San Francisco, CA 94112",
+    "neighborhood": "Sunnyside",
+    "area": "southwest",
+    "lat": 37.73064,
+    "lng": -122.44704,
+    "website": "https://www.stfinnbarr.org",
+    "enrollment68": 82,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_gabriel",
+    "name": "St. Gabriel School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "2550 41st Ave, San Francisco, CA 94116",
+    "neighborhood": "Parkside",
+    "area": "sunset",
+    "lat": 37.7392,
+    "lng": -122.49899,
+    "website": "https://www.stgabrielsf.com/school",
+    "enrollment68": 181,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_james",
+    "name": "St. James School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "321 Fair Oaks St, San Francisco, CA 94110",
+    "neighborhood": "Mission",
+    "area": "central",
+    "lat": 37.75155,
+    "lng": -122.42388,
+    "website": "https://www.saintjamessf.org",
+    "enrollment68": null,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_john",
+    "name": "St. John the Evangelist School",
+    "type": "Catholic",
+    "grades": "JK–8",
+    "address": "925 Chenery St, San Francisco, CA 94131",
+    "neighborhood": "Glen Park",
+    "area": "southwest",
+    "lat": 37.73523,
+    "lng": -122.43769,
+    "website": "https://www.stjohnseagles.com",
+    "enrollment68": 57,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_monica",
+    "name": "St. Monica School",
+    "type": "Catholic",
+    "grades": "JK–8",
+    "address": "5950 Geary Blvd, San Francisco, CA 94121",
+    "neighborhood": "Outer Richmond",
+    "area": "richmond",
+    "lat": 37.78029,
+    "lng": -122.48315,
+    "website": "https://www.stmonicasf.org",
+    "enrollment68": 80,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_paul",
+    "name": "St. Paul School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "1690 Church St, San Francisco, CA 94131",
+    "neighborhood": "Noe Valley",
+    "area": "central",
+    "lat": 37.74444,
+    "lng": -122.42681,
+    "website": "https://www.stpaulschoolsf.org",
+    "enrollment68": 62,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_peter",
+    "name": "St. Peter's School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "1266 Florida St, San Francisco, CA 94110",
+    "neighborhood": "Mission",
+    "area": "central",
+    "lat": 37.75168,
+    "lng": -122.41004,
+    "website": "https://www.stpeterssf.org",
+    "enrollment68": 78,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_philip",
+    "name": "St. Philip School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "665 Elizabeth St, San Francisco, CA 94114",
+    "neighborhood": "Noe Valley",
+    "area": "central",
+    "lat": 37.75195,
+    "lng": -122.43558,
+    "website": "https://www.saintphilipschool.org",
+    "enrollment68": 86,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_stephen",
+    "name": "St. Stephen School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "401 Eucalyptus Dr, San Francisco, CA 94132",
+    "neighborhood": "Lakeshore",
+    "area": "southwest",
+    "lat": 37.73106,
+    "lng": -122.47731,
+    "website": "https://www.ststephenschoolsf.org",
+    "enrollment68": 86,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_st_thomas_more",
+    "name": "St. Thomas More School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "50 Thomas More Way, San Francisco, CA 94132",
+    "neighborhood": "Lake Merced",
+    "area": "southwest",
+    "lat": 37.71227,
+    "lng": -122.47308,
+    "website": "https://www.stthomasmoreschool.org",
+    "enrollment68": 89,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_svdp",
+    "name": "St. Vincent de Paul School",
+    "type": "Catholic",
+    "grades": "K–8",
+    "address": "2350 Green St, San Francisco, CA 94123",
+    "neighborhood": "Cow Hollow",
+    "area": "north",
+    "lat": 37.7959,
+    "lng": -122.4378,
+    "website": "https://www.svdpsf.com",
+    "enrollment68": 75,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_sspp",
+    "name": "Sts. Peter & Paul School",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "660 Filbert St, San Francisco, CA 94133",
+    "neighborhood": "North Beach",
+    "area": "northeast",
+    "lat": 37.80131,
+    "lng": -122.41037,
+    "website": "https://www.sspeterpaulsf.org",
+    "enrollment68": 71,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_sf_christian",
+    "name": "San Francisco Christian School",
+    "type": "Other religious",
+    "grades": "K–12",
+    "address": "25 Whittier St, San Francisco, CA 94112",
+    "neighborhood": "Crocker-Amazon",
+    "area": "southwest",
+    "lat": 37.71003,
+    "lng": -122.44811,
+    "website": "https://www.sfchristianschool.org",
+    "enrollment68": 73,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_sf_islamic",
+    "name": "San Francisco Islamic School",
+    "type": "Other religious",
+    "grades": "K–8",
+    "address": "55 Farallones Ave, San Francisco, CA 94112",
+    "neighborhood": "Ocean View",
+    "area": "southwest",
+    "lat": 37.71403,
+    "lng": -122.45431,
+    "website": "https://www.sfislamicschool.org",
+    "enrollment68": 22,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_sf_schoolhouse",
+    "name": "San Francisco Schoolhouse",
+    "type": "Independent",
+    "grades": "K–8",
+    "address": "735 Fell St, San Francisco, CA 94117",
+    "neighborhood": "Western Addition",
+    "area": "north",
+    "lat": 37.77498,
+    "lng": -122.42995,
+    "website": "https://www.sfschoolhouse.org",
+    "enrollment68": 35,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_epiphany",
+    "name": "School of the Epiphany",
+    "type": "Catholic",
+    "grades": "JK–8",
+    "address": "600 Italy Ave, San Francisco, CA 94112",
+    "neighborhood": "Excelsior",
+    "area": "southwest",
+    "lat": 37.71611,
+    "lng": -122.43471,
+    "website": "https://www.sfepiphany.org",
+    "enrollment68": 52,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_stella_maris",
+    "name": "Stella Maris Academy",
+    "type": "Catholic",
+    "grades": "PreK–8",
+    "address": "4420 Geary Blvd, San Francisco, CA 94118",
+    "neighborhood": "Inner Richmond",
+    "area": "richmond",
+    "lat": 37.78104,
+    "lng": -122.4667,
+    "website": "https://www.stellamarissf.org",
+    "enrollment68": 20,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_stratford_sf",
+    "name": "Stratford School San Francisco (Middle)",
+    "type": "Independent",
+    "grades": "6–8",
+    "address": "75 Francis St, San Francisco, CA 94112",
+    "neighborhood": "Excelsior",
+    "area": "southwest",
+    "lat": 37.72726,
+    "lng": -122.43491,
+    "website": "https://www.stratfordschools.com",
+    "enrollment68": 111,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_wpl",
+    "name": "West Portal Lutheran School",
+    "type": "Other religious",
+    "grades": "K–8",
+    "address": "200 Sloat Blvd, San Francisco, CA 94132",
+    "neighborhood": "Parkside",
+    "area": "sunset",
+    "lat": 37.73483,
+    "lng": -122.4736,
+    "website": "https://www.wplsf.com",
+    "enrollment68": 165,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_zion_lutheran",
+    "name": "Zion Lutheran School",
+    "type": "Other religious",
+    "grades": "K–8",
+    "address": "495 9th Ave, San Francisco, CA 94118",
+    "neighborhood": "Inner Richmond",
+    "area": "richmond",
+    "lat": 37.77907,
+    "lng": -122.46744,
+    "website": "https://www.zionsfschool.org",
+    "enrollment68": 49,
+    "tuition": null,
+    "sources": [
+      "California Dept. of Education school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  },
+  {
+    "id": "b_ndv",
+    "name": "École Notre Dame des Victoires",
+    "type": "Catholic",
+    "grades": "JK–8",
+    "address": "659 Pine St, San Francisco, CA 94108",
+    "neighborhood": "Nob Hill",
+    "area": "northeast",
+    "lat": 37.79132,
+    "lng": -122.40665,
+    "website": "https://www.ndvsf.org/school",
+    "enrollment68": 102,
+    "tuition": null,
+    "sources": [
+      "Archdiocese of San Francisco school directory",
+      "CDE 2025–26 private school affidavit (grades 6–8 enrollment)"
+    ],
+    "basic": true
+  }
+]
