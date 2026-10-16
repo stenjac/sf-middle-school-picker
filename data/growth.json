@@ -1,0 +1,3271 @@
+{
+ "meta": {
+  "dashboard": "2025 California School Dashboard",
+  "covers": "Growth from spring 2023 to spring 2025 (weighted two-year average), grades 4-8",
+  "measure": "Average growth score: test-score points above or below students statewide who had similar scores the year before. 0 = typical.",
+  "levels": {
+   "1": "Minimal Growth",
+   "2": "Moderate Growth",
+   "3": "Average Growth",
+   "4": "Accelerated Growth",
+   "5": "Exceptional Growth"
+  },
+  "cuts": "Minimal: below -20 · Moderate: -20 to -6 · Average: -5 to +4 · Accelerated: +5 to +19 · Exceptional: +20 and up",
+  "source": "California Department of Education, Growth Model downloadable data file (2025)",
+  "sourceUrl": "https://www.cde.ca.gov/TA/ac/cm/growthmodeldatafiles.asp",
+  "note": "Level 0 means the state did not assign a level (too few students)."
+ },
+ "groups": [
+  {
+   "id": "ALL",
+   "label": "All students"
+  },
+  {
+   "id": "SED",
+   "label": "Low-income"
+  },
+  {
+   "id": "EL",
+   "label": "English learners"
+  },
+  {
+   "id": "SWD",
+   "label": "Students with disabilities"
+  },
+  {
+   "id": "AS",
+   "label": "Asian"
+  },
+  {
+   "id": "AA",
+   "label": "Black"
+  },
+  {
+   "id": "FI",
+   "label": "Filipino"
+  },
+  {
+   "id": "HI",
+   "label": "Latino"
+  },
+  {
+   "id": "PI",
+   "label": "Pacific Islander"
+  },
+  {
+   "id": "WH",
+   "label": "White"
+  },
+  {
+   "id": "MR",
+   "label": "Two or more races"
+  }
+ ],
+ "sfusd": {
+  "ela": {
+   "AA": {
+    "score": -8,
+    "n": 802,
+    "level": 2,
+    "pctImproved": 66.0
+   },
+   "ALL": {
+    "score": -1,
+    "n": 15512,
+    "level": 3,
+    "pctImproved": 69.5
+   },
+   "AS": {
+    "score": 1,
+    "n": 5299,
+    "level": 3,
+    "pctImproved": 69.8
+   },
+   "EL": {
+    "score": -9,
+    "n": 6099,
+    "level": 2,
+    "pctImproved": 70.5
+   },
+   "FI": {
+    "score": 8,
+    "n": 549,
+    "level": 4,
+    "pctImproved": 72.1
+   },
+   "HI": {
+    "score": -9,
+    "n": 4625,
+    "level": 2,
+    "pctImproved": 68.5
+   },
+   "MR": {
+    "score": 8,
+    "n": 1363,
+    "level": 4,
+    "pctImproved": 68.5
+   },
+   "PI": {
+    "score": -8,
+    "n": 109,
+    "level": 2,
+    "pctImproved": 67.0
+   },
+   "SED": {
+    "score": -6,
+    "n": 8162,
+    "level": 2,
+    "pctImproved": 69.2
+   },
+   "SWD": {
+    "score": -15,
+    "n": 2349,
+    "level": 2,
+    "pctImproved": 66.2
+   },
+   "WH": {
+    "score": 10,
+    "n": 2211,
+    "level": 4,
+    "pctImproved": 72.1
+   }
+  },
+  "math": {
+   "AA": {
+    "score": -16,
+    "n": 788,
+    "level": 2,
+    "pctImproved": 60.4
+   },
+   "ALL": {
+    "score": 2,
+    "n": 15451,
+    "level": 3,
+    "pctImproved": 68.0
+   },
+   "AS": {
+    "score": 13,
+    "n": 5291,
+    "level": 4,
+    "pctImproved": 71.1
+   },
+   "EL": {
+    "score": 2,
+    "n": 6077,
+    "level": 3,
+    "pctImproved": 66.6
+   },
+   "FI": {
+    "score": 1,
+    "n": 548,
+    "level": 3,
+    "pctImproved": 67.2
+   },
+   "HI": {
+    "score": -8,
+    "n": 4595,
+    "level": 2,
+    "pctImproved": 63.6
+   },
+   "MR": {
+    "score": 5,
+    "n": 1366,
+    "level": 4,
+    "pctImproved": 70.0
+   },
+   "PI": {
+    "score": -16,
+    "n": 107,
+    "level": 2,
+    "pctImproved": 61.7
+   },
+   "SED": {
+    "score": -2,
+    "n": 8124,
+    "level": 3,
+    "pctImproved": 65.4
+   },
+   "SWD": {
+    "score": -8,
+    "n": 2334,
+    "level": 2,
+    "pctImproved": 62.8
+   },
+   "WH": {
+    "score": 5,
+    "n": 2203,
+    "level": 4,
+    "pctImproved": 71.4
+   }
+  }
+ },
+ "schools": {
+  "kipp_bayview": {
+   "ela": {
+    "AA": {
+     "score": 3,
+     "n": 47,
+     "level": 3,
+     "pctImproved": 70.2
+    },
+    "ALL": {
+     "score": 13,
+     "n": 147,
+     "level": 4,
+     "pctImproved": 77.6
+    },
+    "AS": null,
+    "EL": {
+     "score": 5,
+     "n": 66,
+     "level": 4,
+     "pctImproved": 78.8
+    },
+    "HI": {
+     "score": 14,
+     "n": 80,
+     "level": 4,
+     "pctImproved": 78.8
+    },
+    "MR": null,
+    "PI": {
+     "score": 32,
+     "n": 12,
+     "level": 5,
+     "pctImproved": 91.7
+    },
+    "SED": {
+     "score": 12,
+     "n": 142,
+     "level": 4,
+     "pctImproved": 77.5
+    },
+    "SWD": {
+     "score": -9,
+     "n": 38,
+     "level": 2,
+     "pctImproved": 73.7
+    },
+    "WH": null
+   },
+   "math": {
+    "AA": {
+     "score": 6,
+     "n": 47,
+     "level": 4,
+     "pctImproved": 70.2
+    },
+    "ALL": {
+     "score": 27,
+     "n": 149,
+     "level": 5,
+     "pctImproved": 75.8
+    },
+    "AS": null,
+    "EL": {
+     "score": 31,
+     "n": 66,
+     "level": 5,
+     "pctImproved": 77.3
+    },
+    "HI": {
+     "score": 34,
+     "n": 81,
+     "level": 5,
+     "pctImproved": 80.2
+    },
+    "MR": null,
+    "PI": {
+     "score": 24,
+     "n": 13,
+     "level": 5,
+     "pctImproved": 69.2
+    },
+    "SED": {
+     "score": 26,
+     "n": 144,
+     "level": 5,
+     "pctImproved": 75.7
+    },
+    "SWD": {
+     "score": -7,
+     "n": 38,
+     "level": 2,
+     "pctImproved": 63.2
+    },
+    "WH": null
+   }
+  },
+  "kipp_sf_bay": {
+   "ela": {
+    "AA": {
+     "score": 11,
+     "n": 62,
+     "level": 4,
+     "pctImproved": 80.6
+    },
+    "ALL": {
+     "score": 21,
+     "n": 240,
+     "level": 5,
+     "pctImproved": 80.8
+    },
+    "AS": null,
+    "EL": {
+     "score": 21,
+     "n": 132,
+     "level": 5,
+     "pctImproved": 78.8
+    },
+    "FI": null,
+    "HI": {
+     "score": 22,
+     "n": 150,
+     "level": 5,
+     "pctImproved": 80.7
+    },
+    "MR": null,
+    "SED": {
+     "score": 19,
+     "n": 227,
+     "level": 4,
+     "pctImproved": 80.2
+    },
+    "SWD": {
+     "score": 7,
+     "n": 52,
+     "level": 4,
+     "pctImproved": 80.8
+    },
+    "WH": {
+     "score": 50,
+     "n": 12,
+     "level": 5,
+     "pctImproved": 91.7
+    }
+   },
+   "math": {
+    "AA": {
+     "score": 19,
+     "n": 61,
+     "level": 4,
+     "pctImproved": 68.9
+    },
+    "ALL": {
+     "score": 31,
+     "n": 239,
+     "level": 5,
+     "pctImproved": 74.5
+    },
+    "AS": null,
+    "EL": {
+     "score": 36,
+     "n": 132,
+     "level": 5,
+     "pctImproved": 75.0
+    },
+    "FI": null,
+    "HI": {
+     "score": 36,
+     "n": 150,
+     "level": 5,
+     "pctImproved": 75.3
+    },
+    "MR": null,
+    "SED": {
+     "score": 31,
+     "n": 226,
+     "level": 5,
+     "pctImproved": 74.3
+    },
+    "SWD": {
+     "score": 26,
+     "n": 52,
+     "level": 5,
+     "pctImproved": 71.2
+    },
+    "WH": {
+     "score": 33,
+     "n": 12,
+     "level": 5,
+     "pctImproved": 83.3
+    }
+   }
+  },
+  "gateway": {
+   "ela": {
+    "AA": {
+     "score": -17,
+     "n": 44,
+     "level": 2,
+     "pctImproved": 56.8
+    },
+    "ALL": {
+     "score": 8,
+     "n": 226,
+     "level": 4,
+     "pctImproved": 67.7
+    },
+    "AS": {
+     "score": 15,
+     "n": 21,
+     "level": 4,
+     "pctImproved": 76.2
+    },
+    "EL": {
+     "score": 7,
+     "n": 48,
+     "level": 4,
+     "pctImproved": 68.8
+    },
+    "FI": null,
+    "HI": {
+     "score": 5,
+     "n": 80,
+     "level": 4,
+     "pctImproved": 58.8
+    },
+    "MR": {
+     "score": 19,
+     "n": 24,
+     "level": 4,
+     "pctImproved": 79.2
+    },
+    "PI": null,
+    "SED": {
+     "score": -6,
+     "n": 127,
+     "level": 2,
+     "pctImproved": 59.1
+    },
+    "SWD": {
+     "score": -9,
+     "n": 49,
+     "level": 2,
+     "pctImproved": 65.3
+    },
+    "WH": {
+     "score": 19,
+     "n": 55,
+     "level": 4,
+     "pctImproved": 83.6
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -13,
+     "n": 44,
+     "level": 2,
+     "pctImproved": 59.1
+    },
+    "ALL": {
+     "score": -2,
+     "n": 226,
+     "level": 3,
+     "pctImproved": 61.5
+    },
+    "AS": {
+     "score": 13,
+     "n": 21,
+     "level": 4,
+     "pctImproved": 71.4
+    },
+    "EL": {
+     "score": 10,
+     "n": 48,
+     "level": 4,
+     "pctImproved": 62.5
+    },
+    "FI": null,
+    "HI": {
+     "score": -10,
+     "n": 80,
+     "level": 2,
+     "pctImproved": 53.8
+    },
+    "MR": {
+     "score": 12,
+     "n": 24,
+     "level": 4,
+     "pctImproved": 75.0
+    },
+    "PI": null,
+    "SED": {
+     "score": -11,
+     "n": 127,
+     "level": 2,
+     "pctImproved": 57.5
+    },
+    "SWD": {
+     "score": -15,
+     "n": 49,
+     "level": 2,
+     "pctImproved": 49.0
+    },
+    "WH": {
+     "score": 11,
+     "n": 55,
+     "level": 4,
+     "pctImproved": 65.5
+    }
+   }
+  },
+  "willie_brown": {
+   "ela": {
+    "AA": {
+     "score": -5,
+     "n": 51,
+     "level": 3,
+     "pctImproved": 56.9
+    },
+    "ALL": {
+     "score": 8,
+     "n": 296,
+     "level": 4,
+     "pctImproved": 65.2
+    },
+    "AS": {
+     "score": 7,
+     "n": 11,
+     "level": 4,
+     "pctImproved": 45.5
+    },
+    "EL": {
+     "score": 4,
+     "n": 59,
+     "level": 3,
+     "pctImproved": 69.5
+    },
+    "FI": null,
+    "HI": {
+     "score": 9,
+     "n": 90,
+     "level": 4,
+     "pctImproved": 66.7
+    },
+    "MR": {
+     "score": 16,
+     "n": 36,
+     "level": 4,
+     "pctImproved": 63.9
+    },
+    "PI": null,
+    "SED": {
+     "score": -5,
+     "n": 156,
+     "level": 3,
+     "pctImproved": 62.2
+    },
+    "SWD": {
+     "score": -2,
+     "n": 58,
+     "level": 3,
+     "pctImproved": 70.7
+    },
+    "WH": {
+     "score": 27,
+     "n": 80,
+     "level": 5,
+     "pctImproved": 72.5
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -25,
+     "n": 45,
+     "level": 1,
+     "pctImproved": 42.2
+    },
+    "ALL": {
+     "score": -6,
+     "n": 289,
+     "level": 2,
+     "pctImproved": 60.9
+    },
+    "AS": null,
+    "EL": {
+     "score": -9,
+     "n": 59,
+     "level": 2,
+     "pctImproved": 57.6
+    },
+    "FI": null,
+    "HI": {
+     "score": -8,
+     "n": 88,
+     "level": 2,
+     "pctImproved": 56.8
+    },
+    "MR": {
+     "score": 3,
+     "n": 37,
+     "level": 3,
+     "pctImproved": 59.5
+    },
+    "PI": null,
+    "SED": {
+     "score": -17,
+     "n": 151,
+     "level": 2,
+     "pctImproved": 52.3
+    },
+    "SWD": {
+     "score": -6,
+     "n": 55,
+     "level": 2,
+     "pctImproved": 56.4
+    },
+    "WH": {
+     "score": 14,
+     "n": 80,
+     "level": 4,
+     "pctImproved": 77.5
+    }
+   }
+  },
+  "bessie_carmichael": {
+   "ela": {
+    "AA": {
+     "score": -36,
+     "n": 40,
+     "level": 1,
+     "pctImproved": 52.5
+    },
+    "ALL": {
+     "score": -19,
+     "n": 232,
+     "level": 2,
+     "pctImproved": 68.5
+    },
+    "AS": {
+     "score": -29,
+     "n": 16,
+     "level": 1,
+     "pctImproved": 56.3
+    },
+    "EL": {
+     "score": -10,
+     "n": 94,
+     "level": 2,
+     "pctImproved": 74.5
+    },
+    "FI": {
+     "score": -5,
+     "n": 54,
+     "level": 3,
+     "pctImproved": 79.6
+    },
+    "HI": {
+     "score": -18,
+     "n": 67,
+     "level": 2,
+     "pctImproved": 70.1
+    },
+    "MR": {
+     "score": -9,
+     "n": 18,
+     "level": 2,
+     "pctImproved": 77.8
+    },
+    "PI": null,
+    "SED": {
+     "score": -16,
+     "n": 165,
+     "level": 2,
+     "pctImproved": 73.9
+    },
+    "SWD": {
+     "score": -38,
+     "n": 56,
+     "level": 1,
+     "pctImproved": 55.4
+    },
+    "WH": {
+     "score": -21,
+     "n": 20,
+     "level": 1,
+     "pctImproved": 65.0
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -9,
+     "n": 39,
+     "level": 2,
+     "pctImproved": 64.1
+    },
+    "ALL": {
+     "score": -12,
+     "n": 229,
+     "level": 2,
+     "pctImproved": 62.9
+    },
+    "AS": {
+     "score": -16,
+     "n": 16,
+     "level": 2,
+     "pctImproved": 62.5
+    },
+    "EL": {
+     "score": -12,
+     "n": 95,
+     "level": 2,
+     "pctImproved": 58.9
+    },
+    "FI": {
+     "score": -5,
+     "n": 53,
+     "level": 3,
+     "pctImproved": 67.9
+    },
+    "HI": {
+     "score": -14,
+     "n": 65,
+     "level": 2,
+     "pctImproved": 64.6
+    },
+    "MR": {
+     "score": -15,
+     "n": 19,
+     "level": 2,
+     "pctImproved": 52.6
+    },
+    "PI": null,
+    "SED": {
+     "score": -13,
+     "n": 164,
+     "level": 2,
+     "pctImproved": 61.6
+    },
+    "SWD": {
+     "score": -27,
+     "n": 56,
+     "level": 1,
+     "pctImproved": 51.8
+    },
+    "WH": {
+     "score": -7,
+     "n": 19,
+     "level": 2,
+     "pctImproved": 63.2
+    }
+   }
+  },
+  "teca": {
+   "ela": {
+    "AA": {
+     "score": 13,
+     "n": 12,
+     "level": 4,
+     "pctImproved": 66.7
+    },
+    "ALL": {
+     "score": 2,
+     "n": 303,
+     "level": 3,
+     "pctImproved": 73.9
+    },
+    "AS": null,
+    "EL": {
+     "score": -2,
+     "n": 178,
+     "level": 3,
+     "pctImproved": 77.0
+    },
+    "FI": null,
+    "HI": {
+     "score": 2,
+     "n": 257,
+     "level": 3,
+     "pctImproved": 75.5
+    },
+    "MR": null,
+    "PI": null,
+    "SED": {
+     "score": -2,
+     "n": 247,
+     "level": 3,
+     "pctImproved": 74.5
+    },
+    "SWD": {
+     "score": -26,
+     "n": 43,
+     "level": 1,
+     "pctImproved": 60.5
+    },
+    "WH": {
+     "score": 14,
+     "n": 18,
+     "level": 4,
+     "pctImproved": 66.7
+    }
+   },
+   "math": {
+    "AA": {
+     "score": 20,
+     "n": 12,
+     "level": 5,
+     "pctImproved": 83.3
+    },
+    "ALL": {
+     "score": 10,
+     "n": 305,
+     "level": 4,
+     "pctImproved": 74.4
+    },
+    "AS": null,
+    "EL": {
+     "score": 9,
+     "n": 180,
+     "level": 4,
+     "pctImproved": 72.2
+    },
+    "FI": null,
+    "HI": {
+     "score": 10,
+     "n": 259,
+     "level": 4,
+     "pctImproved": 74.5
+    },
+    "MR": null,
+    "PI": null,
+    "SED": {
+     "score": 10,
+     "n": 249,
+     "level": 4,
+     "pctImproved": 73.9
+    },
+    "SWD": {
+     "score": 17,
+     "n": 45,
+     "level": 4,
+     "pctImproved": 66.7
+    },
+    "WH": {
+     "score": 17,
+     "n": 18,
+     "level": 4,
+     "pctImproved": 72.2
+    }
+   }
+  },
+  "lawton": {
+   "ela": {
+    "AA": null,
+    "ALL": {
+     "score": 7,
+     "n": 315,
+     "level": 4,
+     "pctImproved": 67.3
+    },
+    "AS": {
+     "score": 6,
+     "n": 240,
+     "level": 4,
+     "pctImproved": 66.3
+    },
+    "EL": {
+     "score": 5,
+     "n": 114,
+     "level": 4,
+     "pctImproved": 68.4
+    },
+    "FI": null,
+    "HI": {
+     "score": 22,
+     "n": 14,
+     "level": 5,
+     "pctImproved": 92.9
+    },
+    "MR": {
+     "score": 16,
+     "n": 14,
+     "level": 4,
+     "pctImproved": 50.0
+    },
+    "PI": null,
+    "SED": {
+     "score": 10,
+     "n": 159,
+     "level": 4,
+     "pctImproved": 70.4
+    },
+    "SWD": {
+     "score": -13,
+     "n": 24,
+     "level": 2,
+     "pctImproved": 75.0
+    },
+    "WH": {
+     "score": 5,
+     "n": 14,
+     "level": 4,
+     "pctImproved": 71.4
+    }
+   },
+   "math": {
+    "AA": null,
+    "ALL": {
+     "score": 3,
+     "n": 315,
+     "level": 3,
+     "pctImproved": 69.2
+    },
+    "AS": {
+     "score": 7,
+     "n": 240,
+     "level": 4,
+     "pctImproved": 70.4
+    },
+    "EL": {
+     "score": 7,
+     "n": 114,
+     "level": 4,
+     "pctImproved": 71.9
+    },
+    "FI": null,
+    "HI": {
+     "score": -5,
+     "n": 14,
+     "level": 3,
+     "pctImproved": 57.1
+    },
+    "MR": {
+     "score": -7,
+     "n": 14,
+     "level": 2,
+     "pctImproved": 64.3
+    },
+    "PI": null,
+    "SED": {
+     "score": 3,
+     "n": 159,
+     "level": 3,
+     "pctImproved": 71.1
+    },
+    "SWD": {
+     "score": -1,
+     "n": 24,
+     "level": 3,
+     "pctImproved": 70.8
+    },
+    "WH": {
+     "score": -9,
+     "n": 14,
+     "level": 2,
+     "pctImproved": 64.3
+    }
+   }
+  },
+  "paul_revere": {
+   "ela": {
+    "AA": {
+     "score": -5,
+     "n": 17,
+     "level": 3,
+     "pctImproved": 76.5
+    },
+    "ALL": {
+     "score": -8,
+     "n": 237,
+     "level": 2,
+     "pctImproved": 74.3
+    },
+    "AS": null,
+    "EL": {
+     "score": -9,
+     "n": 166,
+     "level": 2,
+     "pctImproved": 71.7
+    },
+    "FI": null,
+    "HI": {
+     "score": -8,
+     "n": 181,
+     "level": 2,
+     "pctImproved": 72.4
+    },
+    "MR": null,
+    "PI": null,
+    "SED": {
+     "score": -10,
+     "n": 185,
+     "level": 2,
+     "pctImproved": 71.9
+    },
+    "SWD": {
+     "score": -15,
+     "n": 36,
+     "level": 2,
+     "pctImproved": 72.2
+    },
+    "WH": null
+   },
+   "math": {
+    "AA": {
+     "score": -26,
+     "n": 17,
+     "level": 1,
+     "pctImproved": 35.3
+    },
+    "ALL": {
+     "score": -12,
+     "n": 236,
+     "level": 2,
+     "pctImproved": 56.8
+    },
+    "AS": null,
+    "EL": {
+     "score": -7,
+     "n": 166,
+     "level": 2,
+     "pctImproved": 57.8
+    },
+    "FI": null,
+    "HI": {
+     "score": -10,
+     "n": 181,
+     "level": 2,
+     "pctImproved": 56.4
+    },
+    "MR": null,
+    "PI": null,
+    "SED": {
+     "score": -11,
+     "n": 185,
+     "level": 2,
+     "pctImproved": 56.8
+    },
+    "SWD": {
+     "score": -10,
+     "n": 35,
+     "level": 2,
+     "pctImproved": 57.1
+    },
+    "WH": null
+   }
+  },
+  "giannini": {
+   "ela": {
+    "AA": {
+     "score": 3,
+     "n": 26,
+     "level": 3,
+     "pctImproved": 61.5
+    },
+    "ALL": {
+     "score": 3,
+     "n": 1113,
+     "level": 3,
+     "pctImproved": 64.0
+    },
+    "AS": {
+     "score": 1,
+     "n": 544,
+     "level": 3,
+     "pctImproved": 63.2
+    },
+    "EL": {
+     "score": -4,
+     "n": 245,
+     "level": 3,
+     "pctImproved": 64.1
+    },
+    "FI": {
+     "score": 5,
+     "n": 33,
+     "level": 4,
+     "pctImproved": 63.6
+    },
+    "HI": {
+     "score": 3,
+     "n": 126,
+     "level": 3,
+     "pctImproved": 61.9
+    },
+    "MR": {
+     "score": 6,
+     "n": 147,
+     "level": 4,
+     "pctImproved": 61.9
+    },
+    "PI": null,
+    "SED": {
+     "score": -1,
+     "n": 375,
+     "level": 3,
+     "pctImproved": 64.8
+    },
+    "SWD": {
+     "score": -7,
+     "n": 144,
+     "level": 2,
+     "pctImproved": 70.1
+    },
+    "WH": {
+     "score": 13,
+     "n": 197,
+     "level": 4,
+     "pctImproved": 68.0
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -4,
+     "n": 24,
+     "level": 3,
+     "pctImproved": 62.5
+    },
+    "ALL": {
+     "score": 2,
+     "n": 1107,
+     "level": 3,
+     "pctImproved": 64.3
+    },
+    "AS": {
+     "score": 5,
+     "n": 545,
+     "level": 4,
+     "pctImproved": 62.9
+    },
+    "EL": {
+     "score": -1,
+     "n": 246,
+     "level": 3,
+     "pctImproved": 60.6
+    },
+    "FI": {
+     "score": -3,
+     "n": 33,
+     "level": 3,
+     "pctImproved": 57.6
+    },
+    "HI": {
+     "score": -5,
+     "n": 124,
+     "level": 3,
+     "pctImproved": 64.5
+    },
+    "MR": {
+     "score": 5,
+     "n": 146,
+     "level": 4,
+     "pctImproved": 68.5
+    },
+    "PI": null,
+    "SED": {
+     "score": 1,
+     "n": 374,
+     "level": 3,
+     "pctImproved": 63.9
+    },
+    "SWD": {
+     "score": -3,
+     "n": 142,
+     "level": 3,
+     "pctImproved": 56.3
+    },
+    "WH": {
+     "score": 3,
+     "n": 195,
+     "level": 3,
+     "pctImproved": 67.2
+    }
+   }
+  },
+  "francisco": {
+   "ela": {
+    "AA": {
+     "score": -32,
+     "n": 18,
+     "level": 1,
+     "pctImproved": 55.6
+    },
+    "ALL": {
+     "score": -16,
+     "n": 374,
+     "level": 2,
+     "pctImproved": 61.0
+    },
+    "AS": {
+     "score": -16,
+     "n": 211,
+     "level": 2,
+     "pctImproved": 61.1
+    },
+    "EL": {
+     "score": -26,
+     "n": 211,
+     "level": 1,
+     "pctImproved": 63.5
+    },
+    "FI": null,
+    "HI": {
+     "score": -23,
+     "n": 75,
+     "level": 1,
+     "pctImproved": 69.3
+    },
+    "MR": {
+     "score": 4,
+     "n": 16,
+     "level": 3,
+     "pctImproved": 62.5
+    },
+    "PI": null,
+    "SED": {
+     "score": -16,
+     "n": 284,
+     "level": 2,
+     "pctImproved": 63.0
+    },
+    "SWD": {
+     "score": -36,
+     "n": 34,
+     "level": 1,
+     "pctImproved": 58.8
+    },
+    "WH": {
+     "score": -14,
+     "n": 36,
+     "level": 2,
+     "pctImproved": 41.7
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -27,
+     "n": 16,
+     "level": 1,
+     "pctImproved": 56.3
+    },
+    "ALL": {
+     "score": 6,
+     "n": 370,
+     "level": 4,
+     "pctImproved": 63.2
+    },
+    "AS": {
+     "score": 12,
+     "n": 209,
+     "level": 4,
+     "pctImproved": 63.6
+    },
+    "EL": {
+     "score": 8,
+     "n": 208,
+     "level": 4,
+     "pctImproved": 60.6
+    },
+    "FI": null,
+    "HI": {
+     "score": -4,
+     "n": 73,
+     "level": 3,
+     "pctImproved": 65.8
+    },
+    "MR": {
+     "score": 23,
+     "n": 17,
+     "level": 5,
+     "pctImproved": 70.6
+    },
+    "PI": null,
+    "SED": {
+     "score": 7,
+     "n": 276,
+     "level": 4,
+     "pctImproved": 63.4
+    },
+    "SWD": {
+     "score": 8,
+     "n": 31,
+     "level": 4,
+     "pctImproved": 67.7
+    },
+    "WH": {
+     "score": -12,
+     "n": 38,
+     "level": 2,
+     "pctImproved": 50.0
+    }
+   }
+  },
+  "hoover": {
+   "ela": {
+    "AA": {
+     "score": -24,
+     "n": 11,
+     "level": 1,
+     "pctImproved": 36.4
+    },
+    "ALL": {
+     "score": -10,
+     "n": 897,
+     "level": 2,
+     "pctImproved": 58.9
+    },
+    "AS": {
+     "score": -9,
+     "n": 493,
+     "level": 2,
+     "pctImproved": 59.4
+    },
+    "EL": {
+     "score": -12,
+     "n": 386,
+     "level": 2,
+     "pctImproved": 61.7
+    },
+    "FI": {
+     "score": -3,
+     "n": 15,
+     "level": 3,
+     "pctImproved": 66.7
+    },
+    "HI": {
+     "score": -11,
+     "n": 265,
+     "level": 2,
+     "pctImproved": 57.7
+    },
+    "MR": {
+     "score": -12,
+     "n": 42,
+     "level": 2,
+     "pctImproved": 45.2
+    },
+    "SED": {
+     "score": -14,
+     "n": 522,
+     "level": 2,
+     "pctImproved": 59.0
+    },
+    "SWD": {
+     "score": -18,
+     "n": 99,
+     "level": 2,
+     "pctImproved": 60.6
+    },
+    "WH": {
+     "score": 7,
+     "n": 61,
+     "level": 4,
+     "pctImproved": 68.9
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -33,
+     "n": 11,
+     "level": 1,
+     "pctImproved": 45.5
+    },
+    "ALL": {
+     "score": 6,
+     "n": 899,
+     "level": 4,
+     "pctImproved": 64.6
+    },
+    "AS": {
+     "score": 18,
+     "n": 493,
+     "level": 4,
+     "pctImproved": 69.8
+    },
+    "EL": {
+     "score": 5,
+     "n": 386,
+     "level": 4,
+     "pctImproved": 61.1
+    },
+    "FI": {
+     "score": 0,
+     "n": 15,
+     "level": 3,
+     "pctImproved": 66.7
+    },
+    "HI": {
+     "score": -13,
+     "n": 265,
+     "level": 2,
+     "pctImproved": 53.6
+    },
+    "MR": {
+     "score": -4,
+     "n": 42,
+     "level": 3,
+     "pctImproved": 59.5
+    },
+    "SED": {
+     "score": 3,
+     "n": 523,
+     "level": 3,
+     "pctImproved": 62.5
+    },
+    "SWD": {
+     "score": -6,
+     "n": 100,
+     "level": 2,
+     "pctImproved": 60.0
+    },
+    "WH": {
+     "score": 12,
+     "n": 63,
+     "level": 4,
+     "pctImproved": 76.2
+    }
+   }
+  },
+  "denman": {
+   "ela": {
+    "AA": {
+     "score": -1,
+     "n": 21,
+     "level": 3,
+     "pctImproved": 71.4
+    },
+    "ALL": {
+     "score": -13,
+     "n": 656,
+     "level": 2,
+     "pctImproved": 61.4
+    },
+    "AS": {
+     "score": -13,
+     "n": 97,
+     "level": 2,
+     "pctImproved": 61.9
+    },
+    "EL": {
+     "score": -23,
+     "n": 348,
+     "level": 1,
+     "pctImproved": 60.1
+    },
+    "FI": {
+     "score": 3,
+     "n": 81,
+     "level": 3,
+     "pctImproved": 64.2
+    },
+    "HI": {
+     "score": -22,
+     "n": 349,
+     "level": 1,
+     "pctImproved": 59.6
+    },
+    "MR": {
+     "score": -1,
+     "n": 40,
+     "level": 3,
+     "pctImproved": 65.0
+    },
+    "PI": null,
+    "SED": {
+     "score": -16,
+     "n": 413,
+     "level": 2,
+     "pctImproved": 62.7
+    },
+    "SWD": {
+     "score": -30,
+     "n": 107,
+     "level": 1,
+     "pctImproved": 49.5
+    },
+    "WH": {
+     "score": 4,
+     "n": 54,
+     "level": 3,
+     "pctImproved": 57.4
+    }
+   },
+   "math": {
+    "AA": {
+     "score": 1,
+     "n": 21,
+     "level": 3,
+     "pctImproved": 71.4
+    },
+    "ALL": {
+     "score": -6,
+     "n": 662,
+     "level": 2,
+     "pctImproved": 58.8
+    },
+    "AS": {
+     "score": 6,
+     "n": 98,
+     "level": 4,
+     "pctImproved": 61.2
+    },
+    "EL": {
+     "score": -9,
+     "n": 352,
+     "level": 2,
+     "pctImproved": 55.4
+    },
+    "FI": {
+     "score": -11,
+     "n": 81,
+     "level": 2,
+     "pctImproved": 51.9
+    },
+    "HI": {
+     "score": -11,
+     "n": 353,
+     "level": 2,
+     "pctImproved": 56.7
+    },
+    "MR": {
+     "score": -1,
+     "n": 41,
+     "level": 3,
+     "pctImproved": 53.7
+    },
+    "PI": null,
+    "SED": {
+     "score": -7,
+     "n": 418,
+     "level": 2,
+     "pctImproved": 57.2
+    },
+    "SWD": {
+     "score": 0,
+     "n": 107,
+     "level": 3,
+     "pctImproved": 63.6
+    },
+    "WH": {
+     "score": 6,
+     "n": 54,
+     "level": 4,
+     "pctImproved": 72.2
+    }
+   }
+  },
+  "mlk": {
+   "ela": {
+    "AA": {
+     "score": -17,
+     "n": 46,
+     "level": 2,
+     "pctImproved": 65.2
+    },
+    "ALL": {
+     "score": -11,
+     "n": 310,
+     "level": 2,
+     "pctImproved": 62.3
+    },
+    "AS": {
+     "score": -1,
+     "n": 95,
+     "level": 3,
+     "pctImproved": 66.3
+    },
+    "EL": {
+     "score": -11,
+     "n": 173,
+     "level": 2,
+     "pctImproved": 61.8
+    },
+    "FI": {
+     "score": 9,
+     "n": 23,
+     "level": 4,
+     "pctImproved": 82.6
+    },
+    "HI": {
+     "score": -16,
+     "n": 122,
+     "level": 2,
+     "pctImproved": 57.4
+    },
+    "MR": null,
+    "PI": null,
+    "SED": {
+     "score": -15,
+     "n": 231,
+     "level": 2,
+     "pctImproved": 60.6
+    },
+    "SWD": {
+     "score": -29,
+     "n": 65,
+     "level": 1,
+     "pctImproved": 63.1
+    },
+    "WH": null
+   },
+   "math": {
+    "AA": {
+     "score": -15,
+     "n": 45,
+     "level": 2,
+     "pctImproved": 48.9
+    },
+    "ALL": {
+     "score": -6,
+     "n": 308,
+     "level": 2,
+     "pctImproved": 59.4
+    },
+    "AS": {
+     "score": 15,
+     "n": 95,
+     "level": 4,
+     "pctImproved": 71.6
+    },
+    "EL": {
+     "score": 1,
+     "n": 173,
+     "level": 3,
+     "pctImproved": 65.9
+    },
+    "FI": {
+     "score": -12,
+     "n": 23,
+     "level": 2,
+     "pctImproved": 52.2
+    },
+    "HI": {
+     "score": -13,
+     "n": 122,
+     "level": 2,
+     "pctImproved": 58.2
+    },
+    "MR": null,
+    "PI": null,
+    "SED": {
+     "score": -10,
+     "n": 229,
+     "level": 2,
+     "pctImproved": 57.2
+    },
+    "SWD": {
+     "score": -9,
+     "n": 66,
+     "level": 2,
+     "pctImproved": 56.1
+    },
+    "WH": null
+   }
+  },
+  "roosevelt": {
+   "ela": {
+    "AA": {
+     "score": -27,
+     "n": 22,
+     "level": 1,
+     "pctImproved": 40.9
+    },
+    "ALL": {
+     "score": 3,
+     "n": 595,
+     "level": 3,
+     "pctImproved": 61.5
+    },
+    "AS": {
+     "score": 1,
+     "n": 298,
+     "level": 3,
+     "pctImproved": 64.4
+    },
+    "EL": {
+     "score": 3,
+     "n": 173,
+     "level": 3,
+     "pctImproved": 68.8
+    },
+    "FI": {
+     "score": 25,
+     "n": 11,
+     "level": 5,
+     "pctImproved": 63.6
+    },
+    "HI": {
+     "score": -9,
+     "n": 55,
+     "level": 2,
+     "pctImproved": 58.2
+    },
+    "MR": {
+     "score": 13,
+     "n": 59,
+     "level": 4,
+     "pctImproved": 57.6
+    },
+    "PI": null,
+    "SED": {
+     "score": 2,
+     "n": 238,
+     "level": 3,
+     "pctImproved": 64.7
+    },
+    "SWD": {
+     "score": -19,
+     "n": 49,
+     "level": 2,
+     "pctImproved": 55.1
+    },
+    "WH": {
+     "score": 14,
+     "n": 118,
+     "level": 4,
+     "pctImproved": 62.7
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -28,
+     "n": 22,
+     "level": 1,
+     "pctImproved": 50.0
+    },
+    "ALL": {
+     "score": -1,
+     "n": 593,
+     "level": 3,
+     "pctImproved": 62.7
+    },
+    "AS": {
+     "score": 6,
+     "n": 296,
+     "level": 4,
+     "pctImproved": 64.5
+    },
+    "EL": {
+     "score": 6,
+     "n": 173,
+     "level": 4,
+     "pctImproved": 60.7
+    },
+    "FI": {
+     "score": -8,
+     "n": 11,
+     "level": 2,
+     "pctImproved": 63.6
+    },
+    "HI": {
+     "score": 1,
+     "n": 56,
+     "level": 3,
+     "pctImproved": 69.6
+    },
+    "MR": {
+     "score": -2,
+     "n": 59,
+     "level": 3,
+     "pctImproved": 61.0
+    },
+    "PI": null,
+    "SED": {
+     "score": 3,
+     "n": 237,
+     "level": 3,
+     "pctImproved": 65.0
+    },
+    "SWD": {
+     "score": -21,
+     "n": 50,
+     "level": 1,
+     "pctImproved": 62.0
+    },
+    "WH": {
+     "score": -7,
+     "n": 117,
+     "level": 2,
+     "pctImproved": 59.8
+    }
+   }
+  },
+  "vis_valley": {
+   "ela": {
+    "AA": {
+     "score": -5,
+     "n": 13,
+     "level": 3,
+     "pctImproved": 92.3
+    },
+    "ALL": {
+     "score": -4,
+     "n": 228,
+     "level": 3,
+     "pctImproved": 69.7
+    },
+    "AS": {
+     "score": 8,
+     "n": 35,
+     "level": 4,
+     "pctImproved": 80.0
+    },
+    "EL": {
+     "score": -14,
+     "n": 113,
+     "level": 2,
+     "pctImproved": 70.8
+    },
+    "FI": {
+     "score": 15,
+     "n": 15,
+     "level": 4,
+     "pctImproved": 86.7
+    },
+    "HI": {
+     "score": -14,
+     "n": 124,
+     "level": 2,
+     "pctImproved": 66.9
+    },
+    "MR": {
+     "score": -13,
+     "n": 12,
+     "level": 2,
+     "pctImproved": 41.7
+    },
+    "PI": {
+     "score": 8,
+     "n": 20,
+     "level": 4,
+     "pctImproved": 65.0
+    },
+    "SED": {
+     "score": -6,
+     "n": 181,
+     "level": 2,
+     "pctImproved": 68.0
+    },
+    "SWD": {
+     "score": -12,
+     "n": 43,
+     "level": 2,
+     "pctImproved": 69.8
+    },
+    "WH": null
+   },
+   "math": {
+    "AA": {
+     "score": -7,
+     "n": 13,
+     "level": 2,
+     "pctImproved": 46.2
+    },
+    "ALL": {
+     "score": -11,
+     "n": 224,
+     "level": 2,
+     "pctImproved": 54.0
+    },
+    "AS": {
+     "score": 9,
+     "n": 35,
+     "level": 4,
+     "pctImproved": 57.1
+    },
+    "EL": {
+     "score": -8,
+     "n": 113,
+     "level": 2,
+     "pctImproved": 59.3
+    },
+    "FI": {
+     "score": -2,
+     "n": 15,
+     "level": 3,
+     "pctImproved": 80.0
+    },
+    "HI": {
+     "score": -15,
+     "n": 122,
+     "level": 2,
+     "pctImproved": 54.1
+    },
+    "MR": {
+     "score": -20,
+     "n": 12,
+     "level": 2,
+     "pctImproved": 50.0
+    },
+    "PI": {
+     "score": -17,
+     "n": 19,
+     "level": 2,
+     "pctImproved": 47.4
+    },
+    "SED": {
+     "score": -13,
+     "n": 179,
+     "level": 2,
+     "pctImproved": 53.6
+    },
+    "SWD": {
+     "score": -14,
+     "n": 42,
+     "level": 2,
+     "pctImproved": 54.8
+    },
+    "WH": null
+   }
+  },
+  "aptos": {
+   "ela": {
+    "AA": {
+     "score": -7,
+     "n": 46,
+     "level": 2,
+     "pctImproved": 60.9
+    },
+    "ALL": {
+     "score": 0,
+     "n": 818,
+     "level": 3,
+     "pctImproved": 65.6
+    },
+    "AS": {
+     "score": 1,
+     "n": 356,
+     "level": 3,
+     "pctImproved": 67.1
+    },
+    "EL": {
+     "score": -7,
+     "n": 285,
+     "level": 2,
+     "pctImproved": 68.1
+    },
+    "FI": {
+     "score": 18,
+     "n": 28,
+     "level": 4,
+     "pctImproved": 75.0
+    },
+    "HI": {
+     "score": -7,
+     "n": 183,
+     "level": 2,
+     "pctImproved": 61.7
+    },
+    "MR": {
+     "score": -4,
+     "n": 84,
+     "level": 3,
+     "pctImproved": 64.3
+    },
+    "SED": {
+     "score": -3,
+     "n": 441,
+     "level": 3,
+     "pctImproved": 65.1
+    },
+    "SWD": {
+     "score": -17,
+     "n": 103,
+     "level": 2,
+     "pctImproved": 61.2
+    },
+    "WH": {
+     "score": 14,
+     "n": 99,
+     "level": 4,
+     "pctImproved": 70.7
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -8,
+     "n": 46,
+     "level": 2,
+     "pctImproved": 60.9
+    },
+    "ALL": {
+     "score": 8,
+     "n": 821,
+     "level": 4,
+     "pctImproved": 65.3
+    },
+    "AS": {
+     "score": 21,
+     "n": 357,
+     "level": 5,
+     "pctImproved": 69.7
+    },
+    "EL": {
+     "score": 2,
+     "n": 285,
+     "level": 3,
+     "pctImproved": 62.5
+    },
+    "FI": {
+     "score": 21,
+     "n": 28,
+     "level": 5,
+     "pctImproved": 75.0
+    },
+    "HI": {
+     "score": -12,
+     "n": 184,
+     "level": 2,
+     "pctImproved": 56.5
+    },
+    "MR": {
+     "score": 0,
+     "n": 85,
+     "level": 3,
+     "pctImproved": 60.0
+    },
+    "SED": {
+     "score": 3,
+     "n": 442,
+     "level": 3,
+     "pctImproved": 62.9
+    },
+    "SWD": {
+     "score": -16,
+     "n": 104,
+     "level": 2,
+     "pctImproved": 51.0
+    },
+    "WH": {
+     "score": 11,
+     "n": 100,
+     "level": 4,
+     "pctImproved": 69.0
+    }
+   }
+  },
+  "everett": {
+   "ela": {
+    "AA": {
+     "score": -24,
+     "n": 15,
+     "level": 1,
+     "pctImproved": 26.7
+    },
+    "ALL": {
+     "score": -24,
+     "n": 252,
+     "level": 1,
+     "pctImproved": 56.0
+    },
+    "AS": null,
+    "EL": {
+     "score": -30,
+     "n": 159,
+     "level": 1,
+     "pctImproved": 56.0
+    },
+    "HI": {
+     "score": -29,
+     "n": 178,
+     "level": 1,
+     "pctImproved": 54.5
+    },
+    "MR": {
+     "score": -5,
+     "n": 16,
+     "level": 3,
+     "pctImproved": 81.3
+    },
+    "PI": null,
+    "SED": {
+     "score": -26,
+     "n": 179,
+     "level": 1,
+     "pctImproved": 54.7
+    },
+    "SWD": {
+     "score": -28,
+     "n": 49,
+     "level": 1,
+     "pctImproved": 44.9
+    },
+    "WH": {
+     "score": -7,
+     "n": 28,
+     "level": 2,
+     "pctImproved": 57.1
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -27,
+     "n": 16,
+     "level": 1,
+     "pctImproved": 31.3
+    },
+    "ALL": {
+     "score": -17,
+     "n": 249,
+     "level": 2,
+     "pctImproved": 49.4
+    },
+    "AS": null,
+    "EL": {
+     "score": -4,
+     "n": 156,
+     "level": 3,
+     "pctImproved": 57.7
+    },
+    "HI": {
+     "score": -13,
+     "n": 174,
+     "level": 2,
+     "pctImproved": 53.4
+    },
+    "MR": {
+     "score": -15,
+     "n": 16,
+     "level": 2,
+     "pctImproved": 37.5
+    },
+    "PI": null,
+    "SED": {
+     "score": -15,
+     "n": 176,
+     "level": 2,
+     "pctImproved": 50.6
+    },
+    "SWD": {
+     "score": -22,
+     "n": 50,
+     "level": 1,
+     "pctImproved": 52.0
+    },
+    "WH": {
+     "score": -15,
+     "n": 28,
+     "level": 2,
+     "pctImproved": 42.9
+    }
+   }
+  },
+  "bvhm": {
+   "ela": {
+    "AA": null,
+    "ALL": {
+     "score": -6,
+     "n": 294,
+     "level": 2,
+     "pctImproved": 69.7
+    },
+    "EL": {
+     "score": -11,
+     "n": 212,
+     "level": 2,
+     "pctImproved": 69.8
+    },
+    "HI": {
+     "score": -9,
+     "n": 269,
+     "level": 2,
+     "pctImproved": 69.1
+    },
+    "MR": null,
+    "SED": {
+     "score": -13,
+     "n": 200,
+     "level": 2,
+     "pctImproved": 68.5
+    },
+    "SWD": {
+     "score": -13,
+     "n": 50,
+     "level": 2,
+     "pctImproved": 60.0
+    },
+    "WH": {
+     "score": 48,
+     "n": 11,
+     "level": 5,
+     "pctImproved": 81.8
+    }
+   },
+   "math": {
+    "AA": null,
+    "ALL": {
+     "score": -8,
+     "n": 293,
+     "level": 2,
+     "pctImproved": 61.8
+    },
+    "EL": {
+     "score": -9,
+     "n": 211,
+     "level": 2,
+     "pctImproved": 61.1
+    },
+    "HI": {
+     "score": -10,
+     "n": 268,
+     "level": 2,
+     "pctImproved": 60.4
+    },
+    "MR": null,
+    "SED": {
+     "score": -14,
+     "n": 199,
+     "level": 2,
+     "pctImproved": 56.8
+    },
+    "SWD": {
+     "score": -34,
+     "n": 49,
+     "level": 1,
+     "pctImproved": 44.9
+    },
+    "WH": {
+     "score": 25,
+     "n": 11,
+     "level": 5,
+     "pctImproved": 81.8
+    }
+   }
+  },
+  "james_lick": {
+   "ela": {
+    "AA": {
+     "score": -31,
+     "n": 20,
+     "level": 1,
+     "pctImproved": 45.0
+    },
+    "ALL": {
+     "score": -12,
+     "n": 370,
+     "level": 2,
+     "pctImproved": 62.2
+    },
+    "AS": null,
+    "EL": {
+     "score": -26,
+     "n": 191,
+     "level": 1,
+     "pctImproved": 59.7
+    },
+    "FI": null,
+    "HI": {
+     "score": -17,
+     "n": 272,
+     "level": 2,
+     "pctImproved": 62.9
+    },
+    "MR": {
+     "score": 3,
+     "n": 15,
+     "level": 3,
+     "pctImproved": 60.0
+    },
+    "PI": null,
+    "SED": {
+     "score": -23,
+     "n": 223,
+     "level": 1,
+     "pctImproved": 56.5
+    },
+    "SWD": {
+     "score": -21,
+     "n": 76,
+     "level": 1,
+     "pctImproved": 64.5
+    },
+    "WH": {
+     "score": 6,
+     "n": 44,
+     "level": 4,
+     "pctImproved": 65.9
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -26,
+     "n": 20,
+     "level": 1,
+     "pctImproved": 45.0
+    },
+    "ALL": {
+     "score": -11,
+     "n": 360,
+     "level": 2,
+     "pctImproved": 55.8
+    },
+    "AS": null,
+    "EL": {
+     "score": -7,
+     "n": 180,
+     "level": 2,
+     "pctImproved": 56.7
+    },
+    "FI": null,
+    "HI": {
+     "score": -13,
+     "n": 263,
+     "level": 2,
+     "pctImproved": 53.6
+    },
+    "MR": {
+     "score": -11,
+     "n": 15,
+     "level": 2,
+     "pctImproved": 60.0
+    },
+    "PI": null,
+    "SED": {
+     "score": -18,
+     "n": 213,
+     "level": 2,
+     "pctImproved": 52.1
+    },
+    "SWD": {
+     "score": -14,
+     "n": 78,
+     "level": 2,
+     "pctImproved": 51.3
+    },
+    "WH": {
+     "score": -2,
+     "n": 43,
+     "level": 3,
+     "pctImproved": 62.8
+    }
+   }
+  },
+  "marina": {
+   "ela": {
+    "AA": {
+     "score": -7,
+     "n": 27,
+     "level": 2,
+     "pctImproved": 66.7
+    },
+    "ALL": {
+     "score": 7,
+     "n": 571,
+     "level": 4,
+     "pctImproved": 70.1
+    },
+    "AS": {
+     "score": 6,
+     "n": 346,
+     "level": 4,
+     "pctImproved": 69.7
+    },
+    "EL": {
+     "score": 3,
+     "n": 275,
+     "level": 3,
+     "pctImproved": 70.9
+    },
+    "FI": {
+     "score": 15,
+     "n": 19,
+     "level": 4,
+     "pctImproved": 78.9
+    },
+    "HI": {
+     "score": 0,
+     "n": 93,
+     "level": 3,
+     "pctImproved": 65.6
+    },
+    "MR": {
+     "score": 8,
+     "n": 27,
+     "level": 4,
+     "pctImproved": 77.8
+    },
+    "PI": null,
+    "SED": {
+     "score": 5,
+     "n": 407,
+     "level": 4,
+     "pctImproved": 68.6
+    },
+    "SWD": {
+     "score": -17,
+     "n": 78,
+     "level": 2,
+     "pctImproved": 64.1
+    },
+    "WH": {
+     "score": 5,
+     "n": 48,
+     "level": 4,
+     "pctImproved": 72.9
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -7,
+     "n": 25,
+     "level": 2,
+     "pctImproved": 80.0
+    },
+    "ALL": {
+     "score": 4,
+     "n": 571,
+     "level": 3,
+     "pctImproved": 60.1
+    },
+    "AS": {
+     "score": 4,
+     "n": 346,
+     "level": 3,
+     "pctImproved": 56.4
+    },
+    "EL": {
+     "score": 5,
+     "n": 275,
+     "level": 4,
+     "pctImproved": 59.3
+    },
+    "FI": {
+     "score": 11,
+     "n": 20,
+     "level": 4,
+     "pctImproved": 65.0
+    },
+    "HI": {
+     "score": 2,
+     "n": 93,
+     "level": 3,
+     "pctImproved": 65.6
+    },
+    "MR": {
+     "score": 9,
+     "n": 28,
+     "level": 4,
+     "pctImproved": 67.9
+    },
+    "PI": null,
+    "SED": {
+     "score": 6,
+     "n": 407,
+     "level": 4,
+     "pctImproved": 60.7
+    },
+    "SWD": {
+     "score": 3,
+     "n": 77,
+     "level": 3,
+     "pctImproved": 61.0
+    },
+    "WH": {
+     "score": -7,
+     "n": 48,
+     "level": 2,
+     "pctImproved": 58.3
+    }
+   }
+  },
+  "presidio": {
+   "ela": {
+    "AA": {
+     "score": -16,
+     "n": 21,
+     "level": 2,
+     "pctImproved": 52.4
+    },
+    "ALL": {
+     "score": 7,
+     "n": 896,
+     "level": 4,
+     "pctImproved": 67.4
+    },
+    "AS": {
+     "score": 8,
+     "n": 328,
+     "level": 4,
+     "pctImproved": 71.3
+    },
+    "EL": {
+     "score": 0,
+     "n": 208,
+     "level": 3,
+     "pctImproved": 73.1
+    },
+    "FI": {
+     "score": 7,
+     "n": 27,
+     "level": 4,
+     "pctImproved": 59.3
+    },
+    "HI": {
+     "score": -3,
+     "n": 142,
+     "level": 3,
+     "pctImproved": 62.0
+    },
+    "MR": {
+     "score": 9,
+     "n": 138,
+     "level": 4,
+     "pctImproved": 65.2
+    },
+    "PI": null,
+    "SED": {
+     "score": -1,
+     "n": 285,
+     "level": 3,
+     "pctImproved": 65.6
+    },
+    "SWD": {
+     "score": -18,
+     "n": 124,
+     "level": 2,
+     "pctImproved": 58.1
+    },
+    "WH": {
+     "score": 14,
+     "n": 203,
+     "level": 4,
+     "pctImproved": 67.5
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -26,
+     "n": 23,
+     "level": 1,
+     "pctImproved": 56.5
+    },
+    "ALL": {
+     "score": 12,
+     "n": 891,
+     "level": 4,
+     "pctImproved": 72.4
+    },
+    "AS": {
+     "score": 22,
+     "n": 324,
+     "level": 5,
+     "pctImproved": 74.1
+    },
+    "EL": {
+     "score": 11,
+     "n": 205,
+     "level": 4,
+     "pctImproved": 69.3
+    },
+    "FI": {
+     "score": 13,
+     "n": 27,
+     "level": 4,
+     "pctImproved": 77.8
+    },
+    "HI": {
+     "score": -6,
+     "n": 140,
+     "level": 2,
+     "pctImproved": 65.7
+    },
+    "MR": {
+     "score": 12,
+     "n": 138,
+     "level": 4,
+     "pctImproved": 80.4
+    },
+    "PI": null,
+    "SED": {
+     "score": 7,
+     "n": 284,
+     "level": 4,
+     "pctImproved": 68.3
+    },
+    "SWD": {
+     "score": -4,
+     "n": 122,
+     "level": 3,
+     "pctImproved": 63.9
+    },
+    "WH": {
+     "score": 11,
+     "n": 201,
+     "level": 4,
+     "pctImproved": 69.7
+    }
+   }
+  },
+  "rooftop": {
+   "ela": {
+    "AA": {
+     "score": 10,
+     "n": 31,
+     "level": 4,
+     "pctImproved": 83.9
+    },
+    "ALL": {
+     "score": 13,
+     "n": 310,
+     "level": 4,
+     "pctImproved": 75.5
+    },
+    "AS": {
+     "score": 3,
+     "n": 17,
+     "level": 3,
+     "pctImproved": 82.4
+    },
+    "EL": {
+     "score": 20,
+     "n": 26,
+     "level": 5,
+     "pctImproved": 88.5
+    },
+    "FI": null,
+    "HI": {
+     "score": 17,
+     "n": 83,
+     "level": 4,
+     "pctImproved": 78.3
+    },
+    "MR": {
+     "score": 5,
+     "n": 49,
+     "level": 4,
+     "pctImproved": 53.1
+    },
+    "SED": {
+     "score": 10,
+     "n": 83,
+     "level": 4,
+     "pctImproved": 79.5
+    },
+    "SWD": {
+     "score": 2,
+     "n": 69,
+     "level": 3,
+     "pctImproved": 76.8
+    },
+    "WH": {
+     "score": 13,
+     "n": 94,
+     "level": 4,
+     "pctImproved": 79.8
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -24,
+     "n": 31,
+     "level": 1,
+     "pctImproved": 71.0
+    },
+    "ALL": {
+     "score": 2,
+     "n": 310,
+     "level": 3,
+     "pctImproved": 72.3
+    },
+    "AS": {
+     "score": 9,
+     "n": 17,
+     "level": 4,
+     "pctImproved": 70.6
+    },
+    "EL": {
+     "score": 2,
+     "n": 26,
+     "level": 3,
+     "pctImproved": 73.1
+    },
+    "FI": null,
+    "HI": {
+     "score": 0,
+     "n": 84,
+     "level": 3,
+     "pctImproved": 71.4
+    },
+    "MR": {
+     "score": 4,
+     "n": 48,
+     "level": 3,
+     "pctImproved": 68.8
+    },
+    "SED": {
+     "score": -15,
+     "n": 82,
+     "level": 2,
+     "pctImproved": 67.1
+    },
+    "SWD": {
+     "score": -21,
+     "n": 69,
+     "level": 1,
+     "pctImproved": 53.6
+    },
+    "WH": {
+     "score": 10,
+     "n": 94,
+     "level": 4,
+     "pctImproved": 75.5
+    }
+   }
+  },
+  "sfcs": {
+   "ela": {
+    "AA": {
+     "score": -3,
+     "n": 11,
+     "level": 3,
+     "pctImproved": 72.7
+    },
+    "ALL": {
+     "score": 1,
+     "n": 108,
+     "level": 3,
+     "pctImproved": 76.9
+    },
+    "AS": null,
+    "EL": {
+     "score": -15,
+     "n": 20,
+     "level": 2,
+     "pctImproved": 70.0
+    },
+    "FI": {
+     "score": 14,
+     "n": 11,
+     "level": 4,
+     "pctImproved": 63.6
+    },
+    "HI": {
+     "score": -11,
+     "n": 44,
+     "level": 2,
+     "pctImproved": 77.3
+    },
+    "MR": null,
+    "SED": {
+     "score": -4,
+     "n": 50,
+     "level": 3,
+     "pctImproved": 80.0
+    },
+    "SWD": {
+     "score": -18,
+     "n": 22,
+     "level": 2,
+     "pctImproved": 81.8
+    },
+    "WH": {
+     "score": 31,
+     "n": 25,
+     "level": 5,
+     "pctImproved": 88.0
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -1,
+     "n": 12,
+     "level": 3,
+     "pctImproved": 66.7
+    },
+    "ALL": {
+     "score": -8,
+     "n": 108,
+     "level": 2,
+     "pctImproved": 68.5
+    },
+    "AS": null,
+    "EL": {
+     "score": -22,
+     "n": 20,
+     "level": 1,
+     "pctImproved": 65.0
+    },
+    "FI": {
+     "score": -16,
+     "n": 11,
+     "level": 2,
+     "pctImproved": 81.8
+    },
+    "HI": {
+     "score": -17,
+     "n": 43,
+     "level": 2,
+     "pctImproved": 55.8
+    },
+    "MR": null,
+    "SED": {
+     "score": -14,
+     "n": 50,
+     "level": 2,
+     "pctImproved": 62.0
+    },
+    "SWD": {
+     "score": -12,
+     "n": 21,
+     "level": 2,
+     "pctImproved": 66.7
+    },
+    "WH": {
+     "score": 15,
+     "n": 25,
+     "level": 4,
+     "pctImproved": 88.0
+    }
+   }
+  },
+  "claire_lilienthal": {
+   "ela": {
+    "AA": {
+     "score": 3,
+     "n": 17,
+     "level": 3,
+     "pctImproved": 64.7
+    },
+    "ALL": {
+     "score": 11,
+     "n": 335,
+     "level": 4,
+     "pctImproved": 70.7
+    },
+    "AS": {
+     "score": 12,
+     "n": 95,
+     "level": 4,
+     "pctImproved": 71.6
+    },
+    "EL": {
+     "score": 12,
+     "n": 42,
+     "level": 4,
+     "pctImproved": 66.7
+    },
+    "FI": null,
+    "HI": {
+     "score": -7,
+     "n": 35,
+     "level": 2,
+     "pctImproved": 57.1
+    },
+    "MR": {
+     "score": 17,
+     "n": 59,
+     "level": 4,
+     "pctImproved": 69.5
+    },
+    "PI": null,
+    "SED": {
+     "score": 2,
+     "n": 70,
+     "level": 3,
+     "pctImproved": 64.3
+    },
+    "SWD": {
+     "score": -2,
+     "n": 32,
+     "level": 3,
+     "pctImproved": 75.0
+    },
+    "WH": {
+     "score": 13,
+     "n": 98,
+     "level": 4,
+     "pctImproved": 75.5
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -2,
+     "n": 17,
+     "level": 3,
+     "pctImproved": 58.8
+    },
+    "ALL": {
+     "score": 19,
+     "n": 334,
+     "level": 4,
+     "pctImproved": 75.7
+    },
+    "AS": {
+     "score": 31,
+     "n": 95,
+     "level": 5,
+     "pctImproved": 82.1
+    },
+    "EL": {
+     "score": 21,
+     "n": 42,
+     "level": 5,
+     "pctImproved": 73.8
+    },
+    "FI": null,
+    "HI": {
+     "score": -2,
+     "n": 35,
+     "level": 3,
+     "pctImproved": 60.0
+    },
+    "MR": {
+     "score": 30,
+     "n": 58,
+     "level": 5,
+     "pctImproved": 74.1
+    },
+    "PI": null,
+    "SED": {
+     "score": 11,
+     "n": 70,
+     "level": 4,
+     "pctImproved": 71.4
+    },
+    "SWD": {
+     "score": 0,
+     "n": 32,
+     "level": 3,
+     "pctImproved": 62.5
+    },
+    "WH": {
+     "score": 13,
+     "n": 98,
+     "level": 4,
+     "pctImproved": 75.5
+    }
+   }
+  },
+  "creative_arts": {
+   "ela": {
+    "AA": {
+     "score": 7,
+     "n": 29,
+     "level": 4,
+     "pctImproved": 58.6
+    },
+    "ALL": {
+     "score": 12,
+     "n": 235,
+     "level": 4,
+     "pctImproved": 69.8
+    },
+    "AS": null,
+    "EL": {
+     "score": -26,
+     "n": 17,
+     "level": 1,
+     "pctImproved": 41.2
+    },
+    "FI": null,
+    "HI": {
+     "score": -7,
+     "n": 60,
+     "level": 2,
+     "pctImproved": 58.3
+    },
+    "MR": {
+     "score": 16,
+     "n": 35,
+     "level": 4,
+     "pctImproved": 80.0
+    },
+    "SED": {
+     "score": 3,
+     "n": 73,
+     "level": 3,
+     "pctImproved": 61.6
+    },
+    "SWD": {
+     "score": 6,
+     "n": 35,
+     "level": 4,
+     "pctImproved": 68.6
+    },
+    "WH": {
+     "score": 22,
+     "n": 100,
+     "level": 5,
+     "pctImproved": 78.0
+    }
+   },
+   "math": {
+    "AA": {
+     "score": -6,
+     "n": 29,
+     "level": 2,
+     "pctImproved": 65.5
+    },
+    "ALL": {
+     "score": 7,
+     "n": 234,
+     "level": 4,
+     "pctImproved": 76.1
+    },
+    "AS": null,
+    "EL": {
+     "score": 1,
+     "n": 17,
+     "level": 3,
+     "pctImproved": 70.6
+    },
+    "FI": null,
+    "HI": {
+     "score": -7,
+     "n": 59,
+     "level": 2,
+     "pctImproved": 66.1
+    },
+    "MR": {
+     "score": 11,
+     "n": 36,
+     "level": 4,
+     "pctImproved": 86.1
+    },
+    "SED": {
+     "score": 1,
+     "n": 74,
+     "level": 3,
+     "pctImproved": 73.0
+    },
+    "SWD": {
+     "score": -11,
+     "n": 34,
+     "level": 2,
+     "pctImproved": 61.8
+    },
+    "WH": {
+     "score": 14,
+     "n": 99,
+     "level": 4,
+     "pctImproved": 81.8
+    }
+   }
+  },
+  "alice_fong_yu": {
+   "ela": {
+    "AA": {
+     "score": 10,
+     "n": 17,
+     "level": 4,
+     "pctImproved": 76.5
+    },
+    "ALL": {
+     "score": 18,
+     "n": 325,
+     "level": 4,
+     "pctImproved": 77.2
+    },
+    "AS": {
+     "score": 16,
+     "n": 198,
+     "level": 4,
+     "pctImproved": 76.8
+    },
+    "EL": {
+     "score": 11,
+     "n": 83,
+     "level": 4,
+     "pctImproved": 80.7
+    },
+    "FI": null,
+    "HI": {
+     "score": 29,
+     "n": 19,
+     "level": 5,
+     "pctImproved": 73.7
+    },
+    "MR": {
+     "score": 31,
+     "n": 43,
+     "level": 5,
+     "pctImproved": 79.1
+    },
+    "SED": {
+     "score": 15,
+     "n": 104,
+     "level": 4,
+     "pctImproved": 80.8
+    },
+    "SWD": {
+     "score": 4,
+     "n": 30,
+     "level": 3,
+     "pctImproved": 73.3
+    },
+    "WH": {
+     "score": 45,
+     "n": 16,
+     "level": 5,
+     "pctImproved": 100.0
+    }
+   },
+   "math": {
+    "AA": {
+     "score": 3,
+     "n": 17,
+     "level": 3,
+     "pctImproved": 88.2
+    },
+    "ALL": {
+     "score": 22,
+     "n": 325,
+     "level": 5,
+     "pctImproved": 78.8
+    },
+    "AS": {
+     "score": 23,
+     "n": 198,
+     "level": 5,
+     "pctImproved": 75.8
+    },
+    "EL": {
+     "score": 22,
+     "n": 83,
+     "level": 5,
+     "pctImproved": 73.5
+    },
+    "FI": null,
+    "HI": {
+     "score": 14,
+     "n": 19,
+     "level": 4,
+     "pctImproved": 89.5
+    },
+    "MR": {
+     "score": 25,
+     "n": 43,
+     "level": 5,
+     "pctImproved": 83.7
+    },
+    "SED": {
+     "score": 18,
+     "n": 104,
+     "level": 4,
+     "pctImproved": 77.9
+    },
+    "SWD": {
+     "score": 13,
+     "n": 30,
+     "level": 4,
+     "pctImproved": 73.3
+    },
+    "WH": {
+     "score": 24,
+     "n": 16,
+     "level": 5,
+     "pctImproved": 93.8
+    }
+   }
+  },
+  "new_school_sf": {
+   "ela": {
+    "AA": {
+     "score": 6,
+     "n": 15,
+     "level": 4,
+     "pctImproved": 53.3
+    },
+    "ALL": {
+     "score": 17,
+     "n": 268,
+     "level": 4,
+     "pctImproved": 76.1
+    },
+    "AS": {
+     "score": 13,
+     "n": 36,
+     "level": 4,
+     "pctImproved": 69.4
+    },
+    "EL": {
+     "score": 14,
+     "n": 58,
+     "level": 4,
+     "pctImproved": 86.2
+    },
+    "FI": null,
+    "HI": {
+     "score": 18,
+     "n": 89,
+     "level": 4,
+     "pctImproved": 86.5
+    },
+    "MR": {
+     "score": 19,
+     "n": 28,
+     "level": 4,
+     "pctImproved": 75.0
+    },
+    "PI": null,
+    "SED": {
+     "score": 16,
+     "n": 90,
+     "level": 4,
+     "pctImproved": 80.0
+    },
+    "SWD": {
+     "score": 13,
+     "n": 36,
+     "level": 4,
+     "pctImproved": 77.8
+    },
+    "WH": {
+     "score": 26,
+     "n": 95,
+     "level": 5,
+     "pctImproved": 73.7
+    }
+   },
+   "math": {
+    "AA": {
+     "score": 16,
+     "n": 15,
+     "level": 4,
+     "pctImproved": 80.0
+    },
+    "ALL": {
+     "score": 30,
+     "n": 268,
+     "level": 5,
+     "pctImproved": 84.7
+    },
+    "AS": {
+     "score": 44,
+     "n": 36,
+     "level": 5,
+     "pctImproved": 94.4
+    },
+    "EL": {
+     "score": 19,
+     "n": 58,
+     "level": 4,
+     "pctImproved": 77.6
+    },
+    "FI": null,
+    "HI": {
+     "score": 27,
+     "n": 89,
+     "level": 5,
+     "pctImproved": 83.1
+    },
+    "MR": {
+     "score": 27,
+     "n": 28,
+     "level": 5,
+     "pctImproved": 82.1
+    },
+    "PI": null,
+    "SED": {
+     "score": 23,
+     "n": 90,
+     "level": 5,
+     "pctImproved": 81.1
+    },
+    "SWD": {
+     "score": 12,
+     "n": 36,
+     "level": 4,
+     "pctImproved": 72.2
+    },
+    "WH": {
+     "score": 36,
+     "n": 95,
+     "level": 5,
+     "pctImproved": 84.2
+    }
+   }
+  }
+ }
+}

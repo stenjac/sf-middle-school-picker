@@ -865,6 +865,7 @@
       <p class="text-xs text-slate-600 leading-relaxed">Intended sources:</p>
       <ul class="text-xs text-slate-600 space-y-2 list-disc pl-5">
         <li><strong>CAASPP state test results (official, 2025–26):</strong> Reading and math scores for every public and charter school, grades 6–8 only, overall and by student group, from the CDE/ETS <a class="text-brand-teal underline" href="https://caaspp-elpac.ets.org/caaspp/ResearchFileListSB?ps=true&lstTestYear=2026&lstTestType=B&lstCounty=38&lstDistrict=00000" target="_blank" rel="noopener noreferrer">research files</a>. K-8 schools are compared on their grade 6–8 students only. Groups under 11 students aren't reported by the state. Private schools don't take this test.</li>
+        <li><strong>Student growth (official, 2025 CA Dashboard):</strong> How much each school's students improved compared with students statewide who had similar scores the year before, for reading and math, overall and by student group. Weighted average of growth from spring 2023 to spring 2025, grades 4–8. From the CDE <a class="text-brand-teal underline" href="https://www.cde.ca.gov/TA/ac/cm/growthmodeldatafiles.asp" target="_blank" rel="noopener noreferrer">growth data file</a>; plain-language labels map to the state's five levels (Minimal, Moderate, Average, Accelerated, Exceptional Growth).</li>
         <li><strong>California School Dashboard & CDE DataQuest / SARC:</strong> Public-school enrollments, suspension rates, chronic absenteeism and CHKS climate data — verify at <a class="text-brand-teal underline" href="https://www.caschooldashboard.org/" target="_blank" rel="noopener noreferrer">caschooldashboard.org</a>.</li>
         <li><strong>SFUSD Educational Placement Center:</strong> Feeder matrices, round 1 odds, and tiebreaker hierarchy.</li>
         <li><strong>Local Press (2023–2026), link-checked:</strong> The San Francisco Standard, The Frisc, Mission Local, and SF Chronicle. These also feed the Momentum signal.</li>
@@ -977,6 +978,9 @@
     /* CAASPP (state test) results for public & charter schools, grades 6-8.
        Built from the CDE/ETS research files; see data/caaspp.json meta. */
     let CAASPP = null;
+    /* Student growth (CA Dashboard growth model): how much students improved vs
+       students statewide with similar prior scores. See data/growth.json meta. */
+    let GROWTH = null;
 
 
     /* ------------------------------------------------------------------
@@ -1095,6 +1099,82 @@
       }
     }
 
+    async function loadGrowth() {
+      try {
+        const res = await fetch('data/growth.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        GROWTH = await res.json();
+      } catch (err) {
+        console.warn('Could not load data/growth.json — growth hidden.', err);
+        GROWTH = null;
+      }
+    }
+
+    /* ---- Growth helpers ---- */
+    const GROWTH_PLAIN = { 1: 'Well below typical', 2: 'Below typical', 3: 'Typical', 4: 'Above typical', 5: 'Well above typical' };
+    const GROWTH_STYLE = {
+      1: 'bg-rose-50 text-rose-800 border-rose-200',
+      2: 'bg-amber-50 text-amber-800 border-amber-200',
+      3: 'bg-slate-50 text-slate-700 border-slate-200',
+      4: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+      5: 'bg-emerald-100 text-emerald-900 border-emerald-300'
+    };
+    const growthFor = (id, subj, g = 'ALL') => GROWTH?.schools?.[id]?.[subj]?.[g] || null;
+    const fmtGrowth = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n);
+    function growthChip(v, size = 'md') {
+      if (!v || !v.level) return '<span class="text-[11px] text-slate-400">too few students</span>';
+      const state = GROWTH.meta.levels[v.level];
+      const pad = size === 'md' ? 'px-2 py-0.5 text-[11px]' : 'px-1.5 py-0 text-[10px]';
+      if (size === 'xs') return `<span title="${GROWTH_PLAIN[v.level]} (state level: ${state})" class="inline-flex rounded-md border font-semibold ${pad} ${GROWTH_STYLE[v.level]}">${fmtGrowth(v.score)}</span>`;
+      return `<span title="State level: ${state} (${fmtGrowth(v.score)} points vs similar students statewide)" class="inline-flex items-center rounded-md border font-semibold whitespace-nowrap ${pad} ${GROWTH_STYLE[v.level]}">${GROWTH_PLAIN[v.level]} <span class="ml-1 font-normal opacity-75">${fmtGrowth(v.score)}</span></span>`;
+    }
+    function growthShort(id) {
+      const e = growthFor(id, 'ela'), m = growthFor(id, 'math');
+      if (!e?.level && !m?.level) return '';
+      const w = v => v?.level ? GROWTH_PLAIN[v.level].toLowerCase() : 'n/a';
+      return `Reading ${w(e)} · Math ${w(m)}`;
+    }
+
+    function renderModalGrowth(id) {
+      if (!GROWTH || !GROWTH.schools[id]) return '';
+      const row = (subj, label) => {
+        const v = growthFor(id, subj);
+        return `<div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="font-bold text-slate-800">${label}</span>
+          <span class="flex items-center gap-2">${growthChip(v)}${v?.pctImproved != null ? `<span class="text-[10px] text-slate-400 whitespace-nowrap">${Math.round(v.pctImproved)}% of students improved</span>` : ''}</span>
+        </div>`;
+      };
+      const sf = GROWTH.sfusd;
+      const groupRows = GROWTH.groups.filter(g => g.id !== 'ALL' && (growthFor(id, 'ela', g.id) || growthFor(id, 'math', g.id))).map(g => {
+        const cell = subj => {
+          const v = growthFor(id, subj, g.id), b = sf?.[subj]?.[g.id];
+          return `<td class="py-1 pl-2 text-right whitespace-nowrap">${v ? growthChip(v, 'xs') : '<span class="text-slate-300">—</span>'}${b ? ` <span class="text-[10px] text-slate-400">/ ${fmtGrowth(b.score)}</span>` : ''}</td>`;
+        };
+        const n = growthFor(id, 'ela', g.id)?.n ?? growthFor(id, 'math', g.id)?.n;
+        return `<tr class="border-t border-slate-100"><td class="py-1 pr-2 text-slate-700">${g.label}${n ? ` <span class="text-[10px] text-slate-400">(${n})</span>` : ''}</td>${cell('ela')}${cell('math')}</tr>`;
+      }).join('');
+      return `
+        <div class="pt-3 border-t border-slate-100 space-y-2">
+          <div class="flex items-start justify-between gap-2">
+            <span class="font-display font-bold text-slate-900 text-[11px] uppercase tracking-wider">Growth: progress vs similar students</span>
+            <span class="text-[10px] font-bold text-emerald-700 uppercase text-right">CA Dashboard 2025 · Official</span>
+          </div>
+          <p class="text-[11px] text-slate-500">How much students improved compared with students statewide who had the same scores the year before. This is the closest public measure of what a school adds. 0 is typical; negative means students improved less than similar peers, not that they went backwards.</p>
+          ${row('ela', 'Reading growth')}
+          ${row('math', 'Math growth')}
+          <p class="text-[10px] text-slate-400">SFUSD overall: reading ${fmtGrowth(sf.ela.ALL.score)}, math ${fmtGrowth(sf.math.ALL.score)}.</p>
+          ${groupRows ? `<details>
+            <summary class="cursor-pointer font-bold text-brand-teal text-[11px]">Growth by student group</summary>
+            <table class="w-full mt-2 text-[11px]">
+              <thead><tr class="text-[10px] uppercase text-slate-400"><th class="text-left font-bold py-1 pr-2">Group (tested)</th><th class="text-right font-bold py-1 pl-2">Reading</th><th class="text-right font-bold py-1 pl-2">Math</th></tr></thead>
+              <tbody>${groupRows}</tbody>
+            </table>
+            <p class="text-[10px] text-slate-400 mt-1">School score / SFUSD score for the same group. Colors: ${[1,2,3,4,5].map(l => `<span class="inline-block rounded border px-1 ${GROWTH_STYLE[l]}">${GROWTH_PLAIN[l].toLowerCase()}</span>`).join(' ')}. Small groups aren't reported.</p>
+          </details>` : ''}
+          <p class="text-[10px] text-slate-400">${GROWTH.meta.covers}; K-8 schools include grades 4–5. State levels: ${GROWTH.meta.cuts}. <a class="underline" href="${GROWTH.meta.sourceUrl}" target="_blank" rel="noopener">Source: CDE growth data</a>.</p>
+        </div>`;
+    }
+
     /* ---- CAASPP helpers ---- */
     const caasppFor = (id, yr = '2026') => CAASPP?.schools?.[id]?.[yr] || null;
     function caasppPct(id, subj, group = '1', yr = '2026') {
@@ -1191,7 +1271,8 @@
           <span class="inline-flex items-center"><span class="inline-block w-0.5 h-3 bg-amber-500 mr-1"></span>California average (reading ${ca('ela')}%, math ${ca('math')}%)</span>
         </div>
         ${caasppGroupTable(school.id)}
-        <p class="text-[10px] text-slate-400">Scores mostly reflect who attends a school (family income, English learners), not only teaching quality. Compare groups, e.g. low-income students across schools, for a fairer read. <a class="underline" href="${CAASPP.meta.sourceUrl}" target="_blank" rel="noopener">Source: CDE/ETS research files</a>.</p>`;
+        <p class="text-[10px] text-slate-400">Scores mostly reflect who attends a school (family income, English learners), not only teaching quality. Growth below is a fairer read of what the school adds. <a class="underline" href="${CAASPP.meta.sourceUrl}" target="_blank" rel="noopener">Source: CDE/ETS research files</a>.</p>
+        ${renderModalGrowth(school.id)}`;
     }
 
     async function loadBasicSchools() {
@@ -4132,6 +4213,10 @@
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Test Scores:</span>
                   <span class="text-slate-800 font-semibold truncate">${caasppShort(school.id)} <span class="font-normal text-slate-400">(SFUSD ${benchPct('sfusd','ela')}% · ${benchPct('sfusd','math')}%)</span></span>
                 </div>` : ''}
+                ${growthShort(school.id) ? `<div class="flex items-center space-x-1.5" title="Student growth vs similar students statewide (CA Dashboard 2025)">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Growth:</span>
+                  <span class="text-slate-800 truncate">${growthShort(school.id)}</span>
+                </div>` : ''}
                 <div class="flex items-center space-x-1.5">
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Ratio / Size:</span>
                   <span class="text-slate-800 truncate">${getMetrics(school).studentTeacherRatio} • ${getMetrics(school).avgClassSize}</span>
@@ -4332,6 +4417,14 @@
         <span class="text-[10px] text-slate-400">SFUSD avg: reading ${benchPct('sfusd','ela')}%, math ${benchPct('sfusd','math')}% · CAASPP ${CAASPP.meta.year}</span>`;
     }
 
+    function compareGrowth(s) {
+      if (s.sector === 'Independent Private') return '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>';
+      if (!GROWTH || !GROWTH.schools[s.id]) return '<span class="text-[11px] text-slate-400">Not available</span>';
+      const line = (subj, label) => `<div class="mb-1">${label}: ${growthChip(growthFor(s.id, subj))}</div>
+        <div class="text-[11px] text-slate-500 mb-1.5">Low-income students: ${growthFor(s.id, subj, 'SED') ? growthChip(growthFor(s.id, subj, 'SED'), 'sm') : 'too few'}</div>`;
+      return `${line('ela', 'Reading')}${line('math', 'Math')}<span class="text-[10px] text-slate-400">0 = typical progress for similar students. SFUSD: reading ${fmtGrowth(GROWTH.sfusd.ela.ALL.score)}, math ${fmtGrowth(GROWTH.sfusd.math.ALL.score)}</span>`;
+    }
+
     function compareCell(row, s) {
       if (!s.basic) return row.get(s);
       const v = row.basic ? row.basic(s) : null;
@@ -4365,6 +4458,8 @@
         { label: "Location", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-[11px] text-slate-500">${s.address}</span>`,
           basic: b => `<strong>${escHtml(b.neighborhood)}</strong> • Grades ${escHtml(b.grades)}<br><span class="text-[11px] text-slate-500">${escHtml(b.address)}</span><br><a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="text-[11px] font-bold text-brand-teal hover:underline">School website</a>` },
         { label: "Reading & Math (CAASPP, grades 6–8)", get: s => compareAcademics(s),
+          basic: b => '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>' },
+        { label: "Growth vs similar students (CA Dashboard 2025)", get: s => compareGrowth(s),
           basic: b => '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>' },
         { label: "Class Size & Student-Teacher Ratio", get: s => `<strong>${getMetrics(s).studentTeacherRatio}</strong> (${getMetrics(s).avgClassSize})`,
           basic: b => b.enrollment68 ? `${b.enrollment68} students in grades 6–8<br><span class="text-[11px] text-slate-500">CA Dept. of Education, 2025–26. Class size not available.</span>` : null },
@@ -4569,7 +4664,7 @@
     window.addEventListener('DOMContentLoaded', async () => {
       populateAreaSelects();
       renderKeyDates();
-      await Promise.all([loadNews(), loadBasicSchools(), loadCaaspp()]);
+      await Promise.all([loadNews(), loadBasicSchools(), loadCaaspp(), loadGrowth()]);
       populateAreaSelects();
       syncDirectoryCounts();
       syncNewsCounts();
