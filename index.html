@@ -160,7 +160,7 @@
 
           <button onclick="switchTab('guide')" id="tab-btn-guide" class="nav-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slate-600 hover:text-brand-teal hover:bg-slate-100 flex items-center space-x-1.5 whitespace-nowrap shrink-0">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-            <span>Lottery Guide</span>
+            <span>How to Apply</span>
           </button>
 
           <button onclick="openSourcesModal()" class="px-2.5 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-brand-teal hover:bg-slate-100 border border-slate-200 flex items-center space-x-1 whitespace-nowrap shrink-0">
@@ -180,6 +180,9 @@
   </div>
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+
+    <!-- Enrollment season banner (filled by renderKeyDatesBanner) -->
+    <div id="key-dates-banner" class="hidden mb-5 rounded-2xl border border-teal-200 bg-teal-50 px-4 py-3 text-xs text-brand-marine flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4"></div>
 
     <!-- TAB 1: MATCH QUIZ -->
     <section id="tab-quiz" class="tab-content block space-y-6">
@@ -338,24 +341,24 @@
               <label class="scale-radio border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
                 <input type="radio" name="scale" value="mega" class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
                 <div>
-                  <strong class="block text-slate-800 font-semibold">Mega Comprehensive (1,000+)</strong>
-                  <span class="text-slate-500 text-[11px]">Huge elective catalogs, 6th grade "House" cohorts (APG, Presidio).</span>
+                  <strong class="block text-slate-800 font-semibold">Large Comprehensive (900+)</strong>
+                  <span class="text-slate-500 text-[11px]">Big elective catalogs and teams (Giannini, Presidio, Hoover, Aptos).</span>
                 </div>
               </label>
 
               <label class="scale-radio border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
                 <input type="radio" name="scale" value="mid" class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
                 <div>
-                  <strong class="block text-slate-800 font-semibold">Mid-Sized (450–850 students)</strong>
-                  <span class="text-slate-500 text-[11px]">Balanced neighborhood hubs (Roosevelt, Hoover, Marina, Everett).</span>
+                  <strong class="block text-slate-800 font-semibold">Mid-Sized (450–899 students)</strong>
+                  <span class="text-slate-500 text-[11px]">Balanced neighborhood hubs (Roosevelt, Marina, Denman, James Lick).</span>
                 </div>
               </label>
 
               <label class="scale-radio border-2 border-slate-200 hover:border-slate-300 p-3 rounded-2xl cursor-pointer flex items-start space-x-2 text-xs transition">
                 <input type="radio" name="scale" value="k8" class="mt-0.5 text-brand-teal" onchange="runQuizMatching()">
                 <div>
-                  <strong class="block text-slate-800 font-semibold">K-8 Continuity or Independent</strong>
-                  <span class="text-slate-500 text-[11px]">Intimate cohorts (&lt;450) where every teacher knows every child.</span>
+                  <strong class="block text-slate-800 font-semibold">Small School (under 450 in grades 6–8)</strong>
+                  <span class="text-slate-500 text-[11px]">K-8s, independents and small middle schools (Everett, Willie Brown, MLK).</span>
                 </div>
               </label>
             </div>
@@ -600,47 +603,75 @@
 
     <!-- TAB 6: LOTTERY & HIGH SCHOOL GUIDE -->
     <section id="tab-guide" class="tab-content hidden space-y-6">
-      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
         <div class="max-w-3xl space-y-2">
-          <span class="badge-pill bg-teal-100 text-brand-marine">SFUSD EPC Rules Decoded</span>
-          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">How the SFUSD 5th-to-6th Grade Lottery Works</h2>
+          <span class="badge-pill bg-teal-100 text-brand-marine">SFUSD enrollment · 2027–28 school year</span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">How SFUSD assigns 6th-grade seats</h2>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Understanding the district's sequential choice assignment algorithm protects families from common myths (like "bullet voting") and ensures you maximize your 1st-round assignment odds.
+            Middle school in SFUSD is by application. There's no automatic neighborhood placement, so every family applies, including families already in SFUSD. Rules below are taken from SFUSD's own pages and were last checked on October 16, 2026.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
-          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
-            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 1</div>
-            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">Sibling Attendance</h4>
-            <p class="text-xs text-slate-600">Students with an older brother/sister currently enrolled in 6th or 7th grade who will continue at the middle school next fall.</p>
+        <!-- Three things that matter most -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-1.5">
+            <div class="font-bold text-brand-marine text-xs uppercase">1 · You have to apply</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Students are not automatically enrolled at their feeder middle school. Submit an application by the Main Round deadline (<strong>February 1, 2027</strong>) to be considered in the first round.</p>
           </div>
-
-          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
-            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 2</div>
-            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">Designated Feeder Elementary</h4>
-            <p class="text-xs text-slate-600">Students graduating from official SFUSD designated feeder elementary schools hold prioritized 6th grade rights.</p>
+          <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-1.5">
+            <div class="font-bold text-brand-marine text-xs uppercase">2 · List your feeder school</div>
+            <p class="text-xs text-slate-700 leading-relaxed">Every SFUSD elementary school has a feeder middle school. SFUSD says applicants who list their feeder middle school "typically all" get in, and strongly recommends including it alongside your other choices. It's your safety net.</p>
           </div>
-
-          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
-            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 3</div>
-            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">CTIP1 Census Tract</h4>
-            <p class="text-xs text-slate-600">Students residing in designated Census Tracts with historically lowest average test scores receive priority tiebreaker weight.</p>
-          </div>
-
-          <div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200">
-            <div class="font-bold text-brand-marine text-xs uppercase mb-1">Tiebreaker 4</div>
-            <h4 class="font-display font-bold text-slate-900 text-sm mb-1">Random Lottery Number</h4>
-            <p class="text-xs text-slate-600">Computer-assigned random number tiebreaker when all other preference weights are identical.</p>
+          <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-1.5">
+            <div class="font-bold text-brand-marine text-xs uppercase">3 · Rank in true preference order</div>
+            <p class="text-xs text-slate-700 leading-relaxed">You're assigned to your highest-ranked choice that has space. Adding more schools lower on your list never hurts your chances at the ones above it, so list every school you'd accept, favorite first.</p>
           </div>
         </div>
 
-        <div class="p-5 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-950 space-y-1.5">
-          <strong class="font-bold text-rose-900 text-sm block">⚠️ The #1 SFUSD Lottery Mistake: "Bullet Voting"</strong>
-          <p>
-            Listing only 1 school provides zero advantage. If your student isn't picked for their #1 choice, SFUSD moves down to #2 and #3. If you leave choices blank, your student risks random assignment to schools with remaining vacancies.
-          </p>
+        <!-- Tiebreakers -->
+        <div class="space-y-3">
+          <h3 class="font-display font-bold text-slate-900 text-base">When a school has more applicants than seats</h3>
+          <p class="text-xs text-slate-600 max-w-3xl">Tiebreakers decide who gets the seats, in this order. A student in an earlier group gets in before anyone in a later group.</p>
+          <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+            <li class="p-4 rounded-2xl bg-slate-50 border border-slate-200"><span class="font-bold text-brand-marine">1. Sibling</span><br><span class="text-slate-600">A brother or sister enrolled at, and continuing at, the requested school.</span></li>
+            <li class="p-4 rounded-2xl bg-slate-50 border border-slate-200"><span class="font-bold text-brand-marine">2. Middle school feeder</span><br><span class="text-slate-600">Currently enrolled at an SFUSD elementary school that feeds the requested middle school.</span></li>
+            <li class="p-4 rounded-2xl bg-slate-50 border border-slate-200"><span class="font-bold text-brand-marine">3. Bayview elementary</span><br><span class="text-slate-600">Attended Carver, Drew, Harte or Malcolm X for K–5; applies to any SFUSD middle school.</span></li>
+            <li class="p-4 rounded-2xl bg-slate-50 border border-slate-200"><span class="font-bold text-brand-marine">4. Test score area (CTIP1)</span><br><span class="text-slate-600">Lives in a census tract with the city's lowest average test scores.</span></li>
+            <li class="p-4 rounded-2xl bg-slate-50 border border-slate-200"><span class="font-bold text-brand-marine">5. Staff</span><br><span class="text-slate-600">Child of a staff member at the school.</span></li>
+            <li class="p-4 rounded-2xl bg-slate-50 border border-slate-200"><span class="font-bold text-brand-marine">6. Random number</span><br><span class="text-slate-600">Everyone else is ordered by lottery.</span></li>
+          </ol>
+          <p class="text-[11px] text-slate-500 max-w-3xl"><strong>Willie Brown Middle School</strong> adds a 94124 ZIP code tiebreaker right after the Bayview elementary tiebreaker.</p>
         </div>
+
+        <!-- Language pathways -->
+        <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-950 space-y-2">
+          <strong class="text-purple-900 text-sm block">Applying to a language pathway</strong>
+          <p>Students must first meet the pathway's eligibility requirements. Elementary immersion and biliteracy programs continue as a Secondary Dual Language Pathway for students already proficient in the language; a Secondary World Language Pathway is open to all students. Tiebreaker order for pathways: language pathway sibling → language pathway continuation → sibling → middle school feeder → CTIP1 → staff → random.</p>
+        </div>
+
+        <!-- Lottery change note -->
+        <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-950 space-y-1.5">
+          <strong class="text-amber-900 text-sm block">What about the new neighborhood-school plan?</strong>
+          <p>On October 14, 2026 the school board voted to replace the elementary lottery with address-based assignment starting in the 2028–29 school year. Applications this fall for 6th grade in 2027–28 use the current rules described here.</p>
+        </div>
+
+        <!-- Key dates -->
+        <div class="space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="font-display font-bold text-slate-900 text-base">Key dates for fall 2027 entry</h3>
+            <button onclick="downloadKeyDatesICS()" class="px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50">Add all dates to calendar</button>
+          </div>
+          <ol id="key-dates-list" class="space-y-2 text-xs"></ol>
+          <p class="text-[11px] text-slate-500">Independent and charter schools set their own deadlines and tour schedules. Check each school's admissions page.</p>
+        </div>
+
+        <p class="text-[11px] text-slate-500 border-t border-slate-100 pt-4">
+          Sources: <a class="text-brand-teal underline" href="https://www.sfusd.edu/schools/enroll/apply" target="_blank" rel="noopener noreferrer">SFUSD: Apply to SFUSD schools</a> ·
+          <a class="text-brand-teal underline" href="https://www.sfusd.edu/tiebreakers" target="_blank" rel="noopener noreferrer">SFUSD: Tiebreakers</a> ·
+          <a class="text-brand-teal underline" href="https://www.sfusd.edu/schools/enroll/apply/key-dates" target="_blank" rel="noopener noreferrer">SFUSD: Enrollment key dates</a> ·
+          <a class="text-brand-teal underline" href="https://sfstandard.com/2026/10/14/sfusd-board-votes-neighborhood-school-plan/" target="_blank" rel="noopener noreferrer">SF Standard: Board votes for neighborhood school plan</a>.
+          Always confirm details with SFUSD's Educational Placement Center before you apply.
+        </p>
       </div>
     </section>
 
@@ -830,16 +861,16 @@
       </div>
       <div class="text-xs text-slate-600 space-y-3 leading-relaxed">
         <div class="p-3 bg-teal-50 rounded-xl border border-teal-200">
-          <strong class="text-brand-marine block mb-0.5">Mega Comprehensive (1,000+ students) & "House" Model:</strong>
+          <strong class="text-brand-marine block mb-0.5">Large Comprehensive (900+ students) & "House" Model:</strong>
           <span>Schools like AP Giannini and Presidio divide 6th graders into dedicated "Houses" or "Pods" of ~90 students with shared core teachers to ensure an intimate community within a large campus.</span>
         </div>
         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-          <strong class="text-slate-900 block mb-0.5">Mid-Sized Middle Schools (450–850 students):</strong>
-          <span>Balanced neighborhood hubs like Roosevelt, Hoover, Marina, Everett, and Denman.</span>
+          <strong class="text-slate-900 block mb-0.5">Mid-Sized Middle Schools (450–899 students):</strong>
+          <span>Balanced neighborhood hubs like Roosevelt, Marina, Francisco, James Lick, Visitacion Valley and Denman.</span>
         </div>
         <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
-          <strong class="text-purple-900 block mb-0.5">K-8 Alternative & Independent Campuses (&lt;450 students):</strong>
-          <span>Intimate cohorts where staff and families build continuity across elementary and middle school grades.</span>
+          <strong class="text-purple-900 block mb-0.5">Small Schools (under 450 in grades 6–8):</strong>
+          <span>K-8 and independent campuses with continuity across elementary and middle grades, plus small comprehensive middle schools (Everett, Willie Brown, MLK). Enrollment figures are SFUSD's estimates; K-8 totals include all grades.</span>
         </div>
       </div>
       <div class="pt-2 flex justify-end">
@@ -914,6 +945,85 @@
        request — see NEWS_UPDATE.md for the schema and labeling rules.
        ------------------------------------------------------------------ */
     let SF_NEWS_ARTICLES = [];
+
+
+    /* ------------------------------------------------------------------
+       SFUSD key dates for the 2027-28 school year.
+       Source: https://www.sfusd.edu/schools/enroll/apply/key-dates
+       (checked 2026-10-16). Update each fall for the next cycle.
+       ------------------------------------------------------------------ */
+    const KEY_DATES = [
+      { date: "2026-10-01", title: "SFUSD school tours begin", detail: "Book tours on each school's SFUSD page." },
+      { date: "2026-10-23", title: "SFUSD online application opens", detail: "Paper applications are also available." },
+      { date: "2026-10-24", title: "SFUSD Enrollment Fair", detail: "All schools; official start of the enrollment cycle." },
+      { date: "2027-02-01", title: "Main Round application deadline", detail: "The only deadline for first-round consideration.", key: true },
+      { date: "2027-03-15", title: "Main Round assignment letters mailed", detail: "Mailed the week of March 15 to families who applied by February 1." },
+      { date: "2027-03-25", title: "Last day to accept or decline your assignment", detail: "Also the last day for family or medical hardship appeals.", key: true },
+      { date: "2027-04-19", title: "First waitlist assignments", detail: "Then on a rolling basis as seats open." }
+    ];
+
+    function parseLocalDate(iso) { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); }
+    function fmtDate(iso) { return parseLocalDate(iso).toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' }); }
+    function daysUntil(iso) { const t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((parseLocalDate(iso) - t) / 86400000); }
+
+    function renderKeyDates() {
+      const list = document.getElementById('key-dates-list');
+      if (list) {
+        list.innerHTML = KEY_DATES.map((k, i) => {
+          const dleft = daysUntil(k.date);
+          const past = dleft < 0;
+          return `<li class="flex items-start justify-between gap-3 p-3 rounded-xl border ${past ? 'border-slate-100 bg-slate-50 text-slate-400' : k.key ? 'border-teal-300 bg-teal-50/60' : 'border-slate-200 bg-white'}">
+            <div>
+              <div class="font-bold ${past ? '' : 'text-slate-900'}">${k.title}${past ? ' (passed)' : ''}</div>
+              <div class="${past ? '' : 'text-slate-600'}">${fmtDate(k.date)} · ${k.detail}</div>
+            </div>
+            ${past ? '' : `<button onclick="downloadKeyDatesICS(${i})" class="shrink-0 px-2.5 py-1 rounded-lg border border-slate-300 text-[11px] font-semibold text-slate-700 hover:bg-white">Add to calendar</button>`}
+          </li>`;
+        }).join('');
+      }
+      renderKeyDatesBanner();
+    }
+
+    function renderKeyDatesBanner() {
+      const el = document.getElementById('key-dates-banner');
+      if (!el) return;
+      const next = KEY_DATES.find(k => daysUntil(k.date) >= 0);
+      if (!next) { el.classList.add('hidden'); return; }
+      const d = daysUntil(next.date);
+      const when = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
+      const deadline = KEY_DATES.find(k => k.title.startsWith('Main Round application deadline'));
+      const dd = daysUntil(deadline.date);
+      el.innerHTML = `
+        <span class="font-bold uppercase tracking-wider text-[10px] bg-white border border-teal-200 rounded-full px-2 py-0.5 self-start sm:self-auto">2027–28 enrollment</span>
+        <span class="flex-1"><strong>${next.title}</strong> — ${fmtDate(next.date)} (${when}).${dd >= 0 && next !== deadline ? ` SFUSD applications are due February 1, 2027.` : ''}</span>
+        <span class="flex gap-2 shrink-0">
+          <button onclick="downloadKeyDatesICS()" class="px-2.5 py-1 rounded-lg bg-white border border-teal-300 font-semibold hover:bg-teal-100">Add dates to calendar</button>
+          <button onclick="switchTab('guide')" class="px-2.5 py-1 rounded-lg bg-brand-teal text-white font-semibold">How it works</button>
+        </span>`;
+      el.classList.remove('hidden');
+    }
+
+    function downloadKeyDatesICS(index) {
+      const items = typeof index === 'number' ? [KEY_DATES[index]] : KEY_DATES.filter(k => daysUntil(k.date) >= 0);
+      const esc = t => t.replace(/[,;\\]/g, m => '\\' + m);
+      const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+      const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SF Middle School Navigator//Key Dates//EN', 'CALSCALE:GREGORIAN'];
+      items.forEach(k => {
+        const start = k.date.replace(/-/g, '');
+        const endD = parseLocalDate(k.date); endD.setDate(endD.getDate() + 1);
+        const end = `${endD.getFullYear()}${String(endD.getMonth() + 1).padStart(2, '0')}${String(endD.getDate()).padStart(2, '0')}`;
+        lines.push('BEGIN:VEVENT', `UID:${start}-${k.title.replace(/\W+/g, '-').toLowerCase()}@pick-your-sf-middle-school.com`, `DTSTAMP:${stamp}`,
+          `DTSTART;VALUE=DATE:${start}`, `DTEND;VALUE=DATE:${end}`, `SUMMARY:${esc(k.title.startsWith('SFUSD') ? k.title : 'SFUSD: ' + k.title)}`,
+          `DESCRIPTION:${esc(k.detail + ' Source: sfusd.edu/schools/enroll/apply/key-dates')}`, 'END:VEVENT');
+      });
+      lines.push('END:VCALENDAR');
+      const blob = new Blob([lines.join('\r\n')], { type: 'text/calendar' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = items.length === 1 ? 'sfusd-' + items[0].date + '.ics' : 'sfusd-2027-28-key-dates.ics';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
 
     async function loadNews() {
       try {
@@ -1055,17 +1165,19 @@
         id: "presidio",
         name: "Presidio Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mega Comprehensive (1,000+)",
+        scaleCategory: "Large Comprehensive (900+)",
         scaleType: "Mega",
         scaleDetail: "4 distinct 6th-grade houses with core teachers each; dedicated 6th grade wing and lunch period.",
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Creative, Expressive & Artistic Soul", "Analytical Problem Solver & Independent Learner", "Literary, Reader & Storyteller"],
         subjectStrengths: ["music_band", "languages", "math_accelerated", "sports_athletics", "arts_drama"],
         hasHumanitiesWriting: true,
         neighborhood: "Richmond",
-        address: "420 20th Ave, San Francisco, CA 94121",
-        lat: 37.7801,
-        lng: -122.4795,
-        enrollment: 1050,
+        address: "450 30th Ave, San Francisco, CA 94121",
+        lat: 37.78084,
+        lng: -122.49009,
+        enrollment: 1020,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "38 Geary, 1 California, 29 Sunset",
@@ -1100,16 +1212,18 @@
         id: "giannini",
         name: "A.P. Giannini Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mega Comprehensive (1,000+)",
+        scaleCategory: "Large Comprehensive (900+)",
         scaleType: "Mega",
         scaleDetail: "Teaming house structure where 6th graders share core academic cohorts and lockers in self-contained clusters.",
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["music_band", "sports_athletics", "math_accelerated", "languages", "stem_maker"],
         neighborhood: "Sunset",
         address: "3151 Ortega St, San Francisco, CA 94122",
-        lat: 37.7516,
-        lng: -122.4975,
-        enrollment: 1200,
+        lat: 37.75139,
+        lng: -122.49724,
+        enrollment: 1195,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "N-Judah, 28 19th Ave, 29 Sunset, 7 Noriega",
@@ -1144,16 +1258,18 @@
         id: "hoover",
         name: "Herbert Hoover Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
-        scaleType: "Mid",
+        scaleCategory: "Large Comprehensive (900+)",
+        scaleType: "Mega",
         scaleDetail: "Balanced mid-sized community with 3 core grade-level teams and modern science lab wings.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["stem_maker", "languages", "sports_athletics", "math_accelerated"],
         neighborhood: "Sunset",
         address: "2290 14th Ave, San Francisco, CA 94116",
-        lat: 37.7445,
-        lng: -122.4705,
-        enrollment: 860,
+        lat: 37.74536,
+        lng: -122.47031,
+        enrollment: 990,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:45 AM - 3:15 PM",
         muni: "L-Taraval, 48 Quintara, 28 19th Ave",
@@ -1188,7 +1304,7 @@
         id: "roosevelt",
         name: "Roosevelt Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
+        scaleCategory: "Mid-Sized (450–899)",
         scaleType: "Mid",
         scaleDetail: "Intimate grade houses where team teachers hold common planning periods for personalized student attention.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven", "Literary, Reader & Storyteller"],
@@ -1196,9 +1312,11 @@
         hasHumanitiesWriting: true,
         neighborhood: "Richmond",
         address: "460 Arguello Blvd, San Francisco, CA 94118",
-        lat: 37.7818,
-        lng: -122.4589,
+        lat: 37.78228,
+        lng: -122.45887,
         enrollment: 720,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:35 AM - 3:05 PM",
         muni: "38 Geary, 1 California, 33 Ashbury/18th",
@@ -1233,16 +1351,18 @@
         id: "marina",
         name: "Marina Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
+        scaleCategory: "Mid-Sized (450–899)",
         scaleType: "Mid",
         scaleDetail: "Structured teaming with strong grade-level counselors and waterfront outdoor experiential programs.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["stem_maker", "music_band", "languages", "sports_athletics"],
         neighborhood: "Marina",
         address: "3500 Fillmore St, San Francisco, CA 94123",
-        lat: 37.8016,
-        lng: -122.4372,
-        enrollment: 790,
+        lat: 37.80176,
+        lng: -122.43636,
+        enrollment: 680,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:30 AM - 3:00 PM",
         muni: "30 Stockton, 22 Fillmore, 28 19th Ave",
@@ -1277,16 +1397,18 @@
         id: "francisco",
         name: "Francisco Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
+        scaleCategory: "Mid-Sized (450–899)",
         scaleType: "Mid",
         scaleDetail: "Close-knit grade cohorts supported by on-site Chinatown YMCA Beacon youth workers in classrooms.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["languages", "arts_drama", "music_band"],
         neighborhood: "Marina",
         address: "2190 Powell St, San Francisco, CA 94133",
-        lat: 37.8041,
-        lng: -122.4132,
-        enrollment: 630,
+        lat: 37.80478,
+        lng: -122.41167,
+        enrollment: 500,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:35 AM - 3:05 PM",
         muni: "30 Stockton, 8 Bayshore, 39 Coit Tower, Powell Cable Car",
@@ -1321,16 +1443,18 @@
         id: "aptos",
         name: "Aptos Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
-        scaleType: "Mid",
+        scaleCategory: "Large Comprehensive (900+)",
+        scaleType: "Mega",
         scaleDetail: "Comprehensive teaming model with strong grade houses and award-winning arts wings.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["music_band", "arts_drama", "sports_athletics", "languages"],
         neighborhood: "Excelsior",
         address: "105 Aptos Ave, San Francisco, CA 94127",
-        lat: 37.7289,
-        lng: -122.4632,
-        enrollment: 920,
+        lat: 37.73017,
+        lng: -122.46624,
+        enrollment: 975,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "K-Ingleside, 23 Monterey, 36 Teresita",
@@ -1365,16 +1489,18 @@
         id: "james_lick",
         name: "James Lick Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
+        scaleCategory: "Mid-Sized (450–899)",
         scaleType: "Mid",
         scaleDetail: "Intimate dual-language teams where students explore bicultural identity and social justice projects.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["languages", "arts_drama"],
         neighborhood: "Mission",
         address: "1220 Noe St, San Francisco, CA 94114",
-        lat: 37.7511,
-        lng: -122.4326,
-        enrollment: 510,
+        lat: 37.74908,
+        lng: -122.43172,
+        enrollment: 450,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:45 AM - 3:15 PM",
         muni: "J-Church, 24 Divisadero, 48 Quintara",
@@ -1409,16 +1535,18 @@
         id: "everett",
         name: "Everett Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
-        scaleType: "Mid",
+        scaleCategory: "Small Comprehensive (under 450)",
+        scaleType: "Small",
         scaleDetail: "Teaming structure paired with late 9:00 AM bell schedule; ideal for adolescent sleep cycles.",
         personalityTags: ["Creative, Expressive & Artistic Soul", "Outgoing, Social & Spirit-Driven"],
         subjectStrengths: ["arts_drama", "languages", "sports_athletics"],
         neighborhood: "Mission",
         address: "450 Church St, San Francisco, CA 94114",
-        lat: 37.7634,
-        lng: -122.4289,
-        enrollment: 640,
+        lat: 37.76403,
+        lng: -122.42869,
+        enrollment: 300,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:00 AM - 3:30 PM",
         muni: "J-Church, F-Market, 22 Fillmore, 16th/Mission BART",
@@ -1453,16 +1581,18 @@
         id: "willie_brown",
         name: "Willie L. Brown Jr. Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
-        scaleType: "Mid",
+        scaleCategory: "Small Comprehensive (under 450)",
+        scaleType: "Small",
         scaleDetail: "Modern architectural design with flexible STEM learning suites and dedicated wellness center.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "math_accelerated", "sports_athletics"],
         neighborhood: "Excelsior",
         address: "2055 Silver Ave, San Francisco, CA 94124",
-        lat: 37.7335,
-        lng: -122.4042,
-        enrollment: 430,
+        lat: 37.73588,
+        lng: -122.39987,
+        enrollment: 400,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "44 O'Shaughnessy, 54 Felton, T-Third",
@@ -1497,16 +1627,18 @@
         id: "vis_valley",
         name: "Visitacion Valley Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
+        scaleCategory: "Mid-Sized (450–899)",
         scaleType: "Mid",
         scaleDetail: "Pioneering Quiet Time mindfulness model with small collaborative teams and high counseling support.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["stem_maker", "sports_athletics"],
         neighborhood: "Excelsior",
-        address: "450 Raymond Ave, San Francisco, CA 94134",
-        lat: 37.7128,
-        lng: -122.4116,
-        enrollment: 410,
+        address: "1971 Visitacion Ave, San Francisco, CA 94134",
+        lat: 37.71529,
+        lng: -122.41205,
+        enrollment: 450,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:30 AM - 3:00 PM",
         muni: "8 Bayshore, 9 San Bruno, 56 Rutland, T-Third",
@@ -1541,16 +1673,18 @@
         id: "mlk",
         name: "Dr. Martin Luther King, Jr. Academic Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
-        scaleType: "Mid",
+        scaleCategory: "Small Comprehensive (under 450)",
+        scaleType: "Small",
         scaleDetail: "Portola neighborhood campus with dedicated STEAM academies, restorative circles, and on-site Bayview YMCA Beacon hub.",
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "sports_athletics", "math_accelerated", "music_band"],
         neighborhood: "Excelsior",
         address: "350 Girard St, San Francisco, CA 94134",
-        lat: 37.7282,
-        lng: -122.4045,
+        lat: 37.72795,
+        lng: -122.40491,
         enrollment: 400,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:30 AM - 4:00 PM",
         muni: "44 O'Shaughnessy, 54 Felton, 29 Sunset, 9 San Bruno",
@@ -1585,16 +1719,18 @@
         id: "denman",
         name: "James Denman Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–850)",
+        scaleCategory: "Mid-Sized (450–899)",
         scaleType: "Mid",
         scaleDetail: "Neighborhood comprehensive middle school in the Excelsior featuring 6th grade core academies, AVID college readiness, and Beacon youth center.",
         personalityTags: ["Outgoing, Social & Spirit-Driven", "Hands-on, Kinetic & Team-Oriented", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["stem_maker", "sports_athletics", "music_band", "languages"],
         neighborhood: "Excelsior",
         address: "241 Oneida Ave, San Francisco, CA 94112",
-        lat: 37.7245,
-        lng: -122.4418,
-        enrollment: 810,
+        lat: 37.72181,
+        lng: -122.44286,
+        enrollment: 870,
+        enrollmentNote: "SFUSD estimate",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:30 AM - 4:00 PM",
         muni: "Muni Metro K/M, 54 Felton, 43 Masonic, Balboa Park BART",
@@ -1637,8 +1773,10 @@
         neighborhood: "Sunset",
         address: "1541 12th Ave, San Francisco, CA 94122",
         lat: 37.7594,
-        lng: -122.4691,
-        enrollment: 210,
+        lng: -122.46928,
+        enrollment: 600,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:00 AM - 2:30 PM",
         muni: "N-Judah, 6 Haight-Parnassus, 43 Masonic",
@@ -1679,10 +1817,12 @@
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Analytical Problem Solver & Independent Learner"],
         subjectStrengths: ["math_accelerated", "stem_maker", "music_band"],
         neighborhood: "Marina",
-        address: "3630 Divisadero St, San Francisco, CA 94123",
-        lat: 37.8018,
-        lng: -122.4419,
-        enrollment: 230,
+        address: "3630 Divisadero St, San Francisco, CA 94123 (grades 3–8 Winfield Scott campus)",
+        lat: 37.80309,
+        lng: -122.4434,
+        enrollment: 637,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:10 AM - 2:45 PM",
         muni: "30 Stockton, 22 Fillmore, 43 Masonic",
@@ -1724,9 +1864,11 @@
         subjectStrengths: ["stem_maker", "math_accelerated", "sports_athletics"],
         neighborhood: "Sunset",
         address: "1570 31st Ave, San Francisco, CA 94122",
-        lat: 37.7578,
-        lng: -122.4897,
-        enrollment: 220,
+        lat: 37.75796,
+        lng: -122.48956,
+        enrollment: 615,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:15 AM - 2:45 PM",
         muni: "N-Judah, 29 Sunset, 7 Noriega",
@@ -1767,10 +1909,12 @@
         personalityTags: ["Creative, Expressive & Artistic Soul", "Sensitive, Observant or Easily Overstimulated"],
         subjectStrengths: ["arts_drama", "music_band"],
         neighborhood: "Mission",
-        address: "500 Corbett Ave, San Francisco, CA 94114",
-        lat: 37.7558,
-        lng: -122.4439,
-        enrollment: 240,
+        address: "500 Corbett Ave, San Francisco, CA 94131 (grades 5–8 Mayeda campus)",
+        lat: 37.75778,
+        lng: -122.44463,
+        enrollment: 600,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:00 AM - 2:30 PM",
         muni: "37 Corbett, 33 Ashbury, Castro Muni Metro",
@@ -1811,10 +1955,12 @@
         personalityTags: ["Hands-on, Kinetic & Team-Oriented", "Creative, Expressive & Artistic Soul"],
         subjectStrengths: ["languages", "arts_drama"],
         neighborhood: "Mission",
-        address: "3351 23rd St, San Francisco, CA 94110",
-        lat: 37.7538,
-        lng: -122.4187,
-        enrollment: 250,
+        address: "325 La Grande Ave, San Francisco, CA 94112 (temporary campus during renovation; home campus 3351 23rd St, reopening 2028)",
+        lat: 37.7187,
+        lng: -122.42471,
+        enrollment: 620,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "14 Mission, 49 Van Ness, 24th St BART",
@@ -1856,10 +2002,12 @@
         subjectStrengths: ["languages", "arts_drama", "stem_maker"],
         hasHumanitiesWriting: true,
         neighborhood: "SOMA",
-        address: "824 Harrison St, San Francisco, CA 94107",
-        lat: 37.7808,
-        lng: -122.4007,
-        enrollment: 260,
+        address: "824 Harrison St, San Francisco, CA 94103 (grades 6–8 campus)",
+        lat: 37.78038,
+        lng: -122.40024,
+        enrollment: 600,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:30 AM - 3:45 PM",
         muni: "12 Folsom, 30 Stockton, 45 Union-Stockton, Powell BART",
@@ -1901,9 +2049,11 @@
         subjectStrengths: ["stem_maker", "sports_athletics", "languages"],
         neighborhood: "Mission",
         address: "555 Tompkins Ave, San Francisco, CA 94110",
-        lat: 37.7371,
-        lng: -122.4142,
-        enrollment: 240,
+        lat: 37.73711,
+        lng: -122.41314,
+        enrollment: 499,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "24 Divisadero, 67 Bernal Heights, 14 Mission",
@@ -1946,9 +2096,11 @@
         hasHumanitiesWriting: true,
         neighborhood: "Excelsior",
         address: "125 Excelsior Ave, San Francisco, CA 94112",
-        lat: 37.7262,
-        lng: -122.4285,
-        enrollment: 280,
+        lat: 37.72581,
+        lng: -122.43259,
+        enrollment: 290,
+        enrollmentNote: "whole school, TK/K–8",
+        dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "14 Mission, 49 Van Ness, 52 Excelsior, Balboa Park BART",
@@ -1991,8 +2143,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "1512 Golden Gate Ave, San Francisco, CA 94115",
-        lat: 37.7785,
-        lng: -122.4385,
+        lat: 37.77917,
+        lng: -122.43551,
         enrollment: 310,
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:15 AM - 3:15 PM",
@@ -2036,8 +2188,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
         address: "3531 22nd St, San Francisco, CA 94114",
-        lat: 37.7554,
-        lng: -122.4243,
+        lat: 37.75491,
+        lng: -122.42656,
         enrollment: 640,
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:15 AM - 3:15 PM",
@@ -2081,8 +2233,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "1601 Turk St, San Francisco, CA 94115",
-        lat: 37.7797,
-        lng: -122.4358,
+        lat: 37.78001,
+        lng: -122.43548,
         enrollment: 440,
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2126,8 +2278,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "940 Filbert St, San Francisco, CA 94133",
-        lat: 37.8009,
-        lng: -122.4147,
+        lat: 37.80073,
+        lng: -122.41496,
         enrollment: 460,
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2170,8 +2322,8 @@
         subjectStrengths: ["math_accelerated", "sports_athletics", "stem_maker"],
         neighborhood: "Excelsior",
         address: "1060 Key Ave, San Francisco, CA 94124",
-        lat: 37.7215,
-        lng: -122.3942,
+        lat: 37.71929,
+        lng: -122.3965,
         enrollment: 330,
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:00 AM - 3:45 PM",
@@ -2214,8 +2366,8 @@
         subjectStrengths: ["math_accelerated", "sports_athletics", "stem_maker"],
         neighborhood: "Marina",
         address: "1430 Scott St, Third Floor, San Francisco, CA 94115",
-        lat: 37.7828,
-        lng: -122.4372,
+        lat: 37.78299,
+        lng: -122.43763,
         enrollment: 270,
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:00 AM - 3:45 PM",
@@ -2258,8 +2410,8 @@
         subjectStrengths: ["stem_maker", "arts_drama", "math_accelerated", "sports_athletics"],
         neighborhood: "Richmond",
         address: "7070 California St, San Francisco, CA 94121",
-        lat: 37.7845,
-        lng: -122.4962,
+        lat: 37.78357,
+        lng: -122.49318,
         enrollment: 400,
         tuition: "~$45,800/yr (30% on Aid)",
         bellHours: "8:15 AM - 3:00 PM",
@@ -2301,8 +2453,8 @@
         subjectStrengths: ["stem_maker", "sports_athletics", "math_accelerated"],
         neighborhood: "Marina",
         address: "2750 Jackson St, San Francisco, CA 94115",
-        lat: 37.7915,
-        lng: -122.4419,
+        lat: 37.79179,
+        lng: -122.44035,
         enrollment: 415,
         tuition: "~$46,500/yr (25% on Aid)",
         bellHours: "8:00 AM - 3:15 PM",
@@ -2345,8 +2497,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "350 Masonic Ave, San Francisco, CA 94118",
-        lat: 37.7774,
-        lng: -122.4468,
+        lat: 37.77815,
+        lng: -122.44687,
         enrollment: 410,
         tuition: "~$45,500/yr (24% on Aid)",
         bellHours: "8:15 AM - 3:15 PM",
@@ -2389,8 +2541,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
         address: "250 Valencia St, San Francisco, CA 94103",
-        lat: 37.7698,
-        lng: -122.4222,
+        lat: 37.76881,
+        lng: -122.42234,
         enrollment: 440,
         tuition: "~$44,200/yr (26% on Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2432,8 +2584,8 @@
         subjectStrengths: ["stem_maker", "math_accelerated", "arts_drama"],
         neighborhood: "Marina",
         address: "2120 Broadway, San Francisco, CA 94115",
-        lat: 37.7941,
-        lng: -122.4335,
+        lat: 37.79469,
+        lng: -122.43202,
         enrollment: 410,
         tuition: "~$46,200/yr (22% on Aid)",
         bellHours: "8:10 AM - 3:15 PM",
@@ -2475,8 +2627,8 @@
         subjectStrengths: ["music_band", "arts_drama", "math_accelerated"],
         neighborhood: "Marina",
         address: "1275 Sacramento St, San Francisco, CA 94108",
-        lat: 37.7925,
-        lng: -122.4138,
+        lat: 37.79234,
+        lng: -122.41384,
         enrollment: 260,
         tuition: "~$44,500/yr (23% on Aid)",
         bellHours: "8:15 AM - 3:10 PM",
@@ -2518,8 +2670,8 @@
         subjectStrengths: ["stem_maker", "arts_drama"],
         neighborhood: "Mission",
         address: "333 Dolores St, San Francisco, CA 94110",
-        lat: 37.7645,
-        lng: -122.4262,
+        lat: 37.76366,
+        lng: -122.42614,
         enrollment: 460,
         tuition: "~$43,800/yr (27% on Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2561,8 +2713,8 @@
         subjectStrengths: ["languages", "math_accelerated", "arts_drama"],
         neighborhood: "Marina",
         address: "150 Oak St, San Francisco, CA 94102",
-        lat: 37.7752,
-        lng: -122.4215,
+        lat: 37.77514,
+        lng: -122.42214,
         enrollment: 650,
         tuition: "~$45,200/yr (20% on Aid)",
         bellHours: "8:20 AM - 3:20 PM",
@@ -2604,8 +2756,8 @@
         subjectStrengths: ["languages", "stem_maker", "math_accelerated"],
         neighborhood: "SOMA",
         address: "250 10th St, San Francisco, CA 94103",
-        lat: 37.7718,
-        lng: -122.4132,
+        lat: 37.77338,
+        lng: -122.41363,
         enrollment: 410,
         tuition: "~$44,800/yr (25% on Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2648,8 +2800,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "SOMA",
         address: "1555 Mariposa St, San Francisco, CA 94107",
-        lat: 37.7635,
-        lng: -122.3995,
+        lat: 37.76364,
+        lng: -122.39913,
         enrollment: 320,
         tuition: "~$43,500/yr (28% on Aid)",
         bellHours: "8:25 AM - 3:15 PM",
@@ -2691,8 +2843,8 @@
         subjectStrengths: ["music_band", "arts_drama", "stem_maker"],
         neighborhood: "Excelsior",
         address: "300 Gaven St, San Francisco, CA 94134",
-        lat: 37.7312,
-        lng: -122.4105,
+        lat: 37.73264,
+        lng: -122.41122,
         enrollment: 285,
         tuition: "~$43,900/yr (26% on Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2734,8 +2886,8 @@
         subjectStrengths: ["stem_maker", "math_accelerated", "languages"],
         neighborhood: "Sunset",
         address: "655 Brotherhood Way, San Francisco, CA 94132",
-        lat: 37.7135,
-        lng: -122.4795,
+        lat: 37.71341,
+        lng: -122.47437,
         enrollment: 380,
         tuition: "~$42,800/yr (32% on Aid)",
         bellHours: "8:15 AM - 3:15 PM",
@@ -2777,8 +2929,8 @@
         subjectStrengths: ["stem_maker", "arts_drama"],
         neighborhood: "Marina",
         address: "838 Kearny St, San Francisco, CA 94108",
-        lat: 37.7952,
-        lng: -122.4052,
+        lat: 37.79558,
+        lng: -122.40494,
         enrollment: 210,
         tuition: "~$49,500/yr (35% on Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -2821,8 +2973,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
         address: "3250 18th St, San Francisco, CA 94110",
-        lat: 37.7618,
-        lng: -122.4172,
+        lat: 37.76209,
+        lng: -122.41616,
         enrollment: 130,
         tuition: "~$44,900/yr (25% on Aid)",
         bellHours: "8:15 AM - 3:15 PM",
@@ -2865,8 +3017,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
         address: "2558 Mission St, San Francisco, CA 94110",
-        lat: 37.7578,
-        lng: -122.4188,
+        lat: 37.7561,
+        lng: -122.41888,
         enrollment: 160,
         tuition: "~$44,500/yr (24% on Aid)",
         bellHours: "8:30 AM - 3:20 PM",
@@ -2909,8 +3061,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "2938 Washington St, San Francisco, CA 94115",
-        lat: 37.7901,
-        lng: -122.4438,
+        lat: 37.79073,
+        lng: -122.44166,
         enrollment: 310,
         tuition: "~$39,800/yr (28% on Aid)",
         bellHours: "8:20 AM - 3:10 PM",
@@ -2953,8 +3105,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
         address: "1387 Valencia St, San Francisco, CA 94110",
-        lat: 37.7518,
-        lng: -122.4211,
+        lat: 37.75075,
+        lng: -122.42046,
         enrollment: 195,
         tuition: "~$27,500/yr (Affordable model / 30% Aid)",
         bellHours: "8:30 AM - 3:00 PM",
@@ -2997,8 +3149,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "2222 Broadway, San Francisco, CA 94115",
-        lat: 37.7938,
-        lng: -122.4342,
+        lat: 37.79448,
+        lng: -122.43369,
         enrollment: 620,
         tuition: "~$46,900/yr (25% on Aid)",
         bellHours: "8:15 AM - 3:15 PM",
@@ -3041,8 +3193,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Marina",
         address: "888 Turk St, San Francisco, CA 94102",
-        lat: 37.7816,
-        lng: -122.4246,
+        lat: 37.78171,
+        lng: -122.42303,
         enrollment: 105,
         tuition: "~$47,995/yr (Indexed Tuition / 35%+ Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -3085,8 +3237,8 @@
         hasHumanitiesWriting: true,
         neighborhood: "Mission",
         address: "2592 Folsom St, San Francisco, CA 94110",
-        lat: 37.7550,
-        lng: -122.4147,
+        lat: 37.75584,
+        lng: -122.41447,
         enrollment: 24,
         tuition: "~$34,500/yr (Flexible Tuition / 30%+ Aid)",
         bellHours: "8:30 AM - 3:15 PM",
@@ -3492,16 +3644,16 @@
       let scaleReason = "";
       if (scaleChoice === 'mega' && school.scaleType === 'Mega') {
         scalePts = 15;
-        scaleReason = "Matched Mega Comprehensive scale with 6th-grade house teaming (+15 pts)";
-        matchReasons.push("6th-grade house structure with mega scale");
+        scaleReason = "Matched large comprehensive campus (900+) (+15 pts)";
+        matchReasons.push("Large campus with a big elective catalog");
       } else if (scaleChoice === 'mid' && school.scaleType === 'Mid') {
         scalePts = 15;
-        scaleReason = "Matched Mid-Sized community of 450–850 students (+15 pts)";
+        scaleReason = "Matched mid-sized community of 450–899 students (+15 pts)";
         matchReasons.push("Balanced mid-sized community");
-      } else if (scaleChoice === 'k8' && (school.scaleType === 'K-8' || school.scaleType === 'Private')) {
+      } else if (scaleChoice === 'k8' && (school.scaleType === 'K-8' || school.scaleType === 'Private' || school.scaleType === 'Small')) {
         scalePts = 15;
-        scaleReason = "Matched intimate K-8 / Independent continuous cohorts (<450) (+15 pts)";
-        matchReasons.push("Intimate K-8 / private continuity");
+        scaleReason = "Matched small school (under 450 in grades 6–8) (+15 pts)";
+        matchReasons.push("Small school where teachers know every student");
       } else if (scaleChoice === 'all') {
         scalePts = 7;
         scaleReason = "Open to any school scale (neutral baseline +7 pts)";
@@ -3892,7 +4044,7 @@
       setElText('modal-name', school.name);
       setElText('modal-sector', school.sector);
       setElText('modal-address', school.address);
-      setElText('modal-enrollment', school.enrollment);
+      setElText('modal-enrollment', school.enrollmentNote ? `${school.enrollment.toLocaleString()} (${school.enrollmentNote})` : school.enrollment);
       setElText('modal-bell', school.bellHours);
       setElText('modal-ratio', getMetrics(school).studentTeacherRatio);
       setElText('modal-muni', school.muni);
@@ -4043,6 +4195,7 @@
 
     // Lifecycle Bootstrap
     window.addEventListener('DOMContentLoaded', async () => {
+      renderKeyDates();
       await loadNews();
       syncDirectoryCounts();
       syncNewsCounts();
