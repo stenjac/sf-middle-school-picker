@@ -1077,7 +1077,7 @@
       const count = k => SF_SCHOOLS.filter(s => s.area === k).length;
       const quiz = document.getElementById('quiz-quadrant');
       if (quiz) quiz.innerHTML = '<option value="all">Any area of San Francisco</option>' +
-        SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${count(a.key)})</option>`).join('');
+        SF_AREAS.map(a => `<option value="${a.key}">${a.label}</option>`).join('');
       const dirCount = k => count(k) + SF_BASIC_SCHOOLS.filter(b => b.area === k).length;
       const dir = document.getElementById('dir-filter-hood');
       if (dir) dir.innerHTML = '<option value="all">All areas</option>' +
