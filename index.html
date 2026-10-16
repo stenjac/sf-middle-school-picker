@@ -962,7 +962,7 @@
     /* Basic listings: private / Catholic / faith-based schools with key facts only
        (name, type, grades, address, website, map pin). Loaded from
        data/basic_schools.json. Shown in the directory and on the map; NOT scored
-       in the quiz and NOT available in Compare until they get full profiles. */
+       in the quiz. In Compare they show only the facts above until they get full profiles. */
     let SF_BASIC_SCHOOLS = [];
 
 
@@ -4039,16 +4039,22 @@
       const enroll = b.enrollment68
         ? `${b.enrollment68} students in grades 6–8 <span class="text-slate-400">(CA Dept. of Education, 2025–26)</span>`
         : 'Not reported';
+      const isCompared = currentComparison.includes(b.id);
       return `
           <div class="bg-white rounded-3xl p-6 border border-dashed border-slate-300 shadow-sm flex flex-col justify-between space-y-4">
             <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
               <div>
                 <div class="flex flex-wrap gap-1 mb-1.5">
                   <span class="badge-pill border text-[10px] font-bold ${badge}">${escHtml(b.type)}</span>
-                  <span class="badge-pill border text-[10px] font-bold bg-slate-50 text-slate-500 border-slate-200" title="Key facts only for now. Not scored in the quiz or available in Compare.">Basic listing</span>
+                  <span class="badge-pill border text-[10px] font-bold bg-slate-50 text-slate-500 border-slate-200" title="Key facts only for now. Not scored in the quiz; most Compare rows are blank.">Basic listing</span>
                 </div>
                 <h3 class="font-display font-bold text-base text-slate-900">${escHtml(b.name)}</h3>
                 <p class="text-xs text-slate-500">${escHtml(b.neighborhood)} • Grades ${escHtml(b.grades)}</p>
+              </div>
+              <button onclick="toggleComparison('${b.id}')" title="Add to comparison" class="shrink-0 p-1.5 rounded-xl border ${isCompared ? 'bg-brand-teal text-white border-brand-teal' : 'text-slate-400 border-slate-200 hover:border-slate-300'} text-xs font-bold">
+                ${isCompared ? '✓ Compare' : '+ Compare'}
+              </button>
               </div>
               <div class="space-y-1.5 text-xs text-slate-600">
                 <div class="flex items-start space-x-1.5">
@@ -4060,7 +4066,7 @@
                   <span class="text-slate-800">${enroll}</span>
                 </div>
               </div>
-              <p class="text-[11px] text-slate-400">Key facts only. Not scored in the quiz yet.</p>
+              <p class="text-[11px] text-slate-400">Key facts only. Not scored in the quiz yet; most Compare rows are blank.</p>
             </div>
             <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
               <span class="text-xs font-bold text-slate-700">${b.tuition ? escHtml(b.tuition) : 'Tuition: see school site'}</span>
@@ -4173,11 +4179,24 @@
     function handleComparisonDropdown(index, schoolId) {
       if (!schoolId) {
         currentComparison.splice(index, 1);
+      } else if (index >= currentComparison.length) {
+        currentComparison = currentComparison.filter(id => id !== schoolId);
+        currentComparison.push(schoolId);
       } else {
         currentComparison[index] = schoolId;
       }
+      currentComparison = currentComparison.filter(Boolean).slice(0, 3);
+      renderDirectoryCards();
       updateCompareBadge();
       renderComparisonTable();
+    }
+
+    const findAnySchool = id => SF_SCHOOLS.find(s => s.id === id) || SF_BASIC_SCHOOLS.find(b => b.id === id);
+    const NOT_IN_BASIC = '<span class="text-[11px] text-slate-400">Not available for basic listings yet</span>';
+    function compareCell(row, s) {
+      if (!s.basic) return row.get(s);
+      const v = row.basic ? row.basic(s) : null;
+      return v || NOT_IN_BASIC;
     }
 
     function renderComparisonTable() {
@@ -4187,11 +4206,14 @@
       [0, 1, 2].forEach(i => {
         const select = document.getElementById(`compare-select-${i}`);
         if (!select) return;
-        select.innerHTML = '<option value="">Select a School...</option>' + 
-          SF_SCHOOLS.map(s => `<option value="${s.id}" ${currentComparison[i] === s.id ? 'selected' : ''}>${s.name}</option>`).join('');
+        const opt = s => `<option value="${s.id}" ${currentComparison[i] === s.id ? 'selected' : ''}>${escHtml(s.name)}</option>`;
+        const byName = (a, b) => a.name.localeCompare(b.name);
+        select.innerHTML = '<option value="">Select a School...</option>' +
+          `<optgroup label="Full profiles">${[...SF_SCHOOLS].sort(byName).map(opt).join('')}</optgroup>` +
+          (SF_BASIC_SCHOOLS.length ? `<optgroup label="Basic listings (key facts only)">${[...SF_BASIC_SCHOOLS].sort(byName).map(opt).join('')}</optgroup>` : '');
       });
 
-      const selectedSchools = currentComparison.map(id => SF_SCHOOLS.find(s => s.id === id)).filter(Boolean);
+      const selectedSchools = currentComparison.map(findAnySchool).filter(Boolean);
 
       if (selectedSchools.length === 0) {
         tableWrapper.innerHTML = `<div class="p-8 text-center text-xs text-slate-500">Select schools above or click "+ Compare" in the directory to inspect side-by-side.</div>`;
@@ -4199,12 +4221,16 @@
       }
 
       const rows = [
-        { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>` },
-        { label: "Class Size & Student-Teacher Ratio", get: s => `<strong>${getMetrics(s).studentTeacherRatio}</strong> (${getMetrics(s).avgClassSize})` },
+        { label: "Sector & Tuition", get: s => `<strong>${s.sector}</strong><br><span class="text-brand-teal font-semibold text-xs">${s.tuition}</span>`,
+          basic: b => `<strong>${escHtml(b.type)}</strong> <span class="text-slate-400">(basic listing)</span><br><span class="text-brand-teal font-semibold text-xs">${b.tuition ? escHtml(b.tuition) : 'Tuition: see school site'}</span>` },
+        { label: "Location", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-[11px] text-slate-500">${s.address}</span>`,
+          basic: b => `<strong>${escHtml(b.neighborhood)}</strong> • Grades ${escHtml(b.grades)}<br><span class="text-[11px] text-slate-500">${escHtml(b.address)}</span><br><a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="text-[11px] font-bold text-brand-teal hover:underline">School website</a>` },
+        { label: "Class Size & Student-Teacher Ratio", get: s => `<strong>${getMetrics(s).studentTeacherRatio}</strong> (${getMetrics(s).avgClassSize})`,
+          basic: b => b.enrollment68 ? `${b.enrollment68} students in grades 6–8<br><span class="text-[11px] text-slate-500">CA Dept. of Education, 2025–26. Class size not available.</span>` : null },
         { label: "Teacher Retention & Experience", get: s => `${getMetrics(s).teacherRetention}<br><span class="text-[11px] text-slate-500">${getMetrics(s).avgTeacherExperience}</span>` },
         { label: "School Climate (Suspensions & Absenteeism)", get: s => `Suspensions: <strong>${getMetrics(s).suspensionRate}</strong><br>Absenteeism: <strong>${getMetrics(s).chronicAbsenteeism}</strong>` },
         { label: "Sense of Safety & Belonging (CHKS)", get: s => `<strong class="text-brand-marine">${getMetrics(s).chksBelonging}</strong>` },
-        { label: "Momentum (press trend, separate from fit)", get: s => momentumBadge(s.id) },
+        { label: "Momentum (press trend, separate from fit)", get: s => momentumBadge(s.id), basic: b => momentumBadge(b.id) },
         { label: "Data status", get: s => `<span class="text-[11px] text-amber-800">${getMetrics(s).provenance}</span>` },
         { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px]">${s.lotteryOdds}</span>` },
         { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
@@ -4218,14 +4244,14 @@
           <thead class="bg-slate-100 text-slate-700">
             <tr>
               <th class="p-3 font-bold uppercase text-[10px] w-1/4">Feature</th>
-              ${selectedSchools.map(s => `<th class="p-3 font-bold text-sm text-slate-900">${s.name}</th>`).join('')}
+              ${selectedSchools.map(s => `<th class="p-3 font-bold text-sm text-slate-900">${escHtml(s.name)}${s.basic ? '<br><span class="badge-pill border text-[10px] font-bold bg-slate-50 text-slate-500 border-slate-200">Basic listing</span>' : ''}</th>`).join('')}
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 bg-white">
             ${rows.map(r => `
               <tr>
                 <td class="p-3 font-bold text-slate-600 bg-slate-50/50 align-top">${r.label}</td>
-                ${selectedSchools.map(s => `<td class="p-3 align-top leading-relaxed text-slate-700">${r.get(s)}</td>`).join('')}
+                ${selectedSchools.map(s => `<td class="p-3 align-top leading-relaxed text-slate-700">${compareCell(r, s)}</td>`).join('')}
               </tr>
             `).join('')}
           </tbody>
