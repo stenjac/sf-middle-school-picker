@@ -783,6 +783,15 @@
         <p id="modal-lottery-odds" class="text-xs text-blue-950 font-medium leading-relaxed"></p>
       </div>
 
+      <!-- CAASPP test results (public schools) -->
+      <div id="modal-academics-section" class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
+        <div class="flex items-start justify-between gap-2">
+          <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Reading & Math Test Results</h4>
+          <span id="modal-academics-tag" class="text-[10px] font-bold text-emerald-700 uppercase text-right"></span>
+        </div>
+        <div id="modal-academics" class="space-y-3 text-xs"></div>
+      </div>
+
       <!-- California School Dashboard & Climate Metrics -->
       <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
         <div class="flex items-center justify-between gap-2">
@@ -855,6 +864,7 @@
       </p>
       <p class="text-xs text-slate-600 leading-relaxed">Intended sources:</p>
       <ul class="text-xs text-slate-600 space-y-2 list-disc pl-5">
+        <li><strong>CAASPP state test results (official, 2025–26):</strong> Reading and math scores for every public and charter school, grades 6–8 only, overall and by student group, from the CDE/ETS <a class="text-brand-teal underline" href="https://caaspp-elpac.ets.org/caaspp/ResearchFileListSB?ps=true&lstTestYear=2026&lstTestType=B&lstCounty=38&lstDistrict=00000" target="_blank" rel="noopener noreferrer">research files</a>. K-8 schools are compared on their grade 6–8 students only. Groups under 11 students aren't reported by the state. Private schools don't take this test.</li>
         <li><strong>California School Dashboard & CDE DataQuest / SARC:</strong> Public-school enrollments, suspension rates, chronic absenteeism and CHKS climate data — verify at <a class="text-brand-teal underline" href="https://www.caschooldashboard.org/" target="_blank" rel="noopener noreferrer">caschooldashboard.org</a>.</li>
         <li><strong>SFUSD Educational Placement Center:</strong> Feeder matrices, round 1 odds, and tiebreaker hierarchy.</li>
         <li><strong>Local Press (2023–2026), link-checked:</strong> The San Francisco Standard, The Frisc, Mission Local, and SF Chronicle. These also feed the Momentum signal.</li>
@@ -964,6 +974,9 @@
        data/basic_schools.json. Shown in the directory and on the map; NOT scored
        in the quiz. In Compare they show only the facts above until they get full profiles. */
     let SF_BASIC_SCHOOLS = [];
+    /* CAASPP (state test) results for public & charter schools, grades 6-8.
+       Built from the CDE/ETS research files; see data/caaspp.json meta. */
+    let CAASPP = null;
 
 
     /* ------------------------------------------------------------------
@@ -1069,6 +1082,116 @@
       const dir = document.getElementById('dir-filter-hood');
       if (dir) dir.innerHTML = '<option value="all">All areas</option>' +
         SF_AREAS.map(a => `<option value="${a.key}">${a.label} (${dirCount(a.key)})</option>`).join('');
+    }
+
+    async function loadCaaspp() {
+      try {
+        const res = await fetch('data/caaspp.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        CAASPP = await res.json();
+      } catch (err) {
+        console.warn('Could not load data/caaspp.json — test results hidden.', err);
+        CAASPP = null;
+      }
+    }
+
+    /* ---- CAASPP helpers ---- */
+    const caasppFor = (id, yr = '2026') => CAASPP?.schools?.[id]?.[yr] || null;
+    function caasppPct(id, subj, group = '1', yr = '2026') {
+      const v = caasppFor(id, yr)?.[subj]?.[group];
+      return v ? v.pct : null;
+    }
+    const benchPct = (which, subj, group = '1', yr = '2026') => CAASPP?.benchmarks?.[which]?.[yr]?.[subj]?.[group]?.pct ?? null;
+
+    function caasppShort(id) {
+      if (!CAASPP) return '';
+      const e = caasppPct(id, 'ela'), m = caasppPct(id, 'math');
+      if (e === null && m === null) return '';
+      return `Reading ${e ?? '–'}% · Math ${m ?? '–'}%`;
+    }
+
+    function caasppChange(id, subj) {
+      const now = caasppPct(id, subj), prev = caasppPct(id, subj, '1', '2025');
+      if (now === null || prev === null) return '';
+      const d = now - prev;
+      const cls = d > 0 ? 'text-emerald-700' : d < 0 ? 'text-rose-700' : 'text-slate-500';
+      const txt = d === 0 ? 'no change' : `${d > 0 ? '+' : '−'}${Math.abs(d)} pts`;
+      return `<span class="${cls} font-semibold">${txt}</span> <span class="text-slate-400">vs ${CAASPP.meta.priorYear}</span>`;
+    }
+
+    function caasppBar(id, subj, label) {
+      const pct = caasppPct(id, subj);
+      if (pct === null) return '';
+      const sf = benchPct('sfusd', subj), ca = benchPct('state', subj);
+      const tick = (v, cls, title) => v === null ? '' : `<span title="${title}: ${v}%" class="absolute top-[-3px] bottom-[-3px] w-0.5 ${cls}" style="left:${v}%"></span>`;
+      return `
+        <div class="space-y-1">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-2">
+            <span class="font-bold text-slate-800">${label}</span>
+            <span class="whitespace-nowrap"><strong class="text-base font-extrabold text-slate-900">${pct}%</strong> <span class="text-[11px]">${caasppChange(id, subj)}</span></span>
+          </div>
+          <div class="relative h-2.5 rounded-full bg-slate-100">
+            <div class="h-full rounded-full bg-teal-600" style="width:${pct}%"></div>
+            ${tick(sf, 'bg-slate-700', 'SFUSD average')}
+            ${tick(ca, 'bg-amber-500', 'California average')}
+          </div>
+        </div>`;
+    }
+
+    function caasppGroupTable(id) {
+      const d = caasppFor(id), sf = CAASPP.benchmarks.sfusd['2026'];
+      const cell = (v, bench) => {
+        if (v === undefined) return '<td class="py-1 px-2 text-right text-slate-300">—</td>';
+        if (v === null) return '<td class="py-1 px-2 text-right text-slate-400" title="Fewer than 11 students tested; not reported by the state">too few</td>';
+        const b = bench?.pct;
+        return `<td class="py-1 pl-2 text-right whitespace-nowrap"><strong class="text-slate-900">${v.pct}%</strong>${b !== undefined && b !== null ? ` <span class="text-[10px] text-slate-400">/ ${b}%</span>` : ''}</td>`;
+      };
+      const rows = CAASPP.groups.filter(g => d.ela[g.id] !== undefined || d.math[g.id] !== undefined).map(g => {
+        const n = d.ela[g.id]?.n ?? d.math[g.id]?.n;
+        return `<tr class="border-t border-slate-100">
+          <td class="py-1 pr-2 text-slate-700">${g.label}${n ? ` <span class="text-[10px] text-slate-400">(${n})</span>` : ''}</td>
+          ${cell(d.ela[g.id], sf.ela[g.id])}${cell(d.math[g.id], sf.math[g.id])}
+        </tr>`;
+      }).join('');
+      return `
+        <details class="group">
+          <summary class="cursor-pointer font-bold text-brand-teal text-[11px]">By student group</summary>
+          <table class="w-full mt-2 text-[11px]">
+            <thead><tr class="text-[10px] uppercase text-slate-400">
+              <th class="text-left font-bold py-1 pr-2">Group (tested)</th><th class="text-right font-bold py-1 pl-2">Reading</th><th class="text-right font-bold py-1 pl-2">Math</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+          <p class="text-[10px] text-slate-400 mt-1">School / SFUSD average for the same group. ${CAASPP.meta.suppression}</p>
+        </details>`;
+    }
+
+    function renderModalAcademics(school) {
+      const box = document.getElementById('modal-academics');
+      const tag = document.getElementById('modal-academics-tag');
+      if (!box) return;
+      if (school.sector === 'Independent Private') {
+        tag.innerText = '';
+        box.innerHTML = '<p class="text-slate-500">Private schools don\'t take California\'s state test (CAASPP), so there are no comparable public scores. Ask the school which tests it uses (many use the ERB CTP) and how students perform.</p>';
+        return;
+      }
+      if (!CAASPP || !caasppFor(school.id)) {
+        tag.innerText = '';
+        box.innerHTML = '<p class="text-slate-500">State test results not available.</p>';
+        return;
+      }
+      tag.innerText = `CAASPP ${CAASPP.meta.year} · Official`;
+      const sf = (s) => benchPct('sfusd', s), ca = (s) => benchPct('state', s);
+      box.innerHTML = `
+        <p class="text-[11px] text-slate-500">Share of grade 6–8 students who scored <strong>Proficient or Advanced</strong> on California's state tests (spring 2026).</p>
+        ${caasppBar(school.id, 'ela', 'Reading & writing (ELA)')}
+        ${caasppBar(school.id, 'math', 'Math')}
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-slate-500">
+          <span class="inline-flex items-center"><span class="inline-block w-0.5 h-3 bg-slate-700 mr-1"></span>SFUSD average (reading ${sf('ela')}%, math ${sf('math')}%)</span>
+          <span class="inline-flex items-center"><span class="inline-block w-0.5 h-3 bg-amber-500 mr-1"></span>California average (reading ${ca('ela')}%, math ${ca('math')}%)</span>
+        </div>
+        ${caasppGroupTable(school.id)}
+        <p class="text-[10px] text-slate-400">Scores mostly reflect who attends a school (family income, English learners), not only teaching quality. Compare groups, e.g. low-income students across schools, for a fairer read. <a class="underline" href="${CAASPP.meta.sourceUrl}" target="_blank" rel="noopener">Source: CDE/ETS research files</a>.</p>`;
     }
 
     async function loadBasicSchools() {
@@ -4005,6 +4128,10 @@
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">High School:</span>
                   <span class="font-medium text-purple-900 truncate">${school.hsFeeders}</span>
                 </div>
+                ${caasppShort(school.id) ? `<div class="flex items-center space-x-1.5" title="Grade 6–8 students scoring Proficient or Advanced, CAASPP ${CAASPP.meta.year}">
+                  <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Test Scores:</span>
+                  <span class="text-slate-800 font-semibold truncate">${caasppShort(school.id)} <span class="font-normal text-slate-400">(SFUSD ${benchPct('sfusd','ela')}% · ${benchPct('sfusd','math')}%)</span></span>
+                </div>` : ''}
                 <div class="flex items-center space-x-1.5">
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Ratio / Size:</span>
                   <span class="text-slate-800 truncate">${getMetrics(school).studentTeacherRatio} • ${getMetrics(school).avgClassSize}</span>
@@ -4193,6 +4320,18 @@
 
     const findAnySchool = id => SF_SCHOOLS.find(s => s.id === id) || SF_BASIC_SCHOOLS.find(b => b.id === id);
     const NOT_IN_BASIC = '<span class="text-[11px] text-slate-400">Not available for basic listings yet</span>';
+    function compareAcademics(s) {
+      if (s.sector === 'Independent Private') return '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>';
+      if (!CAASPP || !caasppFor(s.id)) return '<span class="text-[11px] text-slate-400">Not available</span>';
+      const line = (subj, label) => {
+        const all = caasppPct(s.id, subj), low = caasppPct(s.id, subj, '31');
+        return `${label}: <strong>${all ?? '–'}%</strong> <span class="text-[11px] text-slate-500">(${caasppChange(s.id, subj) || 'no prior year'})</span><br>
+          <span class="text-[11px] text-slate-500">Low-income students: ${low ?? (caasppFor(s.id)[subj]['31'] === null ? 'n&lt;11' : '–')}${low !== null ? '%' : ''} · SFUSD ${benchPct('sfusd', subj, '31')}%</span>`;
+      };
+      return `${line('ela', 'Reading')}<br>${line('math', 'Math')}<br>
+        <span class="text-[10px] text-slate-400">SFUSD avg: reading ${benchPct('sfusd','ela')}%, math ${benchPct('sfusd','math')}% · CAASPP ${CAASPP.meta.year}</span>`;
+    }
+
     function compareCell(row, s) {
       if (!s.basic) return row.get(s);
       const v = row.basic ? row.basic(s) : null;
@@ -4225,6 +4364,8 @@
           basic: b => `<strong>${escHtml(b.type)}</strong> <span class="text-slate-400">(basic listing)</span><br><span class="text-brand-teal font-semibold text-xs">${b.tuition ? escHtml(b.tuition) : 'Tuition: see school site'}</span>` },
         { label: "Location", get: s => `<strong>${s.neighborhood}</strong><br><span class="text-[11px] text-slate-500">${s.address}</span>`,
           basic: b => `<strong>${escHtml(b.neighborhood)}</strong> • Grades ${escHtml(b.grades)}<br><span class="text-[11px] text-slate-500">${escHtml(b.address)}</span><br><a href="${escHtml(b.website)}" target="_blank" rel="noopener" class="text-[11px] font-bold text-brand-teal hover:underline">School website</a>` },
+        { label: "Reading & Math (CAASPP, grades 6–8)", get: s => compareAcademics(s),
+          basic: b => '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>' },
         { label: "Class Size & Student-Teacher Ratio", get: s => `<strong>${getMetrics(s).studentTeacherRatio}</strong> (${getMetrics(s).avgClassSize})`,
           basic: b => b.enrollment68 ? `${b.enrollment68} students in grades 6–8<br><span class="text-[11px] text-slate-500">CA Dept. of Education, 2025–26. Class size not available.</span>` : null },
         { label: "Teacher Retention & Experience", get: s => `${getMetrics(s).teacherRetention}<br><span class="text-[11px] text-slate-500">${getMetrics(s).avgTeacherExperience}</span>` },
@@ -4291,6 +4432,7 @@
       // Populate School-Specific News (Sorted Newest First)
       populateModalNews(school.id);
       renderModalMomentum(school.id);
+      renderModalAcademics(school);
       setElText('modal-metrics-provenance', getMetrics(school).provenance);
       setElText('modal-demo-provenance', school.sector === 'Independent Private' ? 'School-reported, unverified' : 'Unverified');
 
@@ -4427,7 +4569,7 @@
     window.addEventListener('DOMContentLoaded', async () => {
       populateAreaSelects();
       renderKeyDates();
-      await Promise.all([loadNews(), loadBasicSchools()]);
+      await Promise.all([loadNews(), loadBasicSchools(), loadCaaspp()]);
       populateAreaSelects();
       syncDirectoryCounts();
       syncNewsCounts();
