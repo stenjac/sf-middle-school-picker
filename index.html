@@ -458,11 +458,11 @@
           </div>
 
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public</button>
-            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private</button>
-            <button onclick="setDirectorySectorFilter('Faith')" id="sec-btn-faith" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Catholic & Faith-based</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private</button>
+            <button onclick="setDirectorySectorFilter('Faith')" id="sec-btn-faith" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Catholic & Faith-based</button>
           </div>
         </div>
 
@@ -535,11 +535,11 @@
 
         <!-- Sector Pills for News -->
         <div class="flex items-center space-x-1.5 overflow-x-auto text-xs font-semibold py-1">
-          <button onclick="setNewsCategoryFilter('all')" id="news-cat-all" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-900 text-white shadow-xs">All Articles</button>
-          <button onclick="setNewsCategoryFilter('school')" id="news-cat-school" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">School-Specific</button>
-          <button onclick="setNewsCategoryFilter('district')" id="news-cat-district" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">District-Wide</button>
-          <button onclick="setNewsCategoryFilter('charter')" id="news-cat-charter" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Public Charters</button>
-          <button onclick="setNewsCategoryFilter('private')" id="news-cat-private" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Independent Private</button>
+          <button onclick="setNewsCategoryFilter('all')" id="news-cat-all" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-900 text-white shadow-xs">All Articles</button>
+          <button onclick="setNewsCategoryFilter('school')" id="news-cat-school" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">School-Specific</button>
+          <button onclick="setNewsCategoryFilter('district')" id="news-cat-district" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">District-Wide</button>
+          <button onclick="setNewsCategoryFilter('charter')" id="news-cat-charter" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Public Charters</button>
+          <button onclick="setNewsCategoryFilter('private')" id="news-cat-private" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Independent Private</button>
           <button onclick="openMomentumModal()" class="px-3 py-1.5 rounded-xl text-brand-teal hover:underline whitespace-nowrap">How Momentum works</button>
         </div>
 
@@ -624,6 +624,13 @@
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
             Middle school in SFUSD is by application. There's no automatic neighborhood placement, so every family applies, including families already in SFUSD. Rules below are taken from SFUSD's own pages and were last checked on October 16, 2026.
           </p>
+        </div>
+
+        <!-- Upcoming policy change (Oct 2026 board vote) -->
+        <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200 space-y-1.5 max-w-3xl">
+          <div class="font-bold text-amber-900 text-xs uppercase">Coming in 2028–29: neighborhood assignment for elementary school</div>
+          <p class="text-xs text-amber-950 leading-relaxed">On October 14, 2026 the school board voted 5-2 to replace the elementary lottery with address-based assignment starting in fall 2028, with citywide programs (such as immersion and some K-8s) still open by application. <strong>It doesn't change this year's middle school process</strong>, and coverage so far describes it as an elementary change only. Two possible knock-on effects for middle school later: SFUSD said in 2022, for an earlier version of the zone plan, that <a class="underline" href="https://www.sfusd.edu/schools/enroll/student-assignment-policy/student-assignment-changes/student-assignment-newsletter" target="_blank" rel="noopener">feeder patterns may need adjusting</a> as elementary zones change, and the plan floats turning two or three citywide K-8s into K-5 neighborhood schools. The final policy vote is scheduled for April 13, 2027.</p>
+          <p class="text-[11px] text-amber-800">Sources: <a class="underline" href="https://sfstandard.com/2026/10/14/sfusd-board-votes-neighborhood-school-plan/" target="_blank" rel="noopener">SF Standard</a> · <a class="underline" href="https://www.kqed.org/news/12104230/sfusd-moves-closer-to-neighborhood-based-enrollment-in-historic-vote" target="_blank" rel="noopener">KQED</a> · <a class="underline" href="https://sfstandard.com/2026/10/06/sfusd-set-overhaul-its-enrollment-lottery-nobody-can-agree/" target="_blank" rel="noopener">SF Standard (options explained)</a></p>
         </div>
 
         <!-- Three things that matter most -->
@@ -3662,14 +3669,16 @@
     /* News Feed Rendering & Filtering */
     function setNewsCategoryFilter(cat) {
       newsCategoryFilter = cat;
+      // Active pill drops its hover class: on phones a tapped button keeps
+      // :hover, which used to paint dark text on the dark active background.
       document.querySelectorAll('.news-filter-btn').forEach(btn => {
         btn.classList.remove('bg-slate-900', 'text-white');
-        btn.classList.add('bg-slate-100', 'text-slate-600');
+        btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:text-slate-900');
       });
       const activePill = document.getElementById(`news-cat-${cat}`);
       if (activePill) {
         activePill.classList.add('bg-slate-900', 'text-white');
-        activePill.classList.remove('bg-slate-100', 'text-slate-600');
+        activePill.classList.remove('bg-slate-100', 'text-slate-600', 'hover:text-slate-900');
       }
       renderNewsFeed();
     }
@@ -3769,6 +3778,10 @@
       set('news-cat-district', `District-Wide (${n - school})`);
       set('news-cat-charter', `Public Charters (${SF_NEWS_ARTICLES.filter(a => a.sectorType === 'charter').length})`);
       set('news-cat-private', `Independent Private (${SF_NEWS_ARTICLES.filter(a => a.sectorType === 'private').length})`);
+      // Hide categories with no articles (e.g. "Public Charters (0)")
+      document.querySelectorAll('.news-filter-btn').forEach(btn => {
+        btn.classList.toggle('hidden', /\(0\)$/.test(btn.innerText) && btn.id !== 'news-cat-all');
+      });
     }
 
     /* Guard against the id drift that broke modal news before */
