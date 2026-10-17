@@ -484,9 +484,11 @@
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">Language Immersion Track</label>
             <select id="dir-filter-lang" onchange="renderDirectoryCards()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
               <option value="all">All Languages</option>
-              <option value="cantonese">Cantonese Biliteracy</option>
-              <option value="mandarin">Mandarin Immersion</option>
-              <option value="spanish">Spanish Dual Language</option>
+              <option value="cantonese">Cantonese</option>
+              <option value="mandarin">Mandarin</option>
+              <option value="spanish">Spanish</option>
+              <option value="japanese">Japanese</option>
+              <option value="korean">Korean</option>
               <option value="french">French Immersion</option>
               <option value="italian">Italian Immersion / IB</option>
               <option value="filipino">Filipino Biliteracy</option>
@@ -579,7 +581,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Side-by-Side School Comparison</h2>
-            <p class="text-xs sm:text-sm text-slate-500">Compare up to 3 middle schools across demographics, class size, teacher retention, climate data, and lottery odds.</p>
+            <p class="text-xs sm:text-sm text-slate-500">Compare up to 3 middle schools on test scores, growth, demographics, attendance, suspensions and admission odds.</p>
           </div>
 
           <button onclick="clearComparison()" class="text-xs font-bold text-rose-600 hover:underline">Clear Comparison Selection</button>
@@ -723,7 +725,7 @@
           <span id="modal-bell" class="font-bold text-slate-800 text-xs">--</span>
         </div>
         <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-          <span class="text-[10px] uppercase font-bold text-slate-400 block">Class Size / Ratio</span>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Student-Teacher Ratio</span>
           <span id="modal-ratio" class="font-bold text-slate-800 text-xs">--</span>
         </div>
         <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
@@ -803,7 +805,7 @@
       <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
         <div class="flex items-center justify-between gap-2">
           <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Staffing & Climate Metrics</h4>
-          <span id="modal-metrics-provenance" class="text-[10px] font-bold text-amber-700 uppercase text-right"></span>
+          <span id="modal-metrics-provenance" class="text-[10px] font-bold text-slate-500 uppercase text-right"></span>
         </div>
         <div id="modal-dashboard-metrics" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs"></div>
       </div>
@@ -821,7 +823,7 @@
       <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
         <div class="flex items-center justify-between mb-1.5">
           <h4 class="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">Student Demographics & Socioeconomics</h4>
-          <span id="modal-demo-provenance" class="text-[10px] font-bold text-amber-700 uppercase">Unverified</span>
+          <span id="modal-demo-provenance" class="text-[10px] font-bold text-slate-500 uppercase"></span>
         </div>
         <div id="modal-demographics-container" class="space-y-2 text-xs"></div>
       </div>
@@ -867,16 +869,16 @@
         <button onclick="closeSourcesModal()" class="p-1 text-slate-400 hover:text-slate-700">✕</button>
       </div>
       <p class="text-xs text-slate-600 leading-relaxed">
-        <strong>Status as of Oct 14, 2026:</strong> every news link was opened and checked against the live article. School metrics (ratios, retention, climate, demographics, lottery odds) have <em>not</em> been verified and should be checked against the sources below before you rely on them. Private schools don't report suspension, absenteeism or CHKS survey data to the state, so those fields show "Not reported."
+        <strong>Status as of Oct 16, 2026:</strong> every news link was opened and checked. For public and charter schools, enrollment, demographics, suspensions, chronic absenteeism, test scores and growth are official state data; admission odds, feeder schools and language pathways come from SFUSD's own published data. Private-school tuition, aid and ratios were checked on each school's website and are labeled school-reported. Program descriptions, bell times, Muni lines, arts and sports lists and high-school destinations have <em>not</em> been verified.
       </p>
       <p class="text-xs text-slate-600 leading-relaxed">Intended sources:</p>
       <ul class="text-xs text-slate-600 space-y-2 list-disc pl-5">
         <li><strong>CAASPP state test results (official, 2025–26):</strong> Reading and math scores for every public and charter school, grades 6–8 only, overall and by student group, from the CDE/ETS <a class="text-brand-teal underline" href="https://caaspp-elpac.ets.org/caaspp/ResearchFileListSB?ps=true&lstTestYear=2026&lstTestType=B&lstCounty=38&lstDistrict=00000" target="_blank" rel="noopener noreferrer">research files</a>. K-8 schools are compared on their grade 6–8 students only. Groups under 11 students aren't reported by the state. Private schools don't take this test.</li>
         <li><strong>Student growth (official, 2025 CA Dashboard):</strong> How much each school's students improved compared with students statewide who had similar scores the year before, for reading and math, overall and by student group. Weighted average of growth from spring 2023 to spring 2025, grades 4–8. From the CDE <a class="text-brand-teal underline" href="https://www.cde.ca.gov/TA/ac/cm/growthmodeldatafiles.asp" target="_blank" rel="noopener noreferrer">growth data file</a>; plain-language labels map to the state's five levels (Minimal, Moderate, Average, Accelerated, Exceptional Growth).</li>
-        <li><strong>California School Dashboard & CDE DataQuest / SARC:</strong> Public-school enrollments, suspension rates, chronic absenteeism and CHKS climate data — verify at <a class="text-brand-teal underline" href="https://www.caschooldashboard.org/" target="_blank" rel="noopener noreferrer">caschooldashboard.org</a>.</li>
-        <li><strong>SFUSD Educational Placement Center:</strong> Feeder matrices, round 1 odds, and tiebreaker hierarchy.</li>
+        <li><strong>CA Dept. of Education data files (2025–26):</strong> enrollment and demographics (census day; grades 6–8 shares), suspension rate (all students) and chronic absenteeism (grades 7–8). Student-teacher ratio = 2023–24 enrollment ÷ teacher FTE from the NCES Common Core of Data; it counts all teachers, so classes are larger. Private enrollment comes from the 2025–26 private school affidavit.</li>
+        <li><strong>SFUSD Enrollment Center:</strong> 2026–27 school list (feeder schools and language pathways), March 2026 requests per seat, and Main Round success rates 2023–27 (admission odds by tiebreaker).</li>
         <li><strong>Local Press (2023–2026), link-checked:</strong> The San Francisco Standard, The Frisc, Mission Local, and SF Chronicle. These also feed the Momentum signal.</li>
-        <li><strong>NCES & CAIS Member Directory:</strong> Independent school class sizes, faculty retention, and indexed tuition models.</li>
+        <li><strong>Private school websites (checked Oct 16, 2026):</strong> tuition, share of families on aid, ratio, class size and students of color, as each school reports them; each profile links its source.</li>
       </ul>
       <div class="pt-2 flex justify-end">
         <button onclick="closeSourcesModal()" class="px-4 py-2 bg-brand-teal text-white font-bold rounded-xl text-xs">Got it</button>
@@ -898,11 +900,11 @@
         </div>
         <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
           <strong class="text-slate-900 block mb-0.5">Mid-Sized Middle Schools (450–899 students):</strong>
-          <span>Balanced neighborhood hubs like Roosevelt, Marina, Francisco, James Lick, Visitacion Valley and Denman.</span>
+          <span>Balanced neighborhood hubs like Roosevelt, Marina, Francisco, James Lick and Denman.</span>
         </div>
         <div class="p-3 bg-purple-50 rounded-xl border border-purple-200">
           <strong class="text-purple-900 block mb-0.5">Small Schools (under 450 in grades 6–8):</strong>
-          <span>K-8 and independent campuses with continuity across elementary and middle grades, plus small comprehensive middle schools (Everett, Willie Brown, MLK). Enrollment figures are SFUSD's estimates; K-8 totals include all grades.</span>
+          <span>K-8 and independent campuses with continuity across elementary and middle grades, plus small comprehensive middle schools (Everett, Willie Brown, MLK, Visitacion Valley). Enrollment figures are from the CA Dept. of Education (2025–26); K-8 totals include all grades.</span>
         </div>
       </div>
       <div class="pt-2 flex justify-end">
@@ -1420,17 +1422,22 @@
       const d = s.dashboardMetrics || {};
       if (s.sector === "Independent Private") {
         return {
-          studentTeacherRatio: d.studentTeacherRatio || "N/A",
-          avgClassSize: d.avgClassSize || "",
-          teacherRetention: d.teacherRetention ? d.teacherRetention + " (school-reported)" : "N/A",
-          avgTeacherExperience: d.avgTeacherExperience || "",
+          studentTeacherRatio: d.studentTeacherRatio ? d.studentTeacherRatio + " (school-reported)" : "Not published",
+          avgClassSize: d.avgClassSize ? d.avgClassSize + " (school-reported)" : "",
           suspensionRate: NOT_REPORTED,
           chronicAbsenteeism: NOT_REPORTED,
-          chksBelonging: NOT_REPORTED + " (CHKS is a public-school survey)",
-          provenance: "School-reported, unverified"
+          sourceUrl: d.source || null,
+          provenance: d.source ? "From the school's website, Oct 2026" : "Not verified"
         };
       }
-      return { ...d, provenance: "Unverified — check the California School Dashboard" };
+      return {
+        studentTeacherRatio: d.studentTeacherRatio || "Not available",
+        avgClassSize: "",
+        suspensionRate: d.suspensionRate || "Not available",
+        chronicAbsenteeism: d.chronicAbsenteeism || "Not available",
+        sourceUrl: null,
+        provenance: "Official: CA Dept. of Education 2025–26; ratio from NCES 2023–24"
+      };
     }
     /* Full school profiles (basic listings live in data/basic_schools.json) */
     const SF_SCHOOLS = [
@@ -1450,37 +1457,34 @@
         address: "450 30th Ave, San Francisco, CA 94121",
         lat: 37.78084,
         lng: -122.49009,
-        enrollment: 1020,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 969,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "38 Geary, 1 California, 29 Sunset",
-        languages: ["Cantonese Biliteracy", "Spanish Elective", "Mandarin Elective"],
-        languageKey: "cantonese",
+        languages: ["Japanese Bilingual Bicultural Program"],
+        languageKey: "japanese",
         arts: "Premier Instrumental Band, String Orchestra, Jazz Ensemble, Drama, Ceramics",
         sports: "Cross Country, Girls/Boys Basketball, Volleyball, Track, Soccer",
-        feeders: "Alamo, Argonne, Lafayette, Frank McCoppin, Sutro",
+        feeders: "Alamo, Argonne, Clarendon, Lafayette, Parks",
         hsFeeders: "High matriculation to Lowell High School, George Washington HS, Galileo STEM, and Ruth Asawa SOTA.",
         hsKey: "lowell_academic",
         specialties: ["Music", "STEM", "Sports"],
-        lotteryOdds: "High demand in Round 1. Strongest odds with Feeder Elementary preference or Sibling tiebreaker.",
+        lotteryOdds: "2026–27: 1,210 requests for 290 general-ed 6th-grade seats (4.2 per seat). When it came down to this school (applicants not placed at a higher choice), 99% of feeder-school applicants and 10% of applicants with no tiebreaker got in (2023–27 average). Japanese Bilingual Bicultural: 54 requests for 33 seats in 2026–27; 73% of pathway feeder applicants got in when it came down to this program (2023–27). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "21:1",
-          avgClassSize: "26 students",
-          teacherRetention: "88% retention rate",
-          avgTeacherExperience: "14.2 years avg experience",
-          suspensionRate: "0.8% (Low)",
-          chronicAbsenteeism: "11.2% (Moderate)",
-          chksBelonging: "78% positive sense of safety & belonging"
+          studentTeacherRatio: "22:1 (whole school, 2023–24)",
+          suspensionRate: "1.1% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "17.7% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "53% Asian, 19% White, 11% Hispanic/Latino, 9% Multi-ethnic, 3% Black/African American",
-          sed: "36% Socioeconomically Disadvantaged",
-          el: "13% English Learners",
-          breakdown: [{ label: "Asian", pct: "53%" }, { label: "White", pct: "19%" }, { label: "Hispanic/Latino", pct: "11%" }, { label: "Two or More", pct: "9%" }]
+          summary: "33% Asian, 24% White, 16% Two or more, 15% Latino, 3% Black, 3% Filipino (grades 6–8)",
+          sed: "33% low-income",
+          el: "8% English learners",
+          breakdown: [{"label": "Asian", "pct": "33%"}, {"label": "White", "pct": "24%"}, {"label": "Two or more", "pct": "16%"}, {"label": "Latino", "pct": "15%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
-        description: "Renowned for its historic campus, award-winning symphonic band and jazz programs, Cantonese biliteracy continuation, and spirited athletics."
+        description: "Renowned for its historic campus, band and jazz programs, a Japanese Bilingual Bicultural pathway, and spirited athletics."
       },
       // 2. AP GIANNINI
       {
@@ -1497,37 +1501,34 @@
         address: "3151 Ortega St, San Francisco, CA 94122",
         lat: 37.75139,
         lng: -122.49724,
-        enrollment: 1195,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 1190,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "N-Judah, 28 19th Ave, 29 Sunset, 7 Noriega",
-        languages: ["Mandarin Immersion Pathway", "Japanese Pathway", "Spanish Elective"],
-        languageKey: "mandarin",
+        languages: [],
+        languageKey: "none",
         arts: "Nationally recognized Marching & Concert Band, Orchestra, Digital Media Arts",
         sports: "Volleyball, Soccer, Basketball, Track & Field, Cross Country",
-        feeders: "Ulloa, Sunset, Stevenson, West Portal",
+        feeders: "Drew (shared with Willie Brown), Grattan, Jefferson, Key, Stevenson, Sunset",
         hsFeeders: "Top city feeder to Lowell High School, Abraham Lincoln High School, and St. Ignatius.",
         hsKey: "lowell_academic",
         specialties: ["Music", "Sports", "STEM"],
-        lotteryOdds: "Extremely high first-choice demand. Feeder elementary and CTIP1 tiebreakers significantly boost Round 1 odds.",
+        lotteryOdds: "2026–27: 1,579 requests for 378 general-ed 6th-grade seats (4.2 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 1% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "22:1",
-          avgClassSize: "28 students",
-          teacherRetention: "91% retention rate",
-          avgTeacherExperience: "15.5 years avg experience",
-          suspensionRate: "0.5% (Very Low)",
-          chronicAbsenteeism: "9.8% (Low)",
-          chksBelonging: "82% positive sense of safety & belonging"
+          studentTeacherRatio: "24:1 (whole school, 2023–24)",
+          suspensionRate: "0.6% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "12.1% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "62% Asian, 14% White, 10% Hispanic/Latino, 7% Multi-ethnic, 2% Black/African American",
-          sed: "34% Socioeconomically Disadvantaged",
-          el: "11% English Learners",
-          breakdown: [{ label: "Asian", pct: "62%" }, { label: "White", pct: "14%" }, { label: "Hispanic/Latino", pct: "10%" }]
+          summary: "46% Asian, 19% White, 13% Latino, 12% Two or more, 3% Black (grades 6–8)",
+          sed: "37% low-income",
+          el: "6% English learners",
+          breakdown: [{"label": "Asian", "pct": "46%"}, {"label": "White", "pct": "19%"}, {"label": "Latino", "pct": "13%"}, {"label": "Two or more", "pct": "12%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
-        description: "Situated in the Sunset, APG serves 1,200 students with huge school spirit, a legendary marching band, Mandarin immersion, and top-ranked athletics."
+        description: "Situated in the Sunset, APG is the city's largest middle school (about 1,190 students), known for school spirit, its band program and athletics."
       },
       // 3. HOOVER
       {
@@ -1544,37 +1545,34 @@
         address: "2290 14th Ave, San Francisco, CA 94116",
         lat: 37.74536,
         lng: -122.47031,
-        enrollment: 990,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 986,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:45 AM - 3:15 PM",
         muni: "L-Taraval, 48 Quintara, 28 19th Ave",
-        languages: ["Spanish Dual Language Immersion", "Cantonese Elective"],
+        languages: ["Secondary Dual Language: Cantonese", "Secondary Dual Language: Spanish"],
         languageKey: "spanish",
         arts: "Concert Band, Digital Audio Production, Studio Fine Arts",
         sports: "Basketball, Volleyball, Track, Soccer, Cheer",
-        feeders: "Dianne Feinstein, Lawton, Commodore Sloat",
+        feeders: "Monroe, Moscone, Serra, Ulloa, West Portal",
         hsFeeders: "Strong pipelines to Lowell High School, Abraham Lincoln High School, and George Washington.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Sports", "Music"],
-        lotteryOdds: "Strong Round 1 availability for West Portal and Sunset resident families with feeder or CTIP priorities.",
+        lotteryOdds: "2026–27: 1,139 requests for 197 general-ed 6th-grade seats (5.8 per seat). When it came down to this school (applicants not placed at a higher choice), 99% of feeder-school applicants and 2% of applicants with no tiebreaker got in (2023–27 average). Cantonese immersion: 106 requests for 66 seats in 2026–27; 98% of pathway feeder applicants got in when it came down to this program (2023–27). Spanish immersion: 173 requests for 66 seats in 2026–27; 96% of pathway feeder applicants got in when it came down to this program (2023–27). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "20:1",
-          avgClassSize: "25 students",
-          teacherRetention: "87% retention rate",
-          avgTeacherExperience: "13.1 years avg experience",
-          suspensionRate: "1.2% (Moderate)",
-          chronicAbsenteeism: "12.4% (Moderate)",
-          chksBelonging: "76% positive sense of safety & belonging"
+          studentTeacherRatio: "24:1 (whole school, 2023–24)",
+          suspensionRate: "4.9% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "12.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "51% Asian, 19% Hispanic/Latino, 13% White, 8% Multi-ethnic, 3% Black/African American",
-          sed: "46% Socioeconomically Disadvantaged",
-          el: "18% English Learners",
-          breakdown: [{ label: "Asian", pct: "51%" }, { label: "Hispanic/Latino", pct: "19%" }, { label: "White", pct: "13%" }]
+          summary: "53% Asian, 29% Latino, 8% White, 5% Two or more (grades 6–8)",
+          sed: "59% low-income",
+          el: "15% English learners",
+          breakdown: [{"label": "Asian", "pct": "53%"}, {"label": "Latino", "pct": "29%"}, {"label": "White", "pct": "8%"}, {"label": "Two or more", "pct": "5%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
-        description: "Hoover strikes a sweet spot: modern STEM and science labs, an active Spanish dual immersion pathway, courtyard gardens, and a manageable campus."
+        description: "Hoover strikes a sweet spot: modern STEM and science labs, Spanish and Cantonese dual language pathways, courtyard gardens, and a manageable campus."
       },
       // 4. ROOSEVELT
       {
@@ -1592,37 +1590,34 @@
         address: "460 Arguello Blvd, San Francisco, CA 94118",
         lat: 37.78228,
         lng: -122.45887,
-        enrollment: 720,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 651,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:35 AM - 3:05 PM",
         muni: "38 Geary, 1 California, 33 Ashbury/18th",
-        languages: ["Spanish Dual Language", "French Elective"],
-        languageKey: "spanish",
+        languages: ["Secondary Dual Language: Cantonese"],
+        languageKey: "cantonese",
         arts: "Drama Club, Choral Music, Visual Arts, Muralism",
         sports: "Volleyball, Basketball, Soccer, Ultimate Frisbee",
-        feeders: "Peabody, Lafayette, Sherman, New Traditions",
+        feeders: "Chinese Immersion School at DeAvila, Cobb, McCoppin, New Traditions, Peabody, Sutro",
         hsFeeders: "Primary feeder to George Washington High School, Wallenberg HS, Ruth Asawa SOTA, and Lowell.",
         hsKey: "sota_arts",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Good Round 1 match rates for neighborhood families and Spanish immersion applicants.",
+        lotteryOdds: "2026–27: 1,099 requests for 170 general-ed 6th-grade seats (6.5 per seat). When it came down to this school (applicants not placed at a higher choice), 91% of feeder-school applicants and 0% of applicants with no tiebreaker got in (2023–27 average). Cantonese immersion: 137 requests for 66 seats in 2026–27; 99% of pathway feeder applicants got in when it came down to this program (2023–27). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "89% retention rate",
-          avgTeacherExperience: "14.0 years avg experience",
-          suspensionRate: "0.7% (Low)",
-          chronicAbsenteeism: "10.5% (Moderate)",
-          chksBelonging: "80% positive sense of safety & belonging"
+          studentTeacherRatio: "18:1 (whole school, 2023–24)",
+          suspensionRate: "1.7% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "12.1% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "37% Asian, 29% White, 17% Hispanic/Latino, 9% Multi-ethnic, 4% Black/African American",
-          sed: "33% Socioeconomically Disadvantaged",
-          el: "14% English Learners",
-          breakdown: [{ label: "Asian", pct: "37%" }, { label: "White", pct: "29%" }, { label: "Hispanic/Latino", pct: "17%" }]
+          summary: "47% Asian, 20% White, 12% Two or more, 10% Latino, 5% Black, 3% Filipino (grades 6–8)",
+          sed: "43% low-income",
+          el: "7% English learners (whole school)",
+          breakdown: [{"label": "Asian", "pct": "47%"}, {"label": "White", "pct": "20%"}, {"label": "Two or more", "pct": "12%"}, {"label": "Latino", "pct": "10%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
-        description: "At the edge of the Presidio and Laurel Heights, Roosevelt combines an intimate community feel, strong performing arts, and a dedicated Spanish immersion program."
+        description: "At the edge of the Presidio and Laurel Heights, Roosevelt combines an intimate community feel, strong performing arts, and a Cantonese dual language pathway."
       },
       // 5. MARINA
       {
@@ -1639,37 +1634,34 @@
         address: "3500 Fillmore St, San Francisco, CA 94123",
         lat: 37.80176,
         lng: -122.43636,
-        enrollment: 680,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 632,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:30 AM - 3:00 PM",
         muni: "30 Stockton, 22 Fillmore, 28 19th Ave",
-        languages: ["Cantonese Dual Language Immersion", "Spanish Elective"],
+        languages: ["Secondary Dual Language: Cantonese"],
         languageKey: "cantonese",
         arts: "Jazz Band, String Ensemble, Digital Media, Culinary Arts",
         sports: "Flag Football, Volleyball, Track & Field, Basketball",
-        feeders: "Sherman, Yick Wo, Gordon J. Lau, Jean Parker",
+        feeders: "Lau, Redding, SF Public Montessori, Sherman, Spring Valley",
         hsFeeders: "Direct articulation pipeline to Galileo Academy of Science & Technology, Lowell, and Washington HS.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Music", "Sports"],
-        lotteryOdds: "Balanced Round 1 assignment odds. Excellent placement security for Northeast feeder school graduates.",
+        lotteryOdds: "2026–27: 522 requests for 230 general-ed 6th-grade seats (2.3 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 91% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "24 students",
-          teacherRetention: "85% retention rate",
-          avgTeacherExperience: "12.8 years avg experience",
-          suspensionRate: "1.4% (Moderate)",
-          chronicAbsenteeism: "14.1% (Moderate)",
-          chksBelonging: "75% positive sense of safety & belonging"
+          studentTeacherRatio: "22:1 (whole school, 2023–24)",
+          suspensionRate: "3.5% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "14.7% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "56% Asian, 18% Hispanic/Latino, 11% White, 6% Multi-ethnic, 4% Black/African American",
-          sed: "58% Socioeconomically Disadvantaged",
-          el: "26% English Learners",
-          breakdown: [{ label: "Asian", pct: "56%" }, { label: "Hispanic/Latino", pct: "18%" }, { label: "White", pct: "11%" }]
+          summary: "49% Asian, 21% Latino, 11% White, 7% Black, 4% Two or more, 4% Filipino (grades 6–8)",
+          sed: "72% low-income",
+          el: "21% English learners",
+          breakdown: [{"label": "Asian", "pct": "49%"}, {"label": "Latino", "pct": "21%"}, {"label": "White", "pct": "11%"}, {"label": "Black", "pct": "7%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
-        description: "Steps from the Marina Green, Marina Middle pairs waterfront access with a thriving Cantonese biliteracy strand, modern maker labs, and YMCA athletics."
+        description: "Steps from the Marina Green, Marina Middle pairs waterfront access with a Cantonese dual language pathway, modern maker labs, and YMCA athletics."
       },
       // 6. FRANCISCO
       {
@@ -1686,35 +1678,32 @@
         address: "2190 Powell St, San Francisco, CA 94133",
         lat: 37.80478,
         lng: -122.41167,
-        enrollment: 500,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 491,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:35 AM - 3:05 PM",
         muni: "30 Stockton, 8 Bayshore, 39 Coit Tower, Powell Cable Car",
-        languages: ["Cantonese Biliteracy", "Mandarin World Language", "Spanish"],
-        languageKey: "cantonese",
+        languages: ["Newcomer program"],
+        languageKey: "none",
         arts: "Ceramics, Lion Dance Troupe, Concert Band, Graphic Design",
         sports: "Basketball, Volleyball, Soccer, Track",
-        feeders: "Jean Parker, Gordon J. Lau, Spring Valley, Garfield",
+        feeders: "Chin, Garfield, Lee Newcomer (shared), Mission Bay (shared), Parker, Tenderloin, Yick Wo",
         hsFeeders: "High matriculation to Galileo Science Academy, Lowell High School, and George Washington HS.",
         hsKey: "lowell_academic",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "High assignment success in Round 1 for Chinatown and North Beach feeder elementary graduates.",
+        lotteryOdds: "2026–27: 304 requests for 132 general-ed 6th-grade seats (2.3 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 72% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "90% retention rate",
-          avgTeacherExperience: "15.1 years avg experience",
-          suspensionRate: "0.6% (Low)",
-          chronicAbsenteeism: "11.0% (Moderate)",
-          chksBelonging: "79% positive sense of safety & belonging"
+          studentTeacherRatio: "16:1 (whole school, 2023–24)",
+          suspensionRate: "5.3% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "30.8% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "71% Asian, 14% Hispanic/Latino, 6% White, 4% Multi-ethnic, 3% Black/African American",
-          sed: "73% Socioeconomically Disadvantaged",
-          el: "35% English Learners",
-          breakdown: [{ label: "Asian", pct: "71%" }, { label: "Hispanic/Latino", pct: "14%" }, { label: "White", pct: "6%" }]
+          summary: "46% Asian, 27% Latino, 8% White, 7% Black, 3% Two or more (grades 6–8)",
+          sed: "75% low-income",
+          el: "36% English learners",
+          breakdown: [{"label": "Asian", "pct": "46%"}, {"label": "Latino", "pct": "27%"}, {"label": "White", "pct": "8%"}, {"label": "Black", "pct": "7%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Near Chinatown and North Beach, Francisco has a storied heritage of student leadership, renowned Lion Dance performances, and deep YMCA community care."
       },
@@ -1733,35 +1722,32 @@
         address: "105 Aptos Ave, San Francisco, CA 94127",
         lat: 37.73017,
         lng: -122.46624,
-        enrollment: 975,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 919,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "K-Ingleside, 23 Monterey, 36 Teresita",
-        languages: ["Spanish Dual Immersion", "Mandarin Pathway"],
-        languageKey: "spanish",
+        languages: ["Secondary Dual Language: Mandarin"],
+        languageKey: "mandarin",
         arts: "Award-winning Band, Orchestra, Theatre Productions, Modern Dance",
         sports: "Cross Country, Girls/Boys Basketball, Soccer, Volleyball, Track",
-        feeders: "Commodore Sloat, Miraloma, Sunnyside, Fairmount",
+        feeders: "Carver (shared with Willie Brown), Feinstein, Ortega, Sloat, Starr King",
         hsFeeders: "Top feeder to Ruth Asawa SOTA (performing arts), Lowell High School, Lincoln HS, and Balboa HS.",
         hsKey: "sota_arts",
         specialties: ["Music", "Sports", "Arts"],
-        lotteryOdds: "High demand in Round 1 from West Portal and Miraloma families. Feeder and sibling tiebreakers are decisive.",
+        lotteryOdds: "2026–27: 1,107 requests for 252 general-ed 6th-grade seats (4.4 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 40% of applicants with no tiebreaker got in (2023–27 average). Mandarin immersion: 69 requests for 66 seats in 2026–27; 92% of pathway feeder applicants got in when it came down to this program (2023–27). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "21:1",
-          avgClassSize: "26 students",
-          teacherRetention: "88% retention rate",
-          avgTeacherExperience: "13.8 years avg experience",
-          suspensionRate: "1.1% (Moderate)",
-          chronicAbsenteeism: "12.0% (Moderate)",
-          chksBelonging: "77% positive sense of safety & belonging"
+          studentTeacherRatio: "22:1 (whole school, 2023–24)",
+          suspensionRate: "1.9% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "15.5% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "37% Hispanic/Latino, 32% Asian, 13% White, 8% Multi-ethnic, 6% Black/African American",
-          sed: "52% Socioeconomically Disadvantaged",
-          el: "19% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "37%" }, { label: "Asian", pct: "32%" }, { label: "White", pct: "13%" }]
+          summary: "42% Asian, 24% Latino, 11% White, 10% Two or more, 6% Black, 3% Filipino (grades 6–8)",
+          sed: "57% low-income",
+          el: "18% English learners",
+          breakdown: [{"label": "Asian", "pct": "42%"}, {"label": "Latino", "pct": "24%"}, {"label": "White", "pct": "11%"}, {"label": "Two or more", "pct": "10%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Near Mount Davidson, Aptos features an expansive campus, high participation in SFMSAL sports, and a premier middle school drama and instrumental music program."
       },
@@ -1780,35 +1766,32 @@
         address: "1220 Noe St, San Francisco, CA 94114",
         lat: 37.74908,
         lng: -122.43172,
-        enrollment: 450,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 507,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:45 AM - 3:15 PM",
         muni: "J-Church, 24 Divisadero, 48 Quintara",
-        languages: ["Dual Language Spanish Immersion (Two-Way 50:50)"],
+        languages: ["Secondary Dual Language: Spanish"],
         languageKey: "spanish",
         arts: "Mariachi Band, Folklorico, Muralism & Public Art",
         sports: "Futsal, Soccer, Basketball, Volleyball",
-        feeders: "Alvarado, Cesar Chavez, Flynn, Fairmount, Marshall",
+        feeders: "Alvarado, Flynn, Glen Park, Harte (shared with Willie Brown), Mission Education Center, Muir, Webster. Spanish-pathway feeder for immersion students from Bryant, Chavez, Huerta, Marshall, McKinley, Milk and Sanchez",
         hsFeeders: "Strong Spanish immersion continuation pipeline to Mission High School, John O'Connell, and Lincoln.",
         hsKey: "any",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "High application volume for Spanish dual immersion. Immersion continuity applicants hold preference.",
+        lotteryOdds: "2026–27: 369 requests for 99 general-ed 6th-grade seats (3.7 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 91% of applicants with no tiebreaker got in (2023–27 average). Spanish immersion: 174 requests for 99 seats in 2026–27; 97% of pathway feeder applicants got in when it came down to this program (2023–27). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "92% retention rate",
-          avgTeacherExperience: "16.2 years avg experience",
-          suspensionRate: "0.9% (Low)",
-          chronicAbsenteeism: "13.5% (Moderate)",
-          chksBelonging: "81% positive sense of safety & belonging"
+          studentTeacherRatio: "16:1 (whole school, 2023–24)",
+          suspensionRate: "6.5% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "37.5% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "74% Hispanic/Latino, 11% White, 6% Asian, 5% Black/African American, 3% Multi-ethnic",
-          sed: "77% Socioeconomically Disadvantaged",
-          el: "38% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "74%" }, { label: "White", pct: "11%" }, { label: "Asian", pct: "6%" }]
+          summary: "70% Latino, 12% White, 6% Black, 3% Two or more (grades 6–8)",
+          sed: "62% low-income",
+          el: "35% English learners",
+          breakdown: [{"label": "Latino", "pct": "70%"}, {"label": "White", "pct": "12%"}, {"label": "Black", "pct": "6%"}, {"label": "Two or more", "pct": "3%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "In Noe Valley bordering the Mission, James Lick is the flagship Two-Way Spanish Dual Immersion middle school, celebrated for biliteracy and folklorico."
       },
@@ -1827,35 +1810,32 @@
         address: "450 Church St, San Francisco, CA 94114",
         lat: 37.76403,
         lng: -122.42869,
-        enrollment: 300,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 315,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:00 AM - 3:30 PM",
         muni: "J-Church, F-Market, 22 Fillmore, 16th/Mission BART",
-        languages: ["Spanish Immersion Pathway", "Spanish Elective"],
-        languageKey: "spanish",
+        languages: ["Newcomer program"],
+        languageKey: "none",
         arts: "Digital Media Lab, Visual Art Studio, Chorus, Drama",
         sports: "Soccer, Basketball, Volleyball, Flag Football",
-        feeders: "Sanchez, Mission Education Center, McKinley, Alvarado",
+        feeders: "Bryant, Chavez, Huerta, Marshall, McKinley, Milk, Mission Bay (shared), Sanchez",
         hsFeeders: "Mission High School, Ruth Asawa SOTA, Lincoln, and Lowell.",
         hsKey: "sota_arts",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "Accessible Round 1 assignment rates for Central and Mission corridor residents.",
+        lotteryOdds: "2026–27: 246 requests for 66 general-ed 6th-grade seats (3.7 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 99% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "86% retention rate",
-          avgTeacherExperience: "11.9 years avg experience",
-          suspensionRate: "1.8% (Moderate)",
-          chronicAbsenteeism: "16.2% (Moderate)",
-          chksBelonging: "74% positive sense of safety & belonging"
+          studentTeacherRatio: "14:1 (whole school, 2023–24)",
+          suspensionRate: "3.2% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "50.8% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "63% Hispanic/Latino, 13% White, 10% Black/African American, 7% Asian, 5% Multi-ethnic",
-          sed: "69% Socioeconomically Disadvantaged",
-          el: "31% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "63%" }, { label: "White", pct: "13%" }, { label: "African American", pct: "10%" }]
+          summary: "65% Latino, 9% Black, 8% White, 6% Two or more, 3% Asian (grades 6–8)",
+          sed: "76% low-income",
+          el: "50% English learners",
+          breakdown: [{"label": "Latino", "pct": "65%"}, {"label": "Black", "pct": "9%"}, {"label": "White", "pct": "8%"}, {"label": "Two or more", "pct": "6%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Across from Mission Dolores Park, Everett offers a historic campus, a 9:00 AM start time, dynamic partnerships with Mission Graduates, and an inclusive arts culture."
       },
@@ -1874,35 +1854,32 @@
         address: "2055 Silver Ave, San Francisco, CA 94124",
         lat: 37.73588,
         lng: -122.39987,
-        enrollment: 400,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 369,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "44 O'Shaughnessy, 54 Felton, T-Third",
-        languages: ["Spanish World Language", "STEM Tech Coding"],
+        languages: [],
         languageKey: "none",
         arts: "Digital Music Production, Podcasting Studio, 3D Fabrication",
         sports: "Basketball, Volleyball, Track, Cheer",
-        feeders: "Carver, Bret Harte, Drew, Malcolm X, Glen Park",
+        feeders: "Carver, Drew, Harte, Malcolm X (each shared with another middle school); Willie Brown also has its own Bayview-area tiebreaker",
         hsFeeders: "Balboa High School, Phillip & Sala Burton Academic High School, and Lowell.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Sports"],
-        lotteryOdds: "High Round 1 availability. Excellent assignment odds for Southeast SF residents and CTIP1 priority applicants.",
+        lotteryOdds: "2026–27: 474 requests for 132 general-ed 6th-grade seats (3.6 per seat). When it came down to this school (applicants not placed at a higher choice), 89% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "84% retention rate",
-          avgTeacherExperience: "10.4 years avg experience",
-          suspensionRate: "2.1% (Moderate)",
-          chronicAbsenteeism: "18.4% (Elevated)",
-          chksBelonging: "73% positive sense of safety & belonging"
+          studentTeacherRatio: "16:1 (whole school, 2023–24)",
+          suspensionRate: "5.2% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "28.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "37% Black/African American, 36% Hispanic/Latino, 11% Asian, 7% Pacific Islander, 4% Multi-ethnic",
-          sed: "79% Socioeconomically Disadvantaged",
-          el: "24% English Learners",
-          breakdown: [{ label: "African American", pct: "37%" }, { label: "Hispanic/Latino", pct: "36%" }, { label: "Asian", pct: "11%" }]
+          summary: "32% Latino, 28% White, 14% Black, 12% Two or more, 4% Asian, 3% Filipino (grades 6–8)",
+          sed: "44% low-income",
+          el: "14% English learners",
+          breakdown: [{"label": "Latino", "pct": "32%"}, {"label": "White", "pct": "28%"}, {"label": "Black", "pct": "14%"}, {"label": "Two or more", "pct": "12%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "One of SF's newest middle school campuses, featuring laboratory learning spaces, 1-to-1 technology, and specialized robotics electives."
       },
@@ -1911,8 +1888,8 @@
         id: "vis_valley",
         name: "Visitacion Valley Middle School",
         sector: "SFUSD Comprehensive",
-        scaleCategory: "Mid-Sized (450–899)",
-        scaleType: "Mid",
+        scaleCategory: "Small Comprehensive (under 450)",
+        scaleType: "Small",
         scaleDetail: "Pioneering Quiet Time mindfulness model with small collaborative teams and high counseling support.",
         personalityTags: ["Sensitive, Observant or Easily Overstimulated", "Hands-on, Kinetic & Team-Oriented"],
         subjectStrengths: ["stem_maker", "sports_athletics"],
@@ -1921,35 +1898,32 @@
         address: "1971 Visitacion Ave, San Francisco, CA 94134",
         lat: 37.71529,
         lng: -122.41205,
-        enrollment: 450,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 302,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:30 AM - 3:00 PM",
         muni: "8 Bayshore, 9 San Bruno, 56 Rutland, T-Third",
-        languages: ["Spanish Dual Language Pathway", "Cantonese Elective"],
-        languageKey: "spanish",
+        languages: ["Newcomer program"],
+        languageKey: "none",
         arts: "Ceramics, Digital Storytelling, Urban Murals",
         sports: "Basketball, Volleyball, Soccer, Track",
-        feeders: "Visitacion Valley ES, El Dorado, McLaren Park elementary schools",
+        feeders: "Cleveland, El Dorado, Guadalupe, Lee Newcomer (shared), Visitacion Valley ES",
         hsFeeders: "Burton High School, Balboa High School, and John O'Connell High.",
         hsKey: "any",
         specialties: ["Sports"],
-        lotteryOdds: "Guaranteed or near-guaranteed Round 1 placement for local neighborhood and CTIP1 applicants.",
+        lotteryOdds: "2026–27: 157 requests for 99 general-ed 6th-grade seats (1.6 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 100% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "16:1",
-          avgClassSize: "20 students",
-          teacherRetention: "83% retention rate",
-          avgTeacherExperience: "11.2 years avg experience",
-          suspensionRate: "2.4% (Moderate)",
-          chronicAbsenteeism: "19.5% (Elevated)",
-          chksBelonging: "72% positive sense of safety & belonging"
+          studentTeacherRatio: "14:1 (whole school, 2023–24)",
+          suspensionRate: "5.7% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "46.8% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "42% Asian, 37% Hispanic/Latino, 11% Black/African American, 5% Pacific Islander, 3% White",
-          sed: "82% Socioeconomically Disadvantaged",
-          el: "41% English Learners",
-          breakdown: [{ label: "Asian", pct: "42%" }, { label: "Hispanic/Latino", pct: "37%" }, { label: "African American", pct: "11%" }]
+          summary: "52% Latino, 13% Asian, 10% Black, 7% Pacific Islander, 6% Two or more, 5% Filipino (grades 6–8)",
+          sed: "83% low-income",
+          el: "40% English learners",
+          breakdown: [{"label": "Latino", "pct": "52%"}, {"label": "Asian", "pct": "13%"}, {"label": "Black", "pct": "10%"}, {"label": "Pacific Islander", "pct": "7%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "A community-centered school recognized for its Quiet Time social-emotional wellness program, urban agriculture garden, and supportive Beacon youth center."
       },
@@ -1968,35 +1942,32 @@
         address: "350 Girard St, San Francisco, CA 94134",
         lat: 37.72795,
         lng: -122.40491,
-        enrollment: 400,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 351,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:30 AM - 4:00 PM",
         muni: "44 O'Shaughnessy, 54 Felton, 29 Sunset, 9 San Bruno",
-        languages: ["Spanish World Language", "Cantonese Elective"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Instrumental Band, Studio Visual Arts, Dance, Digital Media",
         sports: "Baseball, Basketball, Flag Football, Soccer, Softball, Track, Volleyball",
-        feeders: "Bret Harte, E.R. Taylor, Cleveland, Hillcrest",
+        feeders: "Hillcrest, Malcolm X (shared), Taylor",
         hsFeeders: "Phillip & Sala Burton High School, Balboa High School, George Washington, and Lowell.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Sports"],
-        lotteryOdds: "Strong Round 1 availability. Excellent placement odds for Southeast SF residents and CTIP1 priority applicants.",
+        lotteryOdds: "2026–27: 255 requests for 132 general-ed 6th-grade seats (1.9 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 100% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "16:1",
-          avgClassSize: "20 students",
-          teacherRetention: "83% retention rate",
-          avgTeacherExperience: "10.8 years avg experience",
-          suspensionRate: "2.5% (Moderate)",
-          chronicAbsenteeism: "19.8% (Elevated)",
-          chksBelonging: "74% positive sense of safety & belonging"
+          studentTeacherRatio: "17:1 (whole school, 2023–24)",
+          suspensionRate: "8.1% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "34.9% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "41% Hispanic/Latino, 32% Asian, 16% Black/African American, 6% Pacific Islander, 3% White",
-          sed: "78% Socioeconomically Disadvantaged",
-          el: "39% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "41%" }, { label: "Asian", pct: "32%" }, { label: "African American", pct: "16%" }]
+          summary: "45% Latino, 25% Asian, 17% Black, 5% Filipino (grades 6–8)",
+          sed: "79% low-income",
+          el: "35% English learners",
+          breakdown: [{"label": "Latino", "pct": "45%"}, {"label": "Asian", "pct": "25%"}, {"label": "Black", "pct": "17%"}, {"label": "Filipino", "pct": "5%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "In the Portola district, MLK centers Project-Based Learning, comprehensive STEAM labs, AVID college readiness, and rich athletics."
       },
@@ -2015,35 +1986,32 @@
         address: "241 Oneida Ave, San Francisco, CA 94112",
         lat: 37.72181,
         lng: -122.44286,
-        enrollment: 870,
-        enrollmentNote: "SFUSD estimate",
+        enrollment: 802,
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:30 AM - 4:00 PM",
         muni: "Muni Metro K/M, 54 Felton, 43 Masonic, Balboa Park BART",
-        languages: ["Spanish World Language", "Cantonese World Language", "AVID Pathway"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Instrumental Band, Orchestra, Digital Media Arts, Visual Fine Arts",
         sports: "Baseball, Girls/Boys Basketball, Volleyball, Track & Field, Soccer",
         feeders: "Lakeshore, Longfellow, Miraloma, Sheridan, Sunnyside",
         hsFeeders: "Direct feeder to Balboa High School (adjacent campus), Abraham Lincoln High, Lowell, and Burton.",
         hsKey: "lowell_academic",
         specialties: ["Sports", "Music", "STEM"],
-        lotteryOdds: "Balanced Round 1 placement odds. Strong priority for students graduating from its 5 designated feeder elementary schools and sibling tiebreaker.",
+        lotteryOdds: "2026–27: 492 requests for 264 general-ed 6th-grade seats (1.9 per seat). When it came down to this school (applicants not placed at a higher choice), 100% of feeder-school applicants and 94% of applicants with no tiebreaker got in (2023–27 average). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "24 students",
-          teacherRetention: "87% retention rate",
-          avgTeacherExperience: "12.4 years avg experience",
-          suspensionRate: "1.9% (Moderate)",
-          chronicAbsenteeism: "16.8% (Moderate)",
-          chksBelonging: "76% positive sense of safety & belonging"
+          studentTeacherRatio: "20:1 (whole school, 2023–24)",
+          suspensionRate: "2.7% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "37.9% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "48% Hispanic/Latino, 27% Asian, 9% Black/African American, 7% White, 6% Filipino, 3% Multi-ethnic",
-          sed: "68% Socioeconomically Disadvantaged",
-          el: "29% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "48%" }, { label: "Asian", pct: "27%" }, { label: "African American", pct: "9%" }]
+          summary: "55% Latino, 13% Asian, 12% Filipino, 8% White, 5% Two or more, 4% Black (grades 6–8)",
+          sed: "68% low-income",
+          el: "33% English learners",
+          breakdown: [{"label": "Latino", "pct": "55%"}, {"label": "Asian", "pct": "13%"}, {"label": "Filipino", "pct": "12%"}, {"label": "White", "pct": "8%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Known for 'Denman Pride on the South Side,' James Denman Middle School is located near Balboa Park BART in the Excelsior, offering strong AVID college-readiness and athletics."
       },
@@ -2062,35 +2030,32 @@
         address: "1541 12th Ave, San Francisco, CA 94122",
         lat: 37.7594,
         lng: -122.46928,
-        enrollment: 600,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 593,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 197 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:00 AM - 2:30 PM",
         muni: "N-Judah, 6 Haight-Parnassus, 43 Masonic",
-        languages: ["Cantonese Immersion (Primary Continuation)"],
+        languages: ["Cantonese Immersion (K-8)"],
         languageKey: "cantonese",
         arts: "Chinese Calligraphy, Choral Ensemble, Visual Arts",
         sports: "SFMSAL Basketball, Volleyball, Track",
-        feeders: "Guaranteed continuation for AFY 5th graders; very limited lottery seats",
+        feeders: "Continuing Alice Fong Yu students (K-8)",
         hsFeeders: "Extremely high acceptance rate to Lowell High School and Abraham Lincoln HS.",
         hsKey: "lowell_academic",
         specialties: ["Music", "Arts"],
-        lotteryOdds: "Extremely competitive for external applicants. 95%+ of 6th grade seats filled by continuing AFY 5th graders.",
+        lotteryOdds: "Cantonese immersion only. 2026–27: 100 requests for 66 6th-grade seats, almost all taken by continuing students; essentially no outside applicants were assigned in 2023–27. Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "95% retention rate",
-          avgTeacherExperience: "17.4 years avg experience",
-          suspensionRate: "0.2% (Very Low)",
-          chronicAbsenteeism: "6.5% (Very Low)",
-          chksBelonging: "88% positive sense of safety & belonging"
+          studentTeacherRatio: "26:1 (whole school, 2023–24)",
+          suspensionRate: "0.7% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "9.9% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "78% Asian, 10% Multi-ethnic, 7% White, 4% Hispanic/Latino",
-          sed: "18% Socioeconomically Disadvantaged",
-          el: "14% English Learners",
-          breakdown: [{ label: "Asian", pct: "78%" }, { label: "Two or More", pct: "10%" }, { label: "White", pct: "7%" }]
+          summary: "63% Asian, 13% Two or more, 6% Latino, 5% Black, 4% White (grades 6–8)",
+          sed: "35% low-income",
+          el: "9% English learners (whole school)",
+          breakdown: [{"label": "Asian", "pct": "63%"}, {"label": "Two or more", "pct": "13%"}, {"label": "Latino", "pct": "6%"}, {"label": "Black", "pct": "5%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "The nation's first Chinese Cantonese immersion public school, where students continue an intensive biliteracy curriculum in an intimate K-8 campus."
       },
@@ -2109,35 +2074,32 @@
         address: "3630 Divisadero St, San Francisco, CA 94123 (grades 3–8 Winfield Scott campus)",
         lat: 37.80309,
         lng: -122.4434,
-        enrollment: 637,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 665,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 196 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:10 AM - 2:45 PM",
         muni: "30 Stockton, 22 Fillmore, 43 Masonic",
-        languages: ["Korean Language Pathway (FLES)", "Spanish Elective"],
-        languageKey: "none",
+        languages: ["Korean Immersion (K-8, entry at kindergarten)"],
+        languageKey: "korean",
         arts: "Ceramics Studio, Drama productions, Instrumental Winds",
         sports: "Volleyball, Basketball, Track, Soccer",
-        feeders: "Guaranteed continuation for Lilienthal elementary students",
+        feeders: "Continuing Claire Lilienthal students (K-8)",
         hsFeeders: "Very high matriculation to Lowell High School, Galileo Academy, and independent prep schools.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Music"],
-        lotteryOdds: "High demand with limited external 6th grade vacancies due to K-8 elementary continuation.",
+        lotteryOdds: "2026–27: 363 requests for 66 general-ed 6th-grade seats (5.5 per seat). Continuing 5th graders keep their seats, so few open up: new students got a Main Round seat in 2023–27 at a rate of fewer than one a year (under 1% of applicants). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "93% retention rate",
-          avgTeacherExperience: "16.8 years avg experience",
-          suspensionRate: "0.3% (Very Low)",
-          chronicAbsenteeism: "7.1% (Low)",
-          chksBelonging: "86% positive sense of safety & belonging"
+          studentTeacherRatio: "22:1 (whole school, 2023–24)",
+          suspensionRate: "0.4% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "10.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "38% White, 32% Asian, 14% Multi-ethnic, 11% Hispanic/Latino, 3% Black/African American",
-          sed: "14% Socioeconomically Disadvantaged",
-          el: "8% English Learners",
-          breakdown: [{ label: "White", pct: "38%" }, { label: "Asian", pct: "32%" }, { label: "Two or More", pct: "14%" }]
+          summary: "31% Asian, 28% White, 15% Two or more, 10% Latino, 6% Black (grades 6–8)",
+          sed: "23% low-income",
+          el: "8% English learners (whole school)",
+          breakdown: [{"label": "Asian", "pct": "31%"}, {"label": "White", "pct": "28%"}, {"label": "Two or more", "pct": "15%"}, {"label": "Latino", "pct": "10%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Scott Campus near the Palace of Fine Arts offers high academic expectations, small grade-level cohorts, and strong parent investment."
       },
@@ -2156,35 +2118,32 @@
         address: "1570 31st Ave, San Francisco, CA 94122",
         lat: 37.75796,
         lng: -122.48956,
-        enrollment: 615,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 624,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 200 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:15 AM - 2:45 PM",
         muni: "N-Judah, 29 Sunset, 7 Noriega",
-        languages: ["Spanish Elective", "Computer Coding Literacy"],
+        languages: [],
         languageKey: "none",
         arts: "Concert Strings, Visual Design, Stagecraft",
         sports: "Volleyball, Basketball, Track",
-        feeders: "Guaranteed continuation for Lawton 5th graders",
+        feeders: "Continuing Lawton students (K-8)",
         hsFeeders: "High acceptance and continuation to Lowell High School and Lincoln High School.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Music"],
-        lotteryOdds: "Competitive lottery; majority of seats reserved for continuing Lawton K-5 students.",
+        lotteryOdds: "2026–27: 646 requests for 66 general-ed 6th-grade seats (9.8 per seat). Continuing 5th graders keep their seats, so few open up: new students got a Main Round seat in 2023–27 at a rate of about 2 a year (under 1% of applicants). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "19:1",
-          avgClassSize: "23 students",
-          teacherRetention: "91% retention rate",
-          avgTeacherExperience: "15.0 years avg experience",
-          suspensionRate: "0.4% (Very Low)",
-          chronicAbsenteeism: "8.2% (Low)",
-          chksBelonging: "84% positive sense of safety & belonging"
+          studentTeacherRatio: "22:1 (whole school, 2023–24)",
+          suspensionRate: "0.5% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "16.5% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "68% Asian, 14% White, 9% Multi-ethnic, 6% Hispanic/Latino, 2% Black/African American",
-          sed: "22% Socioeconomically Disadvantaged",
-          el: "11% English Learners",
-          breakdown: [{ label: "Asian", pct: "68%" }, { label: "White", pct: "14%" }, { label: "Two or More", pct: "9%" }]
+          summary: "74% Asian, 6% White, 5% Two or more, 4% Latino (grades 6–8)",
+          sed: "50% low-income",
+          el: "16% English learners (whole school)",
+          breakdown: [{"label": "Asian", "pct": "74%"}, {"label": "White", "pct": "6%"}, {"label": "Two or more", "pct": "5%"}, {"label": "Latino", "pct": "4%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "A beloved Sunset K-8 alternative where middle schoolers participate in accelerated science fairs and enjoy small classroom cohorts."
       },
@@ -2203,35 +2162,32 @@
         address: "500 Corbett Ave, San Francisco, CA 94131 (grades 5–8 Mayeda campus)",
         lat: 37.75778,
         lng: -122.44463,
-        enrollment: 600,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 586,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 186 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:00 AM - 2:30 PM",
         muni: "37 Corbett, 33 Ashbury, Castro Muni Metro",
-        languages: ["Spanish World Language", "Visual Arts Literacy"],
+        languages: [],
         languageKey: "none",
         arts: "Comprehensive Visual Arts, Theater, Dance, Photography, Chorus",
         sports: "Basketball, Volleyball, Track",
-        feeders: "Guaranteed continuation for Rooftop Burnett elementary students",
+        feeders: "Continuing Rooftop students (K-8)",
         hsFeeders: "Top city feeder to Ruth Asawa School of the Arts (SOTA), Lowell, and Lincoln.",
         hsKey: "sota_arts",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "High application demand for arts-focused families. Primary seats filled via K-5 elementary feeder pipeline.",
+        lotteryOdds: "2026–27: 343 requests for 66 general-ed 6th-grade seats (5.2 per seat). Continuing 5th graders keep their seats, so few open up: new students got a Main Round seat in 2023–27 at a rate of about 4 a year (1% of applicants). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "94% retention rate",
-          avgTeacherExperience: "16.1 years avg experience",
-          suspensionRate: "0.3% (Very Low)",
-          chronicAbsenteeism: "7.9% (Low)",
-          chksBelonging: "87% positive sense of safety & belonging"
+          studentTeacherRatio: "24:1 (whole school, 2023–24)",
+          suspensionRate: "1.0% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "9.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "42% White, 19% Asian, 18% Hispanic/Latino, 13% Multi-ethnic, 5% Black/African American",
-          sed: "21% Socioeconomically Disadvantaged",
-          el: "7% English Learners",
-          breakdown: [{ label: "White", pct: "42%" }, { label: "Asian", pct: "19%" }, { label: "Hispanic/Latino", pct: "18%" }]
+          summary: "32% White, 25% Latino, 11% Two or more, 10% Black, 6% Asian (grades 6–8)",
+          sed: "30% low-income",
+          el: "5% English learners (whole school)",
+          breakdown: [{"label": "White", "pct": "32%"}, {"label": "Latino", "pct": "25%"}, {"label": "Two or more", "pct": "11%"}, {"label": "Black", "pct": "10%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "An arts-infused public alternative perched on Twin Peaks, where guest artists and studio work prepare students for Ruth Asawa SOTA."
       },
@@ -2250,35 +2206,32 @@
         address: "325 La Grande Ave, San Francisco, CA 94112 (temporary campus during renovation; home campus 3351 23rd St, reopening 2028)",
         lat: 37.7187,
         lng: -122.42471,
-        enrollment: 620,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 498,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 183 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "14 Mission, 49 Van Ness, 24th St BART",
-        languages: ["Two-Way Spanish Immersion (K-8 Continuum)"],
+        languages: ["Spanish Immersion (K-8)"],
         languageKey: "spanish",
         arts: "Community Murals, Folkloric Dance, Latin Percussion",
         sports: "Soccer, Futsal, Basketball",
-        feeders: "Guaranteed continuation for BVHM elementary; limited transfer spots",
+        feeders: "Continuing BVHM students (K-8)",
         hsFeeders: "Direct biliteracy bridge to Mission High School, John O'Connell, and Lincoln HS.",
         hsKey: "any",
         specialties: ["Arts"],
-        lotteryOdds: "Strong priority for continuing BVHM bilingual students. External transfer seats depend on language assessment.",
+        lotteryOdds: "Spanish immersion only. 2026–27: 78 requests for 66 6th-grade seats, mostly continuing students; 5% of applicants were assigned (2023–27). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "88% retention rate",
-          avgTeacherExperience: "12.5 years avg experience",
-          suspensionRate: "1.0% (Low)",
-          chronicAbsenteeism: "15.0% (Moderate)",
-          chksBelonging: "80% positive sense of safety & belonging"
+          studentTeacherRatio: "19:1 (whole school, 2023–24)",
+          suspensionRate: "1.5% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "35.2% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "83% Hispanic/Latino, 8% White, 4% Multi-ethnic, 3% Black/African American, 2% Asian",
-          sed: "76% Socioeconomically Disadvantaged",
-          el: "52% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "83%" }, { label: "White", pct: "8%" }, { label: "Two or More", pct: "4%" }]
+          summary: "93% Latino, 3% White (grades 6–8)",
+          sed: "74% low-income",
+          el: "55% English learners",
+          breakdown: [{"label": "Latino", "pct": "93%"}, {"label": "White", "pct": "3%"}, {"label": "Two or more", "pct": "1%"}, {"label": "Black", "pct": "0%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "San Francisco's historic community Spanish Two-Way Dual Immersion K-8 school, fostering bilingual fluency and cultural advocacy."
       },
@@ -2298,35 +2251,32 @@
         address: "824 Harrison St, San Francisco, CA 94103 (grades 6–8 campus)",
         lat: 37.78038,
         lng: -122.40024,
-        enrollment: 600,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 528,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 178 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "9:30 AM - 3:45 PM",
         muni: "12 Folsom, 30 Stockton, 45 Union-Stockton, Powell BART",
-        languages: ["Filipino (Tagalog) Biliteracy & World Language Pathway"],
+        languages: ["Filipino Biliteracy (K-8, entry at kindergarten)"],
         languageKey: "filipino",
         arts: "Kulintang Percussion, Traditional & Modern Dance, Muralism",
         sports: "Basketball, Volleyball, Track",
-        feeders: "Guaranteed continuation for Bessie Carmichael PK-5 students",
+        feeders: "Continuing Bessie Carmichael students (K-8)",
         hsFeeders: "Balboa High School, Galileo Academy of Science & Technology, Lincoln, and Lowell.",
         hsKey: "lowell_academic",
         specialties: ["Arts", "STEM"],
-        lotteryOdds: "Strong priority for continuing Bessie Carmichael elementary students and SOMA community applicants.",
+        lotteryOdds: "2026–27: 62 requests for 66 general-ed 6th-grade seats (0.9 per seat). Continuing 5th graders keep their seats, so few open up: new students got a Main Round seat in 2023–27 at a rate of about 13 a year (17% of applicants). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "18:1",
-          avgClassSize: "22 students",
-          teacherRetention: "87% retention rate",
-          avgTeacherExperience: "12.0 years avg experience",
-          suspensionRate: "1.2% (Moderate)",
-          chronicAbsenteeism: "14.6% (Moderate)",
-          chksBelonging: "81% positive sense of safety & belonging"
+          studentTeacherRatio: "21:1 (whole school, 2023–24)",
+          suspensionRate: "3.1% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "40.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "46% Filipino / Asian, 36% Hispanic/Latino, 8% Black/African American, 5% White, 4% Multi-ethnic",
-          sed: "75% Socioeconomically Disadvantaged",
-          el: "42% English Learners",
-          breakdown: [{ label: "Filipino / Asian", pct: "46%" }, { label: "Hispanic/Latino", pct: "36%" }, { label: "African American", pct: "8%" }]
+          summary: "28% Latino, 22% Filipino, 16% Black, 8% Two or more, 7% Asian, 7% White (grades 6–8)",
+          sed: "76% low-income",
+          el: "30% English learners",
+          breakdown: [{"label": "Latino", "pct": "28%"}, {"label": "Filipino", "pct": "22%"}, {"label": "Black", "pct": "16%"}, {"label": "Two or more", "pct": "8%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "The nation's preeminent Filipino-English bilingual public school, where students thrive on a dedicated Harrison St campus enriched by Galing Bata."
       },
@@ -2345,35 +2295,32 @@
         address: "555 Tompkins Ave, San Francisco, CA 94110",
         lat: 37.73711,
         lng: -122.41314,
-        enrollment: 499,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 453,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 171 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "24 Divisadero, 67 Bernal Heights, 14 Mission",
-        languages: ["Spanish World Language & Dual Support"],
+        languages: ["Spanish Immersion (K-8, entry at kindergarten)"],
         languageKey: "spanish",
         arts: "Visual Arts, Ceramics, Digital Photography, Drama",
         sports: "Basketball, Volleyball, Soccer, Track",
-        feeders: "Guaranteed continuation for Paul Revere elementary students",
+        feeders: "Continuing Paul Revere students (K-8)",
         hsFeeders: "Balboa High School, Phillip & Sala Burton, Mission High, and Lowell.",
         hsKey: "any",
         specialties: ["STEM", "Sports"],
-        lotteryOdds: "Balanced Round 1 placement odds for Bernal Heights families and continuing elementary students.",
+        lotteryOdds: "2026–27: 62 requests for 66 general-ed 6th-grade seats (0.9 per seat). Continuing 5th graders keep their seats, so few open up: new students got a Main Round seat in 2023–27 at a rate of about 22 a year (27% of applicants). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "85% retention rate",
-          avgTeacherExperience: "11.7 years avg experience",
-          suspensionRate: "1.5% (Moderate)",
-          chronicAbsenteeism: "16.4% (Moderate)",
-          chksBelonging: "77% positive sense of safety & belonging"
+          studentTeacherRatio: "17:1 (whole school, 2023–24)",
+          suspensionRate: "0.6% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "28.3% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "61% Hispanic/Latino, 15% Black/African American, 11% Asian, 7% White, 5% Multi-ethnic",
-          sed: "79% Socioeconomically Disadvantaged",
-          el: "35% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "61%" }, { label: "African American", pct: "15%" }, { label: "Asian", pct: "11%" }]
+          summary: "68% Latino, 11% Black, 6% Two or more, 5% Filipino, 4% White (grades 6–8)",
+          sed: "79% low-income",
+          el: "49% English learners",
+          breakdown: [{"label": "Latino", "pct": "68%"}, {"label": "Black", "pct": "11%"}, {"label": "Two or more", "pct": "6%"}, {"label": "Filipino", "pct": "5%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Set in Bernal Heights, Paul Revere provides an intimate PreK-8 community focusing on hands-on environmental sciences and tech integration."
       },
@@ -2393,35 +2340,32 @@
         address: "125 Excelsior Ave, San Francisco, CA 94112",
         lat: 37.72581,
         lng: -122.43259,
-        enrollment: 290,
-        enrollmentNote: "whole school, TK/K–8",
+        enrollment: 266,
+        enrollmentNote: "CA Dept. of Education, 2025–26; 76 in grades 6–8",
         dataVerified: "2026-10-16",
         tuition: "Public (Free)",
         bellHours: "8:40 AM - 3:10 PM",
         muni: "14 Mission, 49 Van Ness, 52 Excelsior, Balboa Park BART",
-        languages: ["Spanish Language Elective & Humanities"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Murals, Printmaking, Community Theater, Creative Expression",
         sports: "Basketball, Volleyball, Track",
-        feeders: "Guaranteed continuation for SFCS elementary students; open citywide lottery",
+        feeders: "Continuing SF Community students (K-8)",
         hsFeeders: "Balboa High School, Mission High School, John O'Connell, and Lowell.",
         hsKey: "any",
         specialties: ["Arts", "STEM"],
-        lotteryOdds: "Balanced Round 1 odds for neighborhood Excelsior families and continuing elementary cohorts.",
+        lotteryOdds: "2026–27: 122 requests for 33 general-ed 6th-grade seats (3.7 per seat). Continuing 5th graders keep their seats, so few open up: new students got a Main Round seat in 2023–27 at a rate of about 14 a year (10% of applicants). Source: SFUSD Main Round data.",
         dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "89% retention rate",
-          avgTeacherExperience: "13.0 years avg experience",
-          suspensionRate: "1.1% (Low)",
-          chronicAbsenteeism: "14.2% (Moderate)",
-          chksBelonging: "82% positive sense of safety & belonging"
+          studentTeacherRatio: "20:1 (whole school, 2023–24)",
+          suspensionRate: "3.5% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "43.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "56% Hispanic/Latino, 22% Asian, 10% Black/African American, 7% White, 5% Multi-ethnic",
-          sed: "72% Socioeconomically Disadvantaged",
-          el: "31% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "56%" }, { label: "Asian", pct: "22%" }, { label: "African American", pct: "10%" }]
+          summary: "59% Latino, 21% Black, 7% Filipino, 4% Asian, 4% Two or more (grades 6–8)",
+          sed: "72% low-income",
+          el: "23% English learners (whole school)",
+          breakdown: [{"label": "Latino", "pct": "59%"}, {"label": "Black", "pct": "21%"}, {"label": "Filipino", "pct": "7%"}, {"label": "Asian", "pct": "4%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "An SFUSD alternative K-8 school in the Excelsior emphasizing student agency, multi-age collaboration, and hands-on community projects."
       },
@@ -2441,11 +2385,13 @@
         address: "1512 Golden Gate Ave, San Francisco, CA 94115",
         lat: 37.77917,
         lng: -122.43551,
-        enrollment: 310,
+        enrollment: 216,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "CA Dept. of Education, 2025–26",
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:15 AM - 3:15 PM",
         muni: "5 Fulton, 31 Balboa, 22 Fillmore, 38 Geary",
-        languages: ["Spanish World Language", "Integrated Humanities"],
+        languages: [],
         languageKey: "none",
         arts: "Visual Arts, Digital Design, Drama, Choral Arts",
         sports: "Cross Country, Girls/Boys Basketball, Soccer, Volleyball, Track",
@@ -2453,21 +2399,18 @@
         hsFeeders: "Direct matriculation to Gateway High School, Lowell High School, George Washington, and Lincoln.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Arts", "Sports"],
-        lotteryOdds: "Public charter random lottery open citywide. High application volume; early submission recommended.",
+        lotteryOdds: "Charter school: apply through the school's own application and lottery, not SFUSD's. Check the school's site for deadlines and priorities.",
         dashboardMetrics: {
-          studentTeacherRatio: "14:1",
-          avgClassSize: "19 students",
-          teacherRetention: "91% retention rate",
-          avgTeacherExperience: "12.8 years avg experience",
-          suspensionRate: "1.1% (Low)",
-          chronicAbsenteeism: "10.2% (Moderate)",
-          chksBelonging: "89% positive sense of safety & belonging"
+          studentTeacherRatio: "18:1 (whole school, 2023–24)",
+          suspensionRate: "7.1% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "22.4% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "35% Hispanic/Latino, 26% Black/African American, 16% White, 14% Asian, 9% Multi-ethnic",
-          sed: "54% Socioeconomically Disadvantaged",
-          el: "17% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "35%" }, { label: "African American", pct: "26%" }, { label: "White", pct: "16%" }]
+          summary: "35% Latino, 25% White, 19% Two or more, 15% Black, 5% Asian (grades 6–8)",
+          sed: "54% low-income",
+          el: "9% English learners (whole school)",
+          breakdown: [{"label": "Latino", "pct": "35%"}, {"label": "White", "pct": "25%"}, {"label": "Two or more", "pct": "19%"}, {"label": "Black", "pct": "15%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "A celebrated public charter middle school in Western Addition emphasizing student-centered learning, deep support for all learning styles, and an advisory family model."
       },
@@ -2487,11 +2430,13 @@
         address: "3531 22nd St, San Francisco, CA 94114",
         lat: 37.75491,
         lng: -122.42656,
-        enrollment: 640,
+        enrollment: 614,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "CA Dept. of Education, 2025–26; 221 in grades 6–8",
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:15 AM - 3:15 PM",
         muni: "24 Divisadero, J-Church, 48 Quintara, 24th St BART",
-        languages: ["Spanish Dual Language Immersion (50:50) & Spanish Electives"],
+        languages: ["Dual language immersion (per school site; grades not stated)"],
         languageKey: "spanish",
         arts: "Folklorico & Modern Dance, Visual Arts, Digital Graphic Design, Music",
         sports: "Soccer, Basketball, Volleyball, Track",
@@ -2499,21 +2444,18 @@
         hsFeeders: "Mission High School, Abraham Lincoln High School, Lowell, and Gateway High School.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Arts", "Sports"],
-        lotteryOdds: "Public charter lottery with open citywide access. Continuous TECA 5th graders receive priority.",
+        lotteryOdds: "Charter school: apply through the school's own application and lottery, not SFUSD's. Check the school's site for deadlines and priorities.",
         dashboardMetrics: {
-          studentTeacherRatio: "20:1",
-          avgClassSize: "24 students",
-          teacherRetention: "86% retention rate",
-          avgTeacherExperience: "11.5 years avg experience",
-          suspensionRate: "1.2% (Moderate)",
-          chronicAbsenteeism: "13.8% (Moderate)",
-          chksBelonging: "82% positive sense of safety & belonging"
+          studentTeacherRatio: "22:1 (whole school, 2023–24)",
+          suspensionRate: "0.0% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "19.0% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "72% Hispanic/Latino, 11% White, 7% Asian, 5% Black/African American, 5% Multi-ethnic",
-          sed: "68% Socioeconomically Disadvantaged",
-          el: "36% English Learners",
-          breakdown: [{ label: "Hispanic/Latino", pct: "72%" }, { label: "White", pct: "11%" }, { label: "Asian", pct: "7%" }]
+          summary: "88% Latino, 4% White, 4% Black (grades 6–8)",
+          sed: "79% low-income",
+          el: "34% English learners",
+          breakdown: [{"label": "Latino", "pct": "88%"}, {"label": "White", "pct": "4%"}, {"label": "Black", "pct": "4%"}, {"label": "Asian", "pct": "1%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "A longstanding K-8 public charter school at the Mission/Noe border featuring a proven Spanish Dual Immersion curriculum and hands-on STEAM labs."
       },
@@ -2533,33 +2475,32 @@
         address: "1601 Turk St, San Francisco, CA 94115",
         lat: 37.78001,
         lng: -122.43548,
-        enrollment: 440,
+        enrollment: 420,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "CA Dept. of Education, 2025–26; 172 in grades 6–8",
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "5 Fulton, 31 Balboa, 38 Geary, 22 Fillmore",
-        languages: ["Spanish World Language & Literary Arts"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Visual Arts, Ceramics, Theater Production, Chorus, Strings, Instrumental Winds",
         sports: "Volleyball, Basketball, Track, Soccer",
         feeders: "Citywide open charter lottery; priority for continuing CACS elementary cohorts",
         hsFeeders: "Premier feeder to Ruth Asawa School of the Arts (SOTA), Lowell High School, George Washington, and Urban School.",
         hsKey: "sota_arts",
         specialties: ["Arts", "Music"],
-        lotteryOdds: "Open public charter lottery with high artistic family demand. Sibling and staff priorities apply.",
+        lotteryOdds: "Charter school: apply through the school's own application and lottery, not SFUSD's. Check the school's site for deadlines and priorities.",
         dashboardMetrics: {
-          studentTeacherRatio: "17:1",
-          avgClassSize: "21 students",
-          teacherRetention: "90% retention rate",
-          avgTeacherExperience: "13.2 years avg experience",
-          suspensionRate: "0.8% (Low)",
-          chronicAbsenteeism: "9.4% (Low)",
-          chksBelonging: "88% positive sense of safety & belonging"
+          studentTeacherRatio: "19:1 (whole school, 2023–24)",
+          suspensionRate: "2.7% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "29.3% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "38% White, 24% Hispanic/Latino, 15% Black/African American, 13% Multi-ethnic, 10% Asian",
-          sed: "32% Socioeconomically Disadvantaged",
-          el: "9% English Learners",
-          breakdown: [{ label: "White", pct: "38%" }, { label: "Hispanic/Latino", pct: "24%" }, { label: "African American", pct: "15%" }]
+          summary: "40% White, 28% Latino, 16% Two or more, 10% Black, 5% Asian (grades 6–8)",
+          sed: "37% low-income",
+          el: "7% English learners (whole school)",
+          breakdown: [{"label": "White", "pct": "40%"}, {"label": "Latino", "pct": "28%"}, {"label": "Two or more", "pct": "16%"}, {"label": "Black", "pct": "10%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "An arts-rich public charter school in the Western Addition integrating visual arts, drama, dance, and music directly into academic expeditions."
       },
@@ -2579,33 +2520,32 @@
         address: "940 Filbert St, San Francisco, CA 94133",
         lat: 37.80073,
         lng: -122.41496,
-        enrollment: 460,
+        enrollment: 461,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "CA Dept. of Education, 2025–26; 188 in grades 6–8",
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "30 Stockton, 45 Union-Stockton, 8 Bayshore, Powell-Hyde Cable Car",
-        languages: ["Spanish Language Exploration & Global Humanities"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Studio Design, Maker Fabrication, Film & Podcasting, Theater",
         sports: "Cross Country, Basketball, Volleyball, Soccer",
         feeders: "Open public charter lottery citywide; weighted for socio-economic equity",
         hsFeeders: "Lowell High School, Galileo Academy, George Washington, and top independent prep high schools.",
         hsKey: "lowell_academic",
         specialties: ["STEM", "Arts"],
-        lotteryOdds: "Public charter lottery with citywide access. Highly ranked for reading and math proficiency.",
+        lotteryOdds: "Charter school: apply through the school's own application and lottery, not SFUSD's. Check the school's site for deadlines and priorities.",
         dashboardMetrics: {
-          studentTeacherRatio: "14:1",
-          avgClassSize: "18 students",
-          teacherRetention: "92% retention rate",
-          avgTeacherExperience: "13.4 years avg experience",
-          suspensionRate: "0.4% (Very Low)",
-          chronicAbsenteeism: "7.8% (Low)",
-          chksBelonging: "91% positive sense of safety & belonging"
+          studentTeacherRatio: "20:1 (whole school, 2023–24)",
+          suspensionRate: "1.5% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "19.2% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "43% White, 24% Hispanic/Latino, 16% Asian, 11% Multi-ethnic, 6% Black/African American",
-          sed: "34% Socioeconomically Disadvantaged",
-          el: "12% English Learners",
-          breakdown: [{ label: "White", pct: "43%" }, { label: "Hispanic/Latino", pct: "24%" }, { label: "Asian", pct: "16%" }]
+          summary: "34% Latino, 32% White, 21% Asian, 10% Two or more (grades 6–8)",
+          sed: "33% low-income",
+          el: "15% English learners (whole school)",
+          breakdown: [{"label": "Latino", "pct": "34%"}, {"label": "White", "pct": "32%"}, {"label": "Asian", "pct": "21%"}, {"label": "Two or more", "pct": "10%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "A top-ranked public charter K-8 in North Beach that champions hands-on inquiry, personalized learning plans, social justice, and high academic performance."
       },
@@ -2624,33 +2564,32 @@
         address: "1060 Key Ave, San Francisco, CA 94124",
         lat: 37.71929,
         lng: -122.3965,
-        enrollment: 330,
+        enrollment: 179,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "CA Dept. of Education, 2025–26; 148 in grades 6–8",
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:00 AM - 3:45 PM",
         muni: "29 Sunset, 54 Felton, T-Third",
-        languages: ["Spanish World Language & Academic Intervention"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Visual Arts, Spoken Word, Step & Dance, Digital Media",
         sports: "Flag Football, Basketball, Track & Field, Volleyball, Soccer",
         feeders: "Citywide open charter lottery; priority for Southeast SF families",
         hsFeeders: "Direct matriculation to KIPP San Francisco College Prep (Hunter's Point), Balboa, and Lowell.",
         hsKey: "lowell_academic",
         specialties: ["Sports", "STEM"],
-        lotteryOdds: "Open public charter lottery with strong availability for Southeast SF residents and CTIP1 priority applicants.",
+        lotteryOdds: "Charter school: apply through the school's own application and lottery, not SFUSD's. Check the school's site for deadlines and priorities.",
         dashboardMetrics: {
-          studentTeacherRatio: "15:1",
-          avgClassSize: "20 students",
-          teacherRetention: "82% retention rate",
-          avgTeacherExperience: "9.8 years avg experience",
-          suspensionRate: "2.8% (Moderate)",
-          chronicAbsenteeism: "18.5% (Elevated)",
-          chksBelonging: "79% positive sense of safety & belonging"
+          studentTeacherRatio: "17:1 (whole school, 2023–24)",
+          suspensionRate: "6.3% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "21.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "52% Black/African American, 36% Hispanic/Latino, 6% Pacific Islander, 4% Asian, 2% White",
-          sed: "83% Socioeconomically Disadvantaged",
-          el: "26% English Learners",
-          breakdown: [{ label: "African American", pct: "52%" }, { label: "Hispanic/Latino", pct: "36%" }, { label: "Pacific Islander", pct: "6%" }]
+          summary: "51% Latino, 36% Black, 7% Pacific Islander, 5% Two or more (grades 6–8)",
+          sed: "86% low-income",
+          el: "30% English learners (whole school)",
+          breakdown: [{"label": "Latino", "pct": "51%"}, {"label": "Black", "pct": "36%"}, {"label": "Pacific Islander", "pct": "7%"}, {"label": "Two or more", "pct": "5%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "A tuition-free public charter middle school in Bayview-Hunters Point preparing students for college through high academic expectations and leadership."
       },
@@ -2669,33 +2608,32 @@
         address: "1430 Scott St, Third Floor, San Francisco, CA 94115",
         lat: 37.78299,
         lng: -122.43763,
-        enrollment: 270,
+        enrollment: 264,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "CA Dept. of Education, 2025–26; 244 in grades 6–8",
         tuition: "Public Charter (Free Tuition)",
         bellHours: "8:00 AM - 3:45 PM",
         muni: "38 Geary, 22 Fillmore, 31 Balboa, 5 Fulton",
-        languages: ["Spanish World Language & Intensive Literacy"],
-        languageKey: "spanish",
+        languages: [],
+        languageKey: "none",
         arts: "Visual Arts, Spoken Word & Poetry, Dance, Digital Media",
         sports: "Girls/Boys Basketball, Volleyball, Soccer, Flag Football, Track & Field",
         feeders: "Citywide open public charter lottery; priority for local neighborhood applicants",
         hsFeeders: "Direct feeder to KIPP San Francisco College Prep high school, Lowell High School, George Washington, and Lincoln.",
         hsKey: "lowell_academic",
         specialties: ["Sports", "STEM"],
-        lotteryOdds: "Tuition-free public charter lottery open citywide. Sibling and staff priorities apply.",
+        lotteryOdds: "Charter school: apply through the school's own application and lottery, not SFUSD's. Check the school's site for deadlines and priorities.",
         dashboardMetrics: {
-          studentTeacherRatio: "16:1",
-          avgClassSize: "22 students",
-          teacherRetention: "85% retention rate",
-          avgTeacherExperience: "10.6 years avg experience",
-          suspensionRate: "2.3% (Moderate)",
-          chronicAbsenteeism: "16.9% (Moderate)",
-          chksBelonging: "82% positive sense of safety & belonging"
+          studentTeacherRatio: "18:1 (whole school, 2023–24)",
+          suspensionRate: "3.9% of students suspended (SFUSD 1.7%)",
+          chronicAbsenteeism: "15.6% of grade 7–8 students (SFUSD 22.3%)"
         },
         demographics: {
-          summary: "44% Black/African American, 38% Hispanic/Latino, 9% Asian, 5% Multi-ethnic, 4% White",
-          sed: "81% Socioeconomically Disadvantaged",
-          el: "24% English Learners",
-          breakdown: [{ label: "African American", pct: "44%" }, { label: "Hispanic/Latino", pct: "38%" }, { label: "Asian", pct: "9%" }]
+          summary: "62% Latino, 26% Black, 7% White, 3% Two or more (grades 6–8)",
+          sed: "91% low-income",
+          el: "36% English learners",
+          breakdown: [{"label": "Latino", "pct": "62%"}, {"label": "Black", "pct": "26%"}, {"label": "White", "pct": "7%"}, {"label": "Two or more", "pct": "3%"}],
+          source: "CA Dept. of Education enrollment, 2025–26"
         },
         description: "Founded in 2003 in the Western Addition, KIPP SF Bay Academy serves grades 5–8 with high academic rigor, daily advisory, competitive athletics, and college-preparatory mentoring."
       },
@@ -2715,11 +2653,13 @@
         lat: 37.78357,
         lng: -122.49318,
         enrollment: 400,
-        tuition: "~$45,800/yr (30% on Aid)",
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 138 in grades 6–8",
+        tuition: "$51,490 (2026–27)",
         bellHours: "8:15 AM - 3:00 PM",
         muni: "1 California, 38R Geary",
         languages: ["French & Spanish Programs"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Comprehensive Theater, Vocal Ensembles, Ceramics & Painting",
         sports: "BAIAL League Basketball, Soccer, Volleyball, Cross-Country",
         feeders: "Independent admissions (Kindergarten & 6th grade entry points)",
@@ -2728,18 +2668,14 @@
         specialties: ["STEM", "Arts", "Sports"],
         lotteryOdds: "Independent Admissions Application (Ravenna/ISEE and family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1 (Low ratio)",
-          avgClassSize: "14 students",
-          teacherRetention: "96% faculty retention",
-          avgTeacherExperience: "18.5 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
+          studentTeacherRatio: "6:1",
+          avgClassSize: null,
+          source: "https://www.burkes.org/#at-a-glance"
         },
         demographics: {
-          summary: "48% Students of Color, 52% White • 30% Need-Based Financial Assistance",
-          sed: "30% on Need-Based Aid",
-          breakdown: [{ label: "Students of Color", pct: "48%" }, { label: "White", pct: "52%" }]
+          summary: "48% students of color (school-reported)",
+          sed: "~28% receive aid",
+          source: "https://www.burkes.org/admissions/tuition-and-affordability"
         },
         description: "A premier independent girls' school situated on a lush 3.5-acre Sea Cliff campus, celebrated for leadership and secondary school placement."
       },
@@ -2758,12 +2694,14 @@
         address: "2750 Jackson St, San Francisco, CA 94115",
         lat: 37.79179,
         lng: -122.44035,
-        enrollment: 415,
-        tuition: "~$46,500/yr (25% on Aid)",
+        enrollment: 427,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 145 in grades 6–8",
+        tuition: "$51,500 (2026–27)",
         bellHours: "8:00 AM - 3:15 PM",
         muni: "3 Jackson, 24 Divisadero, 1 California",
         languages: ["Spanish & Mandarin Language Tracks"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Woodworking, Digital Music, Studio Arts, Drama",
         sports: "BAIAL Interscholastic Baseball, Basketball, Soccer, Lacrosse",
         feeders: "Independent admissions (K and 6th grade admissions)",
@@ -2772,18 +2710,14 @@
         specialties: ["STEM", "Sports", "Music"],
         lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1 (Low ratio)",
-          avgClassSize: "15 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "16.8 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "93% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.townschool.com/fs/pages/344"
         },
         demographics: {
-          summary: "45% Students of Color, 55% White • 25% Need-Based Financial Assistance",
-          sed: "25% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "45%" }, { label: "White", pct: "55%" }]
+          summary: "48% from families of color (school-reported)",
+          sed: "19% receive tuition assistance",
+          source: "https://www.townschool.com/admissions/affording-town-school"
         },
         description: "An independent boys' school in Pacific Heights fostering intellectual curiosity, empathy, hands-on engineering, and exceptional sports facilities."
       },
@@ -2803,12 +2737,14 @@
         address: "350 Masonic Ave, San Francisco, CA 94118",
         lat: 37.77815,
         lng: -122.44687,
-        enrollment: 410,
-        tuition: "~$45,500/yr (24% on Aid)",
+        enrollment: 462,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 165 in grades 6–8",
+        tuition: "$51,249 (2026–27)",
         bellHours: "8:15 AM - 3:15 PM",
         muni: "31 Balboa, 43 Masonic, 5 Fulton",
         languages: ["Spanish & Mandarin Pathways"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Ceramics, Digital Filmmaking, Chamber Music, Stage Theater",
         sports: "Volleyball, Basketball, Cross Country, Futsal",
         feeders: "Independent admissions (K and 6th grade entry)",
@@ -2817,18 +2753,14 @@
         specialties: ["Arts", "STEM", "Music"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "15.2 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "92% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.sfday.org/admission/tuition-adjusted-tuition"
         },
         demographics: {
-          summary: "49% Students of Color, 51% White • 24% Need-Based Financial Assistance",
-          sed: "24% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "49%" }, { label: "White", pct: "51%" }]
+          summary: null,
+          sed: null,
+          source: "https://www.sfday.org/admission/tuition-adjusted-tuition"
         },
         description: "A progressive co-educational independent K-8 emphasizing academic inquiry, creative expression, equity, and high school placement counseling."
       },
@@ -2848,12 +2780,14 @@
         address: "250 Valencia St, San Francisco, CA 94103",
         lat: 37.76881,
         lng: -122.42234,
-        enrollment: 440,
-        tuition: "~$44,200/yr (26% on Aid)",
+        enrollment: 414,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 164 in grades 6–8",
+        tuition: "$50,165 for grades 5–8 (2026–27)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "14 Mission, 49 Van Ness, 16th St BART",
         languages: ["Spanish Language & Culture Continuum"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Choral Music, Woodworking, Visual Arts, Drama",
         sports: "Cross Country, Basketball, Volleyball, Soccer",
         feeders: "Independent admissions (K and 6th grade entry points)",
@@ -2862,18 +2796,14 @@
         specialties: ["Arts", "STEM", "Music"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "14.8 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.sffriendsschool.org/admissions/tuition"
         },
         demographics: {
-          summary: "47% Students of Color, 53% White • 26% Need-Based Financial Assistance",
-          sed: "26% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "47%" }, { label: "White", pct: "53%" }]
+          summary: null,
+          sed: "27% receive adjustable tuition",
+          source: "https://www.sffriendsschool.org/admissions/tuition"
         },
         description: "Rooted in Quaker values in the Mission District, Friends provides rigorous academics, quiet reflective practice, and hands-on craft."
       },
@@ -2892,12 +2822,14 @@
         address: "2120 Broadway, San Francisco, CA 94115",
         lat: 37.79469,
         lng: -122.43202,
-        enrollment: 410,
-        tuition: "~$46,200/yr (22% on Aid)",
+        enrollment: 440,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "school-reported",
+        tuition: "$49,580 (2026–27)",
         bellHours: "8:10 AM - 3:15 PM",
         muni: "22 Fillmore, 3 Jackson, 45 Union-Stockton",
         languages: ["Spanish & French Electives"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Choral Ensembles, Digital Media, Ceramics, Drama",
         sports: "Volleyball, Basketball, Soccer, Track & Field, Cross Country",
         feeders: "Independent admissions (K and 6th grade cohorts)",
@@ -2906,18 +2838,14 @@
         specialties: ["STEM", "Arts", "Music"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "15 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "17.1 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://hamlin.org/"
         },
         demographics: {
-          summary: "44% Students of Color, 56% White • 22% Need-Based Financial Assistance",
-          sed: "22% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "44%" }, { label: "White", pct: "56%" }]
+          summary: "51% students of color (school-reported)",
+          sed: "22% receive financial assistance",
+          source: "https://hamlin.org/access-and-affordability/"
         },
         description: "An independent girls' school educating future female innovators with cutting-edge science labs, public speaking coaching, and panoramic views of the Bay."
       },
@@ -2936,12 +2864,14 @@
         address: "1275 Sacramento St, San Francisco, CA 94108",
         lat: 37.79234,
         lng: -122.41384,
-        enrollment: 260,
-        tuition: "~$44,500/yr (23% on Aid)",
+        enrollment: 264,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 114 in grades 6–8",
+        tuition: "$51,925 for grades 5–8 (2026–27)",
         bellHours: "8:15 AM - 3:10 PM",
         muni: "1 California, California Cable Car",
         languages: ["Spanish & Latin / French Tracks"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Grace Cathedral Boys Choir, Instrumental Winds, Fine Art Studio",
         sports: "Basketball, Volleyball, Soccer, Cross Country",
         feeders: "Independent admissions (K and limited 6th grade)",
@@ -2950,18 +2880,14 @@
         specialties: ["Music", "Arts"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "14 students",
-          teacherRetention: "96% faculty retention",
-          avgTeacherExperience: "18.0 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "96% positive sense of safety & belonging"
+          studentTeacherRatio: "7:1",
+          avgClassSize: null,
+          source: "https://www.cathedralschool.net/who-we-are/cathedral-at-a-glance"
         },
         demographics: {
-          summary: "43% Students of Color, 57% White • 23% Need-Based Financial Assistance",
-          sed: "23% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "43%" }, { label: "White", pct: "57%" }]
+          summary: "57% students of color (school-reported)",
+          sed: "~24% receive adjusted tuition",
+          source: "https://www.cathedralschool.net/admissions/affording-cathedral"
         },
         description: "Situated on historic Nob Hill, Cathedral fosters emotional intelligence, high scholastic rigor, and world-class vocal music in partnership with Grace Cathedral."
       },
@@ -2980,12 +2906,14 @@
         address: "333 Dolores St, San Francisco, CA 94110",
         lat: 37.76366,
         lng: -122.42614,
-        enrollment: 460,
-        tuition: "~$43,800/yr (27% on Aid)",
+        enrollment: 378,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 133 in grades 6–8",
+        tuition: "Sliding scale up to $49,830 for grades 5–8 (2026–27)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "J-Church, 22 Fillmore, 16th/Mission BART",
         languages: ["Spanish Language & Cultural Fluency"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Studio Art, Woodshop, Digital Audio, Theater",
         sports: "Volleyball, Basketball, Soccer, Ultimate Frisbee",
         feeders: "Independent admissions (Entry points in PK, K, and 6th grade)",
@@ -2994,25 +2922,21 @@
         specialties: ["STEM", "Arts"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "15.4 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "93% positive sense of safety & belonging"
+          studentTeacherRatio: "8:1 school-wide (incl. specialist and after-school teachers)",
+          avgClassSize: null,
+          source: "https://www.cds-sf.org/about/cds-at-a-glance"
         },
         demographics: {
-          summary: "51% Students of Color, 49% White • 27% Need-Based Financial Assistance",
-          sed: "27% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "51%" }, { label: "White", pct: "49%" }]
+          summary: null,
+          sed: "30% on sliding-scale tuition",
+          source: "https://www.cds-sf.org/apply/sliding-scale-tuition"
         },
         description: "Known for its working urban farm in Dolores Park, CDS champions hands-on ecological stewardship and collaborative learning."
       },
       // 35. FRENCH AMERICAN (FAIS)
       {
         id: "fais",
-        name: "French American International School (FAIS)",
+        name: "International School of San Francisco (formerly French American)",
         sector: "Independent Private",
         scaleCategory: "Independent Private",
         scaleType: "Private",
@@ -3024,8 +2948,10 @@
         address: "150 Oak St, San Francisco, CA 94102",
         lat: 37.77514,
         lng: -122.42214,
-        enrollment: 650,
-        tuition: "~$45,200/yr (20% on Aid)",
+        enrollment: 934,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 175 in grades 6–8",
+        tuition: "$45,168 for PK–8 (2026–27, single payment)",
         bellHours: "8:20 AM - 3:20 PM",
         muni: "Muni Metro Van Ness Station, F-Market, 21 Hayes",
         languages: ["French Dual Immersion (Native & Non-native tracks)"],
@@ -3038,18 +2964,14 @@
         specialties: ["Music", "Arts"],
         lotteryOdds: "Independent Admissions Application (French proficiency evaluation for native track).",
         dashboardMetrics: {
-          studentTeacherRatio: "10:1",
-          avgClassSize: "18 students",
-          teacherRetention: "92% faculty retention",
-          avgTeacherExperience: "14.5 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "91% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.internationalsf.org/fs/pages/3927"
         },
         demographics: {
-          summary: "42% Multilingual Students of Color, 58% White • 20% Financial Aid",
-          sed: "20% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "42%" }, { label: "White", pct: "58%" }]
+          summary: null,
+          sed: "35% receive tuition reduction (2025–26)",
+          source: "https://www.internationalsf.org/fs/pages/3927"
         },
         description: "In Hayes Valley, FAIS combines French Ministry curriculum with American inquiry, preparing students for bilingual IB diplomas."
       },
@@ -3068,8 +2990,10 @@
         address: "250 10th St, San Francisco, CA 94103",
         lat: 37.77338,
         lng: -122.41363,
-        enrollment: 410,
-        tuition: "~$44,800/yr (25% on Aid)",
+        enrollment: 303,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 72 in grades 6–8",
+        tuition: "$500–$50,995 sliding range for grades 5–8 (2026–27)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "Civic Center BART/Muni, 14 Mission, 9 San Bruno",
         languages: ["Mandarin Chinese Immersion Pathway"],
@@ -3082,18 +3006,14 @@
         specialties: ["STEM", "Arts"],
         lotteryOdds: "Independent Admissions Application (Mandarin assessment and family meeting).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "13.9 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "92% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.presidioknolls.org/admissions/affording-pks/"
         },
         demographics: {
-          summary: "64% Asian / Students of Color, 36% White • 25% Need-Based Financial Assistance",
-          sed: "25% on Financial Aid",
-          breakdown: [{ label: "Asian / Students of Color", pct: "64%" }, { label: "White", pct: "36%" }]
+          summary: null,
+          sed: "~14% pay below the top of the range (2026–27)",
+          source: "https://www.presidioknolls.org/admissions/affording-pks/"
         },
         description: "A progressive Mandarin immersion independent school in SOMA that pairs design challenges with deep biliteracy and cross-cultural cognition."
       },
@@ -3113,12 +3033,14 @@
         address: "1555 Mariposa St, San Francisco, CA 94107",
         lat: 37.76364,
         lng: -122.39913,
-        enrollment: 320,
-        tuition: "~$43,500/yr (28% on Aid)",
+        enrollment: 418,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 157 in grades 6–8",
+        tuition: "Up to $49,060 for grades 6–8 (adjusted tuition from $500)",
         bellHours: "8:25 AM - 3:15 PM",
         muni: "22 Fillmore, 55 16th St, 16th BART connection",
         languages: ["Spanish Continuum (Conversational & Honors)"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Fine Arts, Ceramic Sculpture, Music Ensembles",
         sports: "Basketball, Volleyball, Track, Soccer",
         feeders: "Independent admissions (K and 6th grade entry)",
@@ -3127,18 +3049,14 @@
         specialties: ["Arts", "STEM"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "14.2 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
+          studentTeacherRatio: "7:1",
+          avgClassSize: "~16 per section in grades 6–8",
+          source: "https://www.liveoaksf.org/about-us/at-a-glance"
         },
         demographics: {
-          summary: "46% Students of Color, 54% White • 28% Need-Based Financial Assistance",
-          sed: "28% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "46%" }, { label: "White", pct: "54%" }]
+          summary: "59% students of color (school-reported)",
+          sed: "25% in the Adjusted Tuition Program",
+          source: "https://www.liveoaksf.org/admissions/affording-live-oak"
         },
         description: "On sunny Potrero Hill, Live Oak offers a supportive, inclusive K-8 environment that emphasizes student agency and artistic curiosity."
       },
@@ -3157,12 +3075,14 @@
         address: "300 Gaven St, San Francisco, CA 94134",
         lat: 37.73264,
         lng: -122.41122,
-        enrollment: 285,
-        tuition: "~$43,900/yr (26% on Aid)",
+        enrollment: 240,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 103 in grades 6–8",
+        tuition: "$48,430 for middle school (2026–27)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "9 San Bruno, 44 O'Shaughnessy",
         languages: ["Spanish Immersion Continuum"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Orff Schulwerk Percussion, Studio Ceramics, Drama",
         sports: "Cross-Country, Volleyball, Basketball, Track",
         feeders: "Independent admissions (PK, K, 6th grade)",
@@ -3171,18 +3091,14 @@
         specialties: ["Music", "Arts"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "14 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "15.8 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
+          studentTeacherRatio: "6:1 (faculty to student)",
+          avgClassSize: null,
+          source: "https://www.sfschool.org/"
         },
         demographics: {
-          summary: "49% Students of Color, 51% White • 26% Need-Based Financial Assistance",
-          sed: "26% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "49%" }, { label: "White", pct: "51%" }]
+          summary: "65% students of color (school-reported)",
+          sed: "29% of families pay reduced (indexed) tuition",
+          source: "https://sfschool.org/Tuition"
         },
         description: "A community on a Portola garden campus fostering adventurous minds through rich Orff music ensembles and outdoor sciences."
       },
@@ -3201,8 +3117,10 @@
         address: "655 Brotherhood Way, San Francisco, CA 94132",
         lat: 37.71341,
         lng: -122.47437,
-        enrollment: 380,
-        tuition: "~$42,800/yr (32% on Aid)",
+        enrollment: 378,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 155 in grades 6–8",
+        tuition: "$48,713 for grades 5–8 (2026–27)",
         bellHours: "8:15 AM - 3:15 PM",
         muni: "M-Ocean View, 57 Parkmerced",
         languages: ["Modern Hebrew & Spanish Pathways"],
@@ -3215,18 +3133,14 @@
         specialties: ["STEM", "Sports"],
         lotteryOdds: "Independent Admissions Application (family interview & student assessment).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "16 students",
-          teacherRetention: "92% faculty retention",
-          avgTeacherExperience: "14.1 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "93% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.sfbrandeis.org/admissions/tuition"
         },
         demographics: {
-          summary: "32% Multiracial/Diverse, 68% White • 32% Need-Based Financial Assistance",
-          sed: "32% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "32%" }, { label: "White", pct: "68%" }]
+          summary: null,
+          sed: "Nearly 30% of families receive need-based assistance",
+          source: "https://www.sfbrandeis.org/admissions/tuition"
         },
         description: "Near Lake Merced, Brandeis fosters critical inquiry, ethical character, maker design, and high secondary school matriculation."
       },
@@ -3245,8 +3159,10 @@
         address: "838 Kearny St, San Francisco, CA 94108",
         lat: 37.79558,
         lng: -122.40494,
-        enrollment: 210,
-        tuition: "~$49,500/yr (35% on Aid)",
+        enrollment: 175,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 58 in grades 6–8",
+        tuition: "$50,000 for lower & middle school (2026–27)",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "8 Bayshore, 30 Stockton, Montgomery BART",
         languages: ["Customized Language Arts / Executive Function"],
@@ -3259,18 +3175,14 @@
         specialties: ["Arts", "STEM"],
         lotteryOdds: "Rolling independent admissions based on psychoeducational evaluation and student interview.",
         dashboardMetrics: {
-          studentTeacherRatio: "6:1 (Specialized ratio)",
-          avgClassSize: "10 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "16.4 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "97% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: "8–12 in middle school",
+          source: "https://www.sterneschool.org/about-us/fast-facts"
         },
         demographics: {
-          summary: "38% Students of Color, 62% White • 35% Need-Based Financial Assistance",
-          sed: "35% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "38%" }, { label: "White", pct: "62%" }]
+          summary: "40% students of color (school-reported)",
+          sed: "~30% of families receive aid",
+          source: "https://www.sterneschool.org/admissions/tuition"
         },
         description: "A premier independent school for neurodiverse students, offering low student-to-teacher ratios and integrated executive function coaching."
       },
@@ -3290,8 +3202,10 @@
         address: "3250 18th St, San Francisco, CA 94110",
         lat: 37.76209,
         lng: -122.41616,
-        enrollment: 130,
-        tuition: "~$44,900/yr (25% on Aid)",
+        enrollment: 281,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 70 in grades 6–8",
+        tuition: "$50,550 for grades 6–8 (2026–27, lunch included)",
         bellHours: "8:15 AM - 3:15 PM",
         muni: "14 Mission, 49 Van Ness, 33 Ashbury/18th, 16th St BART",
         languages: ["Italian Immersion & Biliteracy", "Spanish Pathway", "English / IB MYP"],
@@ -3304,18 +3218,14 @@
         specialties: ["Arts", "STEM", "Sports"],
         lotteryOdds: "Independent Admissions Application (Ravenna portfolio & family interview).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "13 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "13.6 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: "18–24 average (all grades)",
+          source: "https://sf.lascuolainternational.org/about/fast-facts/"
         },
         demographics: {
-          summary: "44% Multilingual Students of Color, 56% White • 25% Need-Based Financial Assistance",
-          sed: "25% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "44%" }, { label: "White", pct: "56%" }]
+          summary: null,
+          sed: "~30% of families on sliding-scale tuition",
+          source: "https://sf.lascuolainternational.org/admissions/tuition/"
         },
         description: "The only Reggio Emilia-inspired and certified International Baccalaureate (IB) Italian immersion school in the world, fostering design thinking and environmental consciousness."
       },
@@ -3335,12 +3245,14 @@
         address: "2558 Mission St, San Francisco, CA 94110",
         lat: 37.7561,
         lng: -122.41888,
-        enrollment: 160,
-        tuition: "~$44,500/yr (24% on Aid)",
+        enrollment: 290,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 100 in grades 6–8",
+        tuition: "$46,599 for JK–8 (2026–27)",
         bellHours: "8:30 AM - 3:20 PM",
         muni: "14 Mission, 49 Van Ness, 24th St BART",
         languages: ["Spanish Continuum & Applied Computational Languages"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Digital Media, Fabrication Design, Theater Arts, Band",
         sports: "BAIAL Basketball, Volleyball, Soccer, Cross Country",
         feeders: "Independent admissions (Kindergarten and 6th grade entry)",
@@ -3349,18 +3261,14 @@
         specialties: ["STEM", "Arts", "Sports"],
         lotteryOdds: "Independent Admissions Application (family interview, student visit, and recommendation portfolio).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1 (Low ratio)",
-          avgClassSize: "14 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "14.6 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "96% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.altavistaschool.org/admissions/tuition-access"
         },
         demographics: {
-          summary: "44% Students of Color, 56% White • 24% Need-Based Financial Assistance",
-          sed: "24% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "44%" }, { label: "White", pct: "56%" }]
+          summary: null,
+          sed: "~25% of families receive financial assistance",
+          source: "https://www.altavistaschool.org/admissions/tuition-access"
         },
         description: "Alta Vista Middle School emphasizes engineering, experiential scientific research, design thinking, and progressive humanities in tight seminar classes."
       },
@@ -3380,12 +3288,14 @@
         address: "2938 Washington St, San Francisco, CA 94115",
         lat: 37.79073,
         lng: -122.44166,
-        enrollment: 310,
-        tuition: "~$39,800/yr (28% on Aid)",
+        enrollment: 290,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 55 in grades 6–8",
+        tuition: "$42,600 for grades 5–8 (2026–27)",
         bellHours: "8:20 AM - 3:10 PM",
         muni: "1 California, 24 Divisadero, 3 Jackson",
         languages: ["Spanish & German Continuum"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Orchestral Strings, Woodworking, Metalwork, Eurythmy, Stage Drama",
         sports: "Volleyball, Basketball, Cross Country, Track",
         feeders: "Independent admissions (K and 6th grade entry)",
@@ -3394,18 +3304,14 @@
         specialties: ["Arts", "Music"],
         lotteryOdds: "Independent Admissions Application (family visit, interview, and student classroom observation).",
         dashboardMetrics: {
-          studentTeacherRatio: "9:1",
-          avgClassSize: "15 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "16.2 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "95% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.sfwaldorf.org/"
         },
         demographics: {
-          summary: "41% Students of Color, 59% White • 28% Need-Based Financial Assistance",
-          sed: "28% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "41%" }, { label: "White", pct: "59%" }]
+          summary: "37% students of color (school-reported)",
+          sed: "40% of families in the Equitable Tuition Program",
+          source: "https://www.sfwaldorf.org/fs/pages/2881"
         },
         description: "In Pacific Heights, SF Waldorf provides an experiential curriculum emphasizing craft, string orchestra, outdoor sciences, and healthy developmental pacing."
       },
@@ -3425,12 +3331,14 @@
         address: "1387 Valencia St, San Francisco, CA 94110",
         lat: 37.75075,
         lng: -122.42046,
-        enrollment: 195,
-        tuition: "~$27,500/yr (Affordable model / 30% Aid)",
+        enrollment: 186,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 72 in grades 6–8",
+        tuition: "$34,740 for middle school (2026–27)",
         bellHours: "8:30 AM - 3:00 PM",
         muni: "14 Mission, 49 Van Ness, 24th St BART",
         languages: ["Spanish Continuum & Cultural Studies"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Studio Art, Ceramics, Drama & Improv, Woodworking",
         sports: "Basketball, Volleyball, Ultimate Frisbee, Track",
         feeders: "Independent admissions (K and 6th grade entry)",
@@ -3439,18 +3347,14 @@
         specialties: ["Arts", "STEM"],
         lotteryOdds: "Independent Admissions Application (family visit, interview, and student classroom observation).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "14 students",
-          teacherRetention: "93% faculty retention",
-          avgTeacherExperience: "16.0 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "96% positive sense of safety & belonging"
+          studentTeacherRatio: "12:1 to 24:1 in grades 6–8, by subject",
+          avgClassSize: null,
+          source: "https://synergyschool.org/fast-facts/"
         },
         demographics: {
-          summary: "48% Students of Color, 52% White • 30% Need-Based Financial Assistance",
-          sed: "30% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "48%" }, { label: "White", pct: "52%" }]
+          summary: "51% students of color, 2026–27 (school-reported)",
+          sed: "~30% of families receive tuition assistance",
+          source: "https://synergyschool.org/tuition-and-fees/"
         },
         description: "A celebrated independent progressive cooperative school on Valencia St in the Mission, known for its accessible tuition model and hands-on arts."
       },
@@ -3470,12 +3374,14 @@
         address: "2222 Broadway, San Francisco, CA 94115",
         lat: 37.79448,
         lng: -122.43369,
-        enrollment: 620,
-        tuition: "~$46,900/yr (25% on Aid)",
+        enrollment: 1231,
+        dataVerified: "2026-10-16",
+        enrollmentNote: "K–12 students reported to the CA Dept. of Education, 2025–26; 249 in grades 6–8",
+        tuition: "$46,750 for grades 5–8 (2026–27)",
         bellHours: "8:15 AM - 3:15 PM",
         muni: "22 Fillmore, 3 Jackson, 45 Union-Stockton",
         languages: ["Spanish, French & Mandarin Pathways"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Choral, Instrumental Ensemble, Theater Production, Studio Arts",
         sports: "BAIAL Basketball, Soccer, Volleyball, Cross Country, Golf, Track",
         feeders: "Independent admissions (K, 5th, and 6th grade entry)",
@@ -3484,18 +3390,14 @@
         specialties: ["Sports", "STEM", "Arts"],
         lotteryOdds: "Independent Admissions Application (ISEE/SSAT & family interview required).",
         dashboardMetrics: {
-          studentTeacherRatio: "8:1",
-          avgClassSize: "16 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "16.5 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "94% positive sense of safety & belonging"
+          studentTeacherRatio: null,
+          avgClassSize: null,
+          source: "https://www.sacredsf.org/fs/pages/25"
         },
         demographics: {
-          summary: "42% Students of Color, 58% White • 25% Need-Based Financial Assistance",
-          sed: "25% on Financial Aid",
-          breakdown: [{ label: "Students of Color", pct: "42%" }, { label: "White", pct: "58%" }]
+          summary: null,
+          sed: "~35% of K–12 students receive financial assistance",
+          source: "https://www.sacredsf.org/fs/pages/72"
         },
         description: "An independent school on Broadway in Pacific Heights providing single-gender middle school learning environments that optimize academic confidence."
       },
@@ -3516,11 +3418,13 @@
         lat: 37.78171,
         lng: -122.42303,
         enrollment: 105,
-        tuition: "~$47,995/yr (Indexed Tuition / 35%+ Aid)",
+        dataVerified: "2026-10-16",
+        enrollmentNote: "not verified",
+        tuition: "$47,995 (2026–27); flexible tuition from $500",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "31 Balboa, 5 Fulton, 49 Van Ness, Civic Center BART",
         languages: ["Spanish Language & Cultural Inquiry"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Visual Arts Atelier, Music Production, Filmmaking, Drama",
         sports: "Cross Country, Basketball, Volleyball, Futsal",
         feeders: "Independent admissions via Ravenna (Entry in 6th grade)",
@@ -3529,18 +3433,14 @@
         specialties: ["STEM", "Arts"],
         lotteryOdds: "Independent Admissions Application via Ravenna (family meeting, student visit quest day, recommendations).",
         dashboardMetrics: {
-          studentTeacherRatio: "7:1 (Low ratio)",
-          avgClassSize: "14 students",
-          teacherRetention: "94% faculty retention",
-          avgTeacherExperience: "15.0 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "96% positive sense of safety & belonging"
+          studentTeacherRatio: "5:1 (student to faculty)",
+          avgClassSize: null,
+          source: "https://www.millenniumschool.org/"
         },
         demographics: {
-          summary: "46% Students of Color, 54% White • 35% on Indexed / Need-Based Aid",
-          sed: "35% on Indexed Tuition",
-          breakdown: [{ label: "Students of Color", pct: "46%" }, { label: "White", pct: "54%" }]
+          summary: null,
+          sed: "Over 20% receive flexible tuition (2025–26)",
+          source: "https://www.millenniumschool.org/admissions/tuition"
         },
         description: "A progressive independent middle school in Civic Center designed around adolescent neuroscience, experiential Quests, and mindfulness."
       },
@@ -3561,11 +3461,13 @@
         lat: 37.75584,
         lng: -122.41447,
         enrollment: 24,
-        tuition: "~$34,500/yr (Flexible Tuition / 30%+ Aid)",
+        dataVerified: "2026-10-16",
+        enrollmentNote: "not verified",
+        tuition: "Not verified: contact the school",
         bellHours: "8:30 AM - 3:15 PM",
         muni: "14 Mission, 48 Quintara/24th, 67 Bernal, 24th St BART",
         languages: ["Applied Spanish Exploration & Humanities"],
-        languageKey: "spanish",
+        languageKey: "none",
         arts: "Maker Fabrication, Digital Storytelling, Muralism, Creative Writing & Novel Publishing",
         sports: "Bouldering & Climbing, Hiking, Ultimate Frisbee, Urban Cycling",
         feeders: "Independent admissions via Ravenna (Open house, shadow visit day, family chat)",
@@ -3574,19 +3476,9 @@
         specialties: ["STEM", "Arts"],
         lotteryOdds: "Independent Admissions Application via Ravenna (shadow visit day required; cohorts capped at 12 students).",
         dashboardMetrics: {
-          studentTeacherRatio: "4:1 (Ultra-low ratio)",
-          avgClassSize: "12 students",
-          teacherRetention: "95% faculty retention",
-          avgTeacherExperience: "14.2 years avg experience",
-          suspensionRate: "0.0% (None)",
-          chronicAbsenteeism: "<3% (Minimal)",
-          chksBelonging: "98% positive sense of safety & belonging"
+          studentTeacherRatio: null
         },
-        demographics: {
-          summary: "45% Diverse & Multilingual, 55% White • Flexible Tuition / Socioeconomic Aid",
-          sed: "30% Flexible Tuition Aid",
-          breakdown: [{ label: "Students of Color", pct: "45%" }, { label: "White", pct: "55%" }]
-        },
+        demographics: null,
         description: "An experiential project-based micro-school at the Folsom Depot in the Mission, combining real-world city expeditions with personal mastery."
       }
     ];
@@ -4167,7 +4059,7 @@
           }
         }
         if (hoodFilter !== 'all' && s.area !== hoodFilter) return false;
-        if (langFilter !== 'all' && s.languageKey !== langFilter) return false;
+        if (langFilter !== 'all' && s.languageKey !== langFilter && !(s.sector !== 'Independent Private' && (s.languages || []).join(' ').toLowerCase().includes(langFilter))) return false;
         if (specFilter !== 'all' && !s.specialties.includes(specFilter)) return false;
         if (searchTerm && !s.name.toLowerCase().includes(searchTerm) && !s.neighborhood.toLowerCase().includes(searchTerm) && !(areaByKey(s.area)?.label || '').toLowerCase().includes(searchTerm)) return false;
         return true;
@@ -4232,7 +4124,7 @@
                 </div>` : ''}
                 <div class="flex items-center space-x-1.5">
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Ratio / Size:</span>
-                  <span class="text-slate-800 truncate">${getMetrics(school).studentTeacherRatio} • ${getMetrics(school).avgClassSize}</span>
+                  <span class="text-slate-800 truncate">${getMetrics(school).studentTeacherRatio}${getMetrics(school).avgClassSize ? ' • ' + getMetrics(school).avgClassSize : ''}</span>
                 </div>
                 <div class="flex items-center space-x-1.5">
                   <span class="text-slate-400 font-bold text-[10px] uppercase w-16">Muni Lines:</span>
@@ -4241,8 +4133,8 @@
               </div>
 
               <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 text-[11px] text-slate-600">
-                <strong class="text-slate-800 block text-[10px] uppercase tracking-wider mb-0.5">Demographics & Retention:</strong>
-                <span class="line-clamp-1">${school.demographics ? school.demographics.summary : 'Not available'} • ${getMetrics(school).teacherRetention}</span>
+                <strong class="text-slate-800 block text-[10px] uppercase tracking-wider mb-0.5">Students:</strong>
+                <span class="line-clamp-1">${[school.demographics?.summary, school.demographics?.sed].filter(Boolean).join(' • ') || 'Not available'}</span>
               </div>
             </div>
 
@@ -4474,16 +4366,14 @@
           basic: b => '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>' },
         { label: "Growth vs similar students (CA Dashboard 2025)", get: s => compareGrowth(s),
           basic: b => '<span class="text-[11px] text-slate-500">Private schools don\'t take the state test</span>' },
-        { label: "Class Size & Student-Teacher Ratio", get: s => `<strong>${getMetrics(s).studentTeacherRatio}</strong> (${getMetrics(s).avgClassSize})`,
+        { label: "Student-Teacher Ratio & Class Size", get: s => `<strong>${getMetrics(s).studentTeacherRatio}</strong>${getMetrics(s).avgClassSize ? `<br><span class="text-[11px] text-slate-500">Class size: ${getMetrics(s).avgClassSize}</span>` : ''}`,
           basic: b => b.enrollment68 ? `${b.enrollment68} students in grades 6–8<br><span class="text-[11px] text-slate-500">CA Dept. of Education, 2025–26. Class size not available.</span>` : null },
-        { label: "Teacher Retention & Experience", get: s => `${getMetrics(s).teacherRetention}<br><span class="text-[11px] text-slate-500">${getMetrics(s).avgTeacherExperience}</span>` },
         { label: "School Climate (Suspensions & Absenteeism)", get: s => `Suspensions: <strong>${getMetrics(s).suspensionRate}</strong><br>Absenteeism: <strong>${getMetrics(s).chronicAbsenteeism}</strong>` },
-        { label: "Sense of Safety & Belonging (CHKS)", get: s => `<strong class="text-brand-marine">${getMetrics(s).chksBelonging}</strong>` },
         { label: "Momentum (press trend, separate from fit)", get: s => momentumBadge(s.id), basic: b => momentumBadge(b.id) },
-        { label: "Data status", get: s => `<span class="text-[11px] text-amber-800">${getMetrics(s).provenance}</span>` },
+        { label: "Data source", get: s => `<span class="text-[11px] text-slate-600">${getMetrics(s).provenance}</span>` },
         { label: "Historical Admission Odds & Priorities", get: s => `<span class="text-blue-950 text-[11px]">${s.lotteryOdds}</span>` },
         { label: "High School Pipeline", get: s => `<span class="font-semibold text-purple-900">${s.hsFeeders}</span>` },
-        { label: "Demographics & Socioeconomics", get: s => s.demographics ? `<strong>${s.demographics.summary}</strong><br><span class="text-[11px] text-amber-800 font-semibold">${s.demographics.sed || ''}</span>` : 'Not available' },
+        { label: "Demographics & Socioeconomics", get: s => s.demographics ? `${s.demographics.summary ? `<strong>${s.demographics.summary}</strong><br>` : ''}<span class="text-[11px] text-amber-800 font-semibold">${[s.demographics.sed, s.demographics.el].filter(Boolean).join(' · ')}</span>` : 'Not available' },
         { label: "Languages & Biliteracy", get: s => s.languages.join('<br>') },
         { label: "Arts & Athletics", get: s => `${s.arts}<br><span class="text-[11px] text-slate-500">Sports: ${s.sports}</span>` }
       ];
@@ -4542,33 +4432,24 @@
       renderModalMomentum(school.id);
       renderModalAcademics(school);
       setElText('modal-metrics-provenance', getMetrics(school).provenance);
-      setElText('modal-demo-provenance', school.sector === 'Independent Private' ? 'School-reported, unverified' : 'Unverified');
+      setElText('modal-demo-provenance', school.sector === 'Independent Private' ? (school.demographics?.source ? 'School-reported' : 'Not verified') : 'Official · CDE 2025–26');
 
       const dashboardContainer = document.getElementById('modal-dashboard-metrics');
       if (dashboardContainer) {
-        dashboardContainer.innerHTML = `
+        const m = getMetrics(school);
+        const card = (label, value, cls = 'text-slate-800', extra = '') => `
           <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Class Size & Ratio</span>
-            <strong class="text-slate-800 text-xs">${getMetrics(school).studentTeacherRatio} (${getMetrics(school).avgClassSize})</strong>
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Teacher Retention & Experience</span>
-            <strong class="text-slate-800 text-xs">${getMetrics(school).teacherRetention}</strong>
-            <span class="block text-[11px] text-slate-500">${getMetrics(school).avgTeacherExperience}</span>
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Suspension Rate</span>
-            <strong class="text-emerald-700 text-xs">${getMetrics(school).suspensionRate}</strong>
-          </div>
-          <div class="p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Chronic Absenteeism</span>
-            <strong class="text-blue-700 text-xs">${getMetrics(school).chronicAbsenteeism}</strong>
-          </div>
-          <div class="col-span-full p-3 bg-white rounded-xl border border-slate-200 space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-slate-400 block">Student Sense of Belonging (CA Healthy Kids Survey)</span>
-            <strong class="text-brand-marine text-xs">${getMetrics(school).chksBelonging}</strong>
-          </div>
-        `;
+            <span class="text-[10px] uppercase font-bold text-slate-400 block">${label}</span>
+            <strong class="${cls} text-xs">${value}</strong>${extra}
+          </div>`;
+        const isPrivate = school.sector === 'Independent Private';
+        dashboardContainer.innerHTML =
+          card('Student-Teacher Ratio', m.studentTeacherRatio, 'text-slate-800', isPrivate ? '' : '<span class="block text-[10px] text-slate-400">All teachers incl. special ed and ELD, so classes are larger than this</span>') +
+          (isPrivate ? card('Class Size', m.avgClassSize || 'Not published') : '') +
+          card('Suspension Rate', m.suspensionRate, isPrivate ? 'text-slate-500' : 'text-slate-800') +
+          card('Chronic Absenteeism', m.chronicAbsenteeism, isPrivate ? 'text-slate-500' : 'text-slate-800', isPrivate ? '' : '<span class="block text-[10px] text-slate-400">Missed 10%+ of school days</span>') +
+          (m.sourceUrl ? `<p class="col-span-full text-[10px] text-slate-400">Source: <a class="underline" href="${m.sourceUrl}" target="_blank" rel="noopener">school website</a>. Teacher retention and experience aren't published consistently, so they aren't shown.</p>`
+                       : `<p class="col-span-full text-[10px] text-slate-400">${isPrivate ? 'Could not verify these figures.' : 'Teacher retention, experience and student survey results aren\'t published school-by-school by the state, so they aren\'t shown.'}</p>`);
       }
 
       const fitData = calculateSchoolFitScore(school);
@@ -4593,15 +4474,17 @@
       }
 
       const demoContainer = document.getElementById('modal-demographics-container');
+      if (demoContainer && !school.demographics) demoContainer.innerHTML = '<p class="text-slate-500">Not available.</p>';
       if (demoContainer && school.demographics) {
+        const dm = school.demographics;
         demoContainer.innerHTML = `
-          <div class="font-semibold text-slate-800 mb-1">${school.demographics.summary}</div>
+          ${dm.summary ? `<div class="font-semibold text-slate-800 mb-1">${dm.summary}</div>` : ''}
           <div class="flex flex-wrap gap-2 mb-2">
             ${school.demographics.sed ? `<span class="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200 font-semibold text-[11px]">${school.demographics.sed}</span>` : ''}
             ${school.demographics.el ? `<span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200 font-semibold text-[11px]">${school.demographics.el}</span>` : ''}
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            ${(school.demographics.breakdown || []).map(b => `
+            ${(dm.breakdown || []).map(b => `
               <div class="p-2 bg-white rounded-xl border border-slate-200 text-center">
                 <span class="block font-extrabold text-brand-marine text-xs">${b.pct}</span>
                 <span class="text-[10px] text-slate-500">${b.label}</span>
