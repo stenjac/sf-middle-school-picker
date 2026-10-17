@@ -651,6 +651,26 @@
           </div>
         </div>
 
+        <!-- Feeder map -->
+        <div id="feeder-section" class="space-y-3">
+          <div class="max-w-3xl space-y-1">
+            <h3 class="font-display font-bold text-slate-900 text-base">Feeder map: which middle school does your elementary school feed?</h3>
+            <p class="text-xs text-slate-600">Each line connects an SFUSD elementary school to its feeder middle school. Pick your school, or tap a dot or a middle school below. From SFUSD's 2026–27 school list.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
+            <select id="feeder-es-select" onchange="selectFeederSchool(this.value)" class="w-full sm:w-80 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-teal">
+              <option value="">Find your elementary school…</option>
+            </select>
+            <button onclick="selectFeederSchool('')" class="text-xs font-bold text-slate-500 hover:text-brand-teal self-start sm:self-auto">Show all</button>
+          </div>
+          <div id="feeder-result" class="hidden"></div>
+          <div class="relative w-full h-[460px] sm:h-[520px] rounded-2xl overflow-hidden border border-slate-200">
+            <div id="feeder-map" class="w-full h-full"></div>
+          </div>
+          <div id="feeder-legend" class="flex flex-wrap gap-1.5 text-[11px]"></div>
+          <p class="text-[11px] text-slate-500 max-w-3xl">Small dots are elementary schools; large pins are middle schools. An elementary school with two solid lines feeds both schools. Dotted red lines: Spanish immersion students from these schools continue in James Lick's Spanish pathway (other students feed Everett). K-8 schools (e.g. Lawton, Rooftop, Alice Fong Yu) keep their own students and aren't shown. Listing your feeder school gives you a strong tiebreaker, not a guaranteed seat.</p>
+        </div>
+
         <!-- Tiebreakers -->
         <div class="space-y-3">
           <h3 class="font-display font-bold text-slate-900 text-base">When a school has more applicants than seats</h3>
@@ -1117,6 +1137,115 @@
         console.warn('Could not load data/growth.json — growth hidden.', err);
         GROWTH = null;
       }
+    }
+
+    /* ---- Feeder map (SFUSD 2026-27 school list) ---- */
+    const FEEDER_ES = [{"name":"Alamo Elementary","lat":37.78312,"lng":-122.48219,"ms":["presidio"]},{"name":"Alvarado Elementary","lat":37.75368,"lng":-122.43873,"ms":["james_lick"]},{"name":"Argonne Elementary","lat":37.77515,"lng":-122.47679,"ms":["presidio"]},{"name":"Bryant Elementary","lat":37.75163,"lng":-122.4049,"ms":["everett"],"spanish":"james_lick"},{"name":"Carver Elementary","lat":37.7324,"lng":-122.38638,"ms":["willie_brown","aptos"]},{"name":"Chavez Elementary","lat":37.75488,"lng":-122.41541,"ms":["everett"],"spanish":"james_lick"},{"name":"Chin Elementary","lat":37.79831,"lng":-122.40317,"ms":["francisco"]},{"name":"Chinese Immersion School at DeAvila","lat":37.76946,"lng":-122.44429,"ms":["roosevelt"]},{"name":"Clarendon Elementary","lat":37.75299,"lng":-122.45611,"ms":["presidio"]},{"name":"Cleveland Elementary","lat":37.72073,"lng":-122.42904,"ms":["vis_valley"]},{"name":"Cobb Elementary","lat":37.78817,"lng":-122.43918,"ms":["roosevelt"]},{"name":"Drew Elementary","lat":37.73178,"lng":-122.39355,"ms":["willie_brown","giannini"]},{"name":"El Dorado Elementary","lat":37.71927,"lng":-122.40673,"ms":["vis_valley"]},{"name":"Feinstein Elementary","lat":37.73996,"lng":-122.48185,"ms":["aptos"]},{"name":"Flynn Elementary","lat":37.74819,"lng":-122.41203,"ms":["james_lick"]},{"name":"Garfield Elementary","lat":37.8018,"lng":-122.40673,"ms":["francisco"]},{"name":"Glen Park Elementary","lat":37.73311,"lng":-122.43608,"ms":["james_lick"]},{"name":"Grattan Elementary","lat":37.76386,"lng":-122.45052,"ms":["giannini"]},{"name":"Guadalupe Elementary","lat":37.71044,"lng":-122.43441,"ms":["vis_valley"]},{"name":"Harte Elementary","lat":37.71861,"lng":-122.38889,"ms":["willie_brown","james_lick"]},{"name":"Hillcrest Elementary","lat":37.72903,"lng":-122.41924,"ms":["mlk"]},{"name":"Huerta Elementary","lat":37.74066,"lng":-122.42559,"ms":["everett"],"spanish":"james_lick"},{"name":"Jefferson Elementary","lat":37.76355,"lng":-122.47635,"ms":["giannini"]},{"name":"Key Elementary","lat":37.75815,"lng":-122.50249,"ms":["giannini"]},{"name":"Lafayette Elementary","lat":37.77761,"lng":-122.49688,"ms":["presidio"]},{"name":"Lakeshore Elementary","lat":37.7306,"lng":-122.48615,"ms":["denman"]},{"name":"Lau Elementary","lat":37.79398,"lng":-122.40868,"ms":["marina"]},{"name":"Lee Newcomer School","lat":37.7949,"lng":-122.40414,"ms":["francisco","vis_valley"]},{"name":"Longfellow Elementary","lat":37.71046,"lng":-122.44769,"ms":["denman"]},{"name":"Malcolm X Academy","lat":37.73373,"lng":-122.38061,"ms":["willie_brown","mlk"]},{"name":"Marshall Elementary","lat":37.76668,"lng":-122.41909,"ms":["everett"],"spanish":"james_lick"},{"name":"McCoppin Elementary","lat":37.77628,"lng":-122.46401,"ms":["roosevelt"]},{"name":"McKinley Elementary","lat":37.76723,"lng":-122.43659,"ms":["everett"],"spanish":"james_lick"},{"name":"Milk Elementary","lat":37.75915,"lng":-122.43634,"ms":["everett"],"spanish":"james_lick"},{"name":"Miraloma Elementary","lat":37.73931,"lng":-122.45021,"ms":["denman"]},{"name":"Mission Bay Elementary","lat":37.76986,"lng":-122.39522,"ms":["everett","francisco"]},{"name":"Mission Education Center","lat":37.74228,"lng":-122.43106,"ms":["james_lick"]},{"name":"Monroe Elementary","lat":37.72522,"lng":-122.43012,"ms":["hoover"]},{"name":"Moscone Elementary","lat":37.75624,"lng":-122.4123,"ms":["hoover"]},{"name":"Muir Elementary","lat":37.77369,"lng":-122.42909,"ms":["james_lick"]},{"name":"New Traditions Elementary","lat":37.77431,"lng":-122.45032,"ms":["roosevelt"]},{"name":"Ortega Elementary","lat":37.71617,"lng":-122.46625,"ms":["aptos"]},{"name":"Parker Elementary","lat":37.79732,"lng":-122.4111,"ms":["francisco"]},{"name":"Rosa Parks Elementary","lat":37.78368,"lng":-122.42945,"ms":["presidio"]},{"name":"Peabody Elementary","lat":37.78395,"lng":-122.46456,"ms":["roosevelt"]},{"name":"Redding Elementary","lat":37.78973,"lng":-122.41921,"ms":["marina"]},{"name":"Sanchez Elementary","lat":37.76397,"lng":-122.43076,"ms":["everett"],"spanish":"james_lick"},{"name":"Serra Elementary","lat":37.73673,"lng":-122.42113,"ms":["hoover"]},{"name":"SF Public Montessori","lat":37.79262,"lng":-122.43354,"ms":["marina"]},{"name":"Sheridan Elementary","lat":37.71433,"lng":-122.45913,"ms":["denman"]},{"name":"Sherman Elementary","lat":37.79827,"lng":-122.4262,"ms":["marina"]},{"name":"Sloat Elementary","lat":37.73188,"lng":-122.47096,"ms":["aptos"]},{"name":"Spring Valley Elementary","lat":37.7944,"lng":-122.41899,"ms":["marina"]},{"name":"Starr King Elementary","lat":37.75276,"lng":-122.39935,"ms":["aptos"]},{"name":"Stevenson Elementary","lat":37.74886,"lng":-122.4923,"ms":["giannini"]},{"name":"Sunnyside Elementary","lat":37.73031,"lng":-122.44879,"ms":["denman"]},{"name":"Sunset Elementary","lat":37.75074,"lng":-122.49979,"ms":["giannini"]},{"name":"Sutro Elementary","lat":37.78393,"lng":-122.47102,"ms":["roosevelt"]},{"name":"Taylor Elementary","lat":37.728,"lng":-122.40733,"ms":["mlk"]},{"name":"Tenderloin Community","lat":37.78206,"lng":-122.41979,"ms":["francisco"]},{"name":"Ulloa Elementary","lat":37.7373,"lng":-122.49995,"ms":["hoover"]},{"name":"Visitacion Valley Elementary","lat":37.71268,"lng":-122.41036,"ms":["vis_valley"]},{"name":"Webster Elementary","lat":37.76049,"lng":-122.39623,"ms":["james_lick"]},{"name":"West Portal Elementary","lat":37.74357,"lng":-122.46468,"ms":["hoover"]},{"name":"Yick Wo Elementary","lat":37.80191,"lng":-122.4163,"ms":["francisco"]}];
+    const FEEDER_COLORS = { presidio: '#1d4ed8', roosevelt: '#0e7490', giannini: '#7c3aed', hoover: '#db2777', aptos: '#ea580c', denman: '#4d7c0f', marina: '#059669', francisco: '#b45309', james_lick: '#dc2626', everett: '#ca8a04', willie_brown: '#475569', mlk: '#a21caf', vis_valley: '#0369a1' };
+    let feederMap = null, feederLayers = [];
+    const msById = id => SF_SCHOOLS.find(s => s.id === id);
+    const shortMs = id => (msById(id)?.name || id).replace(/ Middle School$/, '').replace('Dr. Martin Luther King, Jr. Academic', 'MLK').replace('Willie L. Brown Jr.', 'Willie Brown').replace('A.P. Giannini', 'Giannini').replace('Herbert Hoover', 'Hoover').replace('James Denman', 'Denman');
+
+    function initFeederMap() {
+      const el = document.getElementById('feeder-map');
+      if (!el || typeof L === 'undefined') return;
+      const sel = document.getElementById('feeder-es-select');
+      if (sel && sel.options.length <= 1) {
+        sel.innerHTML += [...FEEDER_ES].sort((a, b) => a.name.localeCompare(b.name)).map(e => `<option value="${escHtml(e.name)}">${escHtml(e.name)}</option>`).join('');
+      }
+      const legend = document.getElementById('feeder-legend');
+      if (legend && !legend.innerHTML) {
+        legend.innerHTML = Object.keys(FEEDER_COLORS).map(id => `<button onclick="highlightFeederMs('${id}')" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50"><span class="inline-block w-2.5 h-2.5 rounded-full" style="background:${FEEDER_COLORS[id]}"></span>${escHtml(shortMs(id))}</button>`).join('');
+      }
+      if (!feederMap) {
+        feederMap = L.map('feeder-map', { scrollWheelZoom: false }).setView([37.758, -122.44], 12);
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+          maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+        }).addTo(feederMap);
+        drawFeeders(null, null);
+      }
+      feederMap.invalidateSize();
+    }
+
+    function drawFeeders(focusEs, focusMs) {
+      feederLayers.forEach(l => feederMap.removeLayer(l));
+      feederLayers = [];
+      const dim = (on) => (focusEs || focusMs) && !on;
+      FEEDER_ES.forEach(e => {
+        const links = e.ms.map(id => ({ id, dash: null }));
+        if (e.spanish) links.push({ id: e.spanish, dash: '2 6', spanish: true });
+        const onEs = focusEs === e.name || (focusMs && links.some(l => l.id === focusMs));
+        links.forEach(l => {
+          const ms = msById(l.id); if (!ms) return;
+          const lineOn = focusEs ? focusEs === e.name : focusMs ? l.id === focusMs : true;
+          feederLayers.push(L.polyline([[e.lat, e.lng], [ms.lat, ms.lng]], {
+            color: FEEDER_COLORS[l.id] || '#64748b', weight: lineOn && (focusEs || focusMs) ? 3.5 : 2,
+            opacity: dim(lineOn) ? 0.08 : 0.75, dashArray: l.dash
+          }).addTo(feederMap));
+        });
+        const col = FEEDER_COLORS[e.ms[0]] || '#64748b';
+        const m = L.circleMarker([e.lat, e.lng], { radius: focusEs === e.name ? 8 : 5, color: '#fff', weight: 1.5, fillColor: col, fillOpacity: dim(onEs) ? 0.2 : 1 })
+          .bindTooltip(e.name, { direction: 'top' })
+          .on('click', () => selectFeederSchool(e.name))
+          .addTo(feederMap);
+        feederLayers.push(m);
+      });
+      Object.keys(FEEDER_COLORS).forEach(id => {
+        const ms = msById(id); if (!ms) return;
+        const on = focusMs === id || (focusEs && FEEDER_ES.find(e => e.name === focusEs && (e.ms.includes(id) || e.spanish === id)));
+        const icon = L.divIcon({ className: 'custom-map-pin', iconSize: [30, 30], iconAnchor: [15, 15],
+          html: `<div class="custom-marker-icon" style="background-color:${FEEDER_COLORS[id]};width:30px;height:30px;opacity:${dim(on) ? 0.35 : 1}">${escHtml(shortMs(id).charAt(0))}</div>` });
+        feederLayers.push(L.marker([ms.lat, ms.lng], { icon, zIndexOffset: 1000 })
+          .bindTooltip(shortMs(id) + ' Middle', { direction: 'top' })
+          .on('click', () => highlightFeederMs(id))
+          .addTo(feederMap));
+      });
+    }
+
+    function feederMsCard(id, note) {
+      const s = msById(id); if (!s) return '';
+      const scores = caasppShort(id), growth = growthShort(id);
+      return `<div class="p-3 rounded-xl border bg-white space-y-1" style="border-color:${FEEDER_COLORS[id]}">
+        <div class="flex items-center justify-between gap-2">
+          <strong class="text-slate-900 text-sm">${escHtml(s.name)}</strong>
+          <button onclick="openModal('${id}')" class="text-[11px] font-bold text-brand-teal hover:underline whitespace-nowrap">Open profile</button>
+        </div>
+        ${note ? `<p class="text-[11px] text-slate-500">${note}</p>` : ''}
+        <p class="text-[11px] text-slate-600">${escHtml(s.neighborhood)}${scores ? ' · ' + scores : ''}${growth ? '<br>Growth: ' + growth : ''}</p>
+      </div>`;
+    }
+
+    function selectFeederSchool(name) {
+      const sel = document.getElementById('feeder-es-select'); if (sel) sel.value = name;
+      const out = document.getElementById('feeder-result');
+      if (!feederMap) initFeederMap();
+      if (!name) { out.classList.add('hidden'); out.innerHTML = ''; drawFeeders(null, null); feederMap.setView([37.758, -122.44], 12); return; }
+      const e = FEEDER_ES.find(x => x.name === name); if (!e) return;
+      const notes = e.ms.length > 1 ? 'Shared feeder: your school feeds both of these.' : '';
+      out.innerHTML = `<div class="p-4 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-2">
+        <p class="text-xs text-slate-700"><strong>${escHtml(e.name)}</strong> feeds ${e.ms.map(id => '<strong>' + escHtml(shortMs(id)) + '</strong>').join(' and ')}. ${notes}${e.spanish ? ' Spanish immersion students continue in <strong>James Lick</strong>\'s Spanish pathway instead.' : ''}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">${e.ms.map(id => feederMsCard(id)).join('')}${e.spanish ? feederMsCard(e.spanish, 'Spanish immersion students') : ''}</div>
+      </div>`;
+      out.classList.remove('hidden');
+      drawFeeders(name, null);
+      const pts = [[e.lat, e.lng], ...e.ms.concat(e.spanish ? [e.spanish] : []).map(id => [msById(id).lat, msById(id).lng])];
+      feederMap.fitBounds(pts, { padding: [40, 40], maxZoom: 14 });
+    }
+
+    function highlightFeederMs(id) {
+      if (!feederMap) initFeederMap();
+      const sel = document.getElementById('feeder-es-select'); if (sel) sel.value = '';
+      const feeders = FEEDER_ES.filter(e => e.ms.includes(id) || e.spanish === id);
+      const out = document.getElementById('feeder-result');
+      const main = feeders.filter(e => e.ms.includes(id)).map(e => e.name), sp = feeders.filter(e => e.spanish === id && !e.ms.includes(id)).map(e => e.name);
+      out.innerHTML = `<div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+        ${feederMsCard(id)}
+        <p class="text-xs text-slate-700"><strong>Feeder elementary schools (${main.length}):</strong> ${main.map(escHtml).join(', ')}${sp.length ? `<br><strong>Spanish immersion students from:</strong> ${sp.map(escHtml).join(', ')}` : ''}</p>
+      </div>`;
+      out.classList.remove('hidden');
+      drawFeeders(null, id);
+      const ms = msById(id);
+      feederMap.fitBounds([[ms.lat, ms.lng], ...feeders.map(e => [e.lat, e.lng])], { padding: [40, 40], maxZoom: 14 });
     }
 
     /* ---- Growth helpers ---- */
@@ -3540,6 +3669,9 @@
       }
       if (tabId === 'map') {
         setTimeout(initOrRefreshMap, 150);
+      }
+      if (tabId === 'guide') {
+        setTimeout(initFeederMap, 150);
       }
       if (tabId === 'compare') {
         renderComparisonTable();
