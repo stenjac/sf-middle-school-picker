@@ -458,11 +458,11 @@
           </div>
 
           <div class="flex items-center space-x-1.5 p-1 bg-slate-100 rounded-2xl overflow-x-auto text-xs font-semibold">
-            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All</button>
-            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public</button>
-            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8</button>
-            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private</button>
-            <button onclick="setDirectorySectorFilter('Faith')" id="sec-btn-faith" class="sector-filter-btn px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Catholic & Faith-based</button>
+            <button onclick="setDirectorySectorFilter('all')" id="sec-btn-all" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-white text-slate-900 shadow-sm">All</button>
+            <button onclick="setDirectorySectorFilter('SFUSD Comprehensive')" id="sec-btn-comp" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD & Public</button>
+            <button onclick="setDirectorySectorFilter('SFUSD K-8')" id="sec-btn-k8" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">SFUSD K-8</button>
+            <button onclick="setDirectorySectorFilter('Independent Private')" id="sec-btn-priv" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Independent Private</button>
+            <button onclick="setDirectorySectorFilter('Faith')" id="sec-btn-faith" class="sector-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl text-slate-600 hover:text-slate-900">Catholic & Faith-based</button>
           </div>
         </div>
 
@@ -535,11 +535,11 @@
 
         <!-- Sector Pills for News -->
         <div class="flex items-center space-x-1.5 overflow-x-auto text-xs font-semibold py-1">
-          <button onclick="setNewsCategoryFilter('all')" id="news-cat-all" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-900 text-white shadow-xs">All Articles</button>
-          <button onclick="setNewsCategoryFilter('school')" id="news-cat-school" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">School-Specific</button>
-          <button onclick="setNewsCategoryFilter('district')" id="news-cat-district" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">District-Wide</button>
-          <button onclick="setNewsCategoryFilter('charter')" id="news-cat-charter" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Public Charters</button>
-          <button onclick="setNewsCategoryFilter('private')" id="news-cat-private" class="news-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Independent Private</button>
+          <button onclick="setNewsCategoryFilter('all')" id="news-cat-all" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-900 text-white shadow-xs">All Articles</button>
+          <button onclick="setNewsCategoryFilter('school')" id="news-cat-school" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">School-Specific</button>
+          <button onclick="setNewsCategoryFilter('district')" id="news-cat-district" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">District-Wide</button>
+          <button onclick="setNewsCategoryFilter('charter')" id="news-cat-charter" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Public Charters</button>
+          <button onclick="setNewsCategoryFilter('private')" id="news-cat-private" class="news-filter-btn whitespace-nowrap shrink-0 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-600 hover:text-slate-900">Independent Private</button>
           <button onclick="openMomentumModal()" class="px-3 py-1.5 rounded-xl text-brand-teal hover:underline whitespace-nowrap">How Momentum works</button>
         </div>
 
@@ -3662,14 +3662,16 @@
     /* News Feed Rendering & Filtering */
     function setNewsCategoryFilter(cat) {
       newsCategoryFilter = cat;
+      // Active pill drops its hover class: on phones a tapped button keeps
+      // :hover, which used to paint dark text on the dark active background.
       document.querySelectorAll('.news-filter-btn').forEach(btn => {
         btn.classList.remove('bg-slate-900', 'text-white');
-        btn.classList.add('bg-slate-100', 'text-slate-600');
+        btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:text-slate-900');
       });
       const activePill = document.getElementById(`news-cat-${cat}`);
       if (activePill) {
         activePill.classList.add('bg-slate-900', 'text-white');
-        activePill.classList.remove('bg-slate-100', 'text-slate-600');
+        activePill.classList.remove('bg-slate-100', 'text-slate-600', 'hover:text-slate-900');
       }
       renderNewsFeed();
     }
@@ -3769,6 +3771,10 @@
       set('news-cat-district', `District-Wide (${n - school})`);
       set('news-cat-charter', `Public Charters (${SF_NEWS_ARTICLES.filter(a => a.sectorType === 'charter').length})`);
       set('news-cat-private', `Independent Private (${SF_NEWS_ARTICLES.filter(a => a.sectorType === 'private').length})`);
+      // Hide categories with no articles (e.g. "Public Charters (0)")
+      document.querySelectorAll('.news-filter-btn').forEach(btn => {
+        btn.classList.toggle('hidden', /\(0\)$/.test(btn.innerText) && btn.id !== 'news-cat-all');
+      });
     }
 
     /* Guard against the id drift that broke modal news before */
