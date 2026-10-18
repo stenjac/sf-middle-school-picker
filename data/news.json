@@ -546,7 +546,29 @@
     "scope": "district",
     "signals": [],
     "verification": "Replaced — the old link was the Standard's 'School Wars' series landing page, not an article. This is the series' Oct 14 story on the same topic.",
-    "snippet": "The board voted 5-2 to replace the elementary-school lottery with address-based assignment starting 2028-29; citywide programs (immersion, some K-8s) stay open to applications. Coverage describes it as an elementary change; middle school assignment isn't addressed. Final policy vote is set for April 13, 2027."
+    "snippet": "The board voted 5-2 to replace the elementary-school lottery with address-based assignment starting 2028-29; citywide programs (immersion, some K-8s) stay open to applications. Coverage describes it as an elementary change; middle school assignment isn't addressed. Final policy vote is set for April 13, 2027.",
+    "relatedCoverage": [
+      {
+        "publication": "NBC Bay Area",
+        "date": "Oct 13, 2026",
+        "url": "https://www.nbcbayarea.com/news/local/sfusd-school-choice-lottery-neighborhood-enrollment-vote/4157628/"
+      },
+      {
+        "publication": "Mission Local",
+        "date": "Oct 14, 2026",
+        "url": "https://missionlocal.org/2026/10/san-francisco-school-board-new-elementary-enrollment-policy/"
+      },
+      {
+        "publication": "KQED",
+        "date": "Oct 14, 2026",
+        "url": "https://www.kqed.org/news/12104230/sfusd-moves-closer-to-neighborhood-based-enrollment-in-historic-vote"
+      },
+      {
+        "publication": "The San Francisco Standard",
+        "date": "Oct 15, 2026",
+        "url": "https://sfstandard.com/2026/10/15/late-pitch-split-board-grieving-parents-sfusd-s-lottery-vote/"
+      }
+    ]
   },
   {
     "id": "news_denman_math_overhaul_2025",
@@ -794,5 +816,57 @@
     ],
     "verification": "Verified (paywalled) — school confirmed via the article preview and secondary coverage.",
     "snippet": "An 8th-grade refugee described disrupted classes and being bullied at Marina Middle; the district said added middle-school support resources would reach Marina the following year."
+  },
+  {
+    "id": "news_town_threats_2026",
+    "storyId": "town_threats_2026",
+    "schoolId": "town",
+    "relatedSchoolIds": [],
+    "schoolName": "Town School for Boys",
+    "title": "San Francisco police investigate threats at several schools",
+    "publication": "ABC7 News",
+    "date": "October 14, 2026",
+    "isoDate": "2026-10-14",
+    "url": "https://abc7news.com/post/san-francisco-police-investigate-threats-several-schools/19938329/",
+    "tags": [
+      "Safety",
+      "Security"
+    ],
+    "sectorType": "private",
+    "scope": "school",
+    "signals": [
+      {
+        "schoolId": "town",
+        "sentiment": 0,
+        "strength": 0.5,
+        "note": "School was one of several targeted by outside threats and went into a precautionary lockdown — not a reflection on the school itself."
+      }
+    ],
+    "verification": "Verified — opened Oct 17, 2026.",
+    "snippet": "Town School for Boys on Jackson Street went into lockdown after a threat on Oct. 14; officers responded and found no immediate threat. Police said several San Francisco schools received similar threats that week and the investigation is ongoing."
+  },
+  {
+    "id": "news_ice_accompaniment_2026",
+    "storyId": "ice_accompaniment",
+    "schoolId": null,
+    "relatedSchoolIds": [
+      "aptos"
+    ],
+    "schoolName": "District-wide (Aptos staff featured)",
+    "title": "S.F. educators have a new role: Getting families through ICE appointments.",
+    "publication": "Mission Local",
+    "date": "October 15, 2026",
+    "isoDate": "2026-10-15",
+    "url": "https://missionlocal.org/2026/10/san-francisco-teachers-ice-appointments-accompany/",
+    "tags": [
+      "Immigration",
+      "Community",
+      "Family Support"
+    ],
+    "sectorType": "public",
+    "scope": "district",
+    "signals": [],
+    "verification": "Verified — opened Oct 17, 2026.",
+    "snippet": "SFUSD staff, with Faith in Action and the teachers union, accompany immigrant families to ICE check-ins. Educators featured include a social worker at Aptos Middle School."
   }
 ]
