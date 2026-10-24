@@ -567,6 +567,26 @@
         "publication": "The San Francisco Standard",
         "date": "Oct 15, 2026",
         "url": "https://sfstandard.com/2026/10/15/late-pitch-split-board-grieving-parents-sfusd-s-lottery-vote/"
+      },
+      {
+        "publication": "The San Francisco Standard",
+        "date": "Oct 9, 2026",
+        "url": "https://sfstandard.com/2026/10/09/sfusd-kindergarten-enrollment-changes/"
+      },
+      {
+        "publication": "KQED",
+        "date": "Oct 13, 2026",
+        "url": "https://www.kqed.org/news/12104056/san-francisco-prepares-to-end-its-public-school-lottery-system"
+      },
+      {
+        "publication": "ABC7 News",
+        "date": "Oct 14, 2026",
+        "url": "https://abc7news.com/post/san-francisco-unified-replace-elementary-school-lottery-neighborhood-based-student-assignment/19936341/"
+      },
+      {
+        "publication": "ABC7 News",
+        "date": "Oct 19, 2026",
+        "url": "https://abc7news.com/post/san-francisco-parents-say-sfusd-neighborhood-based-school-selection-policy-will-disproportionately-impact-black-students/19956124/"
       }
     ]
   },
@@ -867,6 +887,44 @@
     "scope": "district",
     "signals": [],
     "verification": "Verified — opened Oct 17, 2026.",
-    "snippet": "SFUSD staff, with Faith in Action and the teachers union, accompany immigrant families to ICE check-ins. Educators featured include a social worker at Aptos Middle School."
+    "snippet": "SFUSD staff, with Faith in Action and the teachers union, accompany immigrant families to ICE check-ins. Educators featured include a social worker at Aptos Middle School.",
+    "relatedCoverage": [
+      {
+        "publication": "ABC7 News",
+        "date": "Oct 18, 2026",
+        "url": "https://abc7news.com/post/ice-detentions-ramp-san-francisco-educators-are-now-accompanying-families-immigration-hearings/19942069/"
+      }
+    ]
+  },
+  {
+    "id": "news_bessie_carmichael_2026",
+    "storyId": "bessie_carmichael_soma_homecoming",
+    "schoolId": "bessie_carmichael",
+    "relatedSchoolIds": [
+      "bessie_carmichael"
+    ],
+    "schoolName": "Bessie Carmichael School (Filipino Ed Center K-8)",
+    "title": "‘Proof we were there’: A reporter’s SoMa homecoming",
+    "publication": "Mission Local",
+    "date": "October 12, 2026",
+    "isoDate": "2026-10-12",
+    "url": "https://missionlocal.org/2026/10/soma-reporters-homecoming-san-francisco/",
+    "tags": [
+      "Community",
+      "Alumni",
+      "Neighborhood"
+    ],
+    "sectorType": "public",
+    "scope": "school",
+    "signals": [
+      {
+        "schoolId": "bessie_carmichael",
+        "sentiment": 1,
+        "strength": 0.5,
+        "note": "Featured, not the sole subject: an alum credits the school's teachers with teaching students to document their neighborhood and describes students speaking up against a high-rise near their park."
+      }
+    ],
+    "verification": "Verified — opened Oct 24, 2026.",
+    "snippet": "A Mission Local summer intern, a fourth-generation Bessie Carmichael student, returns to SoMa to document lost childhood landmarks. She writes that her teachers told students to document what they experienced, and recalls students speaking against a proposed high-rise that would have shaded a nearby park."
   }
 ]
