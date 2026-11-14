@@ -941,5 +941,79 @@
     ],
     "verification": "Verified — opened Oct 24, 2026.",
     "snippet": "A Mission Local summer intern, a fourth-generation Bessie Carmichael student, returns to SoMa to document lost childhood landmarks. She writes that her teachers told students to document what they experienced, and recalls students speaking against a proposed high-rise that would have shaded a nearby park."
+  },
+  {
+    "id": "news_visvalley_nonprofit_2026",
+    "storyId": "visvalley_friends_nonprofit",
+    "schoolId": "vis_valley",
+    "relatedSchoolIds": [
+      "claire_lilienthal"
+    ],
+    "schoolName": "Visitacion Valley Middle School",
+    "title": "Viz Valley Middle School had no PTA, so teachers created a nonprofit instead",
+    "publication": "Mission Local",
+    "date": "November 11, 2026",
+    "isoDate": "2026-11-11",
+    "url": "https://missionlocal.org/2026/11/san-francisco-nonprofit-supplementing-pta-fundraising/",
+    "tags": [
+      "Fundraising",
+      "Community",
+      "Equity"
+    ],
+    "sectorType": "public",
+    "scope": "school",
+    "signals": [
+      {
+        "schoolId": "vis_valley",
+        "sentiment": 1,
+        "strength": 1,
+        "note": "Staff-led initiative: teachers formed Friends of Viz Valley to fund events and field trips at a school with no PTA; the article also notes most families can't donate and budgets keep shrinking."
+      }
+    ],
+    "verification": "Verified — opened Nov 14, 2026.",
+    "snippet": "With no PTA, Visitacion Valley Middle's teachers and staff are forming a nonprofit, Friends of Viz Valley; a music teacher has raised about $3,000 so far. The article contrasts this with Claire Lilienthal's PTA, which gave $845,000 in 2025."
+  },
+  {
+    "id": "news_covid_recovery_charts_2026",
+    "storyId": "covid_recovery_2026",
+    "schoolId": "willie_brown",
+    "relatedSchoolIds": [
+      "everett",
+      "francisco"
+    ],
+    "schoolName": "Willie Brown, Everett & Francisco (district-wide analysis)",
+    "title": "SFUSD’s struggle to recover from COVID, explained in 5 charts",
+    "publication": "The San Francisco Standard",
+    "date": "November 9, 2026",
+    "isoDate": "2026-11-09",
+    "url": "https://sfstandard.com/2026/11/09/sfusd-s-struggle-recover-covid-explained-5-charts/",
+    "tags": [
+      "Test Scores",
+      "Academics"
+    ],
+    "sectorType": "public",
+    "scope": "school",
+    "signals": [
+      {
+        "schoolId": "willie_brown",
+        "sentiment": 1,
+        "strength": 0.5,
+        "note": "Featured example: share meeting state standards rose from 16% to 53%; the article also notes the low-income share fell from 79% to 43% over the same period."
+      },
+      {
+        "schoolId": "everett",
+        "sentiment": -1,
+        "strength": 0.5,
+        "note": "Named example: proficiency fell 20 points since before the pandemic (one sentence in the article)."
+      },
+      {
+        "schoolId": "francisco",
+        "sentiment": -1,
+        "strength": 0.5,
+        "note": "Named example: proficiency fell 18 points since before the pandemic (one sentence in the article)."
+      }
+    ],
+    "verification": "Verified — opened Nov 14, 2026.",
+    "snippet": "About two-thirds of SFUSD schools have not recovered academically since the pandemic. Willie Brown's share of students meeting standards rose from 16% to 53% as its enrollment and demographics shifted; Everett and Francisco fell 20 and 18 points."
   }
 ]
