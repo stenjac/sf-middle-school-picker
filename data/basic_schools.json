@@ -67,6 +67,7 @@
     "lat": 37.72967,
     "lng": -122.47461,
     "website": "https://www.cais.org",
+    "languageKeys": ["mandarin"],
     "enrollment68": 129,
     "tuition": null,
     "sources": [
@@ -237,6 +238,7 @@
     "lat": 37.75232,
     "lng": -122.47642,
     "website": "https://www.lelycee.org",
+    "languageKeys": ["french"],
     "enrollment68": 172,
     "tuition": null,
     "sources": [
@@ -806,6 +808,7 @@
     "lat": 37.79132,
     "lng": -122.40665,
     "website": "https://www.ndvsf.org/school",
+    "languageKeys": ["french"],
     "enrollment68": 102,
     "tuition": null,
     "sources": [

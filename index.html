@@ -4197,8 +4197,11 @@
         return true;
       });
 
-      // Basic listings have no language/specialty data, so those filters hide them.
-      const basicFiltered = (langFilter !== 'all' || specFilter !== 'all') ? [] : SF_BASIC_SCHOOLS.filter(b => {
+      // Basic listings have no specialty data, so that filter hides them. They only
+      // pass a language filter when tagged with an optional `languageKeys` array
+      // in data/basic_schools.json (e.g. ["french"]).
+      const basicFiltered = specFilter !== 'all' ? [] : SF_BASIC_SCHOOLS.filter(b => {
+        if (langFilter !== 'all' && !(b.languageKeys || []).includes(langFilter)) return false;
         if (directorySectorFilter === 'Faith' && !isFaithBased(b)) return false;
         if (directorySectorFilter === 'Independent Private' && isFaithBased(b)) return false;
         if (directorySectorFilter === 'SFUSD Comprehensive' || directorySectorFilter === 'SFUSD K-8') return false;
