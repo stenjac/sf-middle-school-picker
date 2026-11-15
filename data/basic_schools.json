@@ -67,6 +67,7 @@
     "lat": 37.72967,
     "lng": -122.47461,
     "website": "https://www.cais.org",
+    "languageKeys": ["mandarin"],
     "enrollment68": 129,
     "tuition": null,
     "sources": [
@@ -807,6 +808,7 @@
     "lat": 37.79132,
     "lng": -122.40665,
     "website": "https://www.ndvsf.org/school",
+    "languageKeys": ["french"],
     "enrollment68": 102,
     "tuition": null,
     "sources": [
